@@ -1,0 +1,110 @@
+.header {
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: $blueV1;
+    padding: 15px 0;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 262px;
+    }
+}
+
+.header__logo {
+    width: 200px;
+    display: block;
+}
+
+.header__logo-img {
+    display: block;
+    width: 100%;
+}
+
+.header-nav__list {
+    display: flex;
+}
+
+.header-nav__list-element {
+    margin-left: 65px;
+}
+
+.header-nav__list-element-link {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    color: $darkBlueV1;
+    opacity: 0.5;
+    position: relative;
+}
+
+.header-nav__list-element--have-children {
+    position: relative;
+
+    .header-nav__list-element-link {
+        padding-right: 15px;
+        display: flex;
+        align-items: center;
+        transition: all ease 0.3s;
+
+        &::before {
+            width: 12px;
+            height: 6px;
+            background: url('/assets/images/icons/ar-header-nav.svg');
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            content: "";
+            right: 0;
+            margin-bottom: -2px;
+            transition: all ease 0.3s;
+        }
+    }
+
+    &:hover {
+        .header-nav__list-element-link {
+            opacity: 1;
+            transition: all ease 0.3s;
+
+            &::before {
+                transform: rotate(180deg);
+                transition: all ease 0.3s;
+            }
+        }
+
+        .sub-meny {
+            display: block;
+        }
+    }
+}
+
+.sub-meny {
+    position: absolute;
+    top: 100%;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 6px;
+    width: 200px;
+    display: none;
+
+}
+
+.sub-meny__element-link {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    color: $darkBlueV1;
+    opacity: 0.5;
+    position: relative;
+}
+
+.sub-meny__element {
+    margin-bottom: 5px;
+}
