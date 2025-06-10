@@ -1,4 +1,5 @@
 <template>
+  
     <div class="app-wrapper">
         <componentHeader />
         
@@ -6,6 +7,7 @@
     
         <componentFooter />
     </div>
+  
 </template>
 
 <script setup>

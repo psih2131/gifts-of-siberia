@@ -7,7 +7,11 @@
 @import "header";
 @import "footer";
 @import "home-page";
+@import "products-catalog-page";
 
 @import "components/product-card";
 @import "components/video-banner";
 @import "components/news-card";
+
+@import "components/small/checkbox-custom";
+@import "components/small/range-custom";

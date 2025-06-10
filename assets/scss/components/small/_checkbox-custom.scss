@@ -1,0 +1,44 @@
+.custom-checkbox {
+    label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .checkbox-input {
+        appearance: none;
+        width: 30px;
+        height: 30px;
+        border: 1px solid $darkBlueV1;
+        border-radius: 5px;
+        background-color: none;
+        cursor: pointer;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        margin: 0;
+    }
+
+    .checkbox-input:checked {
+        background-color: $darkBlueV2;
+        border-color: $darkBlueV2;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+    }
+
+    .checkbox-input:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    .checkbox-input:disabled+span {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    span {
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
+        margin-left: 15px;
+        color: $darkBlueV1;
+    }
+}

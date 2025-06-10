@@ -1,0 +1,42 @@
+.custom-range__title {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    color: $darkBlueV1;
+    margin-bottom: 10px;
+}
+
+.custom-range__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 7px;
+
+    .custom-range__value {
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        color: $darkBlueV1;
+        line-height: 140%;
+    }
+}
+
+.custom-range {
+    .vf-slider-horizontal .vf-slider-tooltip-top {
+        display: none;
+    }
+
+    .vf-slider-connect {
+        background: $darkBlueV2;
+    }
+
+    .vf-slider-horizontal .vf-slider-handle {
+        background: $darkBlueV2;
+        outline: solid 1px #fff;
+    }
+}
+
+.custom-range__slide {
+    padding: 0 7px;
+}

@@ -1,0 +1,235 @@
+.products-catalog-sec {
+    padding-top: 50px;
+    padding-bottom: 120px;
+}
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumbs__link {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    /* 15px */
+    text-transform: capitalize;
+    opacity: 0.4;
+    display: inline-block;
+    margin-right: 5px;
+    color: $darkBlueV1;
+}
+
+.breadcrumbs__text {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    /* 15px */
+    text-transform: capitalize;
+    color: $darkBlueV1;
+}
+
+.products-catalog-sec__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 50px;
+    position: relative;
+}
+
+.products-catalog-sec__elements-wrapper {
+    width: 1290px;
+
+}
+
+.products-catalog-sec__elements-wrapper-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.products-catalog-sec__elements-wrapper-title {
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 48px */
+    text-transform: uppercase;
+    color: $darkBlueV1;
+}
+
+.product-search {
+    position: relative;
+    width: 327px;
+}
+
+.product-search__input-wrapepr {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.product-search__input {
+    width: 100%;
+    border: solid 1px #A0AAB8;
+    border-radius: 100px;
+    padding: 12px 40px 12px 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    font-size: 16px;
+    color: $darkBlueV1;
+    background: none;
+
+    &::placeholder {
+        color: #A0AAB8;
+    }
+}
+
+.product-search__start-search-btn {
+    position: absolute;
+    z-index: 5;
+    right: 16px;
+    cursor: pointer;
+    transition: all ease 0.3s;
+
+    svg {
+        display: block;
+
+        path {
+            stroke: #A0AAB8;
+        }
+    }
+
+    &:hover {
+        transform: scale(1.1);
+        transition: all ease 0.3s;
+    }
+}
+
+.products-catalog-sec__elements-wrapper-body {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% + 52px);
+    margin-left: -26px;
+
+    .product-card {
+        width: calc(33.333% - 52px);
+        margin-left: 26px;
+        margin-right: 26px;
+        margin-top: 50px;
+    }
+}
+
+.pagination {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 0;
+    width: 100px;
+    border: solid 1px $darkBlueV1;
+    border-radius: 8px;
+
+    span {
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        color: $darkBlueV1;
+    }
+
+    svg {
+        display: block;
+    }
+}
+
+.pagination__btn-prev {
+    margin-right: 57px;
+    opacity: 0.5;
+
+    svg {
+        margin-right: 8px;
+    }
+}
+
+.pagination__btn-next {
+    margin-left: 57px;
+
+    svg {
+        margin-left: 8px;
+    }
+}
+
+.pagination__num-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination__nam-li {
+
+
+    a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        background: none;
+        color: rgba(27, 55, 98, 0.40);
+
+        text-align: center;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: rgba(27, 55, 98, 0.40);
+    }
+}
+
+.pagination__nam-li--activ {
+
+
+    a {
+        background: $blueV1;
+        color: $darkBlueV1;
+        color: $darkBlueV1;
+    }
+}
+
+.products-catalog-sec__aside {
+    width: 294px;
+    margin-top: 100px;
+    position: sticky;
+    top: 50px;
+    padding-bottom: 100px;
+
+    .custom-checkbox {
+        margin-bottom: 15px;
+    }
+
+    .custom-range {
+        padding-top: 30px;
+    }
+}
+
+.products-aside__title {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    margin-bottom: 20px;
+    color: $darkBlueV1;
+}
