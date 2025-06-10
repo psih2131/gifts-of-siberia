@@ -3,11 +3,11 @@
 	padding: 0;
 	box-sizing: border-box;
 	-webkit-tap-highlight-color: transparent;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+	// -webkit-user-select: none;
+	// -khtml-user-select: none;
+	// -moz-user-select: none;
+	// -ms-user-select: none;
+	// user-select: none;
 }
 
 
@@ -90,11 +90,12 @@ textarea {
 }
 
 body {
-	overscroll-behavior-y: contain;
+	// overscroll-behavior-y: contain;
 	/* Для совместимости с большинством браузеров */
-	overscroll-behavior-y: auto;
+	// overscroll-behavior-y: auto;
 	font-family: $mainFont;
 	background: #F9F8F2;
+	color: $darkBlueV1;
 }
 
 h1,
