@@ -120,10 +120,6 @@
 
                             <newsCard />
 
-                            <newsCard />
-
-                            <newsCard />
-
                         </div>
 
 
