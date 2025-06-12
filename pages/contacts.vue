@@ -1,84 +1,23 @@
 <template>
-    <footer class="footer">
-        <div class="footer__top">
+    <main class="main">
+
+        <section class="contacts-sec">
             <div class="container">
-                <div class="footer__top-left-side">
-                    <a href="" class="footer__top-logo">
-                        <img src="@/assets/images/img/footer-logo.png" alt="" class="footer__top-logo-img">
-                    </a>
-                    <div class="footer__top-social-row">
-                        <a href="" class="footer__top-social">
-                            <img src="@/assets/images/icons/social-tg.png" alt="" class="footer__top-social-img">
-                        </a>
 
-                        <a href="" class="footer__top-social">
-                            <img src="@/assets/images/icons/social-vk.png" alt="" class="footer__top-social-img">
-                        </a>
-
-                        <a href="" class="footer__top-social">
-                            <img src="@/assets/images/icons/social-ok.png" alt="" class="footer__top-social-img">
-                        </a>
-                    </div>
+                <div class="breadcrumbs">
+                    <NuxtLink class="breadcrumbs__link" to="/">Главная /</NuxtLink>
+                    <span class="breadcrumbs__text">Контакты</span>
                 </div>
-                <div class="footer__top-right-side">
-                    <nav class="footer__top-nav">
-                        <div class="footer__top-nav-row">
-                            <div class="footer__top-nav-claster">
-                                <p class="footer__top-nav-claster-title">
-                                    <a href="">Дары Сибири</a>
-                                </p>
-                                <ul class="footer__top-nav-list">
-                                    <li class="footer__top-nav-list-element">
-                                        <a href="" class="footer__top-nav-list-link">Главная</a>
-                                    </li>
-                                    <li class="footer__top-nav-list-element">
-                                        <a href="" class="footer__top-nav-list-link">О компании</a>
-                                    </li>
-                                    <li class="footer__top-nav-list-element">
-                                        <a href="" class="footer__top-nav-list-link">Производство</a>
-                                    </li>
-                                </ul>
-                            </div>
 
-                            <div class="footer__top-nav-claster">
-                                <p class="footer__top-nav-claster-title">
-                                    <a href="">Сотрудничество</a>
-                                </p>
-                                <ul class="footer__top-nav-list">
-                                    <li class="footer__top-nav-list-element">
-                                        <a href="" class="footer__top-nav-list-link">Экспорт</a>
-                                    </li>
-                                    <li class="footer__top-nav-list-element">
-                                        <a href="" class="footer__top-nav-list-link">Юридическим лицам</a>
-                                    </li>
-                                    <li class="footer__top-nav-list-element">
-                                        <a href="" class="footer__top-nav-list-link">Корпоративные подарки</a>
-                                    </li>
-                                </ul>
-                            </div>
+                <div class="contacts-sec__wrapper">
+                    <h1 class="contacts-sec__title">Мы готовы помочь — свяжитесь с нами</h1>
+                    <p class="contacts-sec__subtitle">Нужна консультация по продукции или хотите обсудить сотрудничество? <br>
+Оставьте свои контактные данные, и наш менеджер свяжется с вами, чтобы ответить на все вопросы и предложить наилучшие решения.</p>
+                </div>
 
-                        </div>
-
-                        <div class="footer__top-nav-row">
-                            <div class="footer__top-nav-claster">
-                                <p class="footer__top-nav-claster-title">
-                                    <NuxtLink to="/products">Продукция</NuxtLink>
-                                </p>
-                            </div>
-
-                            <div class="footer__top-nav-claster">
-                                <p class="footer__top-nav-claster-title">
-                                     <NuxtLink to="/blog">Блог</NuxtLink>
-                                </p>
-                            </div>
-
-                        </div>
-                    </nav>
-
-                    <div class="footer__top-contacts-claster">
-                        <p class="footer__top-contacts-claster-title">
-                            <NuxtLink to="/contacts">Контакты</NuxtLink>
-                        </p>
+                <div class="contacts-sec__claster">
+                    <div class="contacts-sec__info">
+                        
                         <ul class="footer__top-contacts-claster-ul">
                             <li class="footer__top-contacts-claster-li">
                                 <a href="tel:+79009000000" class="footer__top-contacts-claster-li-link">
@@ -137,52 +76,74 @@
                             </li>
                         </ul>
 
-                        <div class="footer__top-contacts-claster-marketplace-row">
-                            <a href="" class="footer__top-contacts-claster-marketplace-element">
-                                <img src="@/assets/images/img/mr-wb.png" alt="" class="footer__top-contacts-claster-marketplace-img">
+
+                          <div class="footer__top-social-row">
+                            <a href="" class="footer__top-social">
+                                <img src="@/assets/images/icons/social-tg.png" alt="" class="footer__top-social-img">
                             </a>
 
-                            <a href="" class="footer__top-contacts-claster-marketplace-element">
-                                <img src="@/assets/images/img/mr-oz.png" alt="" class="footer__top-contacts-claster-marketplace-img">
+                            <a href="" class="footer__top-social">
+                                <img src="@/assets/images/icons/social-vk.png" alt="" class="footer__top-social-img">
                             </a>
 
-                            <a href="" class="footer__top-contacts-claster-marketplace-element">
-                                <img src="@/assets/images/img/mr-ya.png" alt="" class="footer__top-contacts-claster-marketplace-img">
+                            <a href="" class="footer__top-social">
+                                <img src="@/assets/images/icons/social-ok.png" alt="" class="footer__top-social-img">
                             </a>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="footer__down">
-            <div class="container">
-                <p class="footer__down-copy">© 2024 Дары Сибири</p>
-                <div class="footer__down-right-row">
-                    <p class="footer__down-rules-text">Все права защищены</p>
-                    <nav class="footer__down-nav">
-                        <ul class="footer__down-ul">
-                            <li class="footer__down-li">
-                                <a href="" class="footer__down-link">Соглашение</a>
-                            </li>
-                            <li class="footer__down-li">
-                                <a href="" class="footer__down-link">Политика</a>
-                            </li>
-                            <li class="footer__down-li">
-                                <a href="" class="footer__down-link">Декларация</a>
-                            </li>
-                        </ul>
-                    </nav>
+                    </div>
+                    <img src="@/assets/images/img/contacts-page-img.jpg" alt="" class="contacts-sec__img">
                 </div>
+
+         
+
             </div>
-        </div>
-    </footer>
+        </section>
+        
+    </main>
     
 </template>
 
 <script setup>
-    // import { useCounterStore } from '@/stores/counter'
-    import { ref, onMounted, onBeforeUnmount, computed, watch  } from 'vue';
-    // import component__user_panel from '@/components/user-panel.vue'
 
+//IMPORT
+
+// import { useCounterStore } from '@/stores/counter'
+
+import { ref, onMounted, onBeforeUnmount, computed, watch  } from 'vue';
+
+
+
+
+
+
+//DATA
+
+
+
+//METHODS 
+
+
+
+
+
+
+//HOOKS
+onMounted(() => {
+  // Добавляем обработчик события scroll
+
+  
+});
+
+onBeforeUnmount(() => {
+
+});
+
+
+
+ // props
+ const props = defineProps({
+//   mainData: Object,
+      // postAllCategory: Object,
+  })
 </script>
