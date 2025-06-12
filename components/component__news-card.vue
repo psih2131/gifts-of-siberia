@@ -1,16 +1,16 @@
 <template>
     <div class="news-card">
-        <a href="" class="news-card__img-wrapper">
+        <NuxtLink to="/blog/posts/test-post-1" class="news-card__img-wrapper">
             <img src="@/assets/images/img/news-card-1.jpg" alt="" class="news-card__img">
-        </a>
+        </NuxtLink>
 
         <div class="news-card__header">
-            <a href="" class="news-card__teg">#здоровье</a>
+            <NuxtLink  class="news-card__teg" to="/blog/categories/health">#здоровье</NuxtLink>
             <p class="news-card__date-post">15 сентября 2024</p>
         </div>
         
         <p class="news-card__title">
-            <a href="">Чага: как она укрепляет иммунитет</a>
+            <NuxtLink to="/blog/posts/test-post-1">Чага: как она укрепляет иммунитет</NuxtLink>
         </p>
 
         <p class="news-card__description">Всё о том, как чага помогает поддерживать здоровье в холодное время года.</p>

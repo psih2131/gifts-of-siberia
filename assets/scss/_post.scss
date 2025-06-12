@@ -1,0 +1,116 @@
+.post-sec {
+    padding-top: 51px;
+    padding-bottom: 150px;
+}
+
+.post-sec__wrapper {
+    margin-top: 51px;
+}
+
+.post-sec__header {
+    display: flex;
+    align-items: center;
+}
+
+.post-sec__time-read {
+    border-radius: 5px;
+    border: 1px solid rgba(27, 55, 98, 0.20);
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+
+    svg {
+        display: block;
+    }
+
+    span {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
+        margin-left: 10px;
+    }
+}
+
+.post-sec__creade-date {
+    margin-left: 40px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    opacity: 0.4;
+}
+
+.post-sec__teg {
+    display: inline-block;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    padding: 5px 15px;
+    border-radius: 5px;
+    color: $darkBlueV1;
+    background: #F2F5F8;
+}
+
+.post-sec__title {
+    margin-top: 50px;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    margin-bottom: 25px;
+}
+
+.post-wp-editor {
+    border-bottom: solid 1px #CCD1D6;
+
+    p {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%;
+        margin-bottom: 50px;
+    }
+
+    a {
+        color: $darkBlueV1;
+        text-decoration: underline;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 140%;
+        /* 33.6px */
+        text-transform: uppercase;
+    }
+
+    img {
+        margin-bottom: 50px;
+        display: block;
+        max-width: 595px;
+        border-radius: 40px;
+    }
+}
+
+.post-sec__down-text {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    margin-top: 68px;
+}
+
+.post-page-other-news {
+    padding-bottom: 138px;
+    padding-top: 0;
+}
