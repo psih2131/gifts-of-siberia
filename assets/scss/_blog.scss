@@ -1,0 +1,146 @@
+.blog-sec {
+    padding-top: 51px;
+    padding-bottom: 103px;
+}
+
+.blog-sec__wrapper {
+    margin-top: 51px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.blog-sec__aside {
+    width: 294px;
+    position: sticky;
+    top: 50px;
+}
+
+.blog-sec__nav {
+    width: 100%;
+    padding: 26px 0;
+    border-radius: 32px;
+    background: rgba(231, 236, 244, 0.30);
+}
+
+.blog-sec__nav-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 12px 21px;
+    opacity: 0.5;
+    transition: all ease 0.3s;
+
+    &:hover {
+        opacity: 1;
+        transition: all ease 0.3s;
+    }
+}
+
+.blog-sec__nav-link-icon {
+    width: 24px;
+    display: block;
+
+    svg {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+
+.blog-sec__nav-link-text {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    padding-left: 15px;
+    color: $darkBlueV1;
+}
+
+.blog-sec__nav-link--activ {
+    opacity: 1;
+    background: linear-gradient(90deg, #D9E0E9 0%, #F4F4F3 100%);
+
+    &::before {
+        width: 6px;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        content: "";
+        background: $darkBlueV2;
+        border-radius: 3px 0px 0px 3px;
+    }
+
+    .blog-sec__nav-link-text {
+        font-weight: 600;
+    }
+}
+
+.blog-sec__body {
+    width: 1287px;
+}
+
+.blog-sec__body-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.blog-sec__body-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% + 66px);
+    margin-left: -33px;
+
+    .news-card {
+        width: calc(33.333% - 66px);
+        margin: 50px 33px 0 33px;
+    }
+}
+
+.blog-sec__body-pagination-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 130px;
+    padding-left: 168px;
+
+    .pagination {
+        margin-top: 0;
+    }
+}
+
+.page-counter {
+    display: flex;
+    align-items: center;
+}
+
+.page-counter__text {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    /* 15px */
+    text-transform: capitalize;
+    color: #8A97AA;
+}
+
+.page-counter__counter {
+    width: 29px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-style: normal;
+    border: solid 1px #8A97AA;
+    font-weight: 400;
+    line-height: 100%;
+    color: #8A97AA;
+    border-radius: 5px;
+    margin: 0 13px;
+}

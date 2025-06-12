@@ -68,7 +68,7 @@
 
                             <div class="footer__top-nav-claster">
                                 <p class="footer__top-nav-claster-title">
-                                    <a href="">Блог</a>
+                                     <NuxtLink to="/blog">Блог</NuxtLink>
                                 </p>
                             </div>
 
