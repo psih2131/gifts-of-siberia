@@ -29,7 +29,7 @@
                                 </p>
                                 <ul class="footer__top-nav-list">
                                     <li class="footer__top-nav-list-element">
-                                        <a href="" class="footer__top-nav-list-link">Главная</a>
+                                        <NuxtLink to="/"  class="footer__top-nav-list-link">Главная</NuxtLink>
                                     </li>
                                     <li class="footer__top-nav-list-element">
                                         <a href="" class="footer__top-nav-list-link">О компании</a>
@@ -52,7 +52,7 @@
                                         <NuxtLink to="/yur-litsam"  class="footer__top-nav-list-link">Юридическим лицам</NuxtLink>
                                     </li>
                                     <li class="footer__top-nav-list-element">
-                                        <a href="" class="footer__top-nav-list-link">Корпоративные подарки</a>
+                                        <NuxtLink to="/corporation-gifts"  class="footer__top-nav-list-link">Корпоративные подарки</NuxtLink>
                                     </li>
                                 </ul>
                             </div>
