@@ -49,7 +49,7 @@
                                         <a href="" class="footer__top-nav-list-link">Экспорт</a>
                                     </li>
                                     <li class="footer__top-nav-list-element">
-                                        <a href="" class="footer__top-nav-list-link">Юридическим лицам</a>
+                                        <NuxtLink to="/yur-litsam">Юридическим лицам</NuxtLink>
                                     </li>
                                     <li class="footer__top-nav-list-element">
                                         <a href="" class="footer__top-nav-list-link">Корпоративные подарки</a>
