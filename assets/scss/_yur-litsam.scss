@@ -10,6 +10,10 @@
     position: relative;
     padding: 33px 25px;
     overflow: hidden;
+
+    min-height: 410px;
+    display: flex;
+    align-items: center;
 }
 
 .info-hero-sec__bg {
@@ -22,6 +26,7 @@
 
 .info-hero-sec__text-box {
     width: 952px;
+
 }
 
 .info-hero-sec__title {
@@ -32,7 +37,7 @@
     /* 48px */
     text-transform: uppercase;
     margin-bottom: 15px;
-    max-width: 790px;
+    // max-width: 790px;
 }
 
 .info-hero-sec__text {
@@ -211,7 +216,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: 120%;
-    margin-bottom: 26px;
+
     color: #fff;
 }
 
@@ -222,6 +227,7 @@
     line-height: 140%;
     color: #fff;
     opacity: 0.5;
+    margin-top: 26px;
 }
 
 .info-close-sec {
@@ -356,6 +362,7 @@
     width: 1000px;
     height: 607px;
     display: block;
+    object-fit: cover;
     border-radius: 40px;
 }
 
@@ -412,7 +419,38 @@
             transition: all ease 0.3s;
         }
     }
+
+    textarea {
+        width: 100%;
+        border-radius: 15px;
+        border: 1px solid rgba(27, 55, 98, 0.20);
+        background: #FFF;
+        color: $darkBlueV1;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
+        transition: all ease 0.3s;
+        padding: 19px 34px;
+        resize: none;
+        height: 106px;
+        font-family: $mainFont;
+
+        &::placeholder {
+            opacity: 0.2;
+            color: $darkBlueV1;
+            transition: all ease 0.3s;
+        }
+
+        &:hover,
+        &:focus {
+            border: solid 1px $goldV1;
+            transition: all ease 0.3s;
+        }
+    }
 }
+
+
 
 .info-form-sec__form-inp-btn {
     position: relative;
@@ -465,4 +503,147 @@
     margin-top: 50px;
     opacity: 0.2;
     color: $darkBlueV1;
+}
+
+.export-hero-sec {
+    .info-hero-sec__wrapper {
+        padding-left: 52px;
+    }
+
+    .info-hero-sec__btn-wrapper {
+        padding-top: 25px;
+    }
+}
+
+.export-dirrections-sec {
+    background: none;
+    padding: 0;
+    padding-bottom: 100px;
+}
+
+.info-numbers-sec {
+    padding: 60px 0 88px 0;
+    background: #E7ECF4;
+}
+
+.info-numbers-sec__row {
+    width: 100%;
+    display: flex;
+    margin-top: 40px;
+    justify-content: space-between;
+}
+
+.info-numbers-sec__element {
+    width: 280px;
+}
+
+.info-numbers-sec__element-title {
+    margin-top: 9px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+}
+
+.info-numbers-sec__element-sutitle {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    margin-top: 25px;
+    opacity: 0.5;
+}
+
+.info-numbers-sec__element-num {
+    font-size: 128px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%;
+    color: $goldV1;
+    font-family: $fontNum;
+}
+
+.export-close-sec {
+    padding-bottom: 80px;
+}
+
+.info-sertificat-sec {
+    padding-bottom: 85px;
+
+    .container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+}
+
+.info-sertificat-sec__img {
+    width: 580px;
+    display: block;
+}
+
+.info-sertificat-sec__info-wrapper {
+    width: calc(100% - 580px);
+    padding-top: 21px;
+}
+
+.info-sertificat-sec__info-wrapper-header {
+    display: flex;
+    align-items: center;
+}
+
+.info-sertificat-sec__info-wrapper-title {
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 48px */
+    text-transform: uppercase;
+    max-width: 440px;
+    margin-right: 72px;
+}
+
+.info-sertificat-sec__info-wrapper-btn {
+    display: inline-flex;
+    background: $darkBlueV1;
+    padding: 36px 56px;
+    border-radius: 22px;
+    cursor: pointer;
+    transition: all ease 0.3s;
+
+    span {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%;
+        color: #fff;
+        margin-right: 15px;
+    }
+
+    svg {
+        display: block;
+    }
+
+    &:hover {
+        background: $darkBlueV2;
+        transition: all ease 0.3s;
+    }
+}
+
+.info-sertificat-sec__body {
+    margin-top: 30px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+}
+
+.export-form-sec {
+    .info-form-sec__img {
+        height: 794px;
+    }
+
+    .info-form-sec__form-inp {
+        margin-bottom: 10px;
+    }
 }

@@ -11,7 +11,7 @@
 
                 <div class="info-hero-sec__wrapper">
                     <div class="info-hero-sec__text-box">
-                        <h1 class="info-hero-sec__title">чага оптом. Решения для B2B.
+                        <h1 class="info-hero-sec__title">чага оптом. Решения для B2B.<br>
 Продукт, который работает на вас.</h1>
                         <div class="info-hero-sec__text">
                             <p>Чага от производителя. Премиальный продукт с высокой оборачиваемостью и маржинальностью — от 10 штук и без лишней бюрократии. </p>

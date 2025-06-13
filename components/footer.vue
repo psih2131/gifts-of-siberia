@@ -46,10 +46,10 @@
                                 </p>
                                 <ul class="footer__top-nav-list">
                                     <li class="footer__top-nav-list-element">
-                                        <a href="" class="footer__top-nav-list-link">Экспорт</a>
+                                        <NuxtLink to="/export"  class="footer__top-nav-list-link">Экспорт</NuxtLink>
                                     </li>
                                     <li class="footer__top-nav-list-element">
-                                        <NuxtLink to="/yur-litsam">Юридическим лицам</NuxtLink>
+                                        <NuxtLink to="/yur-litsam"  class="footer__top-nav-list-link">Юридическим лицам</NuxtLink>
                                     </li>
                                     <li class="footer__top-nav-list-element">
                                         <a href="" class="footer__top-nav-list-link">Корпоративные подарки</a>
