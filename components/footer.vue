@@ -179,13 +179,15 @@
                     <nav class="footer__down-nav">
                         <ul class="footer__down-ul">
                             <li class="footer__down-li">
-                                <a href="" class="footer__down-link">Соглашение</a>
+                                <NuxtLink to="/doc-page"  class="footer__down-link">Соглашение</NuxtLink>
                             </li>
                             <li class="footer__down-li">
-                                <a href="" class="footer__down-link">Политика</a>
+                                 <NuxtLink to="/doc-page"  class="footer__down-link">Политика</NuxtLink>
+
                             </li>
                             <li class="footer__down-li">
-                                <a href="" class="footer__down-link">Декларация</a>
+                                <NuxtLink to="/doc-page"  class="footer__down-link">Декларация</NuxtLink>
+
                             </li>
                         </ul>
                     </nav>
