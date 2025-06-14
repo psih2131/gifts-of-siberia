@@ -46,6 +46,10 @@
                                          <NuxtLink to="/extract-chagi"  class="footer__top-nav-list-link">Экстракт чаги</NuxtLink>
                                     </li>
 
+                                    <li class="footer__top-nav-list-element">
+                                         <NuxtLink to="/gift-sets"  class="footer__top-nav-list-link">Подарочные наборы</NuxtLink>
+                                    </li>
+
                          
                                 </ul>
                             </div>
