@@ -32,13 +32,25 @@
                                         <NuxtLink to="/"  class="footer__top-nav-list-link">Главная</NuxtLink>
                                     </li>
                                     <li class="footer__top-nav-list-element">
-                                        <a href="" class="footer__top-nav-list-link">О компании</a>
+                                        <NuxtLink to="/about-company"  class="footer__top-nav-list-link">О компании</NuxtLink>
                                     </li>
-                                    <li class="footer__top-nav-list-element">
+                                    <!-- <li class="footer__top-nav-list-element">
                                         <a href="" class="footer__top-nav-list-link">Производство</a>
+                                    </li> -->
+
+                                    <li class="footer__top-nav-list-element">
+                                         <NuxtLink to="/premium-teas"  class="footer__top-nav-list-link">Премиальные чаи</NuxtLink>
                                     </li>
+
+                                    <li class="footer__top-nav-list-element">
+                                         <NuxtLink to="/extract-chagi"  class="footer__top-nav-list-link">Экстракт чаги</NuxtLink>
+                                    </li>
+
+                         
                                 </ul>
                             </div>
+
+                            
 
                             <div class="footer__top-nav-claster">
                                 <p class="footer__top-nav-claster-title">
