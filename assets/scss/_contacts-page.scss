@@ -87,3 +87,127 @@
         }
     }
 }
+
+
+@media only screen and (max-width: 1750px) {
+    .contacts-sec__img {
+        width: calc(100% - 450px);
+    }
+
+    .contacts-sec__info {
+        width: 450px;
+    }
+}
+
+@media only screen and (max-width: 1520px) {}
+
+@media only screen and (max-width: 1220px) {
+    .contacts-sec__title {
+        font-size: 32px;
+    }
+
+    .contacts-sec__subtitle {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .contacts-sec__claster {
+        margin-top: 50px;
+    }
+
+    .contacts-sec__img {
+        width: 50%;
+        border-radius: 32px;
+        height: 300px;
+    }
+
+    .contacts-sec__info {
+        width: 50%;
+    }
+
+    .contacts-sec__info .footer__top-contacts-claster-li-value {
+        font-size: 18px;
+        width: calc(100% - 20px);
+        padding-left: 10px;
+    }
+
+    .contacts-sec__info .footer__top-contacts-claster-li-icon {
+        width: 20px;
+    }
+
+    .contacts-sec__info .footer__top-contacts-claster-li {
+        margin-bottom: 20px;
+    }
+
+    .contacts-sec__info .footer__top-social {
+        width: 40px;
+        margin-right: 20px;
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    .contacts-sec {
+        padding-top: 20px;
+        padding-bottom: 45px;
+    }
+
+    .contacts-sec__wrapper {
+        margin-top: 20px;
+    }
+
+    .contacts-sec__title {
+        font-size: 20px;
+    }
+
+    .contacts-sec__subtitle {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .contacts-sec__claster {
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+
+    .contacts-sec__info {
+        width: 100%;
+        order: 2;
+        width: 100%;
+        padding: 0;
+        padding-top: 20px;
+    }
+
+    .contacts-sec__img {
+        height: 186px;
+        width: 100%;
+        display: block;
+        border-radius: 10px;
+    }
+
+    .contacts-sec__info .footer__top-contacts-claster-li-value {
+        font-size: 14px;
+    }
+
+    .contacts-sec__info .footer__top-contacts-claster-li-icon {
+        width: 16px;
+    }
+
+    .contacts-sec__info .footer__top-social-row {
+        width: 100%;
+        justify-content: center;
+        padding-top: 10px;
+    }
+
+    .contacts-sec__info .footer__top-social {
+        width: 53px;
+        margin: 0 15px;
+
+        &:last-child {
+            margin: 0 15px;
+        }
+    }
+
+    .contacts-sec__info .footer__top-contacts-claster-li {
+        margin-bottom: 10px;
+    }
+}

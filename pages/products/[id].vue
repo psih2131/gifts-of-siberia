@@ -160,6 +160,17 @@
                         <div class="product-hero-sec__info-buy info-buy">
                             <p class="info-buy__title">Покупка в один клик!</p>
                             <p class="info-buy__subtitle">Перейдите на маркетплейс и оформите понравившийся товар в пару шагов.</p>
+                            <div class="info-buy__btn-request">
+                                <button class="btnreq">
+                                    <span>Оставить заявку</span>
+                                    <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.99964 6.99997C7.7263 6.99997 7.49964 6.77331 7.49964 6.49997V3.03997L7.01964 3.51997C6.8263 3.71331 6.5063 3.71331 6.31297 3.51997C6.11964 3.32664 6.11964 3.00664 6.31297 2.81331L7.6463 1.47997C7.7863 1.33997 8.0063 1.29331 8.19297 1.37331C8.37964 1.44664 8.49964 1.63331 8.49964 1.83331V6.49997C8.49964 6.77331 8.27297 6.99997 7.99964 6.99997Z" fill="white"/>
+                                    <path d="M9.33167 3.66669C9.205 3.66669 9.07833 3.62002 8.97833 3.52002L7.645 2.18669C7.45167 1.99336 7.45167 1.67336 7.645 1.48002C7.83833 1.28669 8.15833 1.28669 8.35167 1.48002L9.685 2.81336C9.87833 3.00669 9.87833 3.32669 9.685 3.52002C9.585 3.62002 9.45833 3.66669 9.33167 3.66669Z" fill="white"/>
+                                    <path d="M9.17365 12.3334H6.82031C6.12031 12.3334 5.49365 11.9467 5.18031 11.32L4.40031 9.76002C4.37365 9.70002 4.31365 9.66669 4.25365 9.66669H1.32031C1.04698 9.66669 0.820312 9.44002 0.820312 9.16669C0.820312 8.89335 1.04698 8.66669 1.32031 8.66669H4.26031C4.70698 8.66669 5.10698 8.91335 5.30698 9.31335L6.08698 10.8734C6.22698 11.16 6.51365 11.3334 6.83365 11.3334H9.18698C9.50698 11.3334 9.79365 11.16 9.93365 10.8734L10.7136 9.31335C10.9136 8.91335 11.3136 8.66669 11.7603 8.66669H14.667C14.9403 8.66669 15.167 8.89335 15.167 9.16669C15.167 9.44002 14.9403 9.66669 14.667 9.66669H11.7603C11.6936 9.66669 11.6403 9.70002 11.6136 9.76002L10.8336 11.32C10.5003 11.9467 9.87365 12.3334 9.17365 12.3334Z" fill="white"/>
+                                    <path d="M9.9987 15.6667H5.9987C2.3787 15.6667 0.832031 14.12 0.832031 10.5V8.49999C0.832031 5.37333 1.99203 3.80666 4.59203 3.42666C4.87203 3.38666 5.1187 3.57333 5.1587 3.84666C5.1987 4.11999 5.01203 4.37333 4.7387 4.41333C2.64536 4.71999 1.83203 5.86666 1.83203 8.49999V10.5C1.83203 13.5733 2.92536 14.6667 5.9987 14.6667H9.9987C13.072 14.6667 14.1654 13.5733 14.1654 10.5V8.49999C14.1654 5.86666 13.352 4.71999 11.2587 4.41333C10.9854 4.37333 10.7987 4.11999 10.8387 3.84666C10.8787 3.57333 11.132 3.38666 11.4054 3.42666C14.0054 3.80666 15.1654 5.37333 15.1654 8.49999V10.5C15.1654 14.12 13.6187 15.6667 9.9987 15.6667Z" fill="white"/>
+                                    </svg>
+                                </button>
+                            </div>
                             <div class="info-buy__row">
                                 <a href="" class="info-buy__link">
                                     <img src="@/assets/images/img/buy-wb.png" alt="" class="info-buy__link-img">
@@ -177,12 +188,16 @@
 
         <section class="product-info-sec">
             <div class="container">
-                <ul class="product-info-sec__nav">
-                    <li class="product-info-sec__nav-li" :class="{'product-info-sec__nav-li--activ': curentTabCounter == 1}" @click="curentTabCounter = 1">Видео</li>
-                    <li class="product-info-sec__nav-li" :class="{'product-info-sec__nav-li--activ': curentTabCounter == 2}" @click="curentTabCounter = 2">Состав и полезные свойства</li>
-                    <li class="product-info-sec__nav-li" :class="{'product-info-sec__nav-li--activ': curentTabCounter == 3}" @click="curentTabCounter = 3">Условия хранения</li>
-                    <li class="product-info-sec__nav-li" :class="{'product-info-sec__nav-li--activ': curentTabCounter == 4}" @click="curentTabCounter = 4">Способы приготовления</li>
-                </ul>
+
+                <div class="product-info-sec__nav-wrapper">
+                    <ul class="product-info-sec__nav">
+                        <li class="product-info-sec__nav-li" :class="{'product-info-sec__nav-li--activ': curentTabCounter == 1}" @click="curentTabCounter = 1">Видео</li>
+                        <li class="product-info-sec__nav-li" :class="{'product-info-sec__nav-li--activ': curentTabCounter == 2}" @click="curentTabCounter = 2">Состав и полезные свойства</li>
+                        <li class="product-info-sec__nav-li" :class="{'product-info-sec__nav-li--activ': curentTabCounter == 3}" @click="curentTabCounter = 3">Условия хранения</li>
+                        <li class="product-info-sec__nav-li" :class="{'product-info-sec__nav-li--activ': curentTabCounter == 4}" @click="curentTabCounter = 4">Способы приготовления</li>
+                    </ul>
+                </div>
+                
 
                 <div class="product-info-sec__body">
 
@@ -242,6 +257,48 @@
                     <productCard />
                     
                 </div>
+
+
+                 <swiper-container 
+                    ref="nprodHomeSlider" 
+                    class="prod-single-slider"
+                    :pagination="{
+                    dynamicBullets: true,
+                    clickable: true
+                    }"
+                    >
+
+                    <!-- :pagination="{
+                    dynamicBullets: true,
+                    clickable: true
+                    }" -->
+
+
+                    <swiper-slide >
+                        <div class="prod-single-slider__element">
+                            <productCard />
+                        </div>
+                    </swiper-slide>
+
+                    <swiper-slide >
+                        <div class="prod-single-slider__element">
+                            <productCard />
+                        </div>
+                    </swiper-slide>
+
+                    <swiper-slide >
+                        <div class="prod-single-slider__element">
+                            <productCard />
+                        </div>
+                    </swiper-slide>
+
+                    <swiper-slide >
+                        <div class="prod-single-slider__element">
+                            <productCard />
+                        </div>
+                    </swiper-slide>
+                </swiper-container>
+
             </div>
         </section>
 
@@ -277,7 +334,7 @@ const prodBigSlider = ref(null)
 
 const curentTabCounter = ref(1)
 
-
+const nprodHomeSlider = ref(null)
 
 
 
@@ -291,6 +348,15 @@ const swiperProdBig = useSwiper(prodBigSlider, {
    spaceBetween: 0,   
    speed: 700,
 })
+
+
+const swiperProd = useSwiper(nprodHomeSlider, {
+   loop: true,
+   slidesPerView: 2,
+   spaceBetween: 10,   
+   speed: 700,
+})
+
 
 
 function assda(data){
@@ -323,3 +389,39 @@ onBeforeUnmount(() => {
       // postAllCategory: Object,
   })
 </script>
+
+
+
+<style >
+@media only screen and (min-width: 760px) {
+   swiper-container::part(pagination) {
+    opacity: 0;
+   }
+}
+@media only screen and (max-width: 760px) {
+
+  swiper-container::part(pagination) {
+    bottom: 0px; /* если нужно сместить пагинацию */
+  }
+
+  swiper-container::part(bullet) {
+    background-color:rgba(27, 55, 98, 0.20);
+    opacity: 1;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+
+  swiper-container::part(bullet-active) {
+    background-color: #4471B4;
+    width: 8px;
+    height: 8px;
+  }
+  
+}
+
+
+</style>

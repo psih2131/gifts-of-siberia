@@ -8,6 +8,10 @@
             <swiper-container 
             ref="heroBannerSec" 
             class="hero-banner-slider"
+            :pagination="{
+            dynamicBullets: true,
+            clickable: true
+            }"
             >
 
             <!-- :pagination="{
@@ -19,12 +23,14 @@
               <swiper-slide >
                   <div class="hero-banner-slider__element">
                     <img src="@/assets/images/img/hero-banner.jpg" alt="" class="hero-banner-slider__img">
+                    <img src="@/assets/images/img/hero-banner-mob.jpg" alt="" class="hero-banner-slider__img-mob">
                   </div>
               </swiper-slide>
 
               <swiper-slide >
                   <div class="hero-banner-slider__element">
                     <img src="@/assets/images/img/hero-banner.jpg" alt="" class="hero-banner-slider__img">
+                    <img src="@/assets/images/img/hero-banner-mob.jpg" alt="" class="hero-banner-slider__img-mob">
                   </div>
               </swiper-slide>
 
@@ -72,10 +78,16 @@
 
       <section class="home-about-sec">
         <div class="container">
+
+          <div class="home-about-sec__title-mob">О компании “Дары Сибири”</div>
           <div class="home-about-sec__slider-wrapper">
             <swiper-container 
             ref="aboutHomeSlider" 
             class="about-home-slider"
+            :pagination="{
+            dynamicBullets: true,
+            clickable: true
+            }"
             >
 
             <!-- :pagination="{
@@ -195,6 +207,48 @@
 
             <newsCard />
           </div>
+
+          <div class="last-news-sec__slider">
+              <swiper-container 
+            ref="newsHomeSlider" 
+            class="news-home-slider"
+            :pagination="{
+            dynamicBullets: true,
+            clickable: true
+            }"
+            >
+
+            <!-- :pagination="{
+            dynamicBullets: true,
+            clickable: true
+            }" -->
+
+
+              <swiper-slide >
+                  <div class="news-home-slider__element">
+                    <newsCard />
+                  </div>
+              </swiper-slide>
+
+              <swiper-slide >
+                  <div class="news-home-slider__element">
+                     <newsCard />
+                  </div>
+              </swiper-slide>
+
+              <swiper-slide >
+                  <div class="news-home-slider__element">
+                     <newsCard />
+                  </div>
+              </swiper-slide>
+
+              <swiper-slide >
+                  <div class="news-home-slider__element">
+                     <newsCard />
+                  </div>
+              </swiper-slide>
+                </swiper-container>
+          </div>
         </div>
       </section>
        
@@ -226,6 +280,8 @@ const heroBannerSec = ref(null)
 
 const aboutHomeSlider = ref(null)
 
+const newsHomeSlider = ref(null)
+
 
 //METHODS 
 
@@ -244,6 +300,16 @@ const swiperAbout = useSwiper(aboutHomeSlider, {
    spaceBetween: 0,   
    speed: 700,
 })
+
+
+//news slier mob
+const swiperNews = useSwiper(newsHomeSlider, {
+   loop: true,
+   slidesPerView: 2,
+   spaceBetween: 10,   
+   speed: 700,
+})
+
 
 
 
@@ -271,3 +337,38 @@ onBeforeUnmount(() => {
       // postAllCategory: Object,
   })
 </script>
+
+
+<style >
+@media only screen and (min-width: 760px) {
+   swiper-container::part(pagination) {
+    opacity: 0;
+   }
+}
+@media only screen and (max-width: 760px) {
+
+  swiper-container::part(pagination) {
+    bottom: 0px; /* если нужно сместить пагинацию */
+  }
+
+  swiper-container::part(bullet) {
+    background-color:rgba(27, 55, 98, 0.20);
+    opacity: 1;
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+
+  swiper-container::part(bullet-active) {
+    background-color: #4471B4;
+    width: 8px;
+    height: 8px;
+  }
+  
+}
+
+
+</style>

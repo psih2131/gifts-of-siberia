@@ -69,7 +69,7 @@
 
                                     </span>
                                     <span class="footer__top-contacts-claster-li-value">
-                                        ПН - ПТ: <b>9:00 - 18:00</b><br>
+                                        ПН - ПТ: <b>9:00 - 18:00</b><span><br></span>
                                         СБ - ВС: <b>Выходной</b>
                                     </span>
                                 </a>

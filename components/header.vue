@@ -1,6 +1,12 @@
 <template>
     <header class="header">
         <div class="container">
+            <div class="header__burger burger">
+                <span class="burger_el burger__el--1"></span>
+                <span class="burger_el burger__el--2"></span>
+                <span class="burger_el burger__el--3"></span>
+            </div>
+
             <a href="" class="header__logo">
                 <img src="@/assets/images/img/logo.png" alt="" class="header__logo-img">
             </a>

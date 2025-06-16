@@ -14,6 +14,9 @@
         </p>
 
         <p class="news-card__description">Всё о том, как чага помогает поддерживать здоровье в холодное время года.</p>
+
+        <NuxtLink class="news-card__mob-btn" to="/blog/posts/test-post-1">Читать статью</NuxtLink>
+        
         
     </div>
 </template>

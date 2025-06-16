@@ -68,6 +68,7 @@
 
                 <a href="" class="product-card__btn-market">
                     <img src="@/assets/images/img/mr-oz.png" alt="" class="product-card__btn-market-img">
+                    <img src="@/assets/images/img/ozon-mob-btn.png" alt="" class="product-card__btn-market-img-mob">
                 </a>
             </div>
         </div>

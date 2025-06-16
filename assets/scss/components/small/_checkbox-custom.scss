@@ -42,3 +42,19 @@
         color: $darkBlueV1;
     }
 }
+
+
+@media only screen and (max-width: 760px) {
+    .custom-checkbox {
+        span {
+            font-size: 12px;
+        }
+
+        .checkbox-input {
+            width: 20px;
+            height: 20px;
+        }
+
+
+    }
+}

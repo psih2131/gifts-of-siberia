@@ -4,9 +4,23 @@
         <section class="blog-sec">
             <div class="container">
 
-                <div class="breadcrumbs">
-                    <NuxtLink class="breadcrumbs__link" to="/">Главная /</NuxtLink>
-                    <span class="breadcrumbs__text">Блог</span>
+                <div class="breadcrumbs-row-mob">
+                    <div class="breadcrumbs">
+                        <NuxtLink class="breadcrumbs__link" to="/">Главная /</NuxtLink>
+                        <span class="breadcrumbs__text">Блог</span>
+                    </div>
+
+                    <div class=" product-search">
+                        <div class="product-search__input-wrapepr">
+                            <input type="text" placeholder="Поиск" class="product-search__input">
+                            <div class="product-search__start-search-btn">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 14L11.1 11.1M12.6667 7.33333C12.6667 10.2789 10.2789 12.6667 7.33333 12.6667C4.38781 12.6667 2 10.2789 2 7.33333C2 4.38781 4.38781 2 7.33333 2C10.2789 2 12.6667 4.38781 12.6667 7.33333Z" stroke="#1B3762" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="blog-sec__wrapper">

@@ -5,20 +5,47 @@
                 <div class="footer__top-left-side">
                     <a href="" class="footer__top-logo">
                         <img src="@/assets/images/img/footer-logo.png" alt="" class="footer__top-logo-img">
+                        <img src="@/assets/images/img/logo-footer-mob.png" alt="" class="footer__top-logo-img-footer">
                     </a>
-                    <div class="footer__top-social-row">
-                        <a href="" class="footer__top-social">
-                            <img src="@/assets/images/icons/social-tg.png" alt="" class="footer__top-social-img">
-                        </a>
 
-                        <a href="" class="footer__top-social">
-                            <img src="@/assets/images/icons/social-vk.png" alt="" class="footer__top-social-img">
-                        </a>
 
-                        <a href="" class="footer__top-social">
-                            <img src="@/assets/images/icons/social-ok.png" alt="" class="footer__top-social-img">
-                        </a>
+                    
+
+                    <div class="footer__soc-wrapper">
+
+                        <div class="footer__top-social-row">
+                            <a href="" class="footer__top-social">
+                                <img src="@/assets/images/icons/social-tg.png" alt="" class="footer__top-social-img">
+                            </a>
+
+                            <a href="" class="footer__top-social">
+                                <img src="@/assets/images/icons/social-vk.png" alt="" class="footer__top-social-img">
+                            </a>
+
+                            <a href="" class="footer__top-social">
+                                <img src="@/assets/images/icons/social-ok.png" alt="" class="footer__top-social-img">
+                            </a>
+                        </div>
+
+                        <div class="footer__top-contacts-claster-marketplace-row footer__top-contacts-claster-marketplace-row--mob">
+                            <a href="" class="footer__top-contacts-claster-marketplace-element">
+                                <img src="@/assets/images/img/mr-wb.png" alt="" class="footer__top-contacts-claster-marketplace-img">
+                            </a>
+
+                            <a href="" class="footer__top-contacts-claster-marketplace-element">
+                                <img src="@/assets/images/img/mr-oz.png" alt="" class="footer__top-contacts-claster-marketplace-img">
+                            </a>
+
+                            <a href="" class="footer__top-contacts-claster-marketplace-element">
+                                <img src="@/assets/images/img/mr-ya.png" alt="" class="footer__top-contacts-claster-marketplace-img">
+                            </a>
+                        </div>
+
+
+
+                        
                     </div>
+                    
                 </div>
                 <div class="footer__top-right-side">
                     <nav class="footer__top-nav">
@@ -48,6 +75,10 @@
 
                                     <li class="footer__top-nav-list-element">
                                          <NuxtLink to="/gift-sets"  class="footer__top-nav-list-link">Подарочные наборы</NuxtLink>
+                                    </li>
+
+                                    <li class="footer__top-nav-list-element">
+                                         <NuxtLink to="/contacts"  class="footer__top-nav-list-link">Контакты</NuxtLink>
                                     </li>
 
                          
@@ -146,8 +177,7 @@
 
                                     </span>
                                     <span class="footer__top-contacts-claster-li-value">
-                                        ПН - ПТ: <b>9:00 - 18:00</b><br>
-                                        СБ - ВС: <b>Выходной</b>
+                                        ПН - ПТ: <b>9:00 - 18:00 </b>ㅤㅤ <span><br></span> СБ - ВС: <b>Выходной</b>
                                     </span>
                                 </a>
                             </li>
