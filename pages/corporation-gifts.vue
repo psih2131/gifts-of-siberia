@@ -11,7 +11,7 @@
 
                 <div class="info-hero-sec__wrapper">
                     <div class="info-hero-sec__text-box">
-                        <h1 class="info-hero-sec__title">Подарки, которые ценят.<br>
+                        <h1 class="info-hero-sec__title">Подарки, которые ценят <span><br></span>
 Продукт, который говорит за вас</h1>
                         <div class="info-hero-sec__text">
                             
@@ -120,6 +120,16 @@
                 <h2 class="info-sec-title">Кому подойдут</h2>
 
                 <div class="info-dirrections-sec__row">
+
+                    <swiper-container 
+                    ref="coorpDirrectionsSlider" 
+                    class="coorp-dirrections-slider"
+                    :pagination="{
+                    dynamicBullets: true,
+                    clickable: true
+                    }"
+                    >
+                    <swiper-slide >
                     <div class="info-dirrections-sec__element">
                         <img src="@/assets/images/img/corp-dir-1.jpg" alt="" class="info-dirrections-sec__element-img">
                         <div class="info-dirrections-sec__element-wrapper">
@@ -130,8 +140,9 @@
                             </div>
                         </div>
                     </div>
+                    </swiper-slide>
 
-
+                    <swiper-slide >
                     <div class="info-dirrections-sec__element">
                         <img src="@/assets/images/img/corp-dir-2.jpg" alt="" class="info-dirrections-sec__element-img">
                         <div class="info-dirrections-sec__element-wrapper">
@@ -141,7 +152,9 @@
                             </div>
                         </div>
                     </div>
+                    </swiper-slide>
 
+                    <swiper-slide >
                     <div class="info-dirrections-sec__element">
                         <img src="@/assets/images/img/corp-dir-3.jpg" alt="" class="info-dirrections-sec__element-img">
                         <div class="info-dirrections-sec__element-wrapper">
@@ -151,7 +164,9 @@
                             </div>
                         </div>
                     </div>
-
+                    </swiper-slide>
+                    
+                    <swiper-slide >
                     <div class="info-dirrections-sec__element">
                         <img src="@/assets/images/img/corp-dir-4.jpg" alt="" class="info-dirrections-sec__element-img">
                         <div class="info-dirrections-sec__element-wrapper">
@@ -161,7 +176,9 @@
                             </div>
                         </div>
                     </div>
+                    </swiper-slide>
 
+                    <swiper-slide >
                     <div class="info-dirrections-sec__element">
                         <img src="@/assets/images/img/corp-dir-5.jpg" alt="" class="info-dirrections-sec__element-img">
                         <div class="info-dirrections-sec__element-wrapper">
@@ -171,16 +188,22 @@
                             </div>
                         </div>
                     </div>
+                    </swiper-slide>
 
-                    <!-- <div class="info-dirrections-sec__element">
-                        <img src="@/assets/images/img/dir6.jpg" alt="" class="info-dirrections-sec__element-img">
-                        <div class="info-dirrections-sec__element-wrapper">
-                            <div class="info-dirrections-sec__element-text-box">
-                                <p class="info-dirrections-sec__element-title">Аэропорты, вокзалы</p>
-                                <p class="info-dirrections-sec__element-text">Нажмите, чтобы узнать, какие задачи мы помогаем решить в этом сегменте</p>
-                            </div>
-                        </div>
-                    </div> -->
+                    </swiper-container>
+
+
+                    <div class="coorp-dirrections-prev custom-nav-v1" @click="swiperDirrections.prev()" >
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.09 20.67C15.28 20.67 15.47 20.6 15.62 20.45C15.91 20.16 15.91 19.68 15.62 19.39L9.09999 12.87C8.61999 12.39 8.61999 11.61 9.09999 11.13L15.62 4.61002C15.91 4.32002 15.91 3.84002 15.62 3.55002C15.33 3.26002 14.85 3.26002 14.56 3.55002L8.03999 10.07C7.52999 10.58 7.23999 11.27 7.23999 12C7.23999 12.73 7.51999 13.42 8.03999 13.93L14.56 20.45C14.71 20.59 14.9 20.67 15.09 20.67Z" fill="#1B3762"/>
+                        </svg>
+                    </div>
+
+                    <div class="coorp-dirrections-next custom-nav-v1" @click="swiperDirrections.next()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.90998 20.67C8.71998 20.67 8.52998 20.6 8.37998 20.45C8.08998 20.16 8.08998 19.68 8.37998 19.39L14.9 12.87C15.38 12.39 15.38 11.61 14.9 11.13L8.37998 4.61002C8.08998 4.32002 8.08998 3.84002 8.37998 3.55002C8.66998 3.26002 9.14998 3.26002 9.43998 3.55002L15.96 10.07C16.47 10.58 16.76 11.27 16.76 12C16.76 12.73 16.48 13.42 15.96 13.93L9.43998 20.45C9.28998 20.59 9.09998 20.67 8.90998 20.67Z" fill="#1B3762"/>
+                        </svg>
+                    </div>
 
                 </div>
             </div>
@@ -289,10 +312,18 @@ import { ref, onMounted, onBeforeUnmount, computed, watch  } from 'vue';
 
 
 //DATA
-
+const coorpDirrectionsSlider = ref(null)
 
 
 //METHODS 
+
+//banner gallery
+const swiperDirrections = useSwiper(coorpDirrectionsSlider, {
+   loop: true,
+   slidesPerView: 5,
+   spaceBetween: 10,   
+   speed: 700,
+})
 
 
 
