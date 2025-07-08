@@ -9,7 +9,7 @@
                     <span class="breadcrumbs__text">Премиальные чаи</span>
                 </div>
 
-                <div class="info-hero-sec__wrapper">
+                <div class="info-hero-sec__wrapper info-hero-sec__wrapper--prep-teas">
                     <div class="info-hero-sec__text-box">
                         <h1 class="info-hero-sec__title"><b>Премиальный чага-чай</b> с натуральными сибирскими ингредиентами</h1>
                         <div class="info-hero-sec__text">

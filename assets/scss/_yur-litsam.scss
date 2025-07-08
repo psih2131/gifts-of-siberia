@@ -176,6 +176,7 @@
 .info-dirrections-sec {
     padding: 80px 0 84px 0;
     background: #E7ECF4;
+    overflow: hidden;
 }
 
 .coorp-dirrections-slider {
@@ -1252,6 +1253,22 @@
     }
 }
 
+.info-hero-sec__wrapper-coorp-gifts {
+    .info-hero-sec__bg {
+        width: 1088px;
+        left: 700px;
+        top: -117px;
+    }
+}
+
+
+.info-hero-sec__wrapper--prep-teas {
+    .info-hero-sec__bg {
+        width: 1217px;
+        left: 720px;
+        top: -210px;
+    }
+}
 
 
 
@@ -1589,6 +1606,9 @@
         padding-bottom: 65px;
     }
 
+    .coorp-hero-sec .info-hero-sec__wrapper {
+        padding-left: 0;
+    }
 }
 
 @media only screen and (max-width: 760px) {
@@ -2014,5 +2034,20 @@
 
     .info-sertificat-sec {
         padding-bottom: 50px;
+    }
+
+    .info-hero-sec__wrapper-coorp-gifts {
+        padding-bottom: 160px;
+
+        .info-hero-sec__bg {
+            top: auto;
+            bottom: -80px;
+            left: -30px;
+            width: 390px;
+        }
+    }
+
+    .info-close-sec__row {
+        margin-top: 15px;
     }
 }

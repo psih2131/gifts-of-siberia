@@ -9,7 +9,7 @@
                     <span class="breadcrumbs__text">Корпоративные подарки</span>
                 </div>
 
-                <div class="info-hero-sec__wrapper">
+                <div class="info-hero-sec__wrapper info-hero-sec__wrapper-coorp-gifts">
                     <div class="info-hero-sec__text-box">
                         <h1 class="info-hero-sec__title">Подарки, которые ценят <span><br></span>
 Продукт, который говорит за вас</h1>
@@ -323,6 +323,28 @@ const swiperDirrections = useSwiper(coorpDirrectionsSlider, {
    slidesPerView: 5,
    spaceBetween: 10,   
    speed: 700,
+   breakpoints: {
+    100: {
+      slidesPerView: 1,
+      spaceBetween: 0,
+    },
+    760: {
+      slidesPerView: 3,
+      spaceBetween: 10,
+    },
+    1220: {
+      slidesPerView: 4,
+      spaceBetween: 10,
+    },
+    1520: {
+      slidesPerView: 5,
+      spaceBetween: 10,
+    },
+    1750: {
+      slidesPerView: 5,
+      spaceBetween: 10,
+    },
+  }
 })
 
 
