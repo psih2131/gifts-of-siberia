@@ -9,7 +9,7 @@
                     <span class="breadcrumbs__text">Экстракт чаги</span>
                 </div>
 
-                <div class="info-hero-sec__wrapper">
+                <div class="info-hero-sec__wrapper info-hero-sec__wrapper--extract">
                     <div class="info-hero-sec__text-box">
                         <h1 class="info-hero-sec__title"><b>Экстракты чаги в стиках</b> – <br>
 польза природы в удобной форме</h1>
