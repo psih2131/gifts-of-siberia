@@ -1286,7 +1286,17 @@
     }
 }
 
+.info-hero-sec__wrapper--about {
+    .info-hero-sec__bg {
+        width: 1505px;
+        left: 545px;
+        top: -517px;
+    }
+}
 
+.info-hero-sec__bg-mob {
+    display: none;
+}
 
 
 
@@ -1374,6 +1384,11 @@
     .info-what-extract-sec__text-wrapper {
         width: calc(100% - 684px);
         padding-right: 20px;
+    }
+
+    .info-mission-sec__img {
+        width: 400px;
+        left: calc(50% - 200px);
     }
 }
 
@@ -1490,6 +1505,14 @@
             width: calc(33.333% - 10px);
             margin: 0 5px 15px 5px;
         }
+    }
+
+    .info-mission-sec__img {
+        display: none;
+    }
+
+    .about-hero-sec .info-hero-sec__text-box {
+        width: 100%;
     }
 }
 
@@ -1863,6 +1886,67 @@
 
     .gift-sets-form-sec {
         padding-bottom: 60px;
+    }
+
+    .about-hero-sec .info-hero-sec__wrapper {
+        padding: 0;
+    }
+
+    .about-hero-sec .info-hero-sec__wrapper {
+        min-height: 0;
+    }
+
+    .info-mission-sec__row {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .info-mission-sec__element {
+        width: 100%;
+    }
+
+    .info-mission-sec__img {
+        display: block;
+        position: relative;
+        right: auto;
+        width: 480px;
+        left: auto;
+    }
+
+    .info-mission-sec__element-wrapper {
+        padding: 80px 30px;
+        border-radius: 28px;
+    }
+
+    .info-mission-sec__element {
+        height: auto;
+        border-radius: 30px;
+    }
+
+    .info-mission-sec {
+        padding-bottom: 60px;
+    }
+
+    .info-video-about-sec {
+        padding-bottom: 0;
+    }
+
+    .about-close-sec {
+        .info-close-sec__row {
+            margin-top: 0;
+        }
+    }
+
+    .info-close-sec__element-btn {
+        font-size: 14px;
+        padding: 12px 15px;
+        width: calc(100% - 30px);
+        left: 15px;
+        bottom: 15px;
+
+        svg {
+            width: 20px;
+        }
     }
 }
 
@@ -2611,5 +2695,67 @@
 
     .gift-sets-form-sec {
         padding-bottom: 50px;
+    }
+
+    .info-mission-sec__element {
+        border-radius: 10px;
+    }
+
+    .info-mission-sec__element-wrapper {
+        padding: 70px 24px;
+        border-radius: 8px;
+    }
+
+    .info-mission-sec__element-text {
+        font-size: 14px;
+    }
+
+    .info-mission-sec__img {
+        width: 100%;
+        margin-top: -10px;
+    }
+
+    .info-mission-sec__element-text {
+        &:before {
+            width: 25px;
+            height: 25px;
+            top: -50px;
+        }
+
+        &:after {
+            width: 25px;
+            height: 25px;
+            bottom: -50px;
+        }
+    }
+
+    .info-mission-sec {
+        padding-bottom: 50px;
+    }
+
+    .info-close-sec__element-btn {
+        padding: 10px;
+    }
+
+    .about-hero-sec .info-hero-sec__wrapper {
+        padding-bottom: 274px;
+    }
+
+    .info-hero-sec__wrapper--about {
+
+
+        .info-hero-sec__bg {
+            display: none;
+        }
+    }
+
+    .info-hero-sec__bg-mob {
+        display: block;
+        width: 700px;
+        left: -135px;
+        bottom: -295px;
+        top: auto;
+        position: absolute;
+        pointer-events: none;
     }
 }

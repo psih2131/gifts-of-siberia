@@ -9,7 +9,7 @@
                     <span class="breadcrumbs__text">О компании</span>
                 </div>
 
-                <div class="info-hero-sec__wrapper">
+                <div class="info-hero-sec__wrapper info-hero-sec__wrapper--about">
                     <div class="info-hero-sec__text-box">
                         <h1 class="info-hero-sec__title"><b>Дары Сибири</b> – Гармония природы<br> и здоровья в каждой чашке!</h1>
                         <div class="info-hero-sec__text">
@@ -22,6 +22,7 @@
                     </div>
 
                     <img src="@/assets/images/img/about-hero-sec.png" alt="" class="info-hero-sec__bg">
+                    <img src="@/assets/images/img/about-hero-sec-mob.png" alt="" class="info-hero-sec__bg-mob">
                 </div>
 
             </div>

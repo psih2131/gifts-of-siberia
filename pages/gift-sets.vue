@@ -88,9 +88,6 @@
                     }"
                     >
 
-                    
-
-
                     <swiper-slide >
                         <div class="img-slider__element">
                             <img src="@/assets/images/img/slide-1.jpg" alt="" class="img-slider__img">
