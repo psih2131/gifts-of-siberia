@@ -1278,6 +1278,13 @@
     }
 }
 
+.info-hero-sec__wrapper--gift-sets {
+    .info-hero-sec__bg {
+        width: 1270px;
+        left: 675px;
+        top: -264px;
+    }
+}
 
 
 
@@ -1461,6 +1468,27 @@
         .info-hero-sec__wrapper {
             max-height: 10000px;
             min-height: 0;
+        }
+    }
+
+    .info-benefits-sec__row {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        width: calc(100% + 10px);
+        margin-left: -5px;
+    }
+
+    .gift-sets-benefits-sec {
+        .info-benefits-sec__row {
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            width: calc(100% + 10px);
+            margin-left: -5px;
+        }
+
+        .info-benefits-sec__card {
+            width: calc(33.333% - 10px);
+            margin: 0 5px 15px 5px;
         }
     }
 }
@@ -1804,7 +1832,38 @@
         padding-left: 0;
     }
 
+    .gift-sets-hero-sec .info-hero-sec__wrapper {
+        padding: 0;
+    }
 
+    .info-benefits-sec__row {
+        margin-top: 20px;
+    }
+
+    .info-img-slider-sec__slider {
+        padding: 0;
+    }
+
+    .img-slider__element {
+        border-radius: 20px;
+        height: 300px;
+    }
+
+    .info-img-slider-sec {
+        padding-bottom: 60px;
+    }
+
+    .imsl-button-next {
+        right: 10px;
+    }
+
+    .imsl-button-prev {
+        left: 10px;
+    }
+
+    .gift-sets-form-sec {
+        padding-bottom: 60px;
+    }
 }
 
 @media only screen and (max-width: 760px) {
@@ -2502,4 +2561,55 @@
         padding-bottom: 50px;
     }
 
+    .gift-sets-benefits-sec {
+        .info-benefits-sec__card {
+            padding: 10px 10px 18px 10px;
+            width: calc(50% - 10px);
+        }
+
+        .info-benefits-sec__card-img {
+            height: 104px;
+        }
+    }
+
+    .gift-sets-hero-sec {
+        .info-hero-sec__wrapper {
+            padding-bottom: 276px;
+        }
+
+        .info-hero-sec__bg {
+            display: block;
+            width: 774px;
+            left: -228px;
+            bottom: -207px;
+            top: auto;
+        }
+    }
+
+    .img-slider__element {
+        border-radius: 0;
+        padding-bottom: 15px;
+        height: auto;
+    }
+
+    .img-slider__img {
+        border-radius: 10px;
+        height: 268px;
+    }
+
+    .imsl-button-next {
+        margin-top: -7px;
+    }
+
+    .imsl-button-prev {
+        margin-top: -7px;
+    }
+
+    .info-img-slider-sec {
+        padding-bottom: 50px;
+    }
+
+    .gift-sets-form-sec {
+        padding-bottom: 50px;
+    }
 }

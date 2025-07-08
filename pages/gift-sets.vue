@@ -9,7 +9,7 @@
                     <span class="breadcrumbs__text">Подарочные наборы</span>
                 </div>
 
-                <div class="info-hero-sec__wrapper">
+                <div class="info-hero-sec__wrapper info-hero-sec__wrapper--gift-sets">
                     <div class="info-hero-sec__text-box">
                         <h1 class="info-hero-sec__title"><b>Натуральные подарки</b> из Сибири –<br> Эко-подарки с чагой, ягодами и травами</h1>
                         <div class="info-hero-sec__text">
@@ -82,12 +82,13 @@
                     <swiper-container 
                     ref="imgSlideBannerSec" 
                     class="img-slider"
-                    >
-
-                    <!-- :pagination="{
+                    :pagination="{
                     dynamicBullets: true,
                     clickable: true
-                    }" -->
+                    }"
+                    >
+
+                    
 
 
                     <swiper-slide >
@@ -232,6 +233,19 @@ const swiperImgSlider = useSwiper(imgSlideBannerSec, {
    slidesPerView: 2,
    spaceBetween: 14,   
    speed: 700,
+
+
+   breakpoints: {
+    100: {
+      slidesPerView: 1,
+      spaceBetween: 0,
+    },
+    760: {
+      slidesPerView: 2,
+      spaceBetween: 14, 
+    },
+
+  }
 })
 
 
