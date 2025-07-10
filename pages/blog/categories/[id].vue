@@ -3,11 +3,12 @@
 
         <section class="blog-sec">
             <div class="container">
-
+                
                 <div class="breadcrumbs-row-mob">
                     <div class="breadcrumbs">
                         <NuxtLink class="breadcrumbs__link" to="/">Главная /</NuxtLink>
-                        <span class="breadcrumbs__text">Блог</span>
+                        <NuxtLink class="breadcrumbs__link" to="/blog">Блог /</NuxtLink>
+                        <span class="breadcrumbs__text" v-if="current_category && current_category[0]">{{current_category[0].name}}</span>
                     </div>
 
                     <div class=" product-search">
@@ -29,6 +30,7 @@
                         <nav class="blog-sec__nav">
                             <ul class="blog-sec__nav-list">
                                 <li class="blog-sec__nav-list-element">
+
                                      <NuxtLink to="/blog" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
                                           <span class="blog-sec__nav-link-icon">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -46,69 +48,24 @@
 
                                 </li>
 
-                                <li class="blog-sec__nav-list-element">
-                                    <NuxtLink to="/blog/categories/health" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
-                                        <span class="blog-sec__nav-link-icon">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12.0004 22.7599C10.9104 22.7599 9.83039 22.4399 8.98039 21.8099L4.68039 18.5999C3.54039 17.7499 2.65039 15.9699 2.65039 14.5599V7.11994C2.65039 5.57994 3.78039 3.93994 5.23039 3.39994L10.2204 1.52994C11.2104 1.15994 12.7704 1.15994 13.7604 1.52994L18.7504 3.39994C20.2004 3.93994 21.3304 5.57994 21.3304 7.11994V14.5499C21.3304 15.9699 20.4404 17.7399 19.3004 18.5899L15.0004 21.7999C14.1704 22.4399 13.0904 22.7599 12.0004 22.7599ZM10.7504 2.93994L5.76039 4.80994C4.91039 5.12994 4.16039 6.20994 4.16039 7.12994V14.5599C4.16039 15.5099 4.83039 16.8399 5.58039 17.3999L9.88039 20.6099C11.0304 21.4699 12.9704 21.4699 14.1304 20.6099L18.4304 17.3999C19.1904 16.8299 19.8504 15.5099 19.8504 14.5599V7.11994C19.8504 6.20994 19.1004 5.12994 18.2504 4.79994L13.2604 2.92994C12.5804 2.68994 11.4204 2.68994 10.7504 2.93994Z" fill="#1B3762"/>
-                                            <path d="M10.6602 14.23C10.4702 14.23 10.2802 14.16 10.1302 14.01L8.52023 12.4C8.23023 12.11 8.23023 11.63 8.52023 11.34C8.81023 11.05 9.29023 11.05 9.58023 11.34L10.6602 12.42L14.4302 8.65C14.7202 8.36 15.2002 8.36 15.4902 8.65C15.7802 8.94 15.7802 9.42 15.4902 9.71L11.1902 14.01C11.0402 14.16 10.8502 14.23 10.6602 14.23Z" fill="#1B3762"/>
-                                            </svg>
-                                        </span>
-                                        <span class="blog-sec__nav-link-text">Здоровье</span>
-                                    </NuxtLink>
-                                </li>
-
-                                <li class="blog-sec__nav-list-element">
-                                    <NuxtLink to="/blog/categories/sport" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
-                                        <span class="blog-sec__nav-link-icon">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M12 16.75C11.6 16.75 11.2 16.72 10.82 16.65C8.7 16.34 6.77 15.12 5.55 13.31C4.7 12.03 4.25 10.54 4.25 9C4.25 4.73 7.73 1.25 12 1.25C16.27 1.25 19.75 4.73 19.75 9C19.75 10.54 19.3 12.03 18.45 13.31C17.22 15.13 15.29 16.34 13.15 16.66C12.8 16.72 12.4 16.75 12 16.75ZM12 2.75C8.55 2.75 5.75 5.55 5.75 9C5.75 10.25 6.11 11.45 6.79 12.47C7.78 13.93 9.33 14.91 11.05 15.16C11.69 15.27 12.32 15.27 12.91 15.16C14.66 14.91 16.21 13.92 17.2 12.46C17.88 11.44 18.24 10.24 18.24 8.98999C18.25 5.54999 15.45 2.75 12 2.75Z" fill="#1B3762"/>
-                                            <path d="M6.46933 22.59C6.32933 22.59 6.19933 22.57 6.05933 22.54C5.40933 22.39 4.90933 21.89 4.75933 21.24L4.40933 19.77C4.38933 19.68 4.31933 19.61 4.21933 19.58L2.56933 19.19C1.94933 19.04 1.45933 18.58 1.28933 17.97C1.11933 17.36 1.28933 16.7 1.73933 16.25L5.63933 12.35C5.79933 12.19 6.01933 12.11 6.23933 12.13C6.45933 12.15 6.65933 12.27 6.78933 12.46C7.77933 13.92 9.32933 14.91 11.0593 15.16C11.6993 15.27 12.3293 15.27 12.9193 15.16C14.6693 14.91 16.2193 13.92 17.2093 12.46C17.3293 12.27 17.5393 12.15 17.7593 12.13C17.9793 12.11 18.1993 12.19 18.3593 12.35L22.2593 16.25C22.7093 16.7 22.8793 17.36 22.7093 17.97C22.5393 18.58 22.0393 19.05 21.4293 19.19L19.7793 19.58C19.6893 19.6 19.6193 19.67 19.5893 19.77L19.2393 21.24C19.0893 21.89 18.5893 22.39 17.9393 22.54C17.2893 22.7 16.6193 22.47 16.1993 21.96L11.9993 17.13L7.79933 21.97C7.45933 22.37 6.97933 22.59 6.46933 22.59ZM6.08933 14.03L2.79933 17.32C2.70933 17.41 2.71933 17.51 2.73933 17.57C2.74933 17.62 2.79933 17.72 2.91933 17.74L4.56933 18.13C5.21933 18.28 5.71933 18.78 5.86933 19.43L6.21933 20.9C6.24933 21.03 6.34933 21.07 6.40933 21.09C6.46933 21.1 6.56933 21.11 6.65933 21.01L10.4893 16.6C8.78933 16.27 7.22933 15.36 6.08933 14.03ZM13.5093 16.59L17.3393 20.99C17.4293 21.1 17.5393 21.1 17.5993 21.08C17.6593 21.07 17.7493 21.02 17.7893 20.89L18.1393 19.42C18.2893 18.77 18.7893 18.27 19.4393 18.12L21.0893 17.73C21.2093 17.7 21.2593 17.61 21.2693 17.56C21.2893 17.51 21.2993 17.4 21.2093 17.31L17.9193 14.02C16.7693 15.35 15.2193 16.26 13.5093 16.59Z" fill="#1B3762"/>
-                                            <path d="M13.8911 12.89C13.6311 12.89 13.3211 12.82 12.9511 12.6L12.0011 12.03L11.0511 12.59C10.1811 13.11 9.61112 12.81 9.40112 12.66C9.19112 12.51 8.74112 12.06 8.97112 11.07L9.21112 10.04L8.41112 9.29999C7.97112 8.85999 7.81112 8.33001 7.96112 7.85001C8.11112 7.37001 8.55112 7.02999 9.17112 6.92999L10.2411 6.75L10.7511 5.63C11.0411 5.06 11.4911 4.73999 12.0011 4.73999C12.5111 4.73999 12.9711 5.07001 13.2511 5.64001L13.8411 6.82001L14.8311 6.94C15.4411 7.04 15.8811 7.37999 16.0411 7.85999C16.1911 8.33999 16.0311 8.87 15.5911 9.31L14.7611 10.14L15.0211 11.07C15.2511 12.06 14.8011 12.51 14.5911 12.66C14.4811 12.75 14.2411 12.89 13.8911 12.89ZM9.61112 8.39001L10.3011 9.07999C10.6211 9.39999 10.7811 9.94 10.6811 10.38L10.4911 11.18L11.2911 10.71C11.7211 10.46 12.3011 10.46 12.7211 10.71L13.5211 11.18L13.3411 10.38C13.2411 9.93001 13.3911 9.39999 13.7111 9.07999L14.4011 8.39001L13.5311 8.23999C13.1111 8.16999 12.6911 7.86001 12.5011 7.48001L12.0011 6.5L11.5011 7.5C11.3211 7.87 10.9011 8.19001 10.4811 8.26001L9.61112 8.39001Z" fill="#1B3762"/>
-                                            </svg>
-
-                                        </span>
-                                        <span class="blog-sec__nav-link-text">Спорт</span>
-                                    </NuxtLink>
-                                </li>
-
-                                <li class="blog-sec__nav-list-element">
-                                    <NuxtLink to="/blog/categories/lifehuck" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
-                                        <span class="blog-sec__nav-link-icon">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M5.5 10.75C3.16 10.75 1.25 8.84 1.25 6.5C1.25 4.16 3.16 2.25 5.5 2.25C7.84 2.25 9.75 4.16 9.75 6.5C9.75 8.84 7.84 10.75 5.5 10.75ZM5.5 3.75C3.98 3.75 2.75 4.98 2.75 6.5C2.75 8.02 3.98 9.25 5.5 9.25C7.02 9.25 8.25 8.02 8.25 6.5C8.25 4.98 7.02 3.75 5.5 3.75Z" fill="#1B3762"/>
-                                            <path d="M5.5 21.75C3.16 21.75 1.25 19.84 1.25 17.5C1.25 15.16 3.16 13.25 5.5 13.25C7.84 13.25 9.75 15.16 9.75 17.5C9.75 19.84 7.84 21.75 5.5 21.75ZM5.5 14.75C3.98 14.75 2.75 15.98 2.75 17.5C2.75 19.02 3.98 20.25 5.5 20.25C7.02 20.25 8.25 19.02 8.25 17.5C8.25 15.98 7.02 14.75 5.5 14.75Z" fill="#1B3762"/>
-                                            <path d="M8.65066 16.73C8.42066 16.73 8.20065 16.63 8.05065 16.43C7.80065 16.1 7.87068 15.63 8.20068 15.38L21.5507 5.40003C21.8807 5.15003 22.3507 5.22003 22.6007 5.55003C22.8507 5.88003 22.7807 6.35003 22.4507 6.60003L9.10067 16.58C8.97067 16.68 8.81066 16.73 8.65066 16.73Z" fill="#1B3762"/>
-                                            <path d="M22.0007 18.72C21.8407 18.72 21.6907 18.67 21.5507 18.57L8.20068 8.59002C7.87068 8.34002 7.80065 7.87002 8.05065 7.54002C8.30065 7.21002 8.77067 7.14002 9.10067 7.39002L22.4507 17.37C22.7807 17.62 22.8507 18.09 22.6007 18.42C22.4507 18.61 22.2307 18.72 22.0007 18.72Z" fill="#1B3762"/>
-                                            </svg>
-
-                                        </span>
-                                        <span class="blog-sec__nav-link-text">Лайфхаки</span>
-                                   </NuxtLink>
-                                </li>
-
-                                <li class="blog-sec__nav-list-element">
-                                    <NuxtLink to="/blog/categories/recipes" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
-                                        <span class="blog-sec__nav-link-icon">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M5.53999 19.5201C4.92999 19.5201 4.35999 19.31 3.94999 18.92C3.42999 18.43 3.17999 17.69 3.26999 16.89L3.63999 13.65C3.70999 13.04 4.07999 12.23 4.50999 11.79L12.72 3.10005C14.77 0.930049 16.91 0.870049 19.08 2.92005C21.25 4.97005 21.31 7.11005 19.26 9.28005L11.05 17.97C10.63 18.42 9.84999 18.84 9.23999 18.9401L6.01999 19.49C5.84999 19.5 5.69999 19.5201 5.53999 19.5201ZM15.93 2.91005C15.16 2.91005 14.49 3.39005 13.81 4.11005L5.59999 12.8101C5.39999 13.0201 5.16999 13.5201 5.12999 13.8101L4.75999 17.05C4.71999 17.38 4.79999 17.65 4.97999 17.82C5.15999 17.99 5.42999 18.05 5.75999 18L8.97999 17.4501C9.26999 17.4001 9.74999 17.14 9.94999 16.93L18.16 8.24005C19.4 6.92005 19.85 5.70005 18.04 4.00005C17.24 3.23005 16.55 2.91005 15.93 2.91005Z" fill="#1B3762"/>
-                                            <path d="M17.3404 10.95C17.3204 10.95 17.2904 10.95 17.2704 10.95C14.1504 10.64 11.6404 8.26997 11.1604 5.16997C11.1004 4.75997 11.3804 4.37997 11.7904 4.30997C12.2004 4.24997 12.5804 4.52997 12.6504 4.93997C13.0304 7.35997 14.9904 9.21997 17.4304 9.45997C17.8404 9.49997 18.1404 9.86997 18.1004 10.28C18.0504 10.66 17.7204 10.95 17.3404 10.95Z" fill="#1B3762"/>
-                                            <path d="M21 22.75H3C2.59 22.75 2.25 22.41 2.25 22C2.25 21.59 2.59 21.25 3 21.25H21C21.41 21.25 21.75 21.59 21.75 22C21.75 22.41 21.41 22.75 21 22.75Z" fill="#1B3762"/>
-                                            </svg>
-
-                                        </span>
-                                        <span class="blog-sec__nav-link-text">Рецепты</span>
-                                    </NuxtLink>
-                                </li>
-
-                                
+                                <template v-if="all_categories">
+                                    <li class="blog-sec__nav-list-element" v-for="item in all_categories" :key="item">
+                                        <NuxtLink :to="`/blog/categories/${item.slug}`" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
+                                            <span class="blog-sec__nav-link-icon">
+                                                <img :src="item.acf.ikonka_kategorii.url" :alt="item.acf.ikonka_kategorii.alt">
+                                            </span>
+                                            <span class="blog-sec__nav-link-text">{{item.name}}</span>
+                                        </NuxtLink>
+                                    </li>
+                                </template>
+                                       
                             </ul>
                         </nav>
                     </aside>
 
                     <div class="blog-sec__body">
                         <div class="blog-sec__body-header">
-                            <h1 class="products-catalog-sec__elements-wrapper-title">блог</h1>
+                            <h1 class="products-catalog-sec__elements-wrapper-title">{{current_category[0].name}}</h1>
                             <div class="products-catalog-sec__elements-wrapper-search product-search">
                                 <div class="product-search__input-wrapepr">
                                     <input type="text" placeholder="Поиск" class="product-search__input">
@@ -124,24 +81,32 @@
 
                         <div class="blog-sec__body-wrapper">
 
-                            <newsCard />
+                            <template v-if="all_object && all_categories && all_object.length > 0">
 
-                            <newsCard />
+                                <newsCard v-for="(item, index) in all_object" :key="index" :postData="item" :catList="all_categories" />
 
-                            <newsCard />
+                            </template>
 
-                            <newsCard />
 
-                            <newsCard />
+                            <template v-else>
+                                <div class="blog-sec__body-no-posts no-posts-box">
+                                    <p class="no-posts-box__title">упс!</p>
+                                    <p class="no-posts-box__subtitle">По запросу ничего не найдено</p>
+                                    <div class="no-posts-box__img-wrapper">
+                                        <img src="@/assets/images/img/do-posts.png" alt="">
+                                    </div>
+                                </div>
+                            </template>
+
 
                         </div>
 
 
-                        <div class="blog-sec__body-pagination-row">
+                        <div class="blog-sec__body-pagination-row" v-if="all_object && all_categories && all_object.length > 0">
 
                             <div class="pagination">
 
-                                <a href="" class="pagination__btn pagination__btn-prev">
+                                <a  class="pagination__btn pagination__btn-prev" @click="prevPage()" v-if="currentPage > 1">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M15.8332 10H4.1665M4.1665 10L9.99984 15.8333M4.1665 10L9.99984 4.16667" stroke="#1B3762" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
@@ -150,20 +115,17 @@
                                 </a>
 
                                 <ul class="pagination__num-list">
-                                    <li class="pagination__nam-li ">
-                                        <a href="">1</a>
+                                    <li class="pagination__nam-li " v-for="(item, index) in totalPages" :key="index" :class="{'pagination__nam-li--activ' : item == currentPage }">
+                                 
+
+                                        <NuxtLink :to="`/blog/categories/${route.params.id}/?page=${item}`" >
+                                            {{ item }}
+                                        </NuxtLink>
+
                                     </li>
-                                    <li class="pagination__nam-li pagination__nam-li--activ">
-                                        <a href="">2</a>
-                                    </li>
-                                    <li class="pagination__nam-li">
-                                        <a href="">3</a>
-                                    </li>
-                                    <li class="pagination__nam-li">
-                                        <a href="">4</a>
-                                    </li>
+
                                 </ul>
-                                <a href="" class="pagination__btn pagination__btn-next">
+                                <a  class="pagination__btn pagination__btn-next" @click="nextPage()" v-if="currentPage < totalPages">
                                     <span>Далее</span>
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M4.1665 10H15.8332M15.8332 10L9.99984 4.16666M15.8332 10L9.99984 15.8333" stroke="#1B3762" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
@@ -174,8 +136,8 @@
 
                             <div class="page-counter">
                                 <div class="page-counter__text">Страница</div>
-                                <div class="page-counter__counter">1</div>
-                                <div class="page-counter__text">из  8</div>
+                                <div class="page-counter__counter">{{ currentPage }}</div>
+                                <div class="page-counter__text">из  {{ totalPages }}</div>
                             </div>
 
                         </div>
@@ -194,32 +156,117 @@
 
 //IMPORT
 
-// import { useCounterStore } from '@/stores/counter'
+import { useCounterStore } from '@/stores/counter'
 
 import { ref, onMounted, onBeforeUnmount, computed, watch  } from 'vue';
 
 import newsCard from '@/components/component__news-card.vue'
 
 
-
-
 //DATA
+const store = useCounterStore()
+
+const route = useRoute()
+
+const router = useRouter()
+
+const currentPage = ref(route.query.page || 1)
+
+const perPage = ref(2)
+
+const totalPages = ref(null)
+
+// const { data: all_object } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog`)
+
+const { data: current_category } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/blog-category?slug=${route.params.id}`)
+
+
+const { data: all_object, error, pending } = await useFetch(
+    `${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog?blog-category=${current_category.value[0].id}&page=${currentPage.value || 1}&per_page=${perPage.value}`, {
+    onResponse({ response }) {
+      const total = response.headers.get('X-WP-Total')
+      const pages = response.headers.get('X-WP-TotalPages')
+      
+      if (pages) totalPages.value = Number(pages)
+      
+      console.log('X-WP-Total', total)
+      console.log('X-WP-TotalPages', pages)
+    },
+})
+
+const { data: all_categories } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/blog-category`)
+
+console.log('current_category', current_category)
+
+console.log('all_object',all_object)
+
+console.log('all_categories', all_categories)
+
+
+
 
 
 
 //METHODS 
 
+//get posts on client side
+async function fetchClientData() {
+  const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog?blog-category=${current_category.value[0].id}&page=${currentPage.value || 1}&per_page=${perPage.value}`)
+  const data = await res.json()
+  all_object.value = data
+
+  const pages = res.headers.get('X-WP-TotalPages')
+  if (pages) totalPages.value = Number(pages)
+}
+
+
+//next pagin page
+function nextPage(){
+    if(currentPage.value >= totalPages.value){
+
+    }
+    else{
+        router.push({
+            path: `/blog/categories/${route.params.id}/`,
+            query: { page: +currentPage.value + 1 }
+        })
+    }
+}
+
+function prevPage(){
+    if(currentPage.value <= 1){
+
+    }
+    else{
+        router.push({
+            path: `/blog/categories/${route.params.id}/`,
+            query: { page: +currentPage.value - 1 }
+        })
+    }
+}
 
 
 
 
 
 //HOOKS
-onMounted(() => {
-  // Добавляем обработчик события scroll
+onMounted(async () => {
+    const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog?blog-category=${current_category.value[0].id}&page=${currentPage.value || 1}&per_page=${perPage.value}`)
+    const pages = res.headers.get('X-WP-TotalPages')
+    if (pages) totalPages.value = Number(pages)
 
-  
-});
+
+    console.log('route',route.query.page)
+})
+
+
+
+watch(() => route.query.page, async (newPage) => {
+    console.log('gg', route.query.page)
+    currentPage.value = route.query.page
+    fetchClientData()
+})
+
 
 onBeforeUnmount(() => {
 
@@ -227,9 +274,53 @@ onBeforeUnmount(() => {
 
 
 
- // props
+// props
  const props = defineProps({
 //   mainData: Object,
       // postAllCategory: Object,
   })
+
+
+
+  //SEO
+useHead({
+    title: current_category.value[0].acf.seo_title,
+    meta: [
+        // Description
+        { name: 'description', content: current_category.value[0].acf.seo_description || 'Описание по умолчанию' },
+
+        // Keywords (опционально, не влияет сильно на SEO)
+        { name: 'keywords',  content: current_category.value[0].acf.klyuchevaya_fraza || 'test' },
+
+        // OpenGraph
+        { property: 'og:title', content: current_category.value[0].acf.seo_title },
+        { property: 'og:description', content: current_category.value[0].acf.seo_description },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: `${store.domainUrlCurrent}${route.fullPath}` },
+        { property: 'og:image', content: current_category.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
+
+        // Twitter Card (если используешь)
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: current_category.value[0].acf.seo_title },
+        { name: 'twitter:description', content: current_category.value[0].acf.seo_description },
+        { name: 'twitter:image', content: current_category.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
+
+        // Индексация / Деиндексация
+        // Например, noindex для черновика:
+        {
+        name: 'robots',
+        content:
+            current_category.value[0].acf.indeksacziya_v_poiskovyh_sistemah === 'index'
+            ? 'index, follow'
+            : 'noindex, nofollow'
+        }
+    ],
+    link: [
+        // Canonical (вручную или динамически)
+        { rel: 'canonical', href: `${store.domainUrlCurrent}/blog/categories/${current_category.value[0].acf.canonical || route.params.id}` }
+    ]
+})
+
+
+
 </script>

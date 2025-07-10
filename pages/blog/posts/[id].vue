@@ -12,6 +12,7 @@
                     <span class="breadcrumbs__text">Название поста</span>
                 </div>
 
+                {{ route.params.id }}
                 <div class="post-sec__wrapper">
                     <div class="post-sec__header">
                         <NuxtLink  class="post-sec__teg" to="/blog/categories/health">#здоровье</NuxtLink>
@@ -98,8 +99,9 @@ import newsCard from '@/components/component__news-card.vue'
 
 
 
-//DATA
 
+//DATA
+const route = useRoute()
 
 
 //METHODS 

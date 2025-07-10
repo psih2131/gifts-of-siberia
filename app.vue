@@ -1,10 +1,8 @@
 <template>
   <div class="app-container">
-    <UApp>
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
-    </UApp>
   </div>
 </template>
 
