@@ -208,17 +208,13 @@
                     <p class="footer__down-rules-text">Все права защищены</p>
                     <nav class="footer__down-nav">
                         <ul class="footer__down-ul">
-                            <li class="footer__down-li">
-                                <NuxtLink to="/doc-page"  class="footer__down-link">Соглашение</NuxtLink>
-                            </li>
-                            <li class="footer__down-li">
-                                 <NuxtLink to="/doc-page"  class="footer__down-link">Политика</NuxtLink>
 
-                            </li>
-                            <li class="footer__down-li">
-                                <NuxtLink to="/doc-page"  class="footer__down-link">Декларация</NuxtLink>
-
-                            </li>
+                            <template v-for="item in doc_pages" :key="item">
+                                <li class="footer__down-li" v-if="item.template == 'pages/doc-page.php'">
+                                    <NuxtLink :to="`/system/${item.slug}`"  class="footer__down-link">{{item.acf.kratkoe_nazvanie_dlya_navigaczii || item.title.rendered}}</NuxtLink>
+                                </li>
+                            </template>
+                            
                         </ul>
                     </nav>
                 </div>
@@ -229,8 +225,28 @@
 </template>
 
 <script setup>
-    // import { useCounterStore } from '@/stores/counter'
+    //IMPORT
+
+    import { useCounterStore } from '@/stores/counter'
+
     import { ref, onMounted, onBeforeUnmount, computed, watch  } from 'vue';
-    // import component__user_panel from '@/components/user-panel.vue'
+
+
+    //DATA
+    const store = useCounterStore()
+
+    const currentListDocPage = ref([])
+
+    const { data: doc_pages } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/pages`)
+
+    console.log('doc_pages',doc_pages)
+
+
+
+
+
+
+
+
 
 </script>

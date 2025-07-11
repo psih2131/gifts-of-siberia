@@ -193,9 +193,6 @@ const perPage = ref(9)
 
 const totalPages = ref(null)
 
-// const { data: all_object } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog`)
-
-
 const { data: all_object, error, pending } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog?page=${currentPage.value || 1}&per_page=${perPage.value}`, {
     onResponse({ response }) {
       const total = response.headers.get('X-WP-Total')
@@ -213,9 +210,6 @@ const { data: all_categories } = await useFetch(`${store.serverUrlDomainRequest}
 console.log(all_object)
 
 console.log(all_categories)
-
-
-
 
 
 
@@ -256,8 +250,6 @@ function prevPage(){
         })
     }
 }
-
-
 
 
 
