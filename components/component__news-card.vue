@@ -15,13 +15,12 @@
         </div>
         
         <p class="news-card__title">
-            <NuxtLink :to="`/blog/posts/${postData.slug}`">{{ postData.title.rendered }}</NuxtLink>
+            <NuxtLink :to="`/blog/posts/${postData.slug}`">{{ postData.acf.zagolovok_dlya_kartochki || postData.title.rendered }}</NuxtLink>
         </p>
 
         <p class="news-card__description">{{ postData.acf.korotkoe_opisanie_dlya_kartochki_posta }}</p>
 
         <NuxtLink class="news-card__mob-btn" :to="`/blog/posts/${postData.slug}`" >Читать статью</NuxtLink>
-        
         
     </div>
 </template>

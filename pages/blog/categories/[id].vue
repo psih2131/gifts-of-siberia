@@ -173,7 +173,7 @@ const router = useRouter()
 
 const currentPage = ref(route.query.page || 1)
 
-const perPage = ref(2)
+const perPage = ref(9)
 
 const totalPages = ref(null)
 
