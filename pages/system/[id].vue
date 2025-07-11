@@ -12,10 +12,7 @@
                     {{ page_data_single[0].title.rendered }}
                 </h1>
 
-                <div class="doc-page-sec__text-wrapper doc-wp-editor" v-html="page_data_single[0].content.rendered">
-                  
-                </div>
-
+                <div class="doc-page-sec__text-wrapper doc-wp-editor" v-html="page_data_single[0].content.rendered"></div>
 
             </div>
         </section>
@@ -38,6 +35,7 @@ const route = useRoute()
 
 const store = useCounterStore()
 
+
 // основной пост
 const { data: page_data_single } = await useFetch(
   `${store.serverUrlDomainRequest}/wp-json/wp/v2/pages?slug=${route.params.id}`,
@@ -47,9 +45,6 @@ const { data: page_data_single } = await useFetch(
 console.log(page_data_single)
 
 //METHODS 
-
-
-
 
 
 
@@ -63,7 +58,6 @@ onMounted(() => {
 onBeforeUnmount(() => {
 
 });
-
 
 
  // props

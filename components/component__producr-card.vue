@@ -1,44 +1,38 @@
 <template>
-    <div class="product-card">
+    <div class="product-card" v-if="productData">
         <div class="product-card__wrapper">
             <div class="product-card__top">
 
-                <NuxtLink class="product-card__img-wrapper" to="/products/1">
-                    <div class="product-card__ingridients">
-                        <div class="product-card__ingridient">
-                            <img src="@/assets/images/img/ing-1.png" class="product-card__ingridient-img" alt="">
+                <NuxtLink class="product-card__img-wrapper" :to="`/products/product/${productData.slug}`">
+                    <div class="product-card__ingridients" v-if="productData?.acf?.spisok_izobrazhenij_soderzhimogo">
+
+                        <div class="product-card__ingridient" v-for="item in productData.acf.spisok_izobrazhenij_soderzhimogo" :key="item">
+                            <img v-for="image in item.izobrazhenie" :key="image"
+                            :src="image.img.url" 
+                            class="product-card__ingridient-img" :alt="image.img.alt">
                         </div>
-                        <div class="product-card__ingridient">
-                            <img src="@/assets/images/img/ing-2.png" class="product-card__ingridient-img" alt="">
-                        </div>
-                        <div class="product-card__ingridient">
-                            <img src="@/assets/images/img/ing-3.png" class="product-card__ingridient-img" alt="">
-                        </div>
-                        <div class="product-card__ingridient">
-                            <img src="@/assets/images/img/ing-4.png" class="product-card__ingridient-img" alt="">
-                        </div>
+
                     </div>
-                    <img src="@/assets/images/img/product-2.jpg" alt="" class="product-card__main-img">
+
+                    <img v-if="productData?.acf?.izobrazhenie_kartochki_tovara" 
+                    :src="productData.acf.izobrazhenie_kartochki_tovara.url" 
+                    :alt="productData.acf.izobrazhenie_kartochki_tovara.alt" 
+                    class="product-card__main-img">
+
+                    <img v-else src="@/assets/images/img/default-image.jpg" alt="" class="product-card__main-img">
+
                 </NuxtLink>
-          
 
                 <p class="product-card__title">
-                    <NuxtLink class="product-card__title-link" to="/products/1">Набор “Энергия”</NuxtLink>
+                    <NuxtLink class="product-card__title-link" :to="`/products/product/${productData.slug}`">
+                        <span v-html="productData.title.rendered"></span>
+                    </NuxtLink>
                 </p>
+
                 <ul class="product-card__list">
-                    <li class="product-card__table-row">
-                        <p class="product-card__table-row-name">Чага-чай с Розмарином</p>
-                        <p class="product-card__table-row-value">75 г</p>
-                    </li>
-
-                    <li class="product-card__table-row">
-                        <p class="product-card__table-row-name">Чага-чай с Лимоном и Имбирем</p>
-                        <p class="product-card__table-row-value">75 г</p>
-                    </li>
-
-                    <li class="product-card__table-row">
-                        <p class="product-card__table-row-name">Чага-чай с Можжевельником и Саган-дайля</p>
-                        <p class="product-card__table-row-value">75 г</p>
+                    <li class="product-card__table-row" v-for="item in productData.acf.spisok_izobrazhenij_soderzhimogo" :key="item">
+                        <p class="product-card__table-row-name">{{ item.nazvanie_sostava }}</p>
+                        <p class="product-card__table-row-value">{{ item.kolichestvo }}</p>
                     </li>
                 </ul>
             </div>
@@ -57,7 +51,7 @@
                 </button>
 
 
-                <NuxtLink class="product-card__btn-more-info" to="/products/1">
+                <NuxtLink class="product-card__btn-more-info" :to="`/products/product/${productData.slug}`">
                     Подробнее
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11.9998 22.08C11.6998 22.08 11.3998 22.01 11.1498 21.87C9.27978 20.85 5.99976 19.77 3.93976 19.5L3.64978 19.46C2.33978 19.3 1.25977 18.07 1.25977 16.74V4.65999C1.25977 3.86999 1.56977 3.15002 2.13977 2.63002C2.70977 2.11002 3.44974 1.86001 4.22974 1.93001C6.41974 2.11001 9.73975 3.21002 11.6198 4.38002L11.8597 4.52003C11.9297 4.55003 12.0798 4.56003 12.1398 4.52003L12.2997 4.42C12.9697 4 13.8097 3.58999 14.7297 3.21999C14.9597 3.12999 15.2197 3.16 15.4297 3.3C15.6397 3.44 15.7598 3.67 15.7598 3.92V6.59999L16.5898 6.05C16.8398 5.88 17.1697 5.88 17.4197 6.05L18.2498 6.59999V2.78004C18.2498 2.42004 18.5097 2.10999 18.8597 2.03999C19.1497 1.98999 19.4398 1.95001 19.6998 1.93001C19.7198 1.93001 19.7998 1.93001 19.8198 1.93001C20.5498 1.87001 21.2997 2.12003 21.8597 2.64003C22.4297 3.16003 22.7397 3.88 22.7397 4.67V16.74C22.7397 18.08 21.6598 19.3 20.3398 19.46L20.0098 19.5C17.9498 19.77 14.6498 20.86 12.8198 21.87C12.5998 22.01 12.2998 22.08 11.9998 22.08ZM3.97974 3.40999C3.65974 3.40999 3.36977 3.51999 3.13977 3.73C2.88977 3.96 2.74976 4.28999 2.74976 4.65999V16.74C2.74976 17.33 3.25977 17.9 3.82977 17.98L4.12976 18.02C6.37976 18.32 9.82977 19.45 11.8298 20.55C11.9198 20.59 12.0497 20.6 12.0997 20.58C14.1097 19.47 17.5698 18.33 19.8298 18.03L20.1697 17.99C20.7397 17.92 21.2498 17.34 21.2498 16.75V4.68001C21.2498 4.31001 21.1097 3.99001 20.8597 3.75001C20.6097 3.52001 20.2598 3.41001 19.8998 3.43001C19.8698 3.43001 19.7798 3.43001 19.7598 3.43001V8.00001C19.7598 8.28001 19.6097 8.52999 19.3597 8.65999C19.1097 8.78999 18.8198 8.78001 18.5898 8.62001L17.0098 7.57002L15.4297 8.62001C15.1997 8.77001 14.9097 8.78999 14.6597 8.65999C14.4197 8.52999 14.2598 8.28001 14.2598 8.00001V5.07002C13.8298 5.28002 13.4397 5.49002 13.0997 5.69002L12.9398 5.78999C12.3898 6.12999 11.6098 6.13 11.0798 5.8L10.8398 5.65004C9.14978 4.59004 6.06974 3.56999 4.10974 3.40999C4.05974 3.40999 4.01974 3.40999 3.97974 3.40999Z" fill="#1B3762"/>
@@ -66,9 +60,14 @@
                     </svg>
                 </NuxtLink>
 
-                <a href="" class="product-card__btn-market">
-                    <img src="@/assets/images/img/mr-oz.png" alt="" class="product-card__btn-market-img">
-                    <img src="@/assets/images/img/ozon-mob-btn.png" alt="" class="product-card__btn-market-img-mob">
+                <a v-if="productData.acf.ssylka_na_wildberries" :href="productData.acf.ssylka_na_wildberries" target="_blank" class="product-card__btn-market">
+                    <img src="@/assets/images/img/btm-wb-card.png" alt="" class="product-card__btn-market-img">
+                    <!-- <img src="@/assets/images/img/ozon-mob-btn.png" alt="" class="product-card__btn-market-img-mob"> -->
+                </a>
+
+                <a v-if="productData.acf.ssylka_na_ozon" :href="productData.acf.ssylka_na_ozon" target="_blank" class="product-card__btn-market">
+                    <img src="@/assets/images/img/btm-ozon-card.png" alt="" class="product-card__btn-market-img">
+                    <!-- <img src="@/assets/images/img/ozon-mob-btn.png" alt="" class="product-card__btn-market-img-mob"> -->
                 </a>
             </div>
         </div>
@@ -80,5 +79,13 @@
     // import { useCounterStore } from '@/stores/counter'
     import { ref, onMounted, onBeforeUnmount, computed, watch  } from 'vue';
     // import component__user_panel from '@/components/user-panel.vue'
+
+
+    // props
+    const props = defineProps({
+        productData: Object,
+        catList: Object
+    })
+
 
 </script>

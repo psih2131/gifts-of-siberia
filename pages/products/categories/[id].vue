@@ -7,7 +7,8 @@
                 <div class="breadcrumbs-row-mob">
                     <div class="breadcrumbs">
                         <NuxtLink class="breadcrumbs__link" to="/">Главная /</NuxtLink>
-                        <span class="breadcrumbs__text">Продукция</span>
+                        <NuxtLink class="breadcrumbs__link" to="/products">Продукция /</NuxtLink>
+                        <span class="breadcrumbs__text" v-if="current_category && current_category[0]">{{current_category[0].name}}</span>
                     </div>
 
                     <div class=" product-search">
@@ -135,7 +136,7 @@
 
                     <div class="products-catalog-sec__elements-wrapper">
                         <div class="products-catalog-sec__elements-wrapper-header">
-                            <h1 class="products-catalog-sec__elements-wrapper-title">Товары</h1>
+                            <h1 class="products-catalog-sec__elements-wrapper-title">{{current_category[0].name}}</h1>
                             <div class="products-catalog-sec__elements-wrapper-search product-search">
                                 <div class="product-search__input-wrapepr">
                                     <input type="text" placeholder="Поиск" class="product-search__input">
@@ -165,33 +166,35 @@
                         <div class="blog-sec__body-pagination-row" v-if="all_object && all_categories && all_object.length > 0">
 
                             <div class="pagination">
+                                <div class="bnt-pagin-wrapper">
+                                    <a  class="pagination__btn pagination__btn-prev" @click="prevPage()" v-if="currentPage > 1">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M15.8332 10H4.1665M4.1665 10L9.99984 15.8333M4.1665 10L9.99984 4.16667" stroke="#1B3762" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
 
-                                <a  class="pagination__btn pagination__btn-prev" @click="prevPage()" v-if="currentPage > 1">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M15.8332 10H4.1665M4.1665 10L9.99984 15.8333M4.1665 10L9.99984 4.16667" stroke="#1B3762" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-
-                                    <span>Назад</span>
-                                </a>
+                                        <span>Назад</span>
+                                    </a>
+                                </div>
 
                                 <ul class="pagination__num-list">
                                     <li class="pagination__nam-li " v-for="(item, index) in totalPages" :key="index" :class="{'pagination__nam-li--activ' : item == currentPage }">
                                  
-
-                                        <NuxtLink :to="`/products/?page=${item}`" >
+                                        <NuxtLink :to="`/products/categories/${route.params.id}/?page=${item}`" >
                                             {{ item }}
                                         </NuxtLink>
 
                                     </li>
 
                                 </ul>
-                                <a  class="pagination__btn pagination__btn-next" @click="nextPage()" v-if="currentPage < totalPages">
-                                    <span>Далее</span>
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4.1665 10H15.8332M15.8332 10L9.99984 4.16666M15.8332 10L9.99984 15.8333" stroke="#1B3762" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
 
-                                </a>
+                                <div class="bnt-pagin-wrapper">
+                                    <a  class="pagination__btn pagination__btn-next" @click="nextPage()" v-if="currentPage < totalPages">
+                                        <span>Далее</span>
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4.1665 10H15.8332M15.8332 10L9.99984 4.16666M15.8332 10L9.99984 15.8333" stroke="#1B3762" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </div>
 
                             <div class="page-counter">
@@ -246,7 +249,10 @@ const perPage = ref(9)
 
 const totalPages = ref(null)
 
-const { data: all_object, error, pending } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?page=${currentPage.value || 1}&per_page=${perPage.value}`, {
+const { data: current_category } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products-category?slug=${route.params.id}`)
+
+const { data: all_object, error, pending } = await useFetch(
+    `${store.serverUrlDomainRequest}/wp-json/wp/v2/products?products-category=${current_category.value[0].id}&page=${currentPage.value || 1}&per_page=${perPage.value}`, {
     onResponse({ response }) {
       const total = response.headers.get('X-WP-Total')
       const pages = response.headers.get('X-WP-TotalPages')
@@ -260,9 +266,11 @@ const { data: all_object, error, pending } = await useFetch(`${store.serverUrlDo
 
 const { data: all_categories } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products-category`)
 
-console.log(all_object)
+console.log('current_category', current_category)
 
-console.log(all_categories)
+console.log('all_object',all_object)
+
+console.log('all_categories', all_categories)
 
 // const heroBannerSec = ref(null)
 
@@ -273,7 +281,7 @@ console.log(all_categories)
 
 //get posts on client side
 async function fetchClientData() {
-  const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?page=${currentPage.value || 1}&per_page=${perPage.value}`)
+  const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?products-category=${current_category.value[0].id}&page=${currentPage.value || 1}&per_page=${perPage.value}`)
   const data = await res.json()
   all_object.value = data
 
@@ -288,7 +296,7 @@ function nextPage(){
     }
     else{
         router.push({
-            path: '/products/',
+            path: '/products/categories/',
             query: { page: +currentPage.value + 1 }
         })
     }
@@ -300,7 +308,7 @@ function prevPage(){
     }
     else{
         router.push({
-            path: '/products/',
+            path: '/products/categories/',
             query: { page: +currentPage.value - 1 }
         })
     }
@@ -331,7 +339,7 @@ function prevPage(){
 
 //HOOKS
 onMounted(async () => {
-    const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?page=${currentPage.value || 1}&per_page=${perPage.value}`)
+    const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?products-category=${current_category.value[0].id}&page=${currentPage.value || 1}&per_page=${perPage.value}`)
     const pages = res.headers.get('X-WP-TotalPages')
     if (pages) totalPages.value = Number(pages)
 
@@ -357,4 +365,45 @@ onBeforeUnmount(() => {
 //   mainData: Object,
       // postAllCategory: Object,
   })
+
+
+
+  //SEO
+useHead({
+    title: current_category.value[0].acf.seo_title,
+    meta: [
+        // Description
+        { name: 'description', content: current_category.value[0].acf.seo_description || 'Описание по умолчанию' },
+
+        // Keywords (опционально, не влияет сильно на SEO)
+        { name: 'keywords',  content: current_category.value[0].acf.klyuchevaya_fraza || 'test' },
+
+        // OpenGraph
+        { property: 'og:title', content: current_category.value[0].acf.seo_title },
+        { property: 'og:description', content: current_category.value[0].acf.seo_description },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: `${store.domainUrlCurrent}${route.fullPath}` },
+        { property: 'og:image', content: current_category.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
+
+        // Twitter Card (если используешь)
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: current_category.value[0].acf.seo_title },
+        { name: 'twitter:description', content: current_category.value[0].acf.seo_description },
+        { name: 'twitter:image', content: current_category.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
+
+        // Индексация / Деиндексация
+        // Например, noindex для черновика:
+        {
+        name: 'robots',
+        content:
+            current_category.value[0].acf.indeksacziya_v_poiskovyh_sistemah === 'index'
+            ? 'index, follow'
+            : 'noindex, nofollow'
+        }
+    ],
+    link: [
+        // Canonical (вручную или динамически)
+        { rel: 'canonical', href: `${store.domainUrlCurrent}/blog/categories/${current_category.value[0].acf.canonical || route.params.id}` }
+    ]
+})
 </script>
