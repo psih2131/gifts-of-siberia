@@ -52,6 +52,7 @@
     border-radius: 5px;
     color: $darkBlueV1;
     background: #F2F5F8;
+    margin-right: 5px;
 }
 
 .post-sec__title {
@@ -99,6 +100,8 @@
         display: block;
         max-width: 595px;
         border-radius: 40px;
+        object-fit: cover;
+        height: auto;
     }
 }
 

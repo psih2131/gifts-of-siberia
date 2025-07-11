@@ -98,26 +98,25 @@
                                 </div>
                             </template>
 
-
                         </div>
 
 
                         <div class="blog-sec__body-pagination-row" v-if="all_object && all_categories && all_object.length > 0">
 
                             <div class="pagination">
+                                <div class="bnt-pagin-wrapper">
+                                    <a  class="pagination__btn pagination__btn-prev" @click="prevPage()" v-if="currentPage > 1">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M15.8332 10H4.1665M4.1665 10L9.99984 15.8333M4.1665 10L9.99984 4.16667" stroke="#1B3762" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
 
-                                <a  class="pagination__btn pagination__btn-prev" @click="prevPage()" v-if="currentPage > 1">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M15.8332 10H4.1665M4.1665 10L9.99984 15.8333M4.1665 10L9.99984 4.16667" stroke="#1B3762" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-
-                                    <span>Назад</span>
-                                </a>
+                                        <span>Назад</span>
+                                    </a>
+                                </div>
 
                                 <ul class="pagination__num-list">
                                     <li class="pagination__nam-li " v-for="(item, index) in totalPages" :key="index" :class="{'pagination__nam-li--activ' : item == currentPage }">
                                  
-
                                         <NuxtLink :to="`/blog/categories/${route.params.id}/?page=${item}`" >
                                             {{ item }}
                                         </NuxtLink>
@@ -125,13 +124,15 @@
                                     </li>
 
                                 </ul>
-                                <a  class="pagination__btn pagination__btn-next" @click="nextPage()" v-if="currentPage < totalPages">
-                                    <span>Далее</span>
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4.1665 10H15.8332M15.8332 10L9.99984 4.16666M15.8332 10L9.99984 15.8333" stroke="#1B3762" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
 
-                                </a>
+                                <div class="bnt-pagin-wrapper">
+                                    <a  class="pagination__btn pagination__btn-next" @click="nextPage()" v-if="currentPage < totalPages">
+                                        <span>Далее</span>
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4.1665 10H15.8332M15.8332 10L9.99984 4.16666M15.8332 10L9.99984 15.8333" stroke="#1B3762" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </a>
+                                </div>
                             </div>
 
                             <div class="page-counter">
