@@ -1,7 +1,8 @@
 <template>
     <main class="main">
 
-      <section class="hero-banner-sec">
+
+      <section class="hero-banner-sec" v-if="frontpage[0]?.acf?.sekcziya_1_bannera" >
         <div class="container">
           <div class="hero-banner-sec__slider">
 
@@ -19,18 +20,10 @@
             clickable: true
             }" -->
 
-
-              <swiper-slide >
+              <swiper-slide v-for="item in frontpage[0].acf.sekcziya_1_bannera" :key="item">
                   <div class="hero-banner-slider__element">
-                    <img src="@/assets/images/img/hero-banner.jpg" alt="" class="hero-banner-slider__img">
-                    <img src="@/assets/images/img/hero-banner-mob.jpg" alt="" class="hero-banner-slider__img-mob">
-                  </div>
-              </swiper-slide>
-
-              <swiper-slide >
-                  <div class="hero-banner-slider__element">
-                    <img src="@/assets/images/img/hero-banner.jpg" alt="" class="hero-banner-slider__img">
-                    <img src="@/assets/images/img/hero-banner-mob.jpg" alt="" class="hero-banner-slider__img-mob">
+                    <img :src="item.izobrazhenie_bannera_pk.url" :alt="item.izobrazhenie_bannera_pk.alt" class="hero-banner-slider__img">
+                    <img :src="item.izobrazhenie_bannera_mobilka.url" :alt="item.izobrazhenie_bannera_mobilka.alt" class="hero-banner-slider__img-mob">
                   </div>
               </swiper-slide>
 
@@ -50,27 +43,24 @@
         </div>
       </section>
 
-      <section class="popular-prod-sec">
+
+
+      <section class="popular-prod-sec" v-if="popularProdList?.length">
         <div class="container">
           <div class="popular-prod-sec__header">
             <p class="popular-prod-sec__title">Популярные товары</p>
-            <a href="" class="popular-prod-sec__link">
+
+            <NuxtLink to="/products" class="popular-prod-sec__link"  >
               <svg width="64" height="52" viewBox="0 0 64 52" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0.5" y="0.5" width="63" height="51" rx="12.5" stroke="#1B3762"/>
               <path d="M42.7071 26.7071C43.0976 26.3166 43.0976 25.6834 42.7071 25.2929L36.3431 18.9289C35.9526 18.5384 35.3195 18.5384 34.9289 18.9289C34.5384 19.3195 34.5384 19.9526 34.9289 20.3431L40.5858 26L34.9289 31.6569C34.5384 32.0474 34.5384 32.6805 34.9289 33.0711C35.3195 33.4616 35.9526 33.4616 36.3431 33.0711L42.7071 26.7071ZM23 26V27H42V26V25H23V26Z" fill="#1B3762"/>
               </svg>
+            </NuxtLink>
 
-            </a>
           </div>
 
           <div class="popular-prod-sec__row">
-            <productCard />
-
-            <productCard />
-
-            <productCard />
-
-            <productCard />
+             <productCard v-for="item in popularProdList" :key="item" :productData="item" :catList="all_categories" />
           </div>
         </div>
       </section>
@@ -251,6 +241,8 @@
           </div>
         </div>
       </section>
+
+  
        
 
         
@@ -262,7 +254,7 @@
 
 //IMPORT
 
-// import { useCounterStore } from '@/stores/counter'
+import { useCounterStore } from '@/stores/counter'
 
 import { ref, onMounted, onBeforeUnmount, computed, watch  } from 'vue';
 
@@ -276,12 +268,46 @@ import newsCard from '@/components/component__news-card.vue'
 
 
 //DATA
+const store = useCounterStore()
+
 const heroBannerSec = ref(null)
 
 const aboutHomeSlider = ref(null)
 
 const newsHomeSlider = ref(null)
 
+const popularProdList = ref([])
+
+// категории
+const { data: all_categories } = await useFetch(
+  `${store.serverUrlDomainRequest}/wp-json/wp/v2/products-section`
+)
+
+const { data: frontpage } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/pages?slug=home`)
+
+// получаем рекомендованные посты
+try {
+  const mainPost = frontpage.value?.[0]
+  const chitatTakzhe = mainPost?.acf['sekcziya_2_-_populyarnye_tovary']
+
+  if (Array.isArray(chitatTakzhe) && chitatTakzhe.length) {
+    const slugs = chitatTakzhe.map(obj => obj.post_name)
+
+    const promises = slugs.map(slug =>
+      fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?slug=${slug}`)
+        .then(res => res.json())
+        .then(data => data?.[0] || null)
+    )
+
+    popularProdList.value = await Promise.all(promises)
+  }
+} catch (error) {
+  console.error('Ошибка при загрузке рекомендованных постов:', error)
+}
+
+console.log('recomendPostsList', popularProdList)
+
+console.log('frontpage', frontpage)
 
 //METHODS 
 
