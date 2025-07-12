@@ -11,7 +11,7 @@
         :controls="statusVideo"
         
         >
-        <source src="@/assets/video/demo.mp4" type="video/mp4" />
+        <source :src="videoUrl" type="video/mp4" />
         Ваш браузер не поддерживает видео.
         </video>
     </div>
@@ -39,5 +39,14 @@
 
          
     }
+
+
+
+    // props
+    const props = defineProps({
+        videoUrl: String,
+    })
+
+    
 
 </script>

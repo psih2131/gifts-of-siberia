@@ -51,7 +51,7 @@
 
                                      <template v-if="all_categories">
                                         <li class="blog-sec__nav-list-element" v-for="item in all_categories" :key="item">
-                                            <NuxtLink :to="`/products/categories/${item.slug}`" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
+                                            <NuxtLink :to="`/products/sections/${item.slug}`" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
                                                 <span class="blog-sec__nav-link-icon">
                                                     <img v-if="item?.acf?.ikonka_kategorii?.url" :src="item.acf.ikonka_kategorii.url" :alt="item.acf.ikonka_kategorii.alt">
                                                 </span>
@@ -249,10 +249,10 @@ const perPage = ref(9)
 
 const totalPages = ref(null)
 
-const { data: current_category } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products-category?slug=${route.params.id}`)
+const { data: current_category } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products-section?slug=${route.params.id}`)
 
 const { data: all_object, error, pending } = await useFetch(
-    `${store.serverUrlDomainRequest}/wp-json/wp/v2/products?products-category=${current_category.value[0].id}&page=${currentPage.value || 1}&per_page=${perPage.value}`, {
+    `${store.serverUrlDomainRequest}/wp-json/wp/v2/products?products-section=${current_category.value[0].id}&page=${currentPage.value || 1}&per_page=${perPage.value}`, {
     onResponse({ response }) {
       const total = response.headers.get('X-WP-Total')
       const pages = response.headers.get('X-WP-TotalPages')
@@ -264,7 +264,7 @@ const { data: all_object, error, pending } = await useFetch(
     },
 })
 
-const { data: all_categories } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products-category`)
+const { data: all_categories } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products-section`)
 
 console.log('current_category', current_category)
 
@@ -281,7 +281,7 @@ console.log('all_categories', all_categories)
 
 //get posts on client side
 async function fetchClientData() {
-  const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?products-category=${current_category.value[0].id}&page=${currentPage.value || 1}&per_page=${perPage.value}`)
+  const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?products-section=${current_category.value[0].id}&page=${currentPage.value || 1}&per_page=${perPage.value}`)
   const data = await res.json()
   all_object.value = data
 
@@ -339,7 +339,7 @@ function prevPage(){
 
 //HOOKS
 onMounted(async () => {
-    const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?products-category=${current_category.value[0].id}&page=${currentPage.value || 1}&per_page=${perPage.value}`)
+    const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?products-section=${current_category.value[0].id}&page=${currentPage.value || 1}&per_page=${perPage.value}`)
     const pages = res.headers.get('X-WP-TotalPages')
     if (pages) totalPages.value = Number(pages)
 

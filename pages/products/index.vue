@@ -50,7 +50,7 @@
 
                                      <template v-if="all_categories">
                                         <li class="blog-sec__nav-list-element" v-for="item in all_categories" :key="item">
-                                            <NuxtLink :to="`/products/categories/${item.slug}`" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
+                                            <NuxtLink :to="`/products/sections/${item.slug}`" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
                                                 <span class="blog-sec__nav-link-icon">
                                                     <img v-if="item?.acf?.ikonka_kategorii?.url" :src="item.acf.ikonka_kategorii.url" :alt="item.acf.ikonka_kategorii.alt">
                                                 </span>
@@ -258,7 +258,7 @@ const { data: all_object, error, pending } = await useFetch(`${store.serverUrlDo
     },
 })
 
-const { data: all_categories } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products-category`)
+const { data: all_categories } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products-section`)
 
 console.log(all_object)
 

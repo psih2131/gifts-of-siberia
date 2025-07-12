@@ -107,6 +107,7 @@
 
 .product-hero-sec__info-list {
     margin-top: 23px;
+    margin-bottom: 50px;
 }
 
 .product-hero-sec__info-list-element {
@@ -161,6 +162,7 @@
     line-height: 120%;
     margin-left: 20px;
     opacity: 0.5;
+    padding-right: 5px;
     color: $darkBlueV1;
 }
 
@@ -223,6 +225,18 @@
     }
 }
 
+.product-hero-sec__info-advantages-element-icon {
+    min-width: 24px;
+    width: 24px;
+    display: block;
+
+    img {
+        width: 100%;
+        display: block;
+        opacity: 0.7;
+    }
+}
+
 .product-hero-sec__small-description {
     font-size: 20px;
     font-style: normal;
@@ -254,7 +268,8 @@
 .info-buy__row {
     display: flex;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 25px;
+
 }
 
 .info-buy__link {
@@ -383,12 +398,44 @@
 }
 
 .info-buy__btn-request {
-    display: none;
+    display: block;
+    margin-top: 30px;
+
+    padding-right: 16px;
+}
+
+.btnreq {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    width: 100%;
+    border-radius: 10px;
+    background: $goldV1;
+    padding: 20px 0;
+
+    span {
+        margin-right: 10px;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 100%;
+        color: #fff;
+    }
+
+    svg {
+        display: block;
+    }
 }
 
 .prod-single-slider {
     display: none;
 }
+
+.info-buy__row-mob {
+    display: none;
+}
+
 
 
 
@@ -848,5 +895,32 @@
 
     .product-simmilar-sec__title {
         margin-bottom: 15px;
+    }
+
+    .info-buy__row-mob {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+
+    }
+
+    .info-buy__link-mob {
+        width: calc(50% - 5px);
+        display: block;
+        padding-bottom: 30px;
+    }
+
+    .info-buy__link-img-mob {
+        display: block;
+        width: 100%;
+    }
+
+    .product-hero-sec__info-advantages {
+        margin-top: 0;
+    }
+
+    .product-hero-sec__info-list {
+        margin-bottom: 30px;
     }
 }
