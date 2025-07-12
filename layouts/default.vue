@@ -6,18 +6,24 @@
         <slot/>
     
         <componentFooter />
+
+        <popupsPlagin v-if="store.popupCurrent != null" />
+
     </div>
   
 </template>
 
 <script setup>
-// import { useCounterStore } from '@/stores/counter'
+import { useCounterStore } from '@/stores/counter'
 import { ref, onMounted, onBeforeUnmount, computed, watch  } from 'vue';
 import componentHeader from '@/components/header.vue'
 import componentFooter from '@/components/footer.vue'
+import popupsPlagin from '@/components/popups/popups-parent.vue'
 
 //DATA
 const currentSearchType = ref('personPhone')
+
+const store = useCounterStore()
 
 
 
@@ -28,6 +34,13 @@ const currentSearchType = ref('personPhone')
 
 
 //HOOKS
+watch(() => store.popupCurrent,  // отслеживаемое значение
+  (newVal, oldVal) => {
+    console.log('Значение изменилось:', oldVal, '→', newVal)
+  }
+)
+
+
 onMounted(() => {
   // Добавляем обработчик события scroll
 
@@ -37,6 +50,9 @@ onMounted(() => {
 onBeforeUnmount(() => {
 
 });
+
+
+
 
 
 

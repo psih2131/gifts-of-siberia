@@ -158,6 +158,16 @@
 
                             </template>
 
+                            <template v-else>
+                                <div class="blog-sec__body-no-posts no-posts-box">
+                                    <p class="no-posts-box__title">упс!</p>
+                                    <p class="no-posts-box__subtitle">По запросу ничего не найдено</p>
+                                    <div class="no-posts-box__img-wrapper">
+                                        <img src="@/assets/images/img/do-posts.png" alt="">
+                                    </div>
+                                </div>
+                            </template>
+
                         </div>
                         
 

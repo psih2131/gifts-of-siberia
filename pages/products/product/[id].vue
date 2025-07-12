@@ -140,7 +140,7 @@
                             <p class="info-buy__title">Покупка в один клик!</p>
                             <p class="info-buy__subtitle">Перейдите на маркетплейс и оформите понравившийся товар в пару шагов.</p>
                             <div class="info-buy__btn-request">
-                                <button class="btnreq">
+                                <button class="btnreq" @click="openFormPopup()">
                                     <span>Оставить заявку</span>
                                     <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7.99964 6.99997C7.7263 6.99997 7.49964 6.77331 7.49964 6.49997V3.03997L7.01964 3.51997C6.8263 3.71331 6.5063 3.71331 6.31297 3.51997C6.11964 3.32664 6.11964 3.00664 6.31297 2.81331L7.6463 1.47997C7.7863 1.33997 8.0063 1.29331 8.19297 1.37331C8.37964 1.44664 8.49964 1.63331 8.49964 1.83331V6.49997C8.49964 6.77331 8.27297 6.99997 7.99964 6.99997Z" fill="white"/>
@@ -404,6 +404,13 @@ function getCurrentCat(itemID){
 
     return element
 }
+
+
+//open form popup 
+function openFormPopup(){
+    store.changePopupCurrent('popup-form')
+}
+
 
 //HOOKS
 onMounted(() => {
