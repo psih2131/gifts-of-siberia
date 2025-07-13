@@ -75,9 +75,7 @@
                          
                                 </ul>
                             </div>
-
                             
-
                             <div class="footer__top-nav-claster">
                                 <p class="footer__top-nav-claster-title">
                                     <a href="">Сотрудничество</a>
@@ -231,13 +229,5 @@
     console.log('doc_pages',doc_pages)
 
     console.log('optionsData',optionsData)
-
-
-
-
-
-
-
-
 
 </script>
