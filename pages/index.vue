@@ -1,7 +1,7 @@
 <template>
     <main class="main">
 
-
+      <!-- Hero sec banner -->
       <section class="hero-banner-sec" v-if="frontpage[0]?.acf?.sekcziya_1_bannera" >
         <div class="container">
           <div class="hero-banner-sec__slider">
@@ -14,11 +14,6 @@
             clickable: true
             }"
             >
-
-            <!-- :pagination="{
-            dynamicBullets: true,
-            clickable: true
-            }" -->
 
               <swiper-slide v-for="item in frontpage[0].acf.sekcziya_1_bannera" :key="item">
                   <div class="hero-banner-slider__element">
@@ -44,7 +39,7 @@
       </section>
 
 
-
+      <!-- POPULAR PRODUCTS SEC -->
       <section class="popular-prod-sec" v-if="popularProdList?.length">
         <div class="container">
           <div class="popular-prod-sec__header">
@@ -66,6 +61,7 @@
       </section>
 
 
+      <!-- ABOUT MISSION SEC -->
       <section class="home-about-sec" v-if="frontpage[0]?.acf?.sekcziya_3_missiya">
         <div class="container">
 
@@ -79,12 +75,6 @@
             clickable: true
             }"
             >
-
-            <!-- :pagination="{
-            dynamicBullets: true,
-            clickable: true
-            }" -->
-
 
               <swiper-slide v-for="item in frontpage[0].acf.sekcziya_3_missiya.slajder_izobrazhenij" :key="item">
                   <div class="about-home-slider__element">
@@ -115,6 +105,7 @@
       </section>
 
 
+      <!-- ADVANTAGES SEC -->
       <section class="home-advantages-sec" v-if="frontpage[0]?.acf?.sekcziya_4_preimushhestva">
         <div class="container">
           <h2 class="home-advantages-sec__title" v-html="frontpage[0].acf.sekcziya_4_preimushhestva.zagolovok"></h2>
@@ -133,6 +124,7 @@
       </section>
 
 
+      <!-- VIDEO SEC -->
       <section class="banner-video-sec" v-if="frontpage[0]?.acf?.sekcziya_5_video?.url">
         <div class="container">
           <videoBanner :videoUrl="frontpage[0].acf.sekcziya_5_video.url" />
@@ -140,6 +132,7 @@
       </section>
 
 
+      <!-- NEWS POSTS SEC -->
       <section class="last-news-sec" v-if="popularPostList?.length">
         <div class="container">
           <div class="last-news-sec__header">
@@ -159,7 +152,7 @@
           </div>
 
           <div class="last-news-sec__slider">
-              <swiper-container 
+            <swiper-container 
             ref="newsHomeSlider" 
             class="news-home-slider"
             :pagination="{
@@ -174,15 +167,12 @@
                   </div>
               </swiper-slide>
 
-              </swiper-container>
+            </swiper-container>
           </div>
         </div>
       </section>
 
-  
-       
 
-        
     </main>
     
 </template>
@@ -200,7 +190,6 @@ import productCard from '@/components/component__producr-card.vue'
 import videoBanner from '@/components/component__video-banner.vue'
 
 import newsCard from '@/components/component__news-card.vue'
-
 
 
 
@@ -247,7 +236,6 @@ try {
 }
 
 
-
 // категории
 const { data: all_categories_post } = await useFetch(
   `${store.serverUrlDomainRequest}/wp-json/wp/v2/blog-category`
@@ -281,7 +269,6 @@ console.log('frontpage', frontpage)
 
 
 
-
 //METHODS 
 
 //banner gallery
@@ -300,7 +287,6 @@ const swiperAbout = useSwiper(aboutHomeSlider, {
    speed: 700,
 })
 
-
 //news slier mob
 const swiperNews = useSwiper(newsHomeSlider, {
    loop: true,
@@ -316,6 +302,7 @@ onMounted(() => {
 
   
 });
+
 
 onBeforeUnmount(() => {
 
@@ -393,6 +380,5 @@ useHead({
   }
   
 }
-
 
 </style>

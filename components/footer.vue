@@ -4,45 +4,36 @@
             <div class="container">
                 <div class="footer__top-left-side">
                     <a href="" class="footer__top-logo">
-                        <img src="@/assets/images/img/footer-logo.png" alt="" class="footer__top-logo-img">
+                        <img v-if="optionsData?.logotip_v_futere_pk" :src="optionsData.logotip_v_futere_pk.url" :alt="optionsData.logotip_v_futere_pk.alt" class="footer__top-logo-img">
                         <img src="@/assets/images/img/logo-footer-mob.png" alt="" class="footer__top-logo-img-footer">
                     </a>
-
-
-                    
 
                     <div class="footer__soc-wrapper">
 
                         <div class="footer__top-social-row">
-                            <a href="" class="footer__top-social">
-                                <img src="@/assets/images/icons/social-tg.png" alt="" class="footer__top-social-img">
-                            </a>
-
-                            <a href="" class="footer__top-social">
-                                <img src="@/assets/images/icons/social-vk.png" alt="" class="footer__top-social-img">
-                            </a>
-
-                            <a href="" class="footer__top-social">
-                                <img src="@/assets/images/icons/social-ok.png" alt="" class="footer__top-social-img">
-                            </a>
+                            <template v-if="optionsData?.spisok_socz_setej_v_podvale?.length">
+                                 <a v-for="item in optionsData.spisok_socz_setej_v_podvale" :key="item" 
+                                 :href="item.ssylka" 
+                                 target="_blank"
+                                 class="footer__top-social">
+                                    <img :src="item.ikonka.url" :alt="item.ikonka.alt" class="footer__top-social-img">
+                                </a>
+                            </template>
+                           
                         </div>
 
                         <div class="footer__top-contacts-claster-marketplace-row footer__top-contacts-claster-marketplace-row--mob">
-                            <a href="" class="footer__top-contacts-claster-marketplace-element">
-                                <img src="@/assets/images/img/mr-wb.png" alt="" class="footer__top-contacts-claster-marketplace-img">
-                            </a>
 
-                            <a href="" class="footer__top-contacts-claster-marketplace-element">
-                                <img src="@/assets/images/img/mr-oz.png" alt="" class="footer__top-contacts-claster-marketplace-img">
-                            </a>
+                            <template v-if="optionsData?.spisok_marketplejsov_v_podvale?.length">
+                                 <a v-for="item in optionsData.spisok_marketplejsov_v_podvale" :key="item" 
+                                 :href="item.ssylka" 
+                                 target="_blank"
+                                 class="footer__top-contacts-claster-marketplace-element">
+                                    <img :src="item.ikonka.url" :alt="item.ikonka.alt" class="footer__top-contacts-claster-marketplace-img">
+                                </a>
+                            </template>
 
-                            <a href="" class="footer__top-contacts-claster-marketplace-element">
-                                <img src="@/assets/images/img/mr-ya.png" alt="" class="footer__top-contacts-claster-marketplace-img">
-                            </a>
                         </div>
-
-
-
                         
                     </div>
                     
@@ -127,21 +118,21 @@
                             <NuxtLink to="/contacts">Контакты</NuxtLink>
                         </p>
                         <ul class="footer__top-contacts-claster-ul">
-                            <li class="footer__top-contacts-claster-li">
-                                <a href="tel:+79009000000" class="footer__top-contacts-claster-li-link">
+                            <li class="footer__top-contacts-claster-li" v-for="item in optionsData.futer_nomera_telefonov" :key="item">
+                                <a :href="`tel:${item.ssyllka_na_nomer}`" class="footer__top-contacts-claster-li-link">
                                     <span class="footer__top-contacts-claster-li-icon">
                                         <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M17.45 23.25C16.32 23.25 15.13 22.98 13.9 22.46C12.7 21.95 11.49 21.25 10.31 20.4C9.14 19.54 8.01 18.58 6.94 17.53C5.88 16.46 4.92 15.33 4.07 14.17C3.21 12.97 2.52 11.77 2.03 10.61C1.51 9.37 1.25 8.17 1.25 7.04C1.25 6.26 1.39 5.52 1.66 4.83C1.94 4.12 2.39 3.46 3 2.89C3.77 2.13 4.65 1.75 5.59 1.75C5.98 1.75 6.38 1.84 6.72 2C7.11 2.18 7.44 2.45 7.68 2.81L10 6.08C10.21 6.37 10.37 6.65 10.48 6.93C10.61 7.23 10.68 7.53 10.68 7.82C10.68 8.2 10.57 8.57 10.36 8.92C10.21 9.19 9.98 9.48 9.69 9.77L9.01 10.48C9.02 10.51 9.03 10.53 9.04 10.55C9.16 10.76 9.4 11.12 9.86 11.66C10.35 12.22 10.81 12.73 11.27 13.2C11.86 13.78 12.35 14.24 12.81 14.62C13.38 15.1 13.75 15.34 13.97 15.45L13.95 15.5L14.68 14.78C14.99 14.47 15.29 14.24 15.58 14.09C16.13 13.75 16.83 13.69 17.53 13.98C17.79 14.09 18.07 14.24 18.37 14.45L21.69 16.81C22.06 17.06 22.33 17.38 22.49 17.76C22.64 18.14 22.71 18.49 22.71 18.84C22.71 19.32 22.6 19.8 22.39 20.25C22.18 20.7 21.92 21.09 21.59 21.45C21.02 22.08 20.4 22.53 19.68 22.82C18.99 23.1 18.24 23.25 17.45 23.25ZM5.59 3.25C5.04 3.25 4.53 3.49 4.04 3.97C3.58 4.4 3.26 4.87 3.06 5.38C2.85 5.9 2.75 6.45 2.75 7.04C2.75 7.97 2.97 8.98 3.41 10.02C3.86 11.08 4.49 12.18 5.29 13.28C6.09 14.38 7 15.45 8 16.46C9 17.45 10.08 18.37 11.19 19.18C12.27 19.97 13.38 20.61 14.48 21.07C16.19 21.8 17.79 21.97 19.11 21.42C19.62 21.21 20.07 20.89 20.48 20.43C20.71 20.18 20.89 19.91 21.04 19.59C21.16 19.34 21.22 19.08 21.22 18.82C21.22 18.66 21.19 18.5 21.11 18.32C21.08 18.26 21.02 18.15 20.83 18.02L17.51 15.66C17.31 15.52 17.13 15.42 16.96 15.35C16.74 15.26 16.65 15.17 16.31 15.38C16.11 15.48 15.93 15.63 15.73 15.83L14.97 16.58C14.58 16.96 13.98 17.05 13.52 16.88L13.25 16.76C12.84 16.54 12.36 16.2 11.83 15.75C11.35 15.34 10.83 14.86 10.2 14.24C9.71 13.74 9.22 13.21 8.71 12.62C8.24 12.07 7.9 11.6 7.69 11.21L7.57 10.91C7.51 10.68 7.49 10.55 7.49 10.41C7.49 10.05 7.62 9.73 7.87 9.48L8.62 8.7C8.82 8.5 8.97 8.31 9.07 8.14C9.15 8.01 9.18 7.9 9.18 7.8C9.18 7.72 9.15 7.6 9.1 7.48C9.03 7.32 8.92 7.14 8.78 6.95L6.46 3.67C6.36 3.53 6.24 3.43 6.09 3.36C5.93 3.29 5.76 3.25 5.59 3.25ZM13.95 15.51L13.79 16.19L14.06 15.49C14.01 15.48 13.97 15.49 13.95 15.51Z" fill="#1B3762"/>
                                         </svg>
-
                                     </span>
-                                    <span class="footer__top-contacts-claster-li-value">+7 900 900 00 00</span>
+                                    <span class="footer__top-contacts-claster-li-value">{{ item.nomer }}</span>
                                 </a>
-                                </li>
+                            </li>
 
-
-                                <li class="footer__top-contacts-claster-li">
-                                <a href="mailto:info@gift-siberia.com" class="footer__top-contacts-claster-li-link">
+                            <li class="footer__top-contacts-claster-li"  
+                            v-for="item in optionsData.futer_elektronnye_pochty"
+                            :key="item">
+                                <a :href="`mailto:${item.elektronnaya_pochta}`" class="footer__top-contacts-claster-li-link">
                                     <span class="footer__top-contacts-claster-li-icon">
                                         <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M17 21.75H7C3.35 21.75 1.25 19.65 1.25 16V9C1.25 5.35 3.35 3.25 7 3.25H17C20.65 3.25 22.75 5.35 22.75 9V16C22.75 19.65 20.65 21.75 17 21.75ZM7 4.75C4.14 4.75 2.75 6.14 2.75 9V16C2.75 18.86 4.14 20.25 7 20.25H17C19.86 20.25 21.25 18.86 21.25 16V9C21.25 6.14 19.86 4.75 17 4.75H7Z" fill="#1B3762"/>
@@ -149,13 +140,12 @@
                                         </svg>
 
                                     </span>
-                                    <span class="footer__top-contacts-claster-li-value">info@gift-siberia.com</span>
+                                    <span class="footer__top-contacts-claster-li-value">{{item.elektronnaya_pochta}}</span>
                                 </a>
-                                </li>
+                            </li>
 
-
-                                <li class="footer__top-contacts-claster-li">
-                                <a href="" class="footer__top-contacts-claster-li-link">
+                            <li class="footer__top-contacts-claster-li" v-if="optionsData?.adres">
+                                <a :href="optionsData.adres_ssylka_na_yandeks_kartu" target="_blank" class="footer__top-contacts-claster-li-link">
                                     <span class="footer__top-contacts-claster-li-icon">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M12 14.1699C9.87 14.1699 8.13 12.4399 8.13 10.2999C8.13 8.15994 9.87 6.43994 12 6.43994C14.13 6.43994 15.87 8.16994 15.87 10.3099C15.87 12.4499 14.13 14.1699 12 14.1699ZM12 7.93994C10.7 7.93994 9.63 8.99994 9.63 10.3099C9.63 11.6199 10.69 12.6799 12 12.6799C13.31 12.6799 14.37 11.6199 14.37 10.3099C14.37 8.99994 13.3 7.93994 12 7.93994Z" fill="#1B3762"/>
@@ -163,12 +153,12 @@
                                         </svg>
 
                                     </span>
-                                    <span class="footer__top-contacts-claster-li-value">640002, г. Курган, ул.Володарского 65, оф. 415</span>
+                                    <span class="footer__top-contacts-claster-li-value" v-html="optionsData.adres"></span>
                                 </a>
-                                </li>
+                            </li>
 
-                                <li class="footer__top-contacts-claster-li">
-                                <a href="" class="footer__top-contacts-claster-li-link">
+                            <li class="footer__top-contacts-claster-li" v-if="optionsData?.vremya_raboty">
+                                <a  class="footer__top-contacts-claster-li-link">
                                     <span class="footer__top-contacts-claster-li-icon">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M12 22.75C6.07 22.75 1.25 17.93 1.25 12C1.25 6.07 6.07 1.25 12 1.25C17.93 1.25 22.75 6.07 22.75 12C22.75 17.93 17.93 22.75 12 22.75ZM12 2.75C6.9 2.75 2.75 6.9 2.75 12C2.75 17.1 6.9 21.25 12 21.25C17.1 21.25 21.25 17.1 21.25 12C21.25 6.9 17.1 2.75 12 2.75Z" fill="#1B3762"/>
@@ -176,25 +166,22 @@
                                     </svg>
 
                                     </span>
-                                    <span class="footer__top-contacts-claster-li-value">
-                                        ПН - ПТ: <b>9:00 - 18:00 </b>ㅤㅤ <span><br></span> СБ - ВС: <b>Выходной</b>
-                                    </span>
+                                    <span class="footer__top-contacts-claster-li-value" v-html="optionsData.vremya_raboty"></span>
                                 </a>
                             </li>
                         </ul>
 
                         <div class="footer__top-contacts-claster-marketplace-row">
-                            <a href="" class="footer__top-contacts-claster-marketplace-element">
-                                <img src="@/assets/images/img/mr-wb.png" alt="" class="footer__top-contacts-claster-marketplace-img">
-                            </a>
 
-                            <a href="" class="footer__top-contacts-claster-marketplace-element">
-                                <img src="@/assets/images/img/mr-oz.png" alt="" class="footer__top-contacts-claster-marketplace-img">
-                            </a>
+                            <template v-if="optionsData?.spisok_marketplejsov_v_podvale?.length">
+                                 <a v-for="item in optionsData.spisok_marketplejsov_v_podvale" :key="item" 
+                                 :href="item.ssylka" 
+                                 target="_blank"
+                                 class="footer__top-contacts-claster-marketplace-element">
+                                    <img :src="item.ikonka.url" :alt="item.ikonka.alt" class="footer__top-contacts-claster-marketplace-img">
+                                </a>
+                            </template>
 
-                            <a href="" class="footer__top-contacts-claster-marketplace-element">
-                                <img src="@/assets/images/img/mr-ya.png" alt="" class="footer__top-contacts-claster-marketplace-img">
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -203,7 +190,7 @@
 
         <div class="footer__down">
             <div class="container">
-                <p class="footer__down-copy">© 2024 Дары Сибири</p>
+                <p class="footer__down-copy">{{ optionsData.copy_text }}</p>
                 <div class="footer__down-right-row">
                     <p class="footer__down-rules-text">Все права защищены</p>
                     <nav class="footer__down-nav">
@@ -239,7 +226,11 @@
 
     const { data: doc_pages } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/pages`)
 
+    const { data: optionsData } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/acf/v3/options`)
+
     console.log('doc_pages',doc_pages)
+
+    console.log('optionsData',optionsData)
 
 
 
