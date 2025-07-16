@@ -408,6 +408,7 @@ function getCurrentCat(itemID){
 
 //open form popup 
 function openFormPopup(){
+    store.changeTrigerButtonForm('кнопка внутри товара в первой секции')
     store.changePopupCurrent('popup-form')
 }
 

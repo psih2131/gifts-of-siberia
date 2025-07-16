@@ -86,6 +86,7 @@
 
     //open form popup 
     function openFormPopup(){
+        store.changeTrigerButtonForm('Кнопка в карточке товара в каталоге или в рекомендуемых ')
         store.changePopupCurrent('popup-form')
     }
 
