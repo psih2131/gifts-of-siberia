@@ -13,7 +13,10 @@ export default defineEventHandler(async (event) => {
 📧 Email: ${body.email}
 📱 Телефон: ${body.phone}
 
+
+
 url страницы заявки: ${body.currentUrl}
+Где была нажата кнопка: ${body.currentPlase}
   `.trim()
 
     const res = await $fetch(`https://api.telegram.org/bot${token}/sendMessage`, {

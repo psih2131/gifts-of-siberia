@@ -9,24 +9,39 @@ export const useCounterStore = defineStore('counter', () => {
     const domainUrlCurrent = ref('http://test.tech')
     const popupCurrent = ref(null)
 
+    const trigerButtonForm = ref(null)
+
+    const serteficatCurrent = ref(null)
 
 
-    //change view object switch
     function changePopupCurrent(newValue) {
         popupCurrent.value = newValue
         console.log('popupCurrent', popupCurrent.value)
     }
 
+    function changeTrigerButtonForm(newValue) {
+        trigerButtonForm.value = newValue
+        console.log('trigerButtonForm', trigerButtonForm.value)
+    }
 
 
-    // doubleCount, increment 
+    function changeSerteficatCurrent(newValue) {
+        serteficatCurrent.value = newValue
+        console.log('changeSerteficatCurrent', serteficatCurrent.value)
+    }
+
+
     return {
         serverUrlDomainRequest,
         domainUrlCurrent,
         popupCurrent,
+        serteficatCurrent,
+        trigerButtonForm,
 
 
 
         changePopupCurrent,
+        changeSerteficatCurrent,
+        changeTrigerButtonForm,
     }
 })

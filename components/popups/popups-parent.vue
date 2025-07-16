@@ -4,7 +4,9 @@
         <popupForm v-if="store.popupCurrent == 'popup-form'" />
 
         <popupFormDone v-if="store.popupCurrent == 'popup-form-done'" />
-         <!-- <popupFormDone  />   -->
+
+        <popupSerteficat v-if="store.popupCurrent == 'popup-serteficat'" />
+   
         
     </div>
 </template>
@@ -12,10 +14,14 @@
 
 <script setup>
 import { useCounterStore } from '@/stores/counter'
+
 import { ref, onMounted, onBeforeUnmount, computed, watch  } from 'vue';
+
 import popupForm from '@/components/popups/popup__form.vue'
 
 import popupFormDone from '@/components/popups/popup-form-done.vue'
+
+import popupSerteficat from '@/components/popups/popup__serteficat.vue'
 
 
 

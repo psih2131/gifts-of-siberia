@@ -121,3 +121,18 @@
     text-align: center;
     margin-top: 15px;
 }
+
+
+.serteficat-popup {
+
+    height: calc(100vh - 100px);
+}
+
+.serteficat-popup__wrapper {
+    height: 100%;
+
+    iframe {
+        height: 100%;
+        width: 900px;
+    }
+}
