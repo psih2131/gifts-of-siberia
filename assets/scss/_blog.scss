@@ -385,4 +385,21 @@
             color: #fff;
         }
     }
+
+    .no-posts-box {
+        padding: 0;
+    }
+
+    .no-posts-box__img-wrapper img {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .no-posts-box__title {
+        font-size: 32px;
+    }
+
+    .no-posts-box__subtitle {
+        font-size: 16px;
+    }
 }

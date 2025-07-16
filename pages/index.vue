@@ -97,7 +97,7 @@
           </div>
 
           <div class="home-about-sec__text-wrapper">
-            <p class="home-about-sec__text" v-html="frontpage[0].acf.sekcziya_3_missiya.tekst"></p>
+            <div class="home-about-sec__text" v-html="frontpage[0].acf.sekcziya_3_missiya.tekst"></div>
             <div class="home-about-sec__mission" v-html="frontpage[0].acf.sekcziya_3_missiya.tekst_v_ramke"></div>
             <img src="@/assets/images/img/about-home-bg.png" alt="" class="home-about-sec__bg-img">
           </div>

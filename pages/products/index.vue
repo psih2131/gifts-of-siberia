@@ -1,7 +1,7 @@
 <template>
     <main class="main">
 
-        <section class="products-catalog-sec">
+        <section class="products-catalog-sec ">
             <div class="container">
 
                 <div class="breadcrumbs-row-mob">
@@ -47,31 +47,17 @@
                                         <span class="blog-sec__nav-link-text">Все товары</span>
                                      </NuxtLink>
 
-
-                                     <template v-if="all_categories">
-                                        <li class="blog-sec__nav-list-element" v-for="item in all_categories" :key="item">
-                                            <NuxtLink :to="`/products/sections/${item.slug}`" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
-                                                <span class="blog-sec__nav-link-icon">
-                                                    <img v-if="item?.acf?.ikonka_kategorii?.url" :src="item.acf.ikonka_kategorii.url" :alt="item.acf.ikonka_kategorii.alt">
-                                                </span>
-                                                <span class="blog-sec__nav-link-text">{{item.name}}</span>
-                                            </NuxtLink>
-                                        </li>
-                                    </template>
-
-
                                 </li>
-
-                                <!-- <template v-if="all_categories">
+                                <template v-if="all_categories">
                                     <li class="blog-sec__nav-list-element" v-for="item in all_categories" :key="item">
-                                        <NuxtLink :to="`/blog/categories/${item.slug}`" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
+                                        <NuxtLink :to="`/products/sections/${item.slug}`" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
                                             <span class="blog-sec__nav-link-icon">
-                                                <img :src="item.acf.ikonka_kategorii.url" :alt="item.acf.ikonka_kategorii.alt">
+                                                <img v-if="item?.acf?.ikonka_kategorii?.url" :src="item.acf.ikonka_kategorii.url" :alt="item.acf.ikonka_kategorii.alt">
                                             </span>
                                             <span class="blog-sec__nav-link-text">{{item.name}}</span>
                                         </NuxtLink>
                                     </li>
-                                </template> -->
+                                </template>
                                        
                             </ul>
                         </nav>

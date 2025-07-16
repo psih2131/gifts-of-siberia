@@ -47,21 +47,22 @@
                                         </span>
                                         <span class="blog-sec__nav-link-text">Все товары</span>
                                      </NuxtLink>
-
-
-                                     <template v-if="all_categories">
-                                        <li class="blog-sec__nav-list-element" v-for="item in all_categories" :key="item">
-                                            <NuxtLink :to="`/products/sections/${item.slug}`" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
-                                                <span class="blog-sec__nav-link-icon">
-                                                    <img v-if="item?.acf?.ikonka_kategorii?.url" :src="item.acf.ikonka_kategorii.url" :alt="item.acf.ikonka_kategorii.alt">
-                                                </span>
-                                                <span class="blog-sec__nav-link-text">{{item.name}}</span>
-                                            </NuxtLink>
-                                        </li>
-                                    </template>
-
-
                                 </li>
+
+
+                                <template v-if="all_categories">
+                                    <li class="blog-sec__nav-list-element" v-for="item in all_categories" :key="item">
+                                        <NuxtLink :to="`/products/sections/${item.slug}`" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
+                                            <span class="blog-sec__nav-link-icon">
+                                                <img v-if="item?.acf?.ikonka_kategorii?.url" :src="item.acf.ikonka_kategorii.url" :alt="item.acf.ikonka_kategorii.alt">
+                                            </span>
+                                            <span class="blog-sec__nav-link-text">{{item.name}}</span>
+                                        </NuxtLink>
+                                    </li>
+                                </template>
+
+
+                                
 
                                 <!-- <template v-if="all_categories">
                                     <li class="blog-sec__nav-list-element" v-for="item in all_categories" :key="item">

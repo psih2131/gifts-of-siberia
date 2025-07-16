@@ -62,12 +62,12 @@
 
                 <a v-if="productData.acf.ssylka_na_wildberries" :href="productData.acf.ssylka_na_wildberries" target="_blank" class="product-card__btn-market">
                     <img src="@/assets/images/img/btm-wb-card.png" alt="" class="product-card__btn-market-img">
-                    <!-- <img src="@/assets/images/img/ozon-mob-btn.png" alt="" class="product-card__btn-market-img-mob"> -->
+                    <img src="@/assets/images/img/mr-wb.png" alt="" class="product-card__btn-market-img-mob">
                 </a>
 
                 <a v-if="productData.acf.ssylka_na_ozon" :href="productData.acf.ssylka_na_ozon" target="_blank" class="product-card__btn-market">
                     <img src="@/assets/images/img/btm-ozon-card.png" alt="" class="product-card__btn-market-img">
-                    <!-- <img src="@/assets/images/img/ozon-mob-btn.png" alt="" class="product-card__btn-market-img-mob"> -->
+                    <img src="@/assets/images/img/mr-oz.png" alt="" class="product-card__btn-market-img-mob">
                 </a>
             </div>
         </div>
