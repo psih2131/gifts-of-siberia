@@ -191,6 +191,7 @@
     border-radius: 40px;
     position: relative;
     cursor: pointer;
+    background: $darkBlueV1;
 
     &:hover {
         .info-dirrections-sec__element-img {
@@ -228,6 +229,7 @@
 .info-dirrections-sec__element-text-box {
     width: 100%;
     padding: 0 30px 40px 30px;
+    transition: all ease 0.5s;
 }
 
 .info-dirrections-sec__element-title {
@@ -246,7 +248,9 @@
     line-height: 140%;
     color: #fff;
     opacity: 0.5;
+    height: 15px;
     margin-top: 26px;
+    transition: all ease 0.3s;
 }
 
 .info-dirrections-sec__element-tag {
@@ -263,6 +267,46 @@
     display: inline-block;
     margin-bottom: 15px;
 }
+
+.info-dirrections-sec__element-description {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    color: #fff;
+    overflow: hidden;
+    max-height: 0;
+    transition: all ease 0.3s;
+
+}
+
+.info-dirrections-sec__element--activ {
+
+    .info-dirrections-sec__element-text {
+
+        height: 0;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+
+    // .info-dirrections-sec__element-text-box {
+    //     height: 100%;
+    //     background: $darkBlueV1;
+    // }
+
+    .info-dirrections-sec__element-img {
+        opacity: 0;
+    }
+
+    .info-dirrections-sec__element-description {
+        max-height: 100%;
+        padding-top: 10px;
+
+    }
+}
+
+
 
 .info-close-sec {
     padding: 100px 0;
