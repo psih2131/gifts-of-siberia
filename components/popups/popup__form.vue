@@ -145,6 +145,7 @@ const sendForm = async () => {
         email: formEmail.value,
         phone: formPhone.value,
         currentUrl: store.domainUrlCurrent + route.fullPath,
+        currentPlase: store.trigerButtonForm || 'Не получилось оприделить точное положение'
       },
     })
 
