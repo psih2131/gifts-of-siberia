@@ -8,14 +8,14 @@ export default defineNuxtConfig({
     url: 'https://psih2131-gifts-of-siberia-34fa.twc1.net',
     name: 'Gift of siberia',
 
-    routes: async () => {
-      // Тут вызываем API, чтобы получить все id постов
-      const response = await fetch('https://cy18281-wordpress-gre0n.tw1.ru//wp-json/wp/v2/my-blog')
-      const posts = await response.json()
+    // routes: async () => {
+    //   // Тут вызываем API, чтобы получить все id постов
+    //   const response = await fetch('https://cy18281-wordpress-gre0n.tw1.ru//wp-json/wp/v2/my-blog')
+    //   const posts = await response.json()
 
-      // Возвращаем массив URL для sitemap
-      return posts.map(post => `/blog/posts/${post.slug}`)
-    }
+    //   // Возвращаем массив URL для sitemap
+    //   return posts.map(post => `/blog/posts/${post.slug}`)
+    // }
 
   },
   ssr: true,
@@ -24,13 +24,7 @@ export default defineNuxtConfig({
   css: ['~/assets/scss/main.scss'],
 
   robots: {
-    rules: [
-      {
-        userAgent: '*',
-        allow: '/',
-      },
-    ],
-    sitemap: 'https://psih2131-gifts-of-siberia-34fa.twc1.net/sitemap.xml'
+    blockAiBots: true
   },
   modules: [
     'nuxt-swiper',
