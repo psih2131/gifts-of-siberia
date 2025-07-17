@@ -222,7 +222,7 @@
 
     const currentListDocPage = ref([])
 
-    const { data: doc_pages } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/pages`)
+    const { data: doc_pages } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/pages?per_page=100`)
 
     const { data: optionsData } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/acf/v3/options`)
 
