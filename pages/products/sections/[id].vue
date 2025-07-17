@@ -379,7 +379,7 @@ onBeforeUnmount(() => {
 
 
 
-  //SEO
+//SEO
 useHead({
     title: current_category.value[0].acf.seo_title,
     meta: [
