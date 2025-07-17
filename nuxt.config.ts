@@ -4,20 +4,50 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' }
   },
-  site: {
-    url: 'https://psih2131-gifts-of-siberia-34fa.twc1.net',
-    name: 'Gift of siberia',
+  // site: {
+  //   url: 'https://psih2131-gifts-of-siberia-34fa.twc1.net',
+  //   name: 'Gift of siberia',
 
-    // routes: async () => {
-    //   // Тут вызываем API, чтобы получить все id постов
-    //   const response = await fetch('https://cy18281-wordpress-gre0n.tw1.ru//wp-json/wp/v2/my-blog')
-    //   const posts = await response.json()
 
-    //   // Возвращаем массив URL для sitemap
-    //   return posts.map(post => `/blog/posts/${post.slug}`)
-    // }
+  //   sitemaps: [
+  //     {
+  //       path: '/sitemap-xml/wordpress.xml', // красивый путь
+  //       // Подключает твой файл из server/api/__sitemap__/wordpress.ts
+  //       eventHandler: 'server/api/__sitemap__/wordpress'
+  //     }
+  //   ]
 
+
+
+  // },
+
+  sitemap: {
+
+
+    sitemaps: {
+      pages: {
+        sources: [
+          '/api/__sitemap__/urls',
+        ]
+      },
+      posts: {
+        sources: [
+          '/api/__sitemap__/wordpress-posts',
+        ]
+      },
+      products: {
+        sources: [
+          '/api/__sitemap__/wordpress-products',
+        ]
+      },
+      // static: {
+      //   sources: [
+      //     'https://psih2131-gifts-of-siberia-34fa.twc1.net',
+      //   ]
+      // }
+    }
   },
+
   ssr: true,
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
