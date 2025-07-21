@@ -1,0 +1,149 @@
+.modal-content {
+    position: absolute;
+    background: #F9F8F2;
+    border-radius: 40px;
+    width: 1200px;
+    overflow: hidden;
+
+
+
+}
+
+.modal-content__container {
+    padding: 30px 75px 0 75px;
+    overflow-y: auto;
+    max-height: calc(100vh - 80px);
+
+}
+
+.modal-content__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-content__header-img {
+    display: block;
+    width: 280px;
+}
+
+.modal-content__title {
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    /* 40px */
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.modal-content__subtitle {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+}
+
+.modal-content__body {
+    padding-top: 32px;
+}
+
+.modal-content__advantages {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.modal-content__advantages-element {
+    width: calc(50% - 5px);
+    margin-bottom: 15px;
+    border-radius: 40px;
+    padding: 3px;
+    background: linear-gradient(162deg, #BEB297 -31.68%, #F0E7D2 39.9%, #BEB297 120.62%);
+
+    &:nth-child(5) {
+        width: 100%;
+        margin-bottom: 0;
+    }
+}
+
+.modal-content__advantages-element-wrapper {
+    background: #F9F8F2;
+    border-radius: 38px;
+    padding: 32px 34px;
+    height: 100%;
+}
+
+.modal-content__advantages-title {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+    margin-bottom: 20px;
+}
+
+.modal-content__advantages-subtitle {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+}
+
+.modal-content__use {
+    margin-top: 70px;
+}
+
+.modal-content__use-title {
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%;
+    /* 40px */
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.modal-content__use-wrapper {
+    column-count: 2;
+    column-gap: 10px;
+    padding-left: 20px;
+}
+
+.modal-content__use-element {
+    list-style-type: disc;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+}
+
+.modal-content__footer {
+    width: 100%;
+    position: relative;
+    padding-top: 60px;
+}
+
+.modal-content__footer-img {
+    width: calc(100% + 150px);
+    margin-left: -75px;
+    display: block;
+    position: relative;
+    z-index: 10;
+}
+
+.modal-content__footer-bg {
+    position: absolute;
+    left: -75px;
+    bottom: 0;
+    display: block;
+    width: calc(100% + 150px);
+    opacity: 0.2;
+}
+
+.modal-close {
+    position: absolute;
+    cursor: pointer;
+    z-index: 15;
+    top: 30px;
+    right: 30px;
+}

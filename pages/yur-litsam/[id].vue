@@ -63,6 +63,7 @@
                 <h2 class="info-sec-title" v-html="pageData[0].acf.sekcziya_napravleniya.zagolovok"></h2>
 
 
+
                 <div class="info-dirrections-sec__row">
 
                     <swiper-container 
@@ -75,40 +76,35 @@
                     >
                     
 
-                    <swiper-slide v-for="(item, index) in pageData[0].acf.sekcziya_napravleniya.etapy" :key="index">
+                    <swiper-slide v-for="(item, index) in ytpList" :key="index">
                     <div class="info-dirrections-sec__element" @click="curentIndexProcess = index" 
                     :class="{'info-dirrections-sec__element--activ': curentIndexProcess == index}">
-                        <img :src="item.fon.url" :alt="item.fon.alt" class="info-dirrections-sec__element-img">
+                        <img :src="item.acf.fonovoe_izobrazhenie.url" :alt="item.acf.fonovoe_izobrazhenie.alt" class="info-dirrections-sec__element-img">
                         <div class="info-dirrections-sec__element-wrapper">
                             <div class="info-dirrections-sec__element-text-box">
                                 <!-- <div class="info-dirrections-sec__element-tag">Шаг {{index + 1}}</div> -->
-                                <p class="info-dirrections-sec__element-title" v-html="item.nazvanie_etapa"></p>
+                                <p class="info-dirrections-sec__element-title" v-html="item.acf.zagolovok_kartochki"></p>
                                 <p class="info-dirrections-sec__element-text">Нажмите, чтобы узнать подробнее</p>
-                                <p class="info-dirrections-sec__element-description" v-html="item.opisanie"></p>
+                                <p class="info-dirrections-sec__element-description" v-html="item.acf.korotkoe_opisanie_kartochki"></p>
+                                <div class="info-dirrections-sec__element-btn-wrapper">
+                                    <div @click="openPost(item)" class="info-dirrections-sec__element-btn">
+                                        Подробнее
+                                        <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12.74 22.0795C12.44 22.0795 12.14 22.0095 11.89 21.8695C10.02 20.8495 6.73999 19.7695 4.67999 19.4995L4.39001 19.4595C3.08001 19.2995 2 18.0695 2 16.7395V4.6595C2 3.8695 2.31 3.14953 2.88 2.62953C3.45 2.10953 4.18997 1.85952 4.96997 1.92952C7.15997 2.10952 10.48 3.20953 12.36 4.37953L12.6 4.51955C12.67 4.54955 12.82 4.55955 12.88 4.51955L13.04 4.41951C13.71 3.99951 14.55 3.5895 15.47 3.2195C15.7 3.1295 15.96 3.15951 16.17 3.29951C16.38 3.43951 16.5 3.66951 16.5 3.91951V6.5995L17.33 6.04951C17.58 5.87951 17.91 5.87951 18.16 6.04951L18.99 6.5995V2.77956C18.99 2.41956 19.25 2.1095 19.6 2.0395C19.89 1.9895 20.18 1.94952 20.44 1.92952C20.46 1.92952 20.54 1.92952 20.56 1.92952C21.29 1.86952 22.04 2.11954 22.6 2.63954C23.17 3.15954 23.48 3.87951 23.48 4.66951V16.7395C23.48 18.0795 22.4 19.2995 21.08 19.4595L20.75 19.4995C18.69 19.7695 15.39 20.8595 13.56 21.8695C13.34 22.0095 13.04 22.0795 12.74 22.0795ZM4.71997 3.4095C4.39997 3.4095 4.11 3.51951 3.88 3.72951C3.63 3.95951 3.48999 4.2895 3.48999 4.6595V16.7395C3.48999 17.3295 4.00001 17.8995 4.57001 17.9795L4.87 18.0195C7.12 18.3195 10.57 19.4495 12.57 20.5495C12.66 20.5895 12.79 20.5995 12.84 20.5795C14.85 19.4695 18.31 18.3296 20.57 18.0296L20.91 17.9895C21.48 17.9195 21.99 17.3395 21.99 16.7495V4.67952C21.99 4.30952 21.85 3.98953 21.6 3.74953C21.35 3.51953 21 3.40952 20.64 3.42952C20.61 3.42952 20.52 3.42952 20.5 3.42952V7.99953C20.5 8.27953 20.35 8.5295 20.1 8.6595C19.85 8.7895 19.56 8.77952 19.33 8.61952L17.75 7.56953L16.17 8.61952C15.94 8.76952 15.65 8.7895 15.4 8.6595C15.16 8.5295 15 8.27953 15 7.99953V5.06953C14.57 5.27953 14.18 5.48953 13.84 5.68953L13.68 5.7895C13.13 6.1295 12.35 6.12951 11.82 5.79951L11.58 5.64955C9.89002 4.58955 6.80998 3.5695 4.84998 3.4095C4.79998 3.4095 4.75997 3.4095 4.71997 3.4095Z" fill="#1B3762"/>
+                                        <path d="M12.7422 21.2402C12.3322 21.2402 11.9922 20.9002 11.9922 20.4902V5.49023C11.9922 5.08023 12.3322 4.74023 12.7422 4.74023C13.1522 4.74023 13.4922 5.08023 13.4922 5.49023V20.4902C13.4922 20.9102 13.1522 21.2402 12.7422 21.2402Z" fill="#1B3762"/>
+                                        <path d="M19.7422 8.75048C19.5922 8.75048 19.4522 8.71047 19.3222 8.62047L17.7422 7.57048L16.1622 8.62047C15.9322 8.77047 15.6422 8.79045 15.3922 8.66045C15.1522 8.53045 14.9922 8.28048 14.9922 8.00048V3.92046C14.9922 3.61046 15.1822 3.34045 15.4622 3.22045C16.8422 2.67045 18.3522 2.24046 19.6222 2.04046C19.8422 2.00046 20.0622 2.0705 20.2322 2.2105C20.4022 2.3505 20.4922 2.56051 20.4922 2.78051V8.00048C20.4922 8.28048 20.3422 8.53045 20.0922 8.66045C19.9822 8.72045 19.8622 8.75048 19.7422 8.75048ZM17.7422 5.92046C17.8822 5.92046 18.0322 5.96046 18.1622 6.05046L18.9922 6.60045V3.69048C18.1922 3.87048 17.3222 4.13048 16.4922 4.44048V6.60045L17.3222 6.05046C17.4522 5.96046 17.6022 5.92046 17.7422 5.92046Z" fill="#1B3762"/>
+                                        </svg>
+
+                                    </div >
+
+                                    
+                                </div>
                             </div>
                         </div>
                     </div>
                     </swiper-slide>
-
-
-
-
-                    <!-- <swiper-slide >
-                    <div class="info-dirrections-sec__element">
-                        <img src="@/assets/images/img/dir1.jpg" alt="" class="info-dirrections-sec__element-img">
-                        <div class="info-dirrections-sec__element-wrapper">
-                            <div class="info-dirrections-sec__element-text-box">
-                                <p class="info-dirrections-sec__element-title">HoReCa</p>
-                                <p class="info-dirrections-sec__element-text">Нажмите, чтобы узнать, какие задачи мы помогаем решить в этом сегменте</p>
-                            </div>
-                        </div>
-                    </div>
-                    </swiper-slide> -->
-
-
                     
                     </swiper-container>
-
 
                     <div class="coorp-dirrections-prev custom-nav-v1" @click="swiperDirrections.prev()" >
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -274,7 +270,16 @@
         </section>
 
         
+        <!-- Подключаем компонент модалки -->
+        <PostModal
+        v-if="showModal"
+        :postData="selectedPost"
+        @close="closeModal"
+        />
+        
     </main>
+
+    
     
 </template>
 
@@ -288,6 +293,8 @@ import { ref, onMounted, onBeforeUnmount, computed, watch  } from 'vue';
 
 import formTypeAbout from '@/components/forms/form-type-about.vue'
 
+import PostModal from '@/components/PostModal.vue'
+
 
 
 
@@ -299,15 +306,76 @@ const store = useCounterStore()
 
 const route = useRoute()
 
+const router = useRouter()
+
 const curentIndexProcess = ref(null)
+
+const ytpList = ref([])
+
+const { data: popupData } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/offer?slug=${route.params.id}`)
 
 const { data: pageData } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/pages?slug=yur-litsam`)
 
+// получаем УТП
+try {
+  const mainPost = pageData.value?.[0]
+  const chitatTakzhe = mainPost?.acf?.sekcziya_napravleniya?.utp
+
+  if (Array.isArray(chitatTakzhe) && chitatTakzhe.length) {
+    const slugs = chitatTakzhe.map(obj => obj.post_name)
+
+    const promises = slugs.map(slug =>
+      fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/offer?slug=${slug}`)
+        .then(res => res.json())
+        .then(data => data?.[0] || null)
+    )
+
+    ytpList.value = await Promise.all(promises)
+
+
+  }
+} catch (error) {
+  console.error('Ошибка при загрузке рекомендованных постов:', error)
+}
+
+
+
+
+
+
 console.log('pageData', pageData)
+
+console.log('ytpList', ytpList)
+
+console.log('popupData', popupData)
+
+
+const selectedPost = ref(null)
+
+const showModal = ref(false)
 
 
 
 //METHODS 
+
+function openPost(post) {
+  selectedPost.value = post
+  showModal.value = true
+ 
+}
+
+// function openPost(post) {
+//   selectedPost.value = post
+//   showModal.value = true
+//   router.push(`/yur-litsam/post`)
+// }
+
+function closeModal() {
+  showModal.value = false
+  selectedPost.value = null
+  router.push(`/yur-litsam`)
+}
+
 
 
 function openForm(){
@@ -354,7 +422,7 @@ const swiperDirrections = useSwiper(coorpDirrectionsSlider, {
 //HOOKS
 onMounted(() => {
   // Добавляем обработчик события scroll
-
+   openPost(popupData.value[0])
   
 });
 
@@ -363,42 +431,47 @@ onBeforeUnmount(() => {
 });
 
 
+// definePageMeta({
+//   pageTransition: false
+// })
+
+
 //SEO
-useHead({
-    title: pageData.value[0].acf.seo_title || pageData.value[0].title.rendered,
+ useHead({
+    title: popupData.value[0].acf.seo_title || popupData.value[0].title.rendered,
     meta: [
         // Description
-        { name: 'description', content: pageData.value[0].acf.seo_description || 'Описание по умолчанию' },
+        { name: 'description', content: popupData.value[0].acf.seo_description || 'Описание по умолчанию' },
 
         // Keywords (опционально, не влияет сильно на SEO)
-        { name: 'keywords',  content: pageData.value[0].acf.klyuchevaya_fraza || 'test' },
+        { name: 'keywords',  content: popupData.value[0].acf.klyuchevaya_fraza || 'test' },
 
         // OpenGraph
-        { property: 'og:title', content: pageData.value[0].acf.seo_title },
-        { property: 'og:description', content: pageData.value[0].acf.seo_description },
+        { property: 'og:title', content: popupData.value[0].acf.seo_title },
+        { property: 'og:description', content: popupData.value[0].acf.seo_description },
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: `${store.domainUrlCurrent}${route.fullPath}` },
-        { property: 'og:image', content: pageData.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
+        { property: 'og:image', content: popupData.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
 
         // Twitter Card (если используешь)
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: pageData.value[0].acf.seo_title },
-        { name: 'twitter:description', content: pageData.value[0].acf.seo_description },
-        { name: 'twitter:image', content: pageData.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
+        { name: 'twitter:title', content: popupData.value[0].acf.seo_title },
+        { name: 'twitter:description', content: popupData.value[0].acf.seo_description },
+        { name: 'twitter:image', content: popupData.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
 
         // Индексация / Деиндексация
         // Например, noindex для черновика:
         {
         name: 'robots',
         content:
-            pageData.value[0].acf.indeksacziya_v_poiskovyh_sistemah === 'index'
+            popupData.value[0].acf.indeksacziya_v_poiskovyh_sistemah === 'index'
             ? 'index, follow'
             : 'noindex, nofollow'
         }
     ],
     link: [
         // Canonical (вручную или динамически)
-        { rel: 'canonical', href: `${store.domainUrlCurrent}/blog/categories/${pageData.value[0].acf.canonical || route.params.id}` }
+        { rel: 'canonical', href: `${store.domainUrlCurrent}/blog/categories/${popupData.value[0].acf.canonical || route.params.id}` }
     ]
 })
 </script>
