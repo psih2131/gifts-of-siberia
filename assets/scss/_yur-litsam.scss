@@ -1624,10 +1624,6 @@
         padding: 25px;
     }
 
-    .info-hero-sec__bg {
-        display: none;
-    }
-
     .info-hero-sec__text-box {
         width: 100%;
     }
@@ -1740,6 +1736,431 @@
 
     .asorti-slider-big__element-img {
         height: 480px;
+    }
+
+    .info-hero-sec__title {
+        font-size: 34px;
+    }
+
+    .info-hero-sec__text-box {
+        width: 70%;
+    }
+
+    .info-hero-sec__text {
+        p {
+            font-size: 16px;
+        }
+
+        ul {
+            li {
+                font-size: 16px;
+            }
+        }
+    }
+
+    .btn-request {
+        padding: 15px 45px;
+
+        span {
+            font-size: 16px;
+        }
+
+        svg {
+            width: 20px;
+        }
+    }
+
+    .info-hero-sec__wrapper--yr-lica {
+        .info-hero-sec__bg {
+            height: 650px;
+            top: -50px;
+            left: 700px;
+        }
+    }
+
+    .info-hero-sec__wrapper {
+        margin-top: 40px;
+        border-radius: 30px;
+    }
+
+    .info-hero-sec {
+        padding-top: 40px;
+        padding-bottom: 80px;
+    }
+
+    .info-sec-title {
+        font-size: 34px;
+    }
+
+    .info-advantages-sec__wrapper {
+        margin-top: 35px;
+    }
+
+    .info-advantages-sec__element-text {
+        font-size: 16px;
+    }
+
+    .info-advantages-sec__element-title {
+        font-size: 20px;
+        width: calc(100% - 30px);
+        padding-left: 15px;
+    }
+
+    .info-advantages-sec__element-icon {
+        width: 30px;
+    }
+
+    .info-advantages-sec__element {
+        border-radius: 30px;
+    }
+
+    .info-advantages-sec__element-wrapper {
+        border-radius: 28px;
+    }
+
+    .info-advantages-sec {
+        padding-bottom: 70px;
+    }
+
+    .info-dirrections-sec {
+        padding: 60px 0;
+    }
+
+    .info-dirrections-sec__element {
+        border-radius: 25px;
+        height: 450px;
+    }
+
+    .info-dirrections-sec__element-text {
+        margin-top: 15px;
+        font-size: 14px;
+        line-height: 1.2;
+    }
+
+    .info-dirrections-sec__element-title {
+        line-height: 1.2;
+        font-size: 17px;
+    }
+
+    .info-dirrections-sec__element-text-box {
+        padding: 0 20px 20px 20px;
+    }
+
+    .info-dirrections-sec__element-btn {
+        padding: 8px;
+        font-size: 14px;
+
+        svg {
+            width: 20px;
+        }
+    }
+
+    .info-close-sec {
+        padding: 80px 0;
+    }
+
+    .info-close-sec__row {
+        margin-top: 30px;
+    }
+
+    .info-close-sec__element {
+        height: 390px;
+        border-radius: 25px;
+    }
+
+    .info-close-sec__element-text-wrapper {
+        padding: 30px;
+    }
+
+    .info-close-sec__element-title {
+        font-size: 22px;
+        line-height: 1;
+    }
+
+    .info-close-sec__element-text {
+        font-size: 16px;
+    }
+
+    .info-how-take-sec__subtitle {
+        font-size: 16px;
+    }
+
+    .info-how-take-sec__element {
+        border-radius: 20px;
+    }
+
+    .info-how-take-sec {
+        padding-bottom: 60px;
+    }
+
+    .info-form-sec__img {
+        height: 500px;
+        border-radius: 30px;
+    }
+
+    .info-form-sec__wrapper {
+        border-radius: 30px;
+    }
+
+    .info-form-sec__form-inp {
+        input {
+            padding: 15px 20px;
+        }
+    }
+
+    .coorp-hero-sec .info-hero-sec__wrapper {
+        padding: 40px 30px;
+    }
+
+    .info-hero-sec__wrapper-coorp-gifts .info-hero-sec__bg {
+        width: 660px;
+        left: 578px;
+        top: -32px;
+    }
+
+    .info-hero-sec__wrapper {
+        min-height: 200px;
+    }
+
+    .coorp-dirrections-sec .info-dirrections-sec__element-text {
+        font-size: 16px;
+    }
+
+    .export-hero-sec .info-hero-sec__wrapper {
+        padding: 40px 30px;
+    }
+
+    .info-hero-sec__wrapper--export .info-hero-sec__bg {
+        width: 800px;
+        left: 653px;
+        width: 800px;
+        top: -132px;
+    }
+
+    .export-dirrections-sec {
+        padding-top: 0;
+        padding-bottom: 80px;
+    }
+
+    .info-numbers-sec__element-num {
+        font-size: 80px;
+    }
+
+    .info-numbers-sec__element-title {
+        font-size: 16px;
+    }
+
+    .info-numbers-sec__element-sutitle {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .info-numbers-sec__element {
+        width: calc(20% - 15px);
+    }
+
+    .info-numbers-sec {
+        padding: 60px 0;
+    }
+
+    .export-dirrections-sec {
+        .info-dirrections-sec__element-title {
+            font-size: 20px;
+        }
+    }
+
+    .info-sertificat-sec__info-wrapper-title {
+        font-size: 34px;
+    }
+
+    .info-sertificat-sec__body {
+        font-size: 16px;
+    }
+
+    .info-sertificat-sec__img {
+        width: 500px;
+    }
+
+    .info-sertificat-sec__info-wrapper {
+        width: calc(100% - 500px);
+        padding-top: 21px;
+    }
+
+    .info-sertificat-sec__info-wrapper-btn {
+        align-items: center;
+        border-radius: 14px;
+
+        span {
+            font-size: 16px;
+            line-height: 1;
+
+        }
+    }
+
+    .export-form-sec .info-form-sec__img {
+        height: 670px;
+    }
+
+    .info-form-sec__form-inp textarea {
+        padding: 15px 20px;
+        font-size: 16px;
+    }
+
+    .prem-hero-sec {
+        .info-hero-sec__wrapper {
+            padding: 30px;
+            min-height: 200px;
+        }
+
+        .info-hero-sec__text-box {
+            width: 70%;
+        }
+    }
+
+    .info-hero-sec__wrapper--prep-teas .info-hero-sec__bg {
+        width: 700px;
+        left: 684px;
+        top: -92px;
+    }
+
+    .info-benefits-sec__subtitle {
+        font-size: 16px;
+    }
+
+    .info-benefits-sec__card {
+        width: calc(25% - 10px);
+        margin: 0 5px;
+        padding: 10px;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .info-benefits-sec__card-img {
+        height: 170px;
+        border-radius: 10px;
+    }
+
+    .info-benefits-sec__card-title {
+        font-size: 20px;
+        margin-top: 15px;
+    }
+
+    .info-benefits-sec__card-text {
+        font-size: 14px;
+    }
+
+    .info-benefits-sec {
+        padding-bottom: 80px;
+    }
+
+    .info-asortiment-sec {
+        padding: 60px 0;
+    }
+
+    .asorti-slider-big__element-img {
+        border-radius: 25px;
+    }
+
+    .asorti-slider__element-title {
+        font-size: 45px;
+    }
+
+    .asorti-slider__element-img {
+        height: 120px;
+    }
+
+    .asorti-next,
+    .asorti-prev {
+        bottom: 40px;
+    }
+
+    .info-asortiment-sec__col-info-text {
+        font-size: 16px;
+    }
+
+    .info-factory-sec {
+        padding: 80px 0;
+    }
+
+    .info-factory-sec__subtitle {
+        font-size: 16px;
+        width: 100%;
+    }
+
+    .premium-form-sec {
+        padding-bottom: 80px;
+    }
+
+    .extract-hero-sec .info-hero-sec__wrapper {
+        padding: 30px;
+    }
+
+    .extract-hero-sec .info-hero-sec__text-box {
+        width: 70%;
+    }
+
+    .info-hero-sec__wrapper--extract .info-hero-sec__bg {
+        width: 800px;
+        left: 709px;
+        top: -130px;
+    }
+
+    .info-what-extract-sec__text {
+        p {
+            font-size: 16px;
+        }
+
+        ul {
+            li {
+                font-size: 16px;
+            }
+        }
+    }
+
+    .info-what-extract-sec__slider {
+        border-radius: 30px;
+        margin-top: 57px;
+    }
+
+    .info-what-extract-sec .info-benefits-sec__row {
+        margin-top: 60px;
+    }
+
+    .info-what-extract-sec {
+        padding-bottom: 80px;
+    }
+
+    .extract-how-crate-sec {
+        padding-top: 0;
+        padding-bottom: 80px;
+    }
+
+    .info-extract-video-sec {
+        padding: 80px 0;
+    }
+
+    .gift-sets-hero-sec .info-hero-sec__wrapper {
+        min-height: 200px;
+        padding: 30px;
+    }
+
+    .info-hero-sec__wrapper--gift-sets .info-hero-sec__bg {
+        width: 650px;
+        left: 684px;
+        top: -93px;
+    }
+
+    .info-benefits-sec {
+        padding-bottom: 65px;
+    }
+
+    .img-slider__element {
+        border-radius: 30px;
+        height: 360px;
+    }
+
+    .info-img-slider-sec {
+        padding-bottom: 80px;
     }
 }
 
@@ -3056,5 +3477,9 @@
         swiper-container::part(pagination) {
             display: none;
         }
+    }
+
+    .info-hero-sec__text-box {
+        width: 100%;
     }
 }

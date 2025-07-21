@@ -137,6 +137,25 @@
     }
 }
 
+@media only screen and (max-width: 1520px) {
+    .form-popup {
+        width: 500px;
+        padding: 40px;
+        border-radius: 30px;
+    }
+
+    .info-form-sec__form-inp-btn-v2 {
+        font-size: 18px;
+        padding: 15px 0;
+    }
+
+    .info-form-sec__form-subtitle {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+
+}
+
 @media only screen and (max-width: 1220px) {
     .serteficat-popup__wrapper {
         height: 100%;
@@ -147,6 +166,8 @@
         }
     }
 }
+
+
 
 @media only screen and (max-width: 760px) {
     .serteficat-popup__wrapper {

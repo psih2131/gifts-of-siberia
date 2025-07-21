@@ -147,3 +147,57 @@
     top: 30px;
     right: 30px;
 }
+
+
+
+
+
+@media only screen and (max-width: 1750px) {}
+
+@media only screen and (max-width: 1520px) {
+    .modal-content__header-img {
+        width: 200px;
+    }
+
+    .modal-content__title {
+        font-size: 34px;
+        margin-bottom: 10px;
+    }
+
+    .modal-content__subtitle {
+        font-size: 16px;
+    }
+
+    .modal-content__advantages-element-wrapper {
+        padding: 25px;
+    }
+
+    .modal-content__advantages-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .modal-content__advantages-subtitle {
+        font-size: 16px;
+    }
+
+    .modal-content__use-title {
+        font-size: 34px;
+    }
+
+    .modal-content__advantages-element {
+        border-radius: 25px;
+    }
+
+    .modal-content__advantages-element-wrapper {
+        border-radius: 23px;
+    }
+
+    .modal-content {
+        border-radius: 30px;
+    }
+}
+
+@media only screen and (max-width: 1220px) {}
+
+@media only screen and (max-width: 760px) {}

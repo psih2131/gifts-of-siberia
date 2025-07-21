@@ -106,6 +106,19 @@
     .news-card__img-wrapper {
         border-radius: 15px;
     }
+
+    .news-card__title {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .news-card__description {
+        font-size: 14px;
+    }
+
+    .news-card__header {
+        margin-top: 10px;
+    }
 }
 
 @media only screen and (max-width: 760px) {

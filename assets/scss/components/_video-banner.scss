@@ -30,12 +30,23 @@
 @media only screen and (max-width: 1520px) {
     .video-wrapper {
         border-radius: 30px;
+        height: 336px;
+    }
+
+    .video-wrapper__play-icon {
+        width: 63px;
+
+        svg {
+            width: 100%;
+            height: auto;
+        }
     }
 }
 
 @media only screen and (max-width: 1220px) {
     .video-wrapper {
-        height: 350px;
+        height: 250px;
+        border-radius: 20px;
     }
 
     .video-wrapper__play-icon {

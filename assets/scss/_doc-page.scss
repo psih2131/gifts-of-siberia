@@ -59,3 +59,62 @@
         }
     }
 }
+
+
+@media only screen and (max-width: 1750px) {}
+
+@media only screen and (max-width: 1520px) {
+    .doc-page-sec__title {
+        font-size: 34px;
+    }
+
+    .doc-page-sec {
+        padding-top: 40px;
+    }
+}
+
+@media only screen and (max-width: 1220px) {
+    .doc-page-sec__title {
+        font-size: 32px;
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    .doc-page-sec__title {
+        font-size: 20px;
+        margin-top: 20px;
+    }
+
+    .doc-wp-editor {
+        p {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        ul {
+            margin-bottom: 15px;
+
+            li {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .doc-page-sec {
+        padding-top: 20px;
+        padding-bottom: 40px;
+    }
+
+
+
+}
