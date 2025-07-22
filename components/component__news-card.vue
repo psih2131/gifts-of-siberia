@@ -19,8 +19,11 @@
         </p>
 
         <p class="news-card__description">{{ postData.acf.korotkoe_opisanie_dlya_kartochki_posta }}</p>
-
-        <NuxtLink class="news-card__mob-btn" :to="`/blog/posts/${postData.slug}`" >Читать статью</NuxtLink>
+        
+        <div class="news-card__mob-btn-wrapper">
+            <NuxtLink class="news-card__mob-btn" :to="`/blog/posts/${postData.slug}`" >Читать статью</NuxtLink>
+        </div>
+        
         
     </div>
 </template>

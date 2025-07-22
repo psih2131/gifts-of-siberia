@@ -198,6 +198,135 @@
     }
 }
 
-@media only screen and (max-width: 1220px) {}
+@media only screen and (max-width: 1220px) {
+    .modal-content {
+        width: 750px;
+    }
 
-@media only screen and (max-width: 760px) {}
+    .modal-content__container {
+        padding: 30px;
+    }
+
+    .modal-content__title {
+        font-size: 25px;
+    }
+
+    .modal-content__subtitle {
+        font-size: 14px;
+    }
+
+    .modal-content__header-img {
+        width: 150px;
+    }
+
+    .modal-close {
+        position: absolute;
+        cursor: pointer;
+        z-index: 15;
+        top: 15px;
+        right: 15px;
+    }
+
+    .modal-content__body {
+        padding-top: 20px;
+    }
+
+    .modal-content__advantages-element-wrapper {
+        padding: 20px;
+    }
+
+    .modal-content__advantages-subtitle {
+        font-size: 14px;
+    }
+
+    .modal-content__advantages-title {
+        font-size: 18px;
+    }
+
+
+    .modal-content__use-wrapper {
+        padding-left: 20px;
+    }
+
+    .modal-content__use {
+        margin-top: 50px;
+    }
+
+    .modal-content__use-title {
+        font-size: 25px;
+    }
+
+    .modal-content__use-wrapper {
+
+        column-gap: 25px;
+    }
+
+    .modal-content__use-element {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    .modal-content {
+        width: 350px;
+        border-radius: 20px;
+
+    }
+
+    .modal-content__container {
+        padding: 30px 20px;
+    }
+
+    .modal-content__header {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .modal-content__title {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .modal-content__header-text {
+        order: 2;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .modal-content__subtitle {
+        text-align: center;
+    }
+
+    .modal-content__advantages-element {
+        width: 100%;
+        border-radius: 20px;
+    }
+
+    .modal-content__advantages-element-wrapper {
+        border-radius: 18px;
+    }
+
+    .modal-content__use-title {
+        font-size: 20px;
+    }
+
+    .modal-content__use-wrapper {
+        column-count: 1;
+        column-gap: 0;
+        padding-left: 20px;
+    }
+
+    .modal-content__footer-img {
+        width: calc(100% + 40px);
+        margin-left: -20px;
+        display: block;
+        position: relative;
+        z-index: 10;
+    }
+
+    .modal-content__footer-bg {
+        left: -20px;
+        width: calc(100% + 40px);
+        bottom: -30px;
+    }
+}

@@ -2162,6 +2162,49 @@
     .info-img-slider-sec {
         padding-bottom: 80px;
     }
+
+    .about-hero-sec .info-hero-sec__wrapper {
+        padding: 30px;
+        min-height: 300px;
+    }
+
+    .about-hero-sec .info-hero-sec__text-box {
+        width: 70%;
+    }
+
+    .info-hero-sec__wrapper--about .info-hero-sec__bg {
+        width: 700px;
+        left: 655px;
+        top: -185px;
+    }
+
+    .info-mission-sec {
+        padding-bottom: 80px;
+    }
+
+    .info-video-about-sec {
+        padding-bottom: 0;
+    }
+
+    .about-close-sec {
+        .info-close-sec__row {
+            margin-top: 0;
+        }
+    }
+
+    .info-close-sec__element-btn {
+        font-size: 16px;
+        padding: 15px;
+        line-height: 1;
+    }
+
+    .info-mission-sec__element {
+        border-radius: 30px;
+    }
+
+    .info-mission-sec__element-wrapper {
+        border-radius: 28px;
+    }
 }
 
 @media only screen and (max-width: 1220px) {
@@ -2601,7 +2644,135 @@
         width: 100%;
         padding-left: 0;
     }
+
+
+
+    .info-hero-sec__wrapper--about .info-hero-sec__bg {
+        width: 606px;
+        left: 388px;
+        top: -170px;
+    }
+
+    .info-close-sec__element-text {
+        font-size: 14px;
+    }
+
+    .info-close-sec__element {
+        height: 320px;
+    }
+
+    .info-sertificat-sec__info-wrapper {
+        padding-top: 0;
+    }
+
+    .info-hero-sec__wrapper--yr-lica .info-hero-sec__bg {
+        height: 650px;
+        top: -18px;
+        left: 378px;
+    }
+
+    .info-advantages-sec {
+        padding-bottom: 50px;
+    }
+
+    .info-how-take-sec {
+        padding-bottom: 50px;
+    }
+
+    .export-hero-sec .info-hero-sec__wrapper {
+        padding: 30px;
+
+        .info-hero-sec__text-box {
+            padding: 0;
+        }
+    }
+
+    .info-hero-sec__wrapper--export .info-hero-sec__bg {
+        width: 800px;
+        left: 386px;
+        width: 629px;
+        top: -22px;
+    }
+
+    .export-hero-sec {
+        padding-bottom: 0;
+    }
+
+    .coorp-hero-sec {
+        .info-hero-sec__wrapper {
+            padding: 30px;
+        }
+
+        .info-hero-sec__text-box {
+            padding: 0;
+        }
+    }
+
+    .info-hero-sec__wrapper-coorp-gifts .info-hero-sec__bg {
+        width: 437px;
+        left: 468px;
+        top: 57px;
+    }
+
+    .prem-hero-sec .info-hero-sec__wrapper {
+        padding: 30px;
+    }
+
+    .info-hero-sec__text-box {
+        padding: 0;
+    }
+
+    .info-hero-sec__wrapper--prep-teas .info-hero-sec__bg {
+        width: 612px;
+        left: 386px;
+        top: -7px;
+    }
+
+    .info-benefits-sec__card {
+
+        width: calc(50% - 10px);
+
+    }
+
+    .info-other-prod-sec {
+        .info-form-sec__down-text {
+            margin-top: 20px;
+        }
+    }
+
+    .info-asortiment-sec__col-info-down {
+        margin-top: 30px;
+    }
+
+    .extract-hero-sec .info-hero-sec__wrapper {
+        padding: 30px;
+    }
+
+    .info-hero-sec__wrapper--extract .info-hero-sec__bg {
+        width: 700px;
+        left: 409px;
+        top: -38px;
+    }
+
+    .gift-sets-hero-sec .info-hero-sec__wrapper {
+        padding: 30px;
+    }
+
+    .info-hero-sec__wrapper--gift-sets .info-hero-sec__bg {
+        width: 611px;
+        left: 361px;
+        top: -12px;
+    }
 }
+
+
+
+
+
+
+
+
+
 
 @media only screen and (max-width: 760px) {
     .info-hero-sec {
@@ -3480,6 +3651,56 @@
     }
 
     .info-hero-sec__text-box {
+        width: 100%;
+    }
+
+    .coorp-hero-sec .info-hero-sec__wrapper {
+        padding: 0;
+
+    }
+
+    .coorp-hero-sec .info-hero-sec__text-box {
+        padding: 15px 12px 160px 12px;
+    }
+
+    .export-hero-sec .info-hero-sec__wrapper {
+        padding: 15px 12px 292px 12px;
+    }
+
+    .prem-hero-sec .info-hero-sec__text-box {
+        width: 100%;
+        padding: 0;
+    }
+
+    .prem-hero-sec .info-hero-sec__wrapper {
+        padding: 15px 12px 250px 12px;
+    }
+
+    .extract-hero-sec .info-hero-sec__text-box {
+        width: 100%;
+        padding: 0;
+    }
+
+    .extract-hero-sec .info-hero-sec__wrapper {
+        padding: 15px 12px 230px 12px;
+    }
+
+    .extract-hero-sec .info-hero-sec__bg {
+        width: 492px;
+        bottom: -119px;
+        left: -38px;
+        top: auto;
+    }
+
+    .gift-sets-hero-sec .info-hero-sec__wrapper {
+        padding: 15px 12px 276px 12px;
+    }
+
+    .info-hero-sec__wrapper--gift-sets .info-hero-sec__text-box {
+        padding: 0;
+    }
+
+    .about-hero-sec .info-hero-sec__text-box {
         width: 100%;
     }
 }

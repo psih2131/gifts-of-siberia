@@ -6,7 +6,7 @@
                 <div class="breadcrumbs">
                     <NuxtLink class="breadcrumbs__link" to="/">Главная /</NuxtLink>
                     <NuxtLink class="breadcrumbs__link" to="/products">Продукция /</NuxtLink>
-                    <span class="breadcrumbs__text">{{ object_data_single[0].title.rendered }}</span>
+                    <span class="breadcrumbs__text" v-html="object_data_single[0].title.rendered"></span>
                 </div>
 
                 <div class="product-hero-sec__wrapper">
@@ -82,7 +82,7 @@
                     
 
                     <div class="product-hero-sec__info">
-                        <h1 class="product-hero-sec__title">{{ object_data_single[0].title.rendered }}</h1>
+                        <h1 class="product-hero-sec__title" v-html="object_data_single[0].title.rendered"></h1>
                         <ul class="product-hero-sec__info-list" v-if="object_data_single[0]?.acf?.spisok_izobrazhenij_soderzhimogo">
 
                             <li class="product-hero-sec__info-list-element" v-for="item in object_data_single[0].acf.spisok_izobrazhenij_soderzhimogo" :key="item">
