@@ -21,12 +21,14 @@
                             <ul class="header-navigation-mobile__li-sub-meny">
 
                                 <li class="header-navigation-mobile__li-sub-meny-element">
-                                    <NuxtLink to="/about-company"  @click="closeMobNav()" class="header-navigation-mobile__li-sub-meny-element-link">О компании</NuxtLink>
+                                    <NuxtLink to="/" @click="closeMobNav()"  class="header-navigation-mobile__li-sub-meny-element-link">Главная</NuxtLink>
                                 </li>
 
                                 <li class="header-navigation-mobile__li-sub-meny-element">
-                                    <NuxtLink to="/contacts" @click="closeMobNav()"  class="header-navigation-mobile__li-sub-meny-element-link">Контакты</NuxtLink>
+                                    <NuxtLink to="/about-company"  @click="closeMobNav()" class="header-navigation-mobile__li-sub-meny-element-link">О компании</NuxtLink>
                                 </li>
+
+                                
                             </ul>
                         </SlideUpDown>
                     
@@ -139,12 +141,13 @@
                         <ul class="sub-meny">
 
                             <li class="sub-meny__element">
-                                <NuxtLink to="/about-company"  class="sub-meny__element-link">О компании</NuxtLink>
+                                <NuxtLink to="/"  class="sub-meny__element-link">Главная</NuxtLink>
                             </li>
 
                             <li class="sub-meny__element">
-                                <NuxtLink to="/contacts"  class="sub-meny__element-link">Контакты</NuxtLink>
+                                <NuxtLink to="/about-company"  class="sub-meny__element-link">О компании</NuxtLink>
                             </li>
+                            
                         </ul>
                     </li>
                     <li class="header-nav__list-element header-nav__list-element--have-children">

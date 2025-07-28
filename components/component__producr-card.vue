@@ -6,11 +6,15 @@
                 <NuxtLink class="product-card__img-wrapper" :to="`/products/product/${productData.slug}`">
                     <div class="product-card__ingridients" v-if="productData?.acf?.spisok_izobrazhenij_soderzhimogo">
 
-                        <div class="product-card__ingridient" v-for="item in productData.acf.spisok_izobrazhenij_soderzhimogo" :key="item">
-                            <img v-for="image in item.izobrazhenie" :key="image"
+                        <template v-for="item in productData.acf.spisok_izobrazhenij_soderzhimogo" :key="item">
+                            <div class="product-card__ingridient" v-for="image in item.izobrazhenie" :key="image">
+                            <img 
                             :src="image.img.url" 
                             class="product-card__ingridient-img" :alt="image.img.alt">
                         </div>
+                        </template>
+
+                        
 
                     </div>
 

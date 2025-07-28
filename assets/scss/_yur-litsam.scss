@@ -450,19 +450,19 @@
 }
 
 .info-close-sec__element-title {
-    font-size: 24px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 500;
     line-height: 120%;
     color: #fff;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .info-close-sec__element-text {
-    font-size: 18px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 140%;
+    line-height: 120%;
     color: #fff;
 }
 
@@ -736,10 +736,12 @@
 .info-numbers-sec__element-num {
     font-size: 128px;
     font-style: normal;
-    font-weight: 400;
-    line-height: 100%;
+    font-weight: 600;
+    line-height: 120%;
+    /* 153.6px */
+    letter-spacing: -6px;
     color: $goldV1;
-    font-family: $fontNum;
+
 }
 
 .export-close-sec {
@@ -1869,16 +1871,17 @@
     }
 
     .info-close-sec__element-text-wrapper {
-        padding: 30px;
+        padding: 25px;
     }
 
     .info-close-sec__element-title {
-        font-size: 22px;
+        font-size: 18px;
         line-height: 1;
     }
 
     .info-close-sec__element-text {
-        font-size: 16px;
+        font-size: 14px;
+        line-height: 1.3;
     }
 
     .info-how-take-sec__subtitle {
@@ -1971,6 +1974,7 @@
 
     .info-sertificat-sec__info-wrapper-title {
         font-size: 34px;
+        margin-right: 0;
     }
 
     .info-sertificat-sec__body {
@@ -2297,15 +2301,15 @@
     }
 
     .info-close-sec__element-text-wrapper {
-        padding: 30px 15px;
+        padding: 25px 15px;
     }
 
     .info-close-sec__element-title {
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .info-close-sec__element-text {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .info-close-sec__element {
@@ -2654,7 +2658,11 @@
     }
 
     .info-close-sec__element-text {
-        font-size: 14px;
+        font-size: 12px;
+    }
+
+    .info-close-sec__element-title {
+        font-size: 16px;
     }
 
     .info-close-sec__element {
@@ -3137,7 +3145,7 @@
     }
 
     .info-numbers-sec__element-num {
-        font-size: 96px;
+        font-size: 70px;
     }
 
     .info-numbers-sec__element-title {

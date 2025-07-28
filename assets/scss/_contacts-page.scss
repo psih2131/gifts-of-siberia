@@ -26,6 +26,7 @@
 
 .contacts-sec__claster {
     margin-top: 100px;
+
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -110,7 +111,11 @@
 
     .contacts-sec {
         padding-top: 40px;
-        padding-bottom: 40px;
+        padding-bottom: 50px;
+    }
+
+    .contacts-sec__claster {
+        margin-top: 50px;
     }
 
     .contacts-sec__subtitle {
