@@ -72,11 +72,7 @@
 
                         <p class="products-aside__title">Категории товаров</p>
 
-                        <customCheckbox :title="'Чаи из чаги'" />
-
-                        <customCheckbox :title="'Экстракты чаги'" />
-
-                        <customCheckbox :title="'Подарочные наборы'" />
+                        <customCheckbox v-for="item in all_categories_filtr" :key="item" :title="item.name" :catData="item" @currentSelect="filtrCateforyValidation"/>
 
 
                         <!-- <div class="products-catalog-sec__aside-range-pc">
@@ -174,7 +170,7 @@
                                 <ul class="pagination__num-list">
                                     <li class="pagination__nam-li " v-for="(item, index) in totalPages" :key="index" :class="{'pagination__nam-li--activ' : item == currentPage }">
                                  
-                                        <NuxtLink :to="`/products/categories/${route.params.id}/?page=${item}`" >
+                                        <NuxtLink :to="`/products/sections/${route.params.id}/?page=${item}`" >
                                             {{ item }}
                                         </NuxtLink>
 
@@ -245,6 +241,8 @@ const perPage = ref(9)
 
 const totalPages = ref(null)
 
+const filtrProdCatList = ref([])
+
 const { data: current_category } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products-section?slug=${route.params.id}`)
 
 const { data: all_object, error, pending } = await useFetch(
@@ -261,6 +259,10 @@ const { data: all_object, error, pending } = await useFetch(
 })
 
 const { data: all_categories } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products-section`)
+
+const { data: all_categories_filtr } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/productsCategory`)
+
+console.log('all_categories_filtr',all_categories_filtr)
 
 console.log('current_category', current_category)
 
@@ -292,7 +294,7 @@ function nextPage(){
     }
     else{
         router.push({
-            path: '/products/categories/',
+            path: `/products/sections/${route.params.id}`,
             query: { page: +currentPage.value + 1 }
         })
     }
@@ -304,11 +306,68 @@ function prevPage(){
     }
     else{
         router.push({
-            path: '/products/categories/',
+            path: `/products/sections/${route.params.id}`,
             query: { page: +currentPage.value - 1 }
         })
     }
 }
+
+//filtr category validation
+function filtrCateforyValidation(data){
+    console.log('data', data.checked)
+    console.log('dataCat', data.dataCat)
+    
+    if(data.checked == true){
+        let objectArray = {
+            'id': data.dataCat.id,
+            'slug': data.dataCat.slug
+        }
+        filtrProdCatList.value.push(objectArray)
+    }
+    else{
+         filtrProdCatList.value = filtrProdCatList.value.filter(item => item.id !== data.dataCat.id)
+    }
+
+    console.log('filtrProdCatList.value',filtrProdCatList.value)
+
+    let changeFiltr = 'reload'
+
+    fetchCatFiltr(changeFiltr)
+
+}
+
+
+async function fetchCatFiltr(changeFiltr) {
+
+    if(changeFiltr == 'reload'){
+          currentPage.value = 1
+          router.push({
+            path: `/products/sections/${route.params.id}`,
+            query: {
+            page: 1
+            }
+        })
+    }
+
+  const selectedCategoryIds = filtrProdCatList.value.map(item => item.id)
+
+  let categoryParam = ''
+  if (selectedCategoryIds.length > 0) {
+    categoryParam = `&productsCategory=${selectedCategoryIds.join(',')}`
+  }
+
+  const url = `${store.serverUrlDomainRequest}/wp-json/wp/v2/products?products-section=${current_category.value[0].id}&page=${currentPage.value || 1}&per_page=${perPage.value}${categoryParam}`
+
+  const res = await fetch(url)
+  const data = await res.json()
+  all_object.value = data
+
+  const pages = res.headers.get('X-WP-TotalPages')
+  if (pages) totalPages.value = Number(pages)
+}
+
+
+
 
 // //banner gallery
 // const swiperHerroBanner = useSwiper(heroBannerSec, {
@@ -346,7 +405,8 @@ onMounted(async () => {
 watch(() => route.query.page, async (newPage) => {
     console.log('gg', route.query.page)
     currentPage.value = route.query.page
-    fetchClientData()
+    // fetchClientData()
+    fetchCatFiltr()
 })
 
 

@@ -56,11 +56,11 @@
 
                         <p class="products-aside__title">Категории товаров</p>
 
-                        <customCheckbox :title="'Чаи из чаги'" />
+                        <customCheckbox v-for="item in all_categories_filtr" :key="item" :title="item.name" :catData="item" @currentSelect="filtrCateforyValidation"/>
 
-                        <customCheckbox :title="'Экстракты чаги'" />
+                        <!-- <customCheckbox :title="'Экстракты чаги'" />
 
-                        <customCheckbox :title="'Подарочные наборы'" />
+                        <customCheckbox :title="'Подарочные наборы'" /> -->
 
 
                         <!-- <div class="products-catalog-sec__aside-range-pc">
@@ -218,6 +218,8 @@ const perPage = ref(9)
 
 const totalPages = ref(null)
 
+const filtrProdCatList = ref([])
+
 const { data: all_object, error, pending } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?page=${currentPage.value || 1}&per_page=${perPage.value}`, {
     onResponse({ response }) {
       const total = response.headers.get('X-WP-Total')
@@ -230,11 +232,17 @@ const { data: all_object, error, pending } = await useFetch(`${store.serverUrlDo
     },
 })
 
+
+
 const { data: all_categories } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products-section`)
 
-console.log(all_object)
+const { data: all_categories_filtr } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/productsCategory`)
 
-console.log(all_categories)
+console.log('all_categories_filtr',all_categories_filtr)
+
+console.log('all_object',all_object)
+
+console.log('all_categories',all_categories)
 
 // const heroBannerSec = ref(null)
 
@@ -244,14 +252,14 @@ console.log(all_categories)
 // //METHODS 
 
 //get posts on client side
-async function fetchClientData() {
-  const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?page=${currentPage.value || 1}&per_page=${perPage.value}`)
-  const data = await res.json()
-  all_object.value = data
+// async function fetchClientData() {
+//   const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?page=${currentPage.value || 1}&per_page=${perPage.value}`)
+//   const data = await res.json()
+//   all_object.value = data
 
-  const pages = res.headers.get('X-WP-TotalPages')
-  if (pages) totalPages.value = Number(pages)
-}
+//   const pages = res.headers.get('X-WP-TotalPages')
+//   if (pages) totalPages.value = Number(pages)
+// }
 
 //next pagin page
 function nextPage(){
@@ -277,6 +285,79 @@ function prevPage(){
         })
     }
 }
+
+
+//filtr category validation
+function filtrCateforyValidation(data){
+    console.log('data', data.checked)
+    console.log('dataCat', data.dataCat)
+    
+    if(data.checked == true){
+        let objectArray = {
+            'id': data.dataCat.id,
+            'slug': data.dataCat.slug
+        }
+        filtrProdCatList.value.push(objectArray)
+    }
+    else{
+         filtrProdCatList.value = filtrProdCatList.value.filter(item => item.id !== data.dataCat.id)
+    }
+
+    console.log('filtrProdCatList.value',filtrProdCatList.value)
+
+    let changeFiltr = 'reload'
+
+    fetchCatFiltr(changeFiltr)
+
+}
+
+
+
+
+async function fetchClientData() {
+  const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?page=${currentPage.value || 1}&per_page=${perPage.value}`)
+  const data = await res.json()
+  all_object.value = data
+
+  const pages = res.headers.get('X-WP-TotalPages')
+  if (pages) totalPages.value = Number(pages)
+}
+
+
+
+
+
+async function fetchCatFiltr(changeFiltr) {
+
+    if(changeFiltr == 'reload'){
+          currentPage.value = 1
+          router.push({
+            path: '/products',
+            query: {
+            page: 1
+            }
+        })
+    }
+
+  const selectedCategoryIds = filtrProdCatList.value.map(item => item.id)
+
+  let categoryParam = ''
+  if (selectedCategoryIds.length > 0) {
+    categoryParam = `&productsCategory=${selectedCategoryIds.join(',')}`
+  }
+
+  const url = `${store.serverUrlDomainRequest}/wp-json/wp/v2/products?page=${currentPage.value || 1}&per_page=${perPage.value}${categoryParam}`
+
+  const res = await fetch(url)
+  const data = await res.json()
+  all_object.value = data
+
+  const pages = res.headers.get('X-WP-TotalPages')
+  if (pages) totalPages.value = Number(pages)
+}
+
+
+
 
 // //banner gallery
 // const swiperHerroBanner = useSwiper(heroBannerSec, {
@@ -307,6 +388,8 @@ onMounted(async () => {
     const pages = res.headers.get('X-WP-TotalPages')
     if (pages) totalPages.value = Number(pages)
 
+    // fetchCatFiltr()
+
 
     console.log('route',route.query.page)
 })
@@ -314,7 +397,8 @@ onMounted(async () => {
 watch(() => route.query.page, async (newPage) => {
     console.log('gg', route.query.page)
     currentPage.value = route.query.page
-    fetchClientData()
+    // fetchClientData()
+    fetchCatFiltr()
 })
 
 
