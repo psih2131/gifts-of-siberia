@@ -48,6 +48,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    z-index: 10;
 }
 
 .products-catalog-sec__elements-wrapper-title {
@@ -60,55 +62,7 @@
     color: $darkBlueV1;
 }
 
-.product-search {
-    position: relative;
-    width: 327px;
-}
 
-.product-search__input-wrapepr {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
-
-.product-search__input {
-    width: 100%;
-    border: solid 1px #A0AAB8;
-    border-radius: 100px;
-    padding: 12px 40px 12px 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 100%;
-    font-size: 16px;
-    color: $darkBlueV1;
-    background: none;
-
-    &::placeholder {
-        color: #A0AAB8;
-    }
-}
-
-.product-search__start-search-btn {
-    position: absolute;
-    z-index: 5;
-    right: 16px;
-    cursor: pointer;
-    transition: all ease 0.3s;
-
-    svg {
-        display: block;
-
-        path {
-            stroke: #A0AAB8;
-        }
-    }
-
-    &:hover {
-        transform: scale(1.1);
-        transition: all ease 0.3s;
-    }
-}
 
 .products-catalog-sec__elements-wrapper-body {
     display: flex;
@@ -234,11 +188,7 @@
     color: $darkBlueV1;
 }
 
-.breadcrumbs-row-mob {
-    .product-search {
-        display: none;
-    }
-}
+
 
 .products-aside__row-mob {
     display: none;
@@ -388,35 +338,7 @@
         }
     }
 
-    .breadcrumbs-row-mob {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
 
-        .product-search {
-            display: block;
-            width: 100px;
-        }
-    }
-
-    .products-catalog-sec__elements-wrapper-search {
-        display: none;
-    }
-
-    .product-search__input {
-        padding: 5px 31px 5px 16px;
-        font-size: 10px;
-    }
-
-    .product-search__start-search-btn {
-        right: 13px;
-        width: 10px;
-
-        svg {
-            width: 100%;
-            height: auto;
-        }
-    }
 
     .breadcrumbs__link {
         font-size: 10px;

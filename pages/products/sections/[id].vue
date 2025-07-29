@@ -11,16 +11,8 @@
                         <span class="breadcrumbs__text" v-if="current_category && current_category[0]">{{current_category[0].name}}</span>
                     </div>
 
-                    <div class=" product-search">
-                        <div class="product-search__input-wrapepr">
-                            <input type="text" placeholder="Поиск" class="product-search__input">
-                            <div class="product-search__start-search-btn">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M14 14L11.1 11.1M12.6667 7.33333C12.6667 10.2789 10.2789 12.6667 7.33333 12.6667C4.38781 12.6667 2 10.2789 2 7.33333C2 4.38781 4.38781 2 7.33333 2C10.2789 2 12.6667 4.38781 12.6667 7.33333Z" stroke="#1B3762" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-
-                            </div>
-                        </div>
+                    <div class="search-mob-wrapper">
+                        <searchComponent />
                     </div>
                 </div>
                 
@@ -138,17 +130,9 @@
                     <div class="products-catalog-sec__elements-wrapper">
                         <div class="products-catalog-sec__elements-wrapper-header">
                             <h1 class="products-catalog-sec__elements-wrapper-title">{{current_category[0].name}}</h1>
-                            <div class="products-catalog-sec__elements-wrapper-search product-search">
-                                <div class="product-search__input-wrapepr">
-                                    <input type="text" placeholder="Поиск" class="product-search__input">
-                                    <div class="product-search__start-search-btn">
-                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M14 14L11.1 11.1M12.6667 7.33333C12.6667 10.2789 10.2789 12.6667 7.33333 12.6667C4.38781 12.6667 2 10.2789 2 7.33333C2 4.38781 4.38781 2 7.33333 2C10.2789 2 12.6667 4.38781 12.6667 7.33333Z" stroke="#1B3762" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
 
-                                    </div>
-                                </div>
-                            </div>
+                            <searchComponent />
+                            
                         </div>
 
                         <div class="products-catalog-sec__elements-wrapper-body">
@@ -240,8 +224,9 @@ import productCard from '@/components/component__producr-card.vue'
 
 import customCheckbox from '@/components/small/checkbox-custom.vue'
 
-import customRange from '@/components/small/range-custom.vue'
+// import customRange from '@/components/small/range-custom.vue'
 
+import searchComponent from '@/components/component__search-prod.vue'
 
 
 
