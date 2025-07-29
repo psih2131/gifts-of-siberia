@@ -133,7 +133,7 @@
                 <div class="info-sertificat-sec__info-wrapper">
                     <div class="info-sertificat-sec__info-wrapper-header">
                         <h2 class="info-sertificat-sec__info-wrapper-title" v-html="pageData[0].acf.sekcziya_5_sertifikaty.zagolovok"></h2>
-                        <a @click="openSerteficatPopup(pageData[0].acf.sekcziya_5_sertifikaty.sertifikat_pdf)" class="info-sertificat-sec__info-wrapper-btn">
+                        <a @click="openSerteficatPopup(pageData[0].acf.sekcziya_5_sertifikaty.sertifikaty)" class="info-sertificat-sec__info-wrapper-btn">
                             <span>Смотреть сертификацию компании</span>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14.2002 12.45H9.2002C8.7902 12.45 8.4502 12.11 8.4502 11.7C8.4502 11.29 8.7902 10.95 9.2002 10.95H14.2002C14.6102 10.95 14.9502 11.29 14.9502 11.7C14.9502 12.11 14.6102 12.45 14.2002 12.45Z" fill="white"/>
