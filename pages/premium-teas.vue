@@ -202,7 +202,6 @@ const asortiSlider = ref(null)
 
 const asortiSliderBig = ref(null)
 
-
 const { data: pageData } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/pages?slug=premium-teas`)
 
 // категории
@@ -233,10 +232,6 @@ try {
 console.log('pageData', pageData)
 
 
-
-
-
-
 //METHODS 
 
 const swiperAsorti = useSwiper(asortiSlider, {
@@ -253,22 +248,6 @@ const swiperAsortiBig = useSwiper(asortiSliderBig, {
    spaceBetween: 0,   
    speed: 700,
 })
-
-
-
-
-
-
-//HOOKS
-onMounted(() => {
-  // Добавляем обработчик события scroll
-
-  
-});
-
-onBeforeUnmount(() => {
-
-});
 
 
 
@@ -344,5 +323,4 @@ useHead({
   }
   
 }
-
 </style>

@@ -170,7 +170,6 @@ import { ref, onMounted, onBeforeUnmount, computed, watch  } from 'vue';
 import formTypeAbout from '@/components/forms/form-type-about.vue'
 
 
-
 //DATA
 const coorpDirrectionsSlider = ref(null)
 
@@ -222,17 +221,7 @@ const swiperDirrections = useSwiper(coorpDirrectionsSlider, {
 })
 
 
-
 //HOOKS
-onMounted(() => {
-  // Добавляем обработчик события scroll
-
-  
-});
-
-onBeforeUnmount(() => {
-
-});
 
 
 

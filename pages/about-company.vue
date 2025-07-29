@@ -24,8 +24,6 @@
             </div>
         </section>
 
-
-
         <section class="info-mission-sec ">
             <div class="container">
                 <div class="info-mission-sec__row">
@@ -51,13 +49,11 @@
             </div>
         </section>
 
-
         <section class="info-video-about-sec " v-if="pageData[0].acf.sekcziya_3_video">
             <div class="container">
                 <videoBanner :videoUrl="pageData[0].acf.sekcziya_3_video.url" />
             </div>
         </section>
-
 
         <section class="info-close-sec about-close-sec" v-if="pageData[0].acf.sekcziya_4_o_tovarah">
             <div class="container">
@@ -82,7 +78,6 @@
                
                     </div>
 
-
                     <div class="info-close-sec__element" v-if="pageData[0].acf.sekcziya_4_o_tovarah.premialnye_chai">
                         <img :src="pageData[0].acf.sekcziya_4_o_tovarah.premialnye_chai.fon.url" 
                         :alt="pageData[0].acf.sekcziya_4_o_tovarah.premialnye_chai.fon.alt" 
@@ -101,9 +96,6 @@
                         </NuxtLink>
                
                     </div>
-
-
-
 
                     <div class="info-close-sec__element" v-if="pageData[0].acf.sekcziya_4_o_tovarah.podarochnye_nabory">
                         <img :src="pageData[0].acf.sekcziya_4_o_tovarah.podarochnye_nabory.fon.url" 
@@ -128,7 +120,6 @@
             </div>
         </section>
 
-
         <section class="info-sertificat-sec about-sertificat-sec" v-if="pageData[0].acf.sekcziya_5_sertifikaty">
             <div class="container">
                 <img src="@/assets/images/img/sertificat-sec.png" alt="" class="info-sertificat-sec__img">
@@ -150,8 +141,6 @@
             </div>
         </section>
 
-
-
         <section class="info-form-sec">
             <div class="container">
                 <h2 class="info-sec-title" v-html="pageData[0].acf.sekcziya_forma.zagolovok"></h2>
@@ -168,7 +157,6 @@
                 </div>
             </div>
         </section>
-   
         
     </main>
     
@@ -198,7 +186,6 @@ const { data: pageData } = await useFetch(`${store.serverUrlDomainRequest}/wp-js
 console.log('pageData', pageData)
 
 
-
 //METHODS 
 function openSerteficatPopup(data){
  
@@ -208,19 +195,7 @@ function openSerteficatPopup(data){
 }
 
 
-
-
-
 //HOOKS
-onMounted(() => {
-  // Добавляем обработчик события scroll
-
-  
-});
-
-onBeforeUnmount(() => {
-
-});
 
 
 //SEO

@@ -133,7 +133,6 @@ import formTypeAbout from '@/components/forms/form-type-about.vue'
 import productCard from '@/components/component__producr-card.vue'
 
 
-
 //DATA
 const store = useCounterStore()
 
@@ -180,7 +179,6 @@ const swiperImgSlider = useSwiper(imgSlideBannerSec, {
    spaceBetween: 14,   
    speed: 700,
 
-
    breakpoints: {
     100: {
       slidesPerView: 1,
@@ -198,21 +196,7 @@ const swiperImgSlider = useSwiper(imgSlideBannerSec, {
 //METHODS 
 
 
-
-
-
-
 //HOOKS
-onMounted(() => {
-  // Добавляем обработчик события scroll
-
-  
-});
-
-onBeforeUnmount(() => {
-
-});
-
 
 
 //SEO

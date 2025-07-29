@@ -28,7 +28,6 @@
                     </ul>
                 </div>
 
-
             </div>
         </section>
 
@@ -42,33 +41,10 @@
 
 // import { useCounterStore } from '@/stores/counter'
 
-import { ref, onMounted, onBeforeUnmount, computed, watch  } from 'vue';
-
-
+// import { ref, onMounted, onBeforeUnmount, computed, watch  } from 'vue';
 
 //METHODS 
 
-
-
-
-
-
 //HOOKS
-onMounted(() => {
-  // Добавляем обработчик события scroll
 
-  
-});
-
-onBeforeUnmount(() => {
-
-});
-
-
-
- // props
- const props = defineProps({
-//   mainData: Object,
-      // postAllCategory: Object,
-  })
 </script>

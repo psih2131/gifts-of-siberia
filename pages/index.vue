@@ -14,7 +14,6 @@
             clickable: true
             }"
             >
-
               <swiper-slide v-for="item in frontpage[0].acf.sekcziya_1_bannera" :key="item">
                   <div class="hero-banner-slider__element">
                     <img :src="item.izobrazhenie_bannera_pk.url" :alt="item.izobrazhenie_bannera_pk.alt" class="hero-banner-slider__img">
@@ -75,7 +74,6 @@
             clickable: true
             }"
             >
-
               <swiper-slide v-for="item in frontpage[0].acf.sekcziya_3_missiya.slajder_izobrazhenij" :key="item">
                   <div class="about-home-slider__element">
                     <img :src="item.izobrazhenie.url" :alt="item.izobrazhenie.alt" class="about-home-slider__img">
@@ -172,7 +170,6 @@
         </div>
       </section>
 
-
     </main>
     
 </template>
@@ -261,11 +258,11 @@ try {
   console.error('Ошибка при загрузке рекомендованных постов:', error)
 }
 
-console.log('popularPostList', popularPostList)
+// console.log('popularPostList', popularPostList)
 
-console.log('recomendPostsList', popularProdList)
+// console.log('recomendPostsList', popularProdList)
 
-console.log('frontpage', frontpage)
+// console.log('frontpage', frontpage)
 
 
 
@@ -294,19 +291,6 @@ const swiperNews = useSwiper(newsHomeSlider, {
    spaceBetween: 10,   
    speed: 700,
 })
-
-
-//HOOKS
-onMounted(() => {
-  // Добавляем обработчик события scroll
-
-  
-});
-
-
-onBeforeUnmount(() => {
-
-});
 
 
 //SEO
@@ -351,6 +335,7 @@ useHead({
 
 
 <style >
+/* swiper custom styles */
 @media only screen and (min-width: 760px) {
    swiper-container::part(pagination) {
     opacity: 0;
@@ -359,7 +344,7 @@ useHead({
 @media only screen and (max-width: 760px) {
 
   swiper-container::part(pagination) {
-    bottom: 0px; /* если нужно сместить пагинацию */
+    bottom: 0px; 
   }
 
   swiper-container::part(bullet) {
@@ -380,5 +365,4 @@ useHead({
   }
   
 }
-
 </style>

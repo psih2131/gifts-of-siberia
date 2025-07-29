@@ -227,10 +227,6 @@ import formTypeAbout from '@/components/forms/form-type-about.vue'
 import productCard from '@/components/component__producr-card.vue'
 
 
-
-
-
-
 //DATA
 const store = useCounterStore()
 
@@ -243,7 +239,6 @@ const coorpDirrectionsSlider = ref(null)
 const recomendPostsList = ref([])
 
 const curentIndexProcess = ref(null)
-
 
 const { data: pageData } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/pages?slug=extract-chagi`)
 
@@ -273,7 +268,6 @@ try {
 }
 
 console.log('pageData', pageData)
-
 
 
 //METHODS 
@@ -315,37 +309,7 @@ const swiperDirrections = useSwiper(coorpDirrectionsSlider, {
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //HOOKS
-onMounted(() => {
-  // Добавляем обработчик события scroll
-
-  
-});
-
-onBeforeUnmount(() => {
-
-});
 
 
 

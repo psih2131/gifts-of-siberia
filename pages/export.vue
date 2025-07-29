@@ -81,7 +81,6 @@
             </div>
         </section>
 
-
         <section class="info-numbers-sec" v-if="pageData[0].acf['sekcziya_-_produkty_v_czifrah']?.zagolovok">
             <div class="container">
                 <h2 class="info-sec-title" v-html="pageData[0].acf['sekcziya_-_produkty_v_czifrah'].zagolovok"></h2>
@@ -96,8 +95,6 @@
                 </div>
             </div>
         </section>
-
-
 
         <section class="info-close-sec export-close-sec" v-if="pageData[0].acf.sekcziya_tovarah?.length">
             <div class="container">
@@ -151,9 +148,6 @@
             </div>
         </section>
 
-
-
-
         <section class="info-form-sec export-form-sec">
             <div class="container">
                 <h2 class="info-sec-title" v-html="pageData[0].acf.sekcziya_forma.zagolovok"></h2>
@@ -170,8 +164,6 @@
                 </div>
             </div>
         </section>
-
-
         
     </main>
     
@@ -188,7 +180,6 @@ import { ref, onMounted, onBeforeUnmount, computed, watch  } from 'vue';
 import formTypeExport from '@/components/forms/form-type-export.vue'
 
 
-
 //DATA
 const store = useCounterStore()
 
@@ -201,14 +192,12 @@ const { data: pageData } = await useFetch(`${store.serverUrlDomainRequest}/wp-js
 console.log('pageData', pageData)
 
 
-
 //METHODS 
 
 function openForm(){
     store.changeTrigerButtonForm('Кнопка в первой секции страницы')
     store.changePopupCurrent('popup-form')
 }
-
 
 function openSerteficatPopup(data){
     store.changeSerteficatCurrent(data)
@@ -248,16 +237,6 @@ const swiperDirrections = useSwiper(coorpDirrectionsSlider, {
 
 
 //HOOKS
-onMounted(() => {
-  // Добавляем обработчик события scroll
-
-  
-});
-
-onBeforeUnmount(() => {
-
-});
-
 
 
 //SEO

@@ -197,7 +197,15 @@
                             v-if="object_data_single[0].acf.video.tekst_nad_video"
                             v-html="object_data_single[0].acf.video.tekst_nad_video"></div>
 
-                            <videoBanner v-if="object_data_single[0].acf.video.video_fajl" :videoUrl="object_data_single[0].acf.video.video_fajl.url" />
+                            <div class="prod-video-preview">
+                                <img v-if="object_data_single[0].acf.video.oblozhka" :src="object_data_single[0].acf.video.oblozhka.url" :alt="object_data_single[0].acf.video.oblozhka.alt" class="prod-video-preview__bg" >
+                                <div class="video-wrapper__play-icon" @click="videoPlayStatus = true" >
+                                    <svg width="85" height="75" viewBox="0 0 85 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M84.4325 37.5L0.533745 74.3061V0.69392L84.4325 37.5Z" fill="white"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <!-- <videoBanner v-if="object_data_single[0].acf.video.video_fajl" :videoUrl="object_data_single[0].acf.video.video_fajl.url" /> -->
                         </template>
 
                         <template v-else>
@@ -286,9 +294,18 @@
             </div>
         </section>
 
+
+        <template v-if="object_data_single[0]?.acf?.video?.video_fajl?.url">
+            <videoPopup v-if="videoPlayStatus == true" :videoUrl="object_data_single[0].acf.video.video_fajl.url" @closePopup="closeVideo" />
+        </template>
+
     </main>
+
+    
+    
     
 </template>
+
 
 <script setup>
 
@@ -296,7 +313,9 @@
 
 import { useCounterStore } from '@/stores/counter'
 
-import videoBanner from '@/components/component__video-banner.vue'
+// import videoBanner from '@/components/component__video-banner.vue'
+
+import videoPopup from '@/components/component__video-prod-popup.vue'
 
 import productCard from '@/components/component__producr-card.vue'
 
@@ -319,6 +338,8 @@ const curentTabCounter = ref(1)
 const nprodHomeSlider = ref(null)
 
 const recomendPostsList = ref([])
+
+const videoPlayStatus = ref(false)
 
 
 // товар
@@ -410,6 +431,11 @@ function getCurrentCat(itemID){
 function openFormPopup(){
     store.changeTrigerButtonForm('кнопка внутри товара в первой секции')
     store.changePopupCurrent('popup-form')
+}
+
+//close video
+function closeVideo(){
+    videoPlayStatus.value = false
 }
 
 

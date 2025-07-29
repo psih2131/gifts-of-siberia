@@ -73,7 +73,6 @@
 
                         </ul>
 
-
                           <div class="footer__top-social-row">
                             <template v-if="pageData[0].acf.spisok_socz_setej_v_podvale?.length">
                                  <a v-for="item in pageData[0].acf.spisok_socz_setej_v_podvale" :key="item" 
@@ -88,8 +87,6 @@
                     </div>
                     <img :src="pageData[0].acf.kartinka.url" :alt="pageData[0].acf.kartinka.url" class="contacts-sec__img">
                 </div>
-
-         
 
             </div>
         </section>
@@ -122,14 +119,7 @@ console.log('pageData', pageData)
 
 
 //HOOKS
-onMounted(() => {
-  // Добавляем обработчик события scroll
-});
-
-onBeforeUnmount(() => {
-
-});
-
+s
 
 //SEO
 useHead({
