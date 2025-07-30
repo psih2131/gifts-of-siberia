@@ -377,6 +377,25 @@
     border-radius: 40px;
     overflow: hidden;
     position: relative;
+
+
+
+}
+
+.info-close-sec__element--anim {
+    &:hover {
+        .info-close-sec__element-text-wrapper {
+            background: $darkBlueV1;
+        }
+
+        .info-close-sec__element-full-text {
+            transform: translateX(0);
+        }
+
+        .info-close-sec__element-text {
+            opacity: 0;
+        }
+    }
 }
 
 .info-close-sec__element-bg {
@@ -393,8 +412,10 @@
     left: 0;
     top: 0;
     width: 100%;
+    height: 100%;
     padding: 42px 34px;
     z-index: 5;
+    transition: all ease 0.3s;
 }
 
 .info-close-sec__element-btn {
@@ -462,8 +483,25 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 120%;
+    line-height: 140%;
     color: #fff;
+    transition: all ease 0.3s;
+}
+
+.info-close-sec__element-full-text {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    color: #fff;
+    position: absolute;
+    top: 74px;
+    transition: all ease 0.3s;
+    // opacity: 0;
+    left: 0;
+    transform: translateX(100%);
+    padding-left: 34px;
+    padding-right: 34px;
 }
 
 .info-how-take-sec {
@@ -1881,7 +1919,7 @@
 
     .info-close-sec__element-text {
         font-size: 14px;
-        line-height: 1.3;
+
     }
 
     .info-how-take-sec__subtitle {
@@ -2208,6 +2246,22 @@
 
     .info-mission-sec__element-wrapper {
         border-radius: 28px;
+    }
+
+
+
+    .info-close-sec__element-full-text {
+        font-size: 13px;
+        padding-left: 25px;
+        padding-right: 25px;
+        top: 52px;
+        // transform: translateX(0);
+        // opacity: 1;
+
+    }
+
+    .info-close-sec__element {
+        height: 440px;
     }
 }
 
@@ -2771,6 +2825,26 @@
         left: 361px;
         top: -12px;
     }
+
+
+    .info-close-sec__element--anim {
+
+
+
+        &:hover {
+            .info-close-sec__element-text-wrapper {
+                background: none;
+            }
+
+            .info-close-sec__element-full-text {
+                transform: translateX(100%);
+            }
+
+            .info-close-sec__element-text {
+                opacity: 1;
+            }
+        }
+    }
 }
 
 
@@ -3003,7 +3077,7 @@
         font-size: 12px;
         font-style: normal;
         font-weight: 400;
-        line-height: 140%;
+
         max-width: 250px;
     }
 

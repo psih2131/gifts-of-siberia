@@ -95,7 +95,7 @@
                     >
 
                     <swiper-slide v-for="(item, index) in pageData[0].acf['sekcziya_-_kak_sozdaetsya'].etapy" :key="index">
-                    <div class="info-dirrections-sec__element" @click="curentIndexProcess = index" 
+                    <div class="info-dirrections-sec__element" @mouseenter="curentIndexProcess = index" 
                     :class="{'info-dirrections-sec__element--activ': curentIndexProcess == index}">
                         <img :src="item.fon.url" :alt="item.fon.alt" class="info-dirrections-sec__element-img">
                         <div class="info-dirrections-sec__element-wrapper">

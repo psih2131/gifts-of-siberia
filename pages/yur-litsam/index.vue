@@ -77,7 +77,7 @@
                     
 
                     <swiper-slide v-for="(item, index) in ytpList" :key="index">
-                    <div class="info-dirrections-sec__element" @click="curentIndexProcess = index" 
+                    <div class="info-dirrections-sec__element" @mouseenter="curentIndexProcess = index" 
                     :class="{'info-dirrections-sec__element--activ': curentIndexProcess == index}">
                         <img :src="item.acf.fonovoe_izobrazhenie.url" :alt="item.acf.fonovoe_izobrazhenie.alt" class="info-dirrections-sec__element-img">
                         <div class="info-dirrections-sec__element-wrapper">
@@ -134,13 +134,14 @@
 
                 <div class="info-close-sec__row">
 
-                    <div class="info-close-sec__element" v-if="pageData[0].acf.sekcziya_4_o_tovarah.ekstrakty_v_stikah">
+                    <div class="info-close-sec__element info-close-sec__element--anim" v-if="pageData[0].acf.sekcziya_4_o_tovarah.ekstrakty_v_stikah">
                         <img :src="pageData[0].acf.sekcziya_4_o_tovarah.ekstrakty_v_stikah.fon.url" 
                         :alt="pageData[0].acf.sekcziya_4_o_tovarah.ekstrakty_v_stikah.fon.alt" 
                         class="info-close-sec__element-bg">
                         <div class="info-close-sec__element-text-wrapper">
                             <p class="info-close-sec__element-title" v-html="pageData[0].acf.sekcziya_4_o_tovarah.ekstrakty_v_stikah.zagolovok"></p>
                             <p class="info-close-sec__element-text" v-html="pageData[0].acf.sekcziya_4_o_tovarah.ekstrakty_v_stikah.tekst"></p>
+                             <p class="info-close-sec__element-full-text" v-html="pageData[0].acf.sekcziya_4_o_tovarah.ekstrakty_v_stikah.polnoe_opisanie"></p>
                         </div>
                         <!-- <NuxtLink to="/extract-chagi"  class="info-close-sec__element-btn">
                             <span>Узнать подробнее</span>
@@ -154,13 +155,14 @@
                     </div>
 
 
-                    <div class="info-close-sec__element" v-if="pageData[0].acf.sekcziya_4_o_tovarah.premialnye_chai">
+                    <div class="info-close-sec__element info-close-sec__element--anim" v-if="pageData[0].acf.sekcziya_4_o_tovarah.premialnye_chai">
                         <img :src="pageData[0].acf.sekcziya_4_o_tovarah.premialnye_chai.fon.url" 
                         :alt="pageData[0].acf.sekcziya_4_o_tovarah.premialnye_chai.fon.alt" 
                         class="info-close-sec__element-bg">
                         <div class="info-close-sec__element-text-wrapper">
                             <p class="info-close-sec__element-title" v-html="pageData[0].acf.sekcziya_4_o_tovarah.premialnye_chai.zagolovok"></p>
                             <p class="info-close-sec__element-text" v-html="pageData[0].acf.sekcziya_4_o_tovarah.premialnye_chai.tekst"></p>
+                            <p class="info-close-sec__element-full-text" v-html="pageData[0].acf.sekcziya_4_o_tovarah.premialnye_chai.polnoe_opisanie"></p>
                         </div>
                         <!-- <NuxtLink to="/premium-teas"  class="info-close-sec__element-btn">
                             <span>Узнать подробнее</span>
@@ -176,13 +178,14 @@
 
 
 
-                    <div class="info-close-sec__element" v-if="pageData[0].acf.sekcziya_4_o_tovarah.podarochnye_nabory">
+                    <div class="info-close-sec__element info-close-sec__element--anim" v-if="pageData[0].acf.sekcziya_4_o_tovarah.podarochnye_nabory">
                         <img :src="pageData[0].acf.sekcziya_4_o_tovarah.podarochnye_nabory.fon.url" 
                         :alt="pageData[0].acf.sekcziya_4_o_tovarah.podarochnye_nabory.fon.alt" 
                         class="info-close-sec__element-bg">
                         <div class="info-close-sec__element-text-wrapper">
                             <p class="info-close-sec__element-title" v-html="pageData[0].acf.sekcziya_4_o_tovarah.podarochnye_nabory.zagolovok"></p>
                             <p class="info-close-sec__element-text" v-html="pageData[0].acf.sekcziya_4_o_tovarah.podarochnye_nabory.tekst"></p>
+                            <p class="info-close-sec__element-full-text" v-html="pageData[0].acf.sekcziya_4_o_tovarah.podarochnye_nabory.polnoe_opisanie"></p>
                         </div>
                         <!-- <NuxtLink to="/gift-sets"  class="info-close-sec__element-btn">
                             <span>Узнать подробнее</span>

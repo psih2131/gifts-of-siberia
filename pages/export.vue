@@ -103,13 +103,14 @@
 
                 <div class="info-close-sec__row">
 
-                    <div class="info-close-sec__element" v-for="item in pageData[0].acf.sekcziya_tovarah" :key="item">
+                    <div class="info-close-sec__element info-close-sec__element--anim" v-for="item in pageData[0].acf.sekcziya_tovarah" :key="item">
                         <img :src="item.fon.url" 
                         :alt="item.fon.alt" 
                         class="info-close-sec__element-bg">
                         <div class="info-close-sec__element-text-wrapper">
                             <p class="info-close-sec__element-title" v-html="item.zagolovok"></p>
                             <p class="info-close-sec__element-text" v-html="item.opisanie"></p>
+                            <p class="info-close-sec__element-full-text" v-html="item.polnoe_opisanie"></p>
                         </div>
                         <!-- <NuxtLink to="/extract-chagi"  class="info-close-sec__element-btn">
                             <span>Узнать подробнее</span>
