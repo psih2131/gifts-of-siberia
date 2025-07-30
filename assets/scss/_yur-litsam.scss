@@ -2263,6 +2263,18 @@
     .info-close-sec__element {
         height: 440px;
     }
+
+    .info-form-sec__subtitle {
+        font-size: 16px;
+    }
+
+    .info-dif-sec__text-wrapper {
+        ul {
+            li {
+                font-size: 16px;
+            }
+        }
+    }
 }
 
 @media only screen and (max-width: 1220px) {

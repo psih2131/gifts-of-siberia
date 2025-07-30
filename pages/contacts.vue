@@ -119,7 +119,7 @@ console.log('pageData', pageData)
 
 
 //HOOKS
-s
+
 
 //SEO
 useHead({

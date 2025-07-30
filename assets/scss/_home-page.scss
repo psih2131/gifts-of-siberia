@@ -79,6 +79,23 @@
         width: 100%;
         height: auto;
         display: block;
+        transition: all ease 0.3s;
+
+        path {
+            transition: all ease 0.3s;
+        }
+    }
+
+    &:hover {
+        svg {
+            transition: all ease 0.3s;
+            fill: $darkBlueV1;
+
+            path {
+                fill: #fff;
+                transition: all ease 0.3s;
+            }
+        }
     }
 }
 
@@ -329,9 +346,26 @@
     width: 62px;
 
     svg {
-        display: block;
         width: 100%;
         height: auto;
+        display: block;
+        transition: all ease 0.3s;
+
+        path {
+            transition: all ease 0.3s;
+        }
+    }
+
+    &:hover {
+        svg {
+            transition: all ease 0.3s;
+            fill: $darkBlueV1;
+
+            path {
+                fill: #fff;
+                transition: all ease 0.3s;
+            }
+        }
     }
 }
 
