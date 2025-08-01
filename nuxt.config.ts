@@ -2,7 +2,17 @@
 
 export default defineNuxtConfig({
   app: {
-    pageTransition: { name: 'page', mode: 'out-in' }
+    pageTransition: { name: 'page', mode: 'out-in' },
+
+    head: {
+      meta: [
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
+        }
+      ]
+    }
+
   },
   // site: {
   //   url: 'https://psih2131-gifts-of-siberia-34fa.twc1.net',

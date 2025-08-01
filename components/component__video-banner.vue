@@ -10,6 +10,8 @@
         <video ref="myVideo"
         :controls="statusVideo"
         muted 
+        playsinline
+        webkit-playsinline
         
         >
         <source :src="videoUrl" type="video/mp4" />

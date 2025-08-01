@@ -10,6 +10,7 @@ export const useCounterStore = defineStore('counter', () => {
 
 
     const domainUrlCurrent = ref('https://psih2131-gifts-of-siberia-34fa.twc1.net')
+    
     const popupCurrent = ref(null)
 
     const trigerButtonForm = ref(null)

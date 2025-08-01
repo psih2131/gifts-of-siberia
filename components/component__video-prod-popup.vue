@@ -12,7 +12,8 @@
              <!-- :controls="statusVideo" -->
             <video ref="prodVideo"
             controls
-            
+            playsinline
+            webkit-playsinline
             >
             <source :src="videoUrl" type="video/mp4" />
             Ваш браузер не поддерживает видео.
