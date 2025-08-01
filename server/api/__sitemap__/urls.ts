@@ -13,6 +13,10 @@ export default defineSitemapEventHandler(() => {
         { loc: '/about-company', _sitemap: 'pages' },
         { loc: '/products', _sitemap: 'pages' },
         { loc: '/blog', _sitemap: 'pages' },
+        { loc: '/contacts', _sitemap: 'pages' },
+        { loc: '/system/soglashenie', _sitemap: 'pages' },
+        { loc: '/system/deklaracziya', _sitemap: 'pages' },
+        { loc: '/system/privacy-policy', _sitemap: 'pages' },
 
 
     ] satisfies SitemapUrlInput[]

@@ -471,7 +471,7 @@ onBeforeUnmount(() => {
     ],
     link: [
         // Canonical (вручную или динамически)
-        { rel: 'canonical', href: `${store.domainUrlCurrent}/blog/categories/${popupData.value[0].acf.canonical || route.params.id}` }
+        { rel: 'canonical', href: `${store.domainUrlCurrent}/yur-litsam/${popupData.value[0].acf.canonical || route.params.id}` }
     ]
 })
 </script>

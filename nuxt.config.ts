@@ -14,25 +14,8 @@ export default defineNuxtConfig({
     }
 
   },
-  // site: {
-  //   url: 'https://psih2131-gifts-of-siberia-34fa.twc1.net',
-  //   name: 'Gift of siberia',
-
-
-  //   sitemaps: [
-  //     {
-  //       path: '/sitemap-xml/wordpress.xml', // красивый путь
-  //       // Подключает твой файл из server/api/__sitemap__/wordpress.ts
-  //       eventHandler: 'server/api/__sitemap__/wordpress'
-  //     }
-  //   ]
-
-
-
-  // },
 
   sitemap: {
-
 
     sitemaps: {
       pages: {
@@ -64,7 +47,8 @@ export default defineNuxtConfig({
   css: ['~/assets/scss/main.scss'],
 
   robots: {
-    blockAiBots: true
+    // blockAiBots: true
+    allow: '*'
   },
   modules: [
     'nuxt-swiper',

@@ -250,6 +250,13 @@ const swiperAsortiBig = useSwiper(asortiSliderBig, {
 })
 
 
+onMounted(()=>{
+    console.log('route.path', route.path)
+     console.log('route.name', route.name)
+      console.log('route.fullPath', route.fullPath)
+})
+
+
 
 //SEO
 useHead({
@@ -286,7 +293,7 @@ useHead({
     ],
     link: [
         // Canonical (вручную или динамически)
-        { rel: 'canonical', href: `${store.domainUrlCurrent}/blog/categories/${pageData.value[0].acf.canonical || route.params.id}` }
+        { rel: 'canonical', href: `${store.domainUrlCurrent}/${pageData.value[0].acf.canonical || route.name}` }
     ]
 })
 </script>

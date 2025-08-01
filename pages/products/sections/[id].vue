@@ -366,9 +366,6 @@ async function fetchCatFiltr(changeFiltr) {
   if (pages) totalPages.value = Number(pages)
 }
 
-
-
-
 // //banner gallery
 // const swiperHerroBanner = useSwiper(heroBannerSec, {
 //    loop: true,
@@ -384,12 +381,6 @@ async function fetchCatFiltr(changeFiltr) {
 //    spaceBetween: 0,   
 //    speed: 700,
 // })
-
-
-
-
-
-
 
 
 //HOOKS
@@ -414,13 +405,6 @@ onBeforeUnmount(() => {
 
 });
 
-
-
- // props
- const props = defineProps({
-//   mainData: Object,
-      // postAllCategory: Object,
-  })
 
 
 
@@ -459,7 +443,7 @@ useHead({
     ],
     link: [
         // Canonical (вручную или динамически)
-        { rel: 'canonical', href: `${store.domainUrlCurrent}/blog/categories/${current_category.value[0].acf.canonical || route.params.id}` }
+        { rel: 'canonical', href: `${store.domainUrlCurrent}/products/sections/${current_category.value[0].acf.canonical || route.params.id}` }
     ]
 })
 </script>

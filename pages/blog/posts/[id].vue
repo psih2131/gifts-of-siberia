@@ -213,7 +213,7 @@ useHead({
     ],
     link: [
         // Canonical (вручную или динамически)
-        { rel: 'canonical', href: `${store.domainUrlCurrent}/blog/categories/${object_data_single.value[0].acf.canonical || route.params.id}` }
+        { rel: 'canonical', href: `${store.domainUrlCurrent}/blog/posts/${object_data_single.value[0].acf.canonical || route.params.id}` }
     ]
 })
 </script>

@@ -407,10 +407,4 @@ onBeforeUnmount(() => {
 });
 
 
-
- // props
- const props = defineProps({
-//   mainData: Object,
-      // postAllCategory: Object,
-  })
 </script>
