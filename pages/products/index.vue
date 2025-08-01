@@ -67,7 +67,7 @@
                             <customRange :title="'Цена'" />
                         </div> -->
 
-                        <div class="products-aside__row-mob" >
+                        <!-- <div class="products-aside__row-mob" >
                             <div class="products-aside__filtr-btn" @click="mobFoltrActiv = !mobFoltrActiv" 
                             :class="{'products-aside__filtr-btn--activ':mobFoltrActiv}">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -99,7 +99,7 @@
 
                                 <span>Популярность</span>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- <div class="products-aside__filtr-mob-wrapper" v-if="mobFoltrActiv == true">
                             <customRange :title="'Цена'" />
