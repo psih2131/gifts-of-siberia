@@ -24,7 +24,7 @@
                             <ul class="blog-sec__nav-list">
                                 <li class="blog-sec__nav-list-element">
 
-                                     <NuxtLink to="/products" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
+                                     <NuxtLink to="/products/" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
                                           <span class="blog-sec__nav-link-icon">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M21 20.25H11C10.59 20.25 10.25 19.91 10.25 19.5C10.25 19.09 10.59 18.75 11 18.75H21C21.41 18.75 21.75 19.09 21.75 19.5C21.75 19.91 21.41 20.25 21 20.25Z" fill="#1B3762"/>
@@ -56,7 +56,13 @@
 
                         <p class="products-aside__title">Категории товаров</p>
 
-                        <customCheckbox v-for="item in all_categories_filtr" :key="item" :title="item.name" :catData="item" @currentSelect="filtrCateforyValidation"/>
+                        <template v-if="all_categories_filtr?.length && filtrProdCatList">
+
+                            <customCheckbox v-for="item in all_categories_filtr" :key="item" :title="item.name" :catData="item" :querySelectedCut="filtrProdCatList" @currentSelect="filtrCateforyValidation"/>
+
+                        </template>
+
+                        
 
                         <!-- <customCheckbox :title="'Экстракты чаги'" />
 
@@ -148,9 +154,13 @@
                                     <li class="pagination__nam-li " v-for="(item, index) in totalPages" :key="index" :class="{'pagination__nam-li--activ' : item == currentPage }">
                                  
 
-                                        <NuxtLink :to="`/products/?page=${item}`" >
+                                        <!-- <NuxtLink :to="`/products/?page=${item}`" >
                                             {{ item }}
-                                        </NuxtLink>
+                                        </NuxtLink> -->
+
+                                        <a @click="goToCurrentPage(item)" >
+                                            {{ item }}
+                                        </a>
 
                                     </li>
 
@@ -235,7 +245,6 @@ const { data: all_object, error, pending } = await useFetch(`${store.serverUrlDo
 })
 
 
-
 const { data: all_categories } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products-section`)
 
 const { data: all_categories_filtr } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/productsCategory`)
@@ -265,27 +274,68 @@ console.log('all_categories',all_categories)
 
 //next pagin page
 function nextPage(){
+
+    let cutListQuery = []
+
+    for(let i = 0; i < filtrProdCatList.value.length; i++){
+        let slugElement = filtrProdCatList.value[i].slug
+        cutListQuery.push(slugElement) 
+    }
+
     if(currentPage.value >= totalPages.value){
 
     }
     else{
         router.push({
             path: '/products/',
-            query: { page: +currentPage.value + 1 }
+            query: { 
+                page: +currentPage.value + 1,
+                category: cutListQuery || undefined 
+            }
         })
     }
 }
 
 function prevPage(){
+
+    let cutListQuery = []
+
+    for(let i = 0; i < filtrProdCatList.value.length; i++){
+        let slugElement = filtrProdCatList.value[i].slug
+        cutListQuery.push(slugElement) 
+    }
+
     if(currentPage.value <= 1){
 
     }
     else{
         router.push({
             path: '/products/',
-            query: { page: +currentPage.value - 1 }
+            query: { 
+                page: +currentPage.value - 1,
+                category: cutListQuery || undefined 
+            }
         })
     }
+}
+
+function goToCurrentPage(item){
+    let cutListQuery = []
+
+    for(let i = 0; i < filtrProdCatList.value.length; i++){
+        let slugElement = filtrProdCatList.value[i].slug
+        cutListQuery.push(slugElement) 
+    }
+
+  
+    router.push({
+        path: '/products/',
+        query: { 
+            page: +item,
+            category: cutListQuery || undefined 
+        }
+    })
+    
 }
 
 
@@ -313,6 +363,28 @@ function filtrCateforyValidation(data){
 
 }
 
+//gut query parametr categories
+function getCatQueryUrl(){
+    const slugs = [].concat(route.query.category || [])
+
+    for(let i = 0; i < slugs.length; i++){
+        let slugValue = slugs[i]
+
+        let currentCatElement = all_categories_filtr.value.filter((cat) => cat.slug == slugValue )
+        console.log(currentCatElement)
+
+        let objectArray = {
+            'id': currentCatElement[0].id,
+            'slug': currentCatElement[0].slug
+        }
+
+        filtrProdCatList.value.push(objectArray)
+    }
+
+    console.log('filtrProdCatList.value',filtrProdCatList.value)
+    fetchCatFiltr()
+}
+
 
 
 
@@ -331,14 +403,25 @@ async function fetchClientData() {
 
 async function fetchCatFiltr(changeFiltr) {
 
+    
+
     if(changeFiltr == 'reload'){
-          currentPage.value = 1
-          router.push({
-            path: '/products',
-            query: {
-            page: 1
-            }
-        })
+
+        let cutListQuery = []
+
+        for(let i = 0; i < filtrProdCatList.value.length; i++){
+            let slugElement = filtrProdCatList.value[i].slug
+            cutListQuery.push(slugElement) 
+        }
+
+        currentPage.value = 1
+        router.push({
+        path: '/products/',
+        query: {
+        page: 1,
+        category: cutListQuery || undefined
+        }
+    })
     }
 
   const selectedCategoryIds = filtrProdCatList.value.map(item => item.id)
@@ -386,14 +469,17 @@ async function fetchCatFiltr(changeFiltr) {
 
 //HOOKS
 onMounted(async () => {
+    currentPage.value = route.query.page
     const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?page=${currentPage.value || 1}&per_page=${perPage.value}`)
     const pages = res.headers.get('X-WP-TotalPages')
     if (pages) totalPages.value = Number(pages)
 
     // fetchCatFiltr()
 
+    getCatQueryUrl()
 
     console.log('route',route.query.page)
+ 
 })
 
 watch(() => route.query.page, async (newPage) => {
@@ -401,6 +487,7 @@ watch(() => route.query.page, async (newPage) => {
     currentPage.value = route.query.page
     // fetchClientData()
     fetchCatFiltr()
+    
 })
 
 

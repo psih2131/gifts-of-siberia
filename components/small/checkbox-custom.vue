@@ -2,7 +2,7 @@
   <div class="custom-checkbox">
 
     <label>
-        <input type="checkbox" class="checkbox-input" name="colors" value="indigo" @change="handleChange">
+        <input type="checkbox" class="checkbox-input" name="colors" value="indigo" @change="handleChange" :checked="statusChecked">
         <span>  {{title}}</span>
     </label>
 
@@ -24,6 +24,8 @@ const emit = defineEmits(['currentSelect'])
 
 //DATA
 
+const statusChecked = ref()
+
 
 
 //METHOD
@@ -37,10 +39,23 @@ function handleChange(event){
 
 }
 
+function checkSelectedStatus(){
+  for(let i = 0; i < props.querySelectedCut.length; i++){ 
+
+    if(props.catData.slug == props.querySelectedCut[i].slug){
+
+      statusChecked.value = true
+
+      break 
+    }
+  }
+}
+
 
 //HOOKS
 onMounted(() => {
   // Добавляем обработчик события scroll
+  checkSelectedStatus()
 
   
 });
@@ -55,6 +70,12 @@ onBeforeUnmount(() => {
 const props = defineProps({
   title: String,
   catData: Object,
+  querySelectedCut: Object,
 
+})
+
+
+watch(props.querySelectedCut, async(newValue)=>{
+  checkSelectedStatus()
 })
 </script>
