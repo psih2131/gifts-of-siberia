@@ -7,7 +7,7 @@ interface WPPost {
 }
 
 export default defineSitemapEventHandler(async () => {
-    const posts: WPPost[] = await $fetch('https://cy18281-wordpress-gre0n.tw1.ru/wp-json/wp/v2/products')
+    const posts: WPPost[] = await $fetch('https://panel.gift-siberia.com/wp-json/wp/v2/products?per_page=100')
 
     return posts.map((post) => ({
         loc: `/products/product/${post.slug}`,       // локальный маршрут

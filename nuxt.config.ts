@@ -28,9 +28,22 @@ export default defineNuxtConfig({
           '/api/__sitemap__/wordpress-posts',
         ]
       },
+
+      productCategories: {
+        sources: [
+          '/api/__sitemap__/wordpress-posts-categories',
+        ]
+      },
+
       products: {
         sources: [
           '/api/__sitemap__/wordpress-products',
+        ]
+      },
+
+      productSection: {
+        sources: [
+          '/api/__sitemap__/wordpress-procuct-section',
         ]
       },
       // static: {
