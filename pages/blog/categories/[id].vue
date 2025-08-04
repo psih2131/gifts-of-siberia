@@ -7,7 +7,7 @@
                 <div class="breadcrumbs-row-mob">
                     <div class="breadcrumbs">
                         <NuxtLink class="breadcrumbs__link" to="/">Главная /</NuxtLink>
-                        <NuxtLink class="breadcrumbs__link" to="/blog">Блог /</NuxtLink>
+                        <NuxtLink class="breadcrumbs__link" to="/blog/">Блог /</NuxtLink>
                         <span class="breadcrumbs__text" v-if="current_category && current_category[0]">{{current_category[0].name}}</span>
                     </div>
 
@@ -23,7 +23,7 @@
                             <ul class="blog-sec__nav-list">
                                 <li class="blog-sec__nav-list-element">
 
-                                     <NuxtLink to="/blog" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
+                                     <NuxtLink to="/blog/" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
                                           <span class="blog-sec__nav-link-icon">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M21 20.25H11C10.59 20.25 10.25 19.91 10.25 19.5C10.25 19.09 10.59 18.75 11 18.75H21C21.41 18.75 21.75 19.09 21.75 19.5C21.75 19.91 21.41 20.25 21 20.25Z" fill="#1B3762"/>
@@ -42,7 +42,7 @@
 
                                 <template v-if="all_categories">
                                     <li class="blog-sec__nav-list-element" v-for="item in all_categories" :key="item">
-                                        <NuxtLink :to="`/blog/categories/${item.slug}`" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
+                                        <NuxtLink :to="`/blog/categories/${item.slug}/`" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
                                             <span class="blog-sec__nav-link-icon">
                                                 <img :src="item.acf.ikonka_kategorii.url" :alt="item.acf.ikonka_kategorii.alt">
                                             </span>
@@ -159,7 +159,7 @@ const router = useRouter()
 
 const currentPage = ref(route.query.page || 1)
 
-const perPage = ref(9)
+const perPage = ref(2)
 
 const totalPages = ref(null)
 
@@ -270,11 +270,13 @@ onBeforeUnmount(() => {
 
 
   //SEO
+watchEffect(() => {
+
 useHead({
     title: current_category.value[0].acf.seo_title,
     meta: [
         // Description
-        { name: 'description', content: current_category.value[0].acf.seo_description || 'Описание по умолчанию' },
+        { name: 'description', content: current_category.value[0].acf.seo_description  || 'Описание по умолчанию' },
 
         // Keywords (опционально, не влияет сильно на SEO)
         { name: 'keywords',  content: current_category.value[0].acf.klyuchevaya_fraza || 'test' },
@@ -307,6 +309,8 @@ useHead({
         { rel: 'canonical', href: `${store.domainUrlCurrent}/blog/categories/${current_category.value[0].acf.canonical || route.params.id}` }
     ]
 })
+})
+
 
 
 

@@ -104,7 +104,7 @@
 
                             <div class="footer__top-nav-claster">
                                 <p class="footer__top-nav-claster-title">
-                                     <NuxtLink to="/blog">Блог</NuxtLink>
+                                     <NuxtLink to="/blog/">Блог</NuxtLink>
                                 </p>
                             </div>
 

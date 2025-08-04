@@ -22,7 +22,7 @@
                             <ul class="blog-sec__nav-list">
                                 <li class="blog-sec__nav-list-element">
 
-                                     <NuxtLink to="/blog" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
+                                     <NuxtLink to="/blog/" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
                                           <span class="blog-sec__nav-link-icon">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M21 20.25H11C10.59 20.25 10.25 19.91 10.25 19.5C10.25 19.09 10.59 18.75 11 18.75H21C21.41 18.75 21.75 19.09 21.75 19.5C21.75 19.91 21.41 20.25 21 20.25Z" fill="#1B3762"/>
@@ -41,7 +41,7 @@
 
                                 <template v-if="all_categories">
                                     <li class="blog-sec__nav-list-element" v-for="item in all_categories" :key="item">
-                                        <NuxtLink :to="`/blog/categories/${item.slug}`" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
+                                        <NuxtLink :to="`/blog/categories/${item.slug}/`" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
                                             <span class="blog-sec__nav-link-icon">
                                                 <img :src="item.acf.ikonka_kategorii.url" :alt="item.acf.ikonka_kategorii.alt">
                                             </span>
@@ -151,20 +151,6 @@ import newsCard from '@/components/component__news-card.vue'
 import searchBlog from '@/components/component__search-blog.vue'
 
 
-//SEO
-useHead({
-  title: 'Заголовок страницы',
-  meta: [
-    { name: 'description', content: 'Описание страницы для SEO' },
-    { name: 'keywords', content: 'ключевое, слово, пример' },
-    { property: 'og:title', content: 'Заголовок для соцсетей' },
-    // другие мета-теги...
-  ],
-  link: [
-    { rel: 'canonical', href: 'https://example.com/blog' }
-  ]
-})
-
 
 //DATA
 const store = useCounterStore()
@@ -178,6 +164,8 @@ const currentPage = ref(route.query.page || 1)
 const perPage = ref(9)
 
 const totalPages = ref(null)
+
+const seoTitle = ref(`Блог ${route.query.page || ''}`)
 
 const { data: all_object, error, pending } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog?page=${currentPage.value || 1}&per_page=${perPage.value}`, {
     onResponse({ response }) {
@@ -247,6 +235,7 @@ onMounted(async () => {
 
 
     console.log('route',route.query.page)
+    seoTitle.value = `Блог ${route.query.page || ''}`
 })
 
 
@@ -255,12 +244,32 @@ watch(() => route.query.page, async (newPage) => {
     console.log('gg', route.query.page)
     currentPage.value = route.query.page
     fetchClientData()
+    seoTitle.value = `Блог ${route.query.page || ''}`
+    console.log(route.query.page , seoTitle.value)
 })
 
 
 onBeforeUnmount(() => {
 
 });
+
+
+
+
+//SEO
+watchEffect(() => {
+  useHead({
+    title: seoTitle.value,
+    meta: [
+      { name: 'description', content: 'Список наших публикаций' },
+      { name: 'keywords', content: 'блог' },
+    ],
+    link: [
+      { rel: 'canonical', href: 'https://gift-siberia.com/blog/' }
+    ]
+  })
+})
+
 
 
 

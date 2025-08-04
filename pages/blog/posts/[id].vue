@@ -7,7 +7,7 @@
                 <div class="breadcrumbs">
                     <NuxtLink class="breadcrumbs__link" to="/">Главная /</NuxtLink>
 
-                    <NuxtLink class="breadcrumbs__link" to="/blog">Блог /</NuxtLink>
+                    <NuxtLink class="breadcrumbs__link" to="/blog/">Блог /</NuxtLink>
 
                     <span class="breadcrumbs__text">{{object_data_single[0].title.rendered}}</span>
                 </div>

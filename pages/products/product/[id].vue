@@ -459,7 +459,7 @@ useHead({
         { name: 'description', content: object_data_single.value[0].acf.seo_description || 'Описание по умолчанию' },
 
         // Keywords (опционально, не влияет сильно на SEO)
-        { name: 'keywords',  content: object_data_single.value[0].acf.klyuchevaya_fraza || 'test' },
+        { name: 'keywords',  content: object_data_single.value[0].acf.klyuchevaya_fraza || 'товар' },
 
         // OpenGraph
         { property: 'og:title', content: object_data_single.value[0].acf.seo_title },

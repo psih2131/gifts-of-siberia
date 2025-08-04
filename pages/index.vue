@@ -136,7 +136,7 @@
           <div class="last-news-sec__header">
             <h2 class="last-news-sec__title">Последние статьи и новости</h2>
 
-            <NuxtLink class="last-news-sec__link" to="/blog">
+            <NuxtLink class="last-news-sec__link" to="/blog/">
               <svg width="64" height="52" viewBox="0 0 64 52" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0.5" y="0.5" width="63" height="51" rx="12.5" stroke="#1B3762"/>
               <path d="M42.7071 26.7071C43.0976 26.3166 43.0976 25.6834 42.7071 25.2929L36.3431 18.9289C35.9526 18.5384 35.3195 18.5384 34.9289 18.9289C34.5384 19.3195 34.5384 19.9526 34.9289 20.3431L40.5858 26L34.9289 31.6569C34.5384 32.0474 34.5384 32.6805 34.9289 33.0711C35.3195 33.4616 35.9526 33.4616 36.3431 33.0711L42.7071 26.7071ZM23 26V27H42V26V25H23V26Z" fill="#1B3762"/>

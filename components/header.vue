@@ -106,7 +106,7 @@
                     </li>
 
                     <li class="header-navigation-mobile__li">
-                        <NuxtLink to="/blog" @click="closeMobNav()" class="header-navigation-mobile__li-title">Блог</NuxtLink>
+                        <NuxtLink to="/blog/" @click="closeMobNav()" class="header-navigation-mobile__li-title">Блог</NuxtLink>
                     </li>
 
                     <li class="header-navigation-mobile__li">
@@ -189,7 +189,7 @@
                         </ul>
                     </li>
                     <li class="header-nav__list-element">
-                        <NuxtLink to="/blog" class="header-nav__list-element-link">Блог</NuxtLink>
+                        <NuxtLink to="/blog/" class="header-nav__list-element-link">Блог</NuxtLink>
                     </li>
                     <li class="header-nav__list-element">
                         <NuxtLink to="/contacts"  class="header-nav__list-element-link">Контакты</NuxtLink>
