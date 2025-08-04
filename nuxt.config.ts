@@ -29,7 +29,7 @@ export default defineNuxtConfig({
         ]
       },
 
-      productCategories: {
+      postCategories: {
         sources: [
           '/api/__sitemap__/wordpress-posts-categories',
         ]
