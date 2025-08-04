@@ -98,7 +98,7 @@
                         <div class="footer__top-nav-row">
                             <div class="footer__top-nav-claster">
                                 <p class="footer__top-nav-claster-title">
-                                    <NuxtLink to="/products">Продукция</NuxtLink>
+                                    <NuxtLink to="/products/">Продукция</NuxtLink>
                                 </p>
                             </div>
 

@@ -70,7 +70,7 @@
                     </li>
 
                     <li class="header-navigation-mobile__li">
-                        <NuxtLink class="header-navigation-mobile__li-title" @click="closeMobNav()" to="/products">Товары</NuxtLink>
+                        <NuxtLink class="header-navigation-mobile__li-title" @click="closeMobNav()" to="/products/">Товары</NuxtLink>
                     </li>
 
 
@@ -170,7 +170,7 @@
                         </ul>
                     </li>
                     <li class="header-nav__list-element">
-                        <NuxtLink class="header-nav__list-element-link" to="/products">Товары</NuxtLink>
+                        <NuxtLink class="header-nav__list-element-link" to="/products/">Товары</NuxtLink>
                     </li>
                     <li class="header-nav__list-element header-nav__list-element--have-children">
                         <a  class="header-nav__list-element-link">Сотрудничество</a>
