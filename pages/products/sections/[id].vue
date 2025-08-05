@@ -25,7 +25,7 @@
                             <ul class="blog-sec__nav-list">
                                 <li class="blog-sec__nav-list-element">
 
-                                     <NuxtLink to="/products" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
+                                     <NuxtLink to="/products/" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
                                           <span class="blog-sec__nav-link-icon">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M21 20.25H11C10.59 20.25 10.25 19.91 10.25 19.5C10.25 19.09 10.59 18.75 11 18.75H21C21.41 18.75 21.75 19.09 21.75 19.5C21.75 19.91 21.41 20.25 21 20.25Z" fill="#1B3762"/>
@@ -44,7 +44,7 @@
 
                                 <template v-if="all_categories">
                                     <li class="blog-sec__nav-list-element" v-for="item in all_categories" :key="item">
-                                        <NuxtLink :to="`/products/sections/${item.slug}`" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
+                                        <NuxtLink :to="`/products/sections/${item.slug}/`" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
                                             <span class="blog-sec__nav-link-icon">
                                                 <img v-if="item?.acf?.ikonka_kategorii?.url" :src="item.acf.ikonka_kategorii.url" :alt="item.acf.ikonka_kategorii.alt">
                                             </span>
@@ -72,7 +72,11 @@
 
                         <p class="products-aside__title">Категории товаров</p>
 
-                        <customCheckbox v-for="item in all_categories_filtr" :key="item" :title="item.name" :catData="item" @currentSelect="filtrCateforyValidation"/>
+                        <template v-if="all_categories_filtr?.length && filtrProdCatList">
+
+                            <customCheckbox v-for="item in all_categories_filtr" :key="item" :title="item.name" :catData="item" :querySelectedCut="filtrProdCatList" @currentSelect="filtrCateforyValidation"/>
+
+                        </template>
 
 
                         <!-- <div class="products-catalog-sec__aside-range-pc">
@@ -170,9 +174,13 @@
                                 <ul class="pagination__num-list">
                                     <li class="pagination__nam-li " v-for="(item, index) in totalPages" :key="index" :class="{'pagination__nam-li--activ' : item == currentPage }">
                                  
-                                        <NuxtLink :to="`/products/sections/${route.params.id}/?page=${item}`" >
+                                        <!-- <NuxtLink :to="`/products/sections/${route.params.id}/?page=${item}`" >
                                             {{ item }}
-                                        </NuxtLink>
+                                        </NuxtLink> -->
+
+                                        <a @click="goToCurrentPage(item)" >
+                                            {{ item }}
+                                        </a>
 
                                     </li>
 
@@ -237,7 +245,7 @@ const router = useRouter()
 
 const currentPage = ref(route.query.page || 1)
 
-const perPage = ref(9)
+const perPage = ref(2)
 
 const totalPages = ref(null)
 
@@ -288,29 +296,98 @@ async function fetchClientData() {
 }
 
 //next pagin page
+// function nextPage(){
+//     if(currentPage.value >= totalPages.value){
+
+//     }
+//     else{
+//         router.push({
+//             path: `/products/sections/${route.params.id}`,
+//             query: { page: +currentPage.value + 1 }
+//         })
+//     }
+// }
+
+// function prevPage(){
+//     if(currentPage.value <= 1){
+
+//     }
+//     else{
+//         router.push({
+//             path: `/products/sections/${route.params.id}`,
+//             query: { page: +currentPage.value - 1 }
+//         })
+//     }
+// }
+
+
+//next pagin page
 function nextPage(){
+
+    let cutListQuery = []
+
+    for(let i = 0; i < filtrProdCatList.value.length; i++){
+        let slugElement = filtrProdCatList.value[i].slug
+        cutListQuery.push(slugElement) 
+    }
+
     if(currentPage.value >= totalPages.value){
 
     }
     else{
         router.push({
-            path: `/products/sections/${route.params.id}`,
-            query: { page: +currentPage.value + 1 }
+            path: `/products/sections/${route.params.id}/`,
+            query: { 
+                page: +currentPage.value + 1,
+                category: cutListQuery || undefined 
+            }
         })
     }
 }
 
 function prevPage(){
+
+    let cutListQuery = []
+
+    for(let i = 0; i < filtrProdCatList.value.length; i++){
+        let slugElement = filtrProdCatList.value[i].slug
+        cutListQuery.push(slugElement) 
+    }
+
     if(currentPage.value <= 1){
 
     }
     else{
         router.push({
-            path: `/products/sections/${route.params.id}`,
-            query: { page: +currentPage.value - 1 }
+            path: `/products/sections/${route.params.id}/`,
+            query: { 
+                page: +currentPage.value - 1,
+                category: cutListQuery || undefined 
+            }
         })
     }
 }
+
+function goToCurrentPage(item){
+    let cutListQuery = []
+
+    for(let i = 0; i < filtrProdCatList.value.length; i++){
+        let slugElement = filtrProdCatList.value[i].slug
+        cutListQuery.push(slugElement) 
+    }
+
+  
+    router.push({
+        path: `/products/sections/${route.params.id}/`,
+        query: { 
+            page: +item,
+            category: cutListQuery || undefined 
+        }
+    })
+    
+}
+
+
 
 //filtr category validation
 function filtrCateforyValidation(data){
@@ -337,16 +414,85 @@ function filtrCateforyValidation(data){
 }
 
 
+//gut query parametr categories
+function getCatQueryUrl(){
+    const slugs = [].concat(route.query.category || [])
+
+    for(let i = 0; i < slugs.length; i++){
+        let slugValue = slugs[i]
+
+        let currentCatElement = all_categories_filtr.value.filter((cat) => cat.slug == slugValue )
+        console.log(currentCatElement)
+
+        let objectArray = {
+            'id': currentCatElement[0].id,
+            'slug': currentCatElement[0].slug
+        }
+
+        filtrProdCatList.value.push(objectArray)
+    }
+
+    console.log('filtrProdCatList.value',filtrProdCatList.value)
+    fetchCatFiltr()
+}
+
+
+
+
+// async function fetchCatFiltr(changeFiltr) {
+
+//     if(changeFiltr == 'reload'){
+//           currentPage.value = 1
+//           router.push({
+//             path: `/products/sections/${route.params.id}`,
+//             query: {
+//             page: 1
+//             }
+//         })
+//     }
+
+//   const selectedCategoryIds = filtrProdCatList.value.map(item => item.id)
+
+//   let categoryParam = ''
+//   if (selectedCategoryIds.length > 0) {
+//     categoryParam = `&productsCategory=${selectedCategoryIds.join(',')}`
+//   }
+
+//   const url = `${store.serverUrlDomainRequest}/wp-json/wp/v2/products?products-section=${current_category.value[0].id}&page=${currentPage.value || 1}&per_page=${perPage.value}${categoryParam}`
+
+//   const res = await fetch(url)
+//   const data = await res.json()
+//   all_object.value = data
+
+//   const pages = res.headers.get('X-WP-TotalPages')
+//   if (pages) totalPages.value = Number(pages)
+// }
+
+
 async function fetchCatFiltr(changeFiltr) {
 
+    
+
     if(changeFiltr == 'reload'){
-          currentPage.value = 1
-          router.push({
-            path: `/products/sections/${route.params.id}`,
-            query: {
-            page: 1
-            }
-        })
+
+        let cutListQuery = []
+
+        for(let i = 0; i < filtrProdCatList.value.length; i++){
+            let slugElement = filtrProdCatList.value[i].slug
+            cutListQuery.push(slugElement) 
+        }
+
+        currentPage.value = 1
+        router.push({
+        path: `/products/sections/${route.params.id}/`,
+        query: {
+        page: 1,
+        category: cutListQuery || undefined
+        }
+    })
+    }
+    else{
+        currentPage.value = route.query.page || 1
     }
 
   const selectedCategoryIds = filtrProdCatList.value.map(item => item.id)
@@ -365,6 +511,9 @@ async function fetchCatFiltr(changeFiltr) {
   const pages = res.headers.get('X-WP-TotalPages')
   if (pages) totalPages.value = Number(pages)
 }
+
+
+
 
 // //banner gallery
 // const swiperHerroBanner = useSwiper(heroBannerSec, {
@@ -385,10 +534,13 @@ async function fetchCatFiltr(changeFiltr) {
 
 //HOOKS
 onMounted(async () => {
+    currentPage.value = route.query.page
     const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?products-section=${current_category.value[0].id}&page=${currentPage.value || 1}&per_page=${perPage.value}`)
     const pages = res.headers.get('X-WP-TotalPages')
     if (pages) totalPages.value = Number(pages)
 
+
+    getCatQueryUrl()
 
     console.log('route',route.query.page)
 })

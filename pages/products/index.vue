@@ -423,6 +423,9 @@ async function fetchCatFiltr(changeFiltr) {
         }
     })
     }
+    else{
+        currentPage.value = route.query.page || 1
+    }
 
   const selectedCategoryIds = filtrProdCatList.value.map(item => item.id)
 
@@ -479,6 +482,7 @@ onMounted(async () => {
     getCatQueryUrl()
 
     console.log('route',route.query.page)
+    
  
 })
 
