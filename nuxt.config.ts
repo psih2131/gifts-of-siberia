@@ -11,6 +11,10 @@ export default defineNuxtConfig({
           content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
         },
         { name: 'yandex-verification', content: 'e2576f975b9b4417' }
+      ],
+
+      link: [
+        { rel: 'icon', type: 'image/png', href: '/favicon.png' }
       ]
     }
 
@@ -60,10 +64,10 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/scss/main.scss'],
 
-  robots: {
-    // blockAiBots: true
-    allow: '*'
-  },
+  // robots: {
+  //   // blockAiBots: true
+  //   allow: '*'
+  // },
   modules: [
     'nuxt-swiper',
     '@vueform/nuxt',
