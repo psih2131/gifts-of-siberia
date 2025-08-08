@@ -10,7 +10,7 @@ export default defineNuxtConfig({
           name: 'viewport',
           content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
         },
-        { name: 'yandex-verification', content: 'e2576f975b9b4417' }
+        { name: 'yandex-verification', content: '8d13989c20699bb0' }
       ],
 
       link: [
