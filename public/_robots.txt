@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://gift-siberia.com/sitemap_index.xml
