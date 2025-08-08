@@ -10,7 +10,7 @@ export default defineSitemapEventHandler(async () => {
     const posts: WPPost[] = await $fetch('https://panel.gift-siberia.com/wp-json/wp/v2/my-blog?per_page=100')
 
     return posts.map((post) => ({
-        loc: `/blog/posts/${post.slug}`,       // локальный маршрут
+        loc: `https://gift-siberia.com/blog/posts/${post.slug}`,       // локальный маршрут
         lastmod: post.modified,                // дата последнего изменения
         changefreq: 'weekly',
         priority: 0.7

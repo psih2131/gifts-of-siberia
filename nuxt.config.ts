@@ -10,12 +10,13 @@ export default defineNuxtConfig({
           name: 'viewport',
           content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
         },
-        { name: 'yandex-verification', content: '8d13989c20699bb0' }
+        { name: 'yandex-verification', content: 'e2576f975b9b4417' }
       ],
 
       link: [
         { rel: 'icon', type: 'image/png', href: '/favicon.png' }
-      ]
+      ],
+
     }
 
   },
@@ -25,30 +26,30 @@ export default defineNuxtConfig({
     sitemaps: {
       pages: {
         sources: [
-          '/api/__sitemap__/urls',
+          'https://gift-siberia.com/api/__sitemap__/urls',
         ]
       },
       posts: {
         sources: [
-          '/api/__sitemap__/wordpress-posts',
+          'https://gift-siberia.com/api/__sitemap__/wordpress-posts',
         ]
       },
 
       postCategories: {
         sources: [
-          '/api/__sitemap__/wordpress-posts-categories',
+          'https://gift-siberia.com/api/__sitemap__/wordpress-posts-categories',
         ]
       },
 
       products: {
         sources: [
-          '/api/__sitemap__/wordpress-products',
+          'https://gift-siberia.com/api/__sitemap__/wordpress-products',
         ]
       },
 
       productSection: {
         sources: [
-          '/api/__sitemap__/wordpress-procuct-section',
+          'https://gift-siberia.com/api/__sitemap__/wordpress-procuct-section',
         ]
       },
       // static: {
