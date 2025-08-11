@@ -30,30 +30,30 @@ export default defineNuxtConfig({
     sitemaps: {
       pages: {
         sources: [
-          'https://gift-siberia.com/api/__sitemap__/urls',
+          '/api/__sitemap__/urls',
         ]
       },
       posts: {
         sources: [
-          'https://gift-siberia.com/api/__sitemap__/wordpress-posts',
+          '/api/__sitemap__/wordpress-posts',
         ]
       },
 
       postCategories: {
         sources: [
-          'https://gift-siberia.com/api/__sitemap__/wordpress-posts-categories',
+          '/api/__sitemap__/wordpress-posts-categories',
         ]
       },
 
       products: {
         sources: [
-          'https://gift-siberia.com/api/__sitemap__/wordpress-products',
+          '/api/__sitemap__/wordpress-products',
         ]
       },
 
       productSection: {
         sources: [
-          'https://gift-siberia.com/api/__sitemap__/wordpress-procuct-section',
+          '/api/__sitemap__/wordpress-procuct-section',
         ]
       },
       // static: {
