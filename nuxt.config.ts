@@ -21,35 +21,39 @@ export default defineNuxtConfig({
 
   },
 
+  site: {
+    url: 'https://gift-siberia.com',
+  },
+
   sitemap: {
 
     sitemaps: {
       pages: {
         sources: [
-          '/api/__sitemap__/urls',
+          'https://gift-siberia.com/api/__sitemap__/urls',
         ]
       },
       posts: {
         sources: [
-          '/api/__sitemap__/wordpress-posts',
+          'https://gift-siberia.com/api/__sitemap__/wordpress-posts',
         ]
       },
 
       postCategories: {
         sources: [
-          '/api/__sitemap__/wordpress-posts-categories',
+          'https://gift-siberia.com/api/__sitemap__/wordpress-posts-categories',
         ]
       },
 
       products: {
         sources: [
-          '/api/__sitemap__/wordpress-products',
+          'https://gift-siberia.com/api/__sitemap__/wordpress-products',
         ]
       },
 
       productSection: {
         sources: [
-          '/api/__sitemap__/wordpress-procuct-section',
+          'https://gift-siberia.com/api/__sitemap__/wordpress-procuct-section',
         ]
       },
       // static: {
