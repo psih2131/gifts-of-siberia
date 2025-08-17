@@ -3,6 +3,8 @@
       <NuxtLayout>
         <NuxtPage />
 
+        <CookieBanner />
+
         <HeadScripts :html="scriptsBlock" />
 
         <BodyScripts :html="bodyScripts" />
@@ -20,6 +22,8 @@ import { ref, onMounted, onBeforeUnmount, computed, watch  } from 'vue';
 import HeadScripts from '@/components/HeadRaw.vue'
 
 import BodyScripts from '@/components/BodyScripts.vue'
+
+import CookieBanner from '@/components/CookieBanner.vue'
 
 
 const store = useCounterStore()

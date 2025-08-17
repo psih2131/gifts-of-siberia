@@ -309,6 +309,8 @@ useHead({
         { rel: 'canonical', href: `${store.domainUrlCurrent}/blog/categories/${current_category.value[0].acf.canonical || route.params.id}` }
     ]
 })
+
+
 })
 
 
