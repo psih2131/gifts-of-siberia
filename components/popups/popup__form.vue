@@ -151,6 +151,33 @@ const sendForm = async () => {
 
     // Теперь response содержит ответ с сервера
     console.log('Ответ от сервера:', response)
+
+    sendFormAmmo()
+    // openFormDonePopup()
+
+
+  } catch (error) {
+    console.error('Ошибка при отправке формы:', error)
+    alert('Произошла ошибка при отправке заявки')
+  }
+}
+
+const sendFormAmmo = async () => {
+  try {
+    const response = await $fetch('/api/send-form-data-ammo', {
+      method: 'POST',
+      body: {
+        name: formName.value,
+        email: formEmail.value,
+        phone: formPhone.value,
+        currentUrl: store.domainUrlCurrent + route.fullPath,
+        currentPlase: store.trigerButtonForm || 'Не получилось оприделить точное положение'
+      },
+    })
+
+    // Теперь response содержит ответ с сервера
+    console.log('Ответ от сервера:', response)
+
     openFormDonePopup()
 
 
