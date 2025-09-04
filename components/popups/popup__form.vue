@@ -162,30 +162,53 @@ const sendForm = async () => {
   }
 }
 
+
 const sendFormAmmo = async () => {
+  const formData = new FormData()
+  formData.append('name', formName.value)
+  formData.append('phone', formPhone.value)
+  formData.append('email', formEmail.value)
+  formData.append('currentUrl', store.domainUrlCurrent + route.fullPath)
+  formData.append('currentPlase', store.trigerButtonForm || 'Не получилось оприделить точное положение')
+
   try {
-    const response = await $fetch('/api/send-form-data-ammo', {
+    const res = await fetch('https://apicrm.ru/amo/domain/gift-siberia.com/send.php', {
       method: 'POST',
-      body: {
-        name: formName.value,
-        email: formEmail.value,
-        phone: formPhone.value,
-        currentUrl: store.domainUrlCurrent + route.fullPath,
-        currentPlase: store.trigerButtonForm || 'Не получилось оприделить точное положение'
-      },
+      body: formData
     })
-
-    // Теперь response содержит ответ с сервера
-    console.log('Ответ от сервера:', response)
-
-    openFormDonePopup()
-
-
-  } catch (error) {
-    console.error('Ошибка при отправке формы:', error)
-    alert('Произошла ошибка при отправке заявки')
+    if (!res.ok) throw new Error('Ошибка запроса')
+      openFormDonePopup()
+  } catch (e) {
+    alert('Не удалось отправить')
   }
 }
+
+
+
+// const sendFormAmmo = async () => {
+//   try {
+//     const response = await $fetch('/api/send-form-data-ammo', {
+//       method: 'POST',
+//       body: {
+//         name: formName.value,
+//         email: formEmail.value,
+//         phone: formPhone.value,
+//         currentUrl: store.domainUrlCurrent + route.fullPath,
+//         currentPlase: store.trigerButtonForm || 'Не получилось оприделить точное положение'
+//       },
+//     })
+
+//     // Теперь response содержит ответ с сервера
+//     console.log('Ответ от сервера:', response)
+
+//     openFormDonePopup()
+
+
+//   } catch (error) {
+//     console.error('Ошибка при отправке формы:', error)
+//     alert('Произошла ошибка при отправке заявки')
+//   }
+// }
 
 
 
