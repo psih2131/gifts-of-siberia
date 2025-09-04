@@ -164,24 +164,31 @@ const sendForm = async () => {
 
 
 const sendFormAmmo = async () => {
-  const formData = new FormData()
-  formData.append('name', formName.value)
-  formData.append('phone', formPhone.value)
-  formData.append('email', formEmail.value)
-  formData.append('currentUrl', store.domainUrlCurrent + route.fullPath)
-  formData.append('currentPlase', store.trigerButtonForm || 'Не получилось оприделить точное положение')
+  const payload = {
+    name: formName.value,
+    phone: formPhone.value,
+    email: formEmail.value,
+    currentUrl: store.domainUrlCurrent + route.fullPath,
+    currentPlase: store.trigerButtonForm || 'Не получилось определить точное положение'
+  }
 
   try {
     const res = await fetch('https://apicrm.ru/amo/domain/gift-siberia.com/send.php', {
       method: 'POST',
-      body: formData
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
     })
+
     if (!res.ok) throw new Error('Ошибка запроса')
-      openFormDonePopup()
+    openFormDonePopup()
   } catch (e) {
-    alert('Не удалось отправить')
+    console.error(e)
+    alert('Не удалось отправить данные')
   }
 }
+
 
 
 
