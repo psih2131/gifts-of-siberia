@@ -163,59 +163,68 @@ const sendForm = async () => {
 }
 
 
-const sendFormAmmo = async () => {
-  const payload = {
-    name: formName.value,
-    phone: formPhone.value,
-    email: formEmail.value,
-    currentUrl: store.domainUrlCurrent + route.fullPath,
-    currentPlase: store.trigerButtonForm || 'Не получилось определить точное положение'
-  }
 
+const sendFormAmmo = async () => {
   try {
-    const res = await fetch('https://apicrm.ru/amo/domain/gift-siberia.com/send.php', {
+    const response = await $fetch('/api/send-form-data-ammo', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
+      body: {
+        name: formName.value,
+        email: formEmail.value,
+        phone: formPhone.value,
+        currentUrl: store.domainUrlCurrent + route.fullPath,
+        currentPlase: store.trigerButtonForm || 'Не получилось оприделить точное положение',
+        utm_source: localStorage.getItem('utm_source'),
+        utm_medium: localStorage.getItem('utm_medium'),
+        utm_campaign: localStorage.getItem('utm_campaign'),
+        utm_term: localStorage.getItem('utm_term'),
+        utm_content: localStorage.getItem('utm_content'),
       },
-      body: JSON.stringify(payload)
     })
 
-    if (!res.ok) throw new Error('Ошибка запроса')
+    // Теперь response содержит ответ с сервера
+    console.log('Ответ от сервера:', response)
+
     openFormDonePopup()
-  } catch (e) {
-    console.error(e)
-    alert('Не удалось отправить данные')
+
+
+  } catch (error) {
+    console.error('Ошибка при отправке формы:', error)
+    alert('Произошла ошибка при отправке заявки')
   }
 }
 
 
+// const sendFormAmmoX = async () => {
+//   const payload = {
+//     name: formName.value,
+//     phone: formPhone.value,
+//     email: formEmail.value,
+//     currentUrl: store.domainUrlCurrent + route.fullPath,
+//     currentPlase: store.trigerButtonForm || 'Не получилось определить точное положение'
+//   }
 
-
-// const sendFormAmmo = async () => {
 //   try {
-//     const response = await $fetch('/api/send-form-data-ammo', {
+//     const res = await fetch('https://apicrm.ru/amo/domain/gift-siberia.com/send.php', {
 //       method: 'POST',
-//       body: {
-//         name: formName.value,
-//         email: formEmail.value,
-//         phone: formPhone.value,
-//         currentUrl: store.domainUrlCurrent + route.fullPath,
-//         currentPlase: store.trigerButtonForm || 'Не получилось оприделить точное положение'
+//       headers: {
+//         'Content-Type': 'application/json'
 //       },
+//       body: JSON.stringify(payload)
 //     })
 
-//     // Теперь response содержит ответ с сервера
-//     console.log('Ответ от сервера:', response)
-
+//     if (!res.ok) throw new Error('Ошибка запроса')
 //     openFormDonePopup()
-
-
-//   } catch (error) {
-//     console.error('Ошибка при отправке формы:', error)
-//     alert('Произошла ошибка при отправке заявки')
+//   } catch (e) {
+//     console.error(e)
+//     alert('Не удалось отправить данные')
 //   }
 // }
+
+
+
+
+
 
 
 

@@ -108,7 +108,7 @@
                                     </li>
 
                                 </ul>
-                                <a  class="pagination__btn pagination__btn-next" @click="nextPage()" v-if="currentPage < totalPages">
+                                <a  class="pagination__btn pagination__btn-next" @click="nextPage()" v-if="+currentPage < +totalPages">
                                     <span>Далее</span>
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M4.1665 10H15.8332M15.8332 10L9.99984 4.16666M15.8332 10L9.99984 15.8333" stroke="#1B3762" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
