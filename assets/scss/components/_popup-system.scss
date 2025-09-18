@@ -79,6 +79,94 @@
     }
 }
 
+.checkbox-item-custom__wrapper {
+    // width: 20px;
+    // height: 20px;
+    // border: solid 1px $darkBlueV2;
+    // display: block;
+    // border-radius: 4px;
+}
+
+/* Скрываем стандартный чекбокс */
+.checkbox-item-custom__wrapper input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Стиль коробки */
+.checkbox-item-custom__box {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #888;
+    border-radius: 4px;
+    /* для скругления */
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Состояние checked */
+.checkbox-item-custom__wrapper input[type="checkbox"]:checked+.checkbox-item-custom__box {
+    background-color: $darkBlueV2;
+    /* фон при активном чекбоксе */
+    border-color: $darkBlueV2;
+}
+
+/* Галочка */
+.checkbox-item-custom__wrapper input[type="checkbox"]:checked+.checkbox-item-custom__box::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 0px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.form-popup__checkbox-wrapper {
+    margin-top: 30px;
+
+}
+
+.checkbox-item-custom {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    position: relative;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    .form-valid-error {
+        position: relative;
+        top: auto;
+        left: auto;
+        bottom: auto;
+        width: 100%;
+        padding-left: 35px;
+        margin-top: 5px;
+    }
+}
+
+.checkbox-item-custom__text {
+    width: calc(100% - 20px);
+    padding-left: 15px;
+    font-size: 12px;
+    color: $darkBlueV1;
+
+    a {
+        text-decoration: underline;
+        color: $darkBlueV2;
+    }
+}
+
+
 
 
 

@@ -188,20 +188,23 @@
 
         <div class="footer__down">
             <div class="container">
+
+                <nav class="footer__down-nav">
+                    <ul class="footer__down-ul">
+
+                        <template v-for="item in doc_pages" :key="item">
+                            <li class="footer__down-li" v-if="item.template == 'pages/doc-page.php'">
+                                <NuxtLink :to="`/system/${item.slug}`"  class="footer__down-link">{{item.acf.kratkoe_nazvanie_dlya_navigaczii || item.title.rendered}}</NuxtLink>
+                            </li>
+                        </template>
+                        
+                    </ul>
+                </nav>
+
                 <p class="footer__down-copy">{{ optionsData.copy_text }}</p>
                 <div class="footer__down-right-row">
                     <p class="footer__down-rules-text">Все права защищены</p>
-                    <nav class="footer__down-nav">
-                        <ul class="footer__down-ul">
-
-                            <template v-for="item in doc_pages" :key="item">
-                                <li class="footer__down-li" v-if="item.template == 'pages/doc-page.php'">
-                                    <NuxtLink :to="`/system/${item.slug}`"  class="footer__down-link">{{item.acf.kratkoe_nazvanie_dlya_navigaczii || item.title.rendered}}</NuxtLink>
-                                </li>
-                            </template>
-                            
-                        </ul>
-                    </nav>
+                    
                 </div>
             </div>
         </div>

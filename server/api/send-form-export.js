@@ -16,7 +16,8 @@ export default defineEventHandler(async (event) => {
 Страна: ${body.country}
 Сообщение: ${body.messageCurrent}
 
-
+Согласие на обработку политики конфиденциальности: ${body.politConfirm}
+Согласие на рассылку: ${body.spamConfirm}
 
 url страницы заявки: ${body.currentUrl}
 Где была нажата кнопка: ${body.currentPlase}

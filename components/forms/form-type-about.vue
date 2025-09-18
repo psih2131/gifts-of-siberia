@@ -30,7 +30,34 @@
                 </div>
             </div>
 
-            <p class="info-form-sec__form-down-text">Нажимая на кнопку, вы автоматически соглашаетесь с политикой конфиденциальности и обработкой персональных данных</p>
+            <div class="form-popup__checkbox-wrapper">
+
+              <div class="checkbox-item-custom">
+
+                  <label class="checkbox-item-custom__wrapper">
+                    <input type="checkbox" v-model="formPolitCheckbox">
+                    <span class="checkbox-item-custom__box"></span>
+                  </label>
+
+                  <p class="checkbox-item-custom__text">Я соглласен на <NuxtLink to="/system/soglasie-na-obrabotku-personalnyh-dannyh">обработку персональных данных</NuxtLink> и <NuxtLink to="/system/soglashenie">пользовательское соглашение</NuxtLink></p>
+
+                  <p v-if="formPolitCheckbox == false && sendStatus == false" class="form-valid-error">Подтвердите согласие</p>
+              </div>
+
+
+              <div class="checkbox-item-custom">
+                
+                  <label class="checkbox-item-custom__wrapper">
+                    <input type="checkbox" v-model="formSpamCheckbox">
+                    <span class="checkbox-item-custom__box"></span>
+                  </label>
+
+                  <p class="checkbox-item-custom__text">Я соглласен на рекламную рассылку</p>
+              </div>
+
+            </div>
+
+            <!-- <p class="info-form-sec__form-down-text">Нажимая на кнопку, вы автоматически соглашаетесь с политикой конфиденциальности и обработкой персональных данных</p> -->
 
             <p v-if="sendStatus == false" class="form-valid-error-main">Ошибка, проверьте правильность введенных данных</p>
 
@@ -59,6 +86,10 @@ const formEmail = ref(null)
 
 const formPhone = ref(null)
 
+const formPolitCheckbox = ref(false)
+
+const formSpamCheckbox = ref(false)
+
 const route = useRoute()
 
 const formNameValidStatus = ref(null)
@@ -83,7 +114,7 @@ function validationForm(){
 
     validPhone(formPhone.value)
 
-    if(formNameValidStatus.value == true && formEmailValidStatus.value == true && formPhoneValidStatus.value == true){
+    if(formNameValidStatus.value == true && formEmailValidStatus.value == true && formPhoneValidStatus.value == true && formPolitCheckbox.value == true){
         sendStatus.value = true
 
         sendForm()
@@ -134,6 +165,8 @@ const sendForm = async () => {
         name: formName.value,
         email: formEmail.value,
         phone: formPhone.value,
+        politConfirm: formPolitCheckbox.value,
+        spamConfirm: formSpamCheckbox.value,
         currentUrl: store.domainUrlCurrent + route.fullPath,
         currentPlase: store.trigerButtonForm || 'Не получилось оприделить точное положение'
       },
@@ -141,8 +174,43 @@ const sendForm = async () => {
 
     // Теперь response содержит ответ с сервера
     console.log('Ответ от сервера:', response)
-    openFormDonePopup()
+
+    sendFormAmmo()
+
     store.changeTrigerButtonForm(null)
+
+  } catch (error) {
+    console.error('Ошибка при отправке формы:', error)
+    alert('Произошла ошибка при отправке заявки')
+  }
+}
+
+
+const sendFormAmmo = async () => {
+  try {
+    const response = await $fetch('/api/send-form-data-ammo', {
+      method: 'POST',
+      body: {
+        name: formName.value,
+        email: formEmail.value,
+        phone: formPhone.value,
+        politConfirm: formPolitCheckbox.value,
+        spamConfirm: formSpamCheckbox.value,
+        currentUrl: store.domainUrlCurrent + route.fullPath,
+        currentPlase: store.trigerButtonForm || 'Не получилось оприделить точное положение',
+        utm_source: localStorage.getItem('utm_source'),
+        utm_medium: localStorage.getItem('utm_medium'),
+        utm_campaign: localStorage.getItem('utm_campaign'),
+        utm_term: localStorage.getItem('utm_term'),
+        utm_content: localStorage.getItem('utm_content'),
+      },
+    })
+
+    // Теперь response содержит ответ с сервера
+    console.log('Ответ от сервера:', response)
+
+    openFormDonePopup()
+    
 
 
   } catch (error) {

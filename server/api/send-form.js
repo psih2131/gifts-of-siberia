@@ -13,7 +13,8 @@ export default defineEventHandler(async (event) => {
 📧 Email: ${body.email}
 📱 Телефон: ${body.phone}
 
-
+Согласие на обработку политики конфиденциальности: ${body.politConfirm}
+Согласие на рассылку: ${body.spamConfirm}
 
 url страницы заявки: ${body.currentUrl}
 Где была нажата кнопка: ${body.currentPlase}
