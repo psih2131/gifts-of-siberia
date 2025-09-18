@@ -40,30 +40,31 @@
 
             <div class="form-popup__checkbox-wrapper">
 
-              <div class="checkbox-item-custom">
+                  <div class="checkbox-item-custom">
 
-                  <label class="checkbox-item-custom__wrapper">
-                    <input type="checkbox" v-model="formPolitCheckbox">
-                    <span class="checkbox-item-custom__box"></span>
-                  </label>
+                      <label class="checkbox-item-custom__wrapper">
+                        <input type="checkbox" v-model="formPolitCheckbox">
+                        <span class="checkbox-item-custom__box"></span>
+                      </label>
 
-                  <p class="checkbox-item-custom__text">Я соглласен на <NuxtLink to="/system/soglasie-na-obrabotku-personalnyh-dannyh">обработку персональных данных</NuxtLink> и <NuxtLink to="/system/soglashenie">пользовательское соглашение</NuxtLink></p>
+                      <p class="checkbox-item-custom__text">Я согласен на <NuxtLink to="/system/soglasie-na-obrabotku-personalnyh-dannyh">обработку персональных данных</NuxtLink> ,
+                         <NuxtLink to="/system/soglashenie">пользовательское соглашение</NuxtLink> и <NuxtLink to="/system/privacy-policy">политику конфиденциальности</NuxtLink> </p> 
 
-                  <p v-if="formPolitCheckbox == false && sendStatus == false" class="form-valid-error">Подтвердите согласие</p>
-              </div>
+                      <p v-if="formPolitCheckbox == false && sendStatus == false" class="form-valid-error">Подтвердите согласие</p>
+                  </div>
 
 
-              <div class="checkbox-item-custom">
-                
-                  <label class="checkbox-item-custom__wrapper">
-                    <input type="checkbox" v-model="formSpamCheckbox">
-                    <span class="checkbox-item-custom__box"></span>
-                  </label>
+                  <div class="checkbox-item-custom">
+                    
+                      <label class="checkbox-item-custom__wrapper">
+                        <input type="checkbox" v-model="formSpamCheckbox">
+                        <span class="checkbox-item-custom__box"></span>
+                      </label>
 
-                  <p class="checkbox-item-custom__text">Я соглласен на рекламную рассылку</p>
-              </div>
+                      <p class="checkbox-item-custom__text">Я согласен на рекламную рассылку</p>
+                  </div>
 
-            </div>
+                </div>
 
             <!-- <p class="info-form-sec__form-down-text">Нажимая на кнопку, вы автоматически соглашаетесь с политикой конфиденциальности и обработкой персональных данных</p> -->
 

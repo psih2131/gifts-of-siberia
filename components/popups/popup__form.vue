@@ -46,7 +46,8 @@
                         <span class="checkbox-item-custom__box"></span>
                       </label>
 
-                      <p class="checkbox-item-custom__text">Я соглласен на <NuxtLink to="/system/soglasie-na-obrabotku-personalnyh-dannyh">обработку персональных данных</NuxtLink> и <NuxtLink to="/system/soglashenie">пользовательское соглашение</NuxtLink></p>
+                      <p class="checkbox-item-custom__text">Я согласен на <NuxtLink to="/system/soglasie-na-obrabotku-personalnyh-dannyh">обработку персональных данных</NuxtLink> ,
+                         <NuxtLink to="/system/soglashenie">пользовательское соглашение</NuxtLink> и <NuxtLink to="/system/privacy-policy">политику конфиденциальности</NuxtLink> </p> 
 
                       <p v-if="formPolitCheckbox == false && sendStatus == false" class="form-valid-error">Подтвердите согласие</p>
                   </div>
@@ -59,7 +60,7 @@
                         <span class="checkbox-item-custom__box"></span>
                       </label>
 
-                      <p class="checkbox-item-custom__text">Я соглласен на рекламную рассылку</p>
+                      <p class="checkbox-item-custom__text">Я согласен на рекламную рассылку</p>
                   </div>
 
                 </div>
