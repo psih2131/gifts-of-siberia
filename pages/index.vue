@@ -149,7 +149,7 @@
             <newsCard v-for="item in popularPostList" :key="item" :postData="item" :catList="all_categories_post" />
           </div>
 
-          <div class="last-news-sec__slider">
+          <div class="last-news-sec__slider" v-if="popularPostList?.length > 0">
             <swiper-container 
             ref="newsHomeSlider" 
             class="news-home-slider"
