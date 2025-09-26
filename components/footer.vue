@@ -1,5 +1,5 @@
 <template>
-    <footer class="footer">
+    <footer class="footer" v-if="optionsData">
         <div class="footer__top">
             <div class="container">
                 <div class="footer__top-left-side">
@@ -195,7 +195,7 @@
             <div class="container">
 
                 <nav class="footer__down-nav">
-                    <ul class="footer__down-ul">
+                    <ul class="footer__down-ul" v-if="doc_pages?.length > 0">
 
                         <template v-for="item in doc_pages" :key="item">
                             <li class="footer__down-li" v-if="item.template == 'pages/doc-page.php'">
@@ -206,7 +206,7 @@
                     </ul>
                 </nav>
 
-                <p class="footer__down-copy">{{ optionsData.copy_text }}</p>
+                <p class="footer__down-copy" v-if="optionsData?.copy_text">{{ optionsData.copy_text }}</p>
                 <div class="footer__down-right-row">
                     <p class="footer__down-rules-text">Все права защищены</p>
                     
