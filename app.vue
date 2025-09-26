@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-      <NuxtLayout>
+      <!-- <NuxtLayout>
         <NuxtPage />
 
         <CookieBanner />
@@ -9,7 +9,8 @@
 
         <BodyScripts :html="bodyScripts" />
 
-      </NuxtLayout>
+      </NuxtLayout> -->
+      test
   </div>
 </template>
 
@@ -28,13 +29,13 @@ import CookieBanner from '@/components/CookieBanner.vue'
 
 const store = useCounterStore()
 
-const { data: optionsData } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/acf/v3/options`)
+// const { data: optionsData } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/acf/v3/options`)
 
-console.log('optionsData',optionsData)
+// console.log('optionsData',optionsData)
 
-const scriptsBlock = optionsData.value?.blok_metrik_pered_zakryvayushhim_tegom_head || ''
+// const scriptsBlock = optionsData.value?.blok_metrik_pered_zakryvayushhim_tegom_head || ''
 
-const bodyScripts = optionsData.value?.blok_metrik_pered_zakryvayushhim_tegom_body || ''
+// const bodyScripts = optionsData.value?.blok_metrik_pered_zakryvayushhim_tegom_body || ''
 
 
 //DATA
