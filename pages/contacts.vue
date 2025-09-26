@@ -18,6 +18,10 @@
                     <div class="contacts-sec__info">
                         
                         <ul class="footer__top-contacts-claster-ul">
+
+                            <template v-if="pageData[0].acf?.futer_nomera_telefonov?.length > 0">
+
+                            </template>
                             <li class="footer__top-contacts-claster-li" v-for="item in pageData[0].acf.futer_nomera_telefonov" :key="item">
                                 <a :href="`tel:${item.ssyllka_na_nomer}`" class="footer__top-contacts-claster-li-link">
                                     <span class="footer__top-contacts-claster-li-icon">
