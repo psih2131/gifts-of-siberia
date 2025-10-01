@@ -97,7 +97,8 @@
                                     <NuxtLink to="/yur-litsam" @click="closeMobNav()"  class="header-navigation-mobile__li-sub-meny-element-link">Юридическим лицам</NuxtLink>
                                 </li>
                                 <li class="header-navigation-mobile__li-sub-meny-element">
-                                    <NuxtLink to="/corporation-gifts" @click="closeMobNav()"  class="header-navigation-mobile__li-sub-meny-element-link">Корпоративные подарки</NuxtLink>
+                                     <a href="https://business.gift-siberia.com/" class="header-navigation-mobile__li-sub-meny-element-link">Корпоративные подарки</a>
+                                    <!-- <NuxtLink to="/corporation-gifts" @click="closeMobNav()"  class="header-navigation-mobile__li-sub-meny-element-link">Корпоративные подарки</NuxtLink> -->
                                 </li>
 
                             </ul>
@@ -183,7 +184,8 @@
                                 <NuxtLink to="/yur-litsam"  class="sub-meny__element-link">Юридическим лицам</NuxtLink>
                             </li>
                             <li class="sub-meny__element">
-                                <NuxtLink to="/corporation-gifts"  class="sub-meny__element-link">Корпоративные подарки</NuxtLink>
+                                <a href="https://business.gift-siberia.com/" class="sub-meny__element-link">Корпоративные подарки</a>
+                                <!-- <NuxtLink to="/corporation-gifts"  class="sub-meny__element-link">Корпоративные подарки</NuxtLink> -->
                             </li>
 
                         </ul>

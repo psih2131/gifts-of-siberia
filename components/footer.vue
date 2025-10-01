@@ -88,7 +88,8 @@
                                         <NuxtLink to="/yur-litsam"  class="footer__top-nav-list-link">Юридическим лицам</NuxtLink>
                                     </li>
                                     <li class="footer__top-nav-list-element">
-                                        <NuxtLink to="/corporation-gifts"  class="footer__top-nav-list-link">Корпоративные подарки</NuxtLink>
+                                        <a href="https://business.gift-siberia.com/" class="footer__top-nav-list-link">Корпоративные подарки</a>
+                                        <!-- <NuxtLink to="/corporation-gifts"  class="footer__top-nav-list-link">Корпоративные подарки</NuxtLink> -->
                                     </li>
                                 </ul>
                             </div>
