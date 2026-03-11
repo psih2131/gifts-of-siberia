@@ -1,4 +1,24 @@
 {
+  "about": {
+    "learnMore": "Узнать подробнее",
+    "viewCertification": "Смотреть сертификацию компании"
+  },
+  "form": {
+    "leaveRequest": "Оставить заявку",
+    "fillFormSubtitle": "Заполните форму, и наши специалисты свяжутся с Вами в ближайшее время.",
+    "yourName": "Ваше имя",
+    "email": "Email",
+    "phoneNumber": "Номер телефона",
+    "checkDataError": "Проверьте правильность введенных данных",
+    "confirmConsent": "Подтвердите согласие",
+    "mainError": "Ошибка, проверьте правильность введенных данных",
+    "consentText": "Я согласен на",
+    "and": "и",
+    "personalDataProcessing": "обработку персональных данных",
+    "userAgreement": "пользовательское соглашение",
+    "privacyPolicy": "политику конфиденциальности",
+    "consentNewsletter": "Я согласен на рекламную рассылку"
+  },
   "home": {
     "popularProducts": "Популярные товары",
     "aboutCompany": "О компании \"Дары Сибири\"",

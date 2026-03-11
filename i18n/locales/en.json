@@ -1,4 +1,24 @@
 {
+  "about": {
+    "learnMore": "Learn more",
+    "viewCertification": "View company certification"
+  },
+  "form": {
+    "leaveRequest": "Leave a request",
+    "fillFormSubtitle": "Fill out the form and our specialists will contact you as soon as possible.",
+    "yourName": "Your name",
+    "email": "Email",
+    "phoneNumber": "Phone number",
+    "checkDataError": "Please check that the data you entered is correct",
+    "confirmConsent": "Please confirm your consent",
+    "mainError": "Error, please check that the data you entered is correct",
+    "consentText": "I agree to",
+    "and": "and",
+    "personalDataProcessing": "processing of personal data",
+    "userAgreement": "terms of use",
+    "privacyPolicy": "privacy policy",
+    "consentNewsletter": "I agree to receive marketing communications"
+  },
   "home": {
     "popularProducts": "Popular products",
     "aboutCompany": "About \"Gifts of Siberia\"",
