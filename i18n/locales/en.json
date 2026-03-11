@@ -1,4 +1,9 @@
 {
+  "home": {
+    "popularProducts": "Popular products",
+    "aboutCompany": "About \"Gifts of Siberia\"",
+    "latestArticles": "Latest articles and news"
+  },
   "common": {
     "pageNotTranslated": "This page is not translated into the selected language",
     "defaultDescription": "Default description",

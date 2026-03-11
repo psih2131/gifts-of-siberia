@@ -1,6 +1,6 @@
 <template>
     <main class="main">
-
+      <template v-if="frontpage?.[0]">
       <!-- Hero sec banner -->
       <section class="hero-banner-sec" v-if="frontpage[0]?.acf?.sekcziya_1_bannera" >
         <div class="container">
@@ -16,8 +16,8 @@
             >
               <swiper-slide v-for="item in frontpage[0].acf.sekcziya_1_bannera" :key="item">
                   <div class="hero-banner-slider__element">
-                    <img :src="item.izobrazhenie_bannera_pk.url" :alt="item.izobrazhenie_bannera_pk.alt" class="hero-banner-slider__img">
-                    <img :src="item.izobrazhenie_bannera_mobilka.url" :alt="item.izobrazhenie_bannera_mobilka.alt" class="hero-banner-slider__img-mob">
+                    <img v-if="item?.izobrazhenie_bannera_pk?.url" :src="item.izobrazhenie_bannera_pk.url" :alt="item.izobrazhenie_bannera_pk.alt || ''" class="hero-banner-slider__img">
+                    <img v-if="item?.izobrazhenie_bannera_mobilka?.url" :src="item.izobrazhenie_bannera_mobilka.url" :alt="item.izobrazhenie_bannera_mobilka.alt || ''" class="hero-banner-slider__img-mob">
                   </div>
               </swiper-slide>
 
@@ -42,14 +42,14 @@
       <section class="popular-prod-sec" v-if="popularProdList?.length">
         <div class="container">
           <div class="popular-prod-sec__header">
-            <p class="popular-prod-sec__title">Популярные товары</p>
+            <p class="popular-prod-sec__title">{{ $t('home.popularProducts') }}</p>
 
-            <NuxtLink to="/products" class="popular-prod-sec__link"  >
+            <NuxtLinkLocale to="/products" class="popular-prod-sec__link"  >
               <svg width="64" height="52" viewBox="0 0 64 52" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0.5" y="0.5" width="63" height="51" rx="12.5" stroke="#1B3762"/>
               <path d="M42.7071 26.7071C43.0976 26.3166 43.0976 25.6834 42.7071 25.2929L36.3431 18.9289C35.9526 18.5384 35.3195 18.5384 34.9289 18.9289C34.5384 19.3195 34.5384 19.9526 34.9289 20.3431L40.5858 26L34.9289 31.6569C34.5384 32.0474 34.5384 32.6805 34.9289 33.0711C35.3195 33.4616 35.9526 33.4616 36.3431 33.0711L42.7071 26.7071ZM23 26V27H42V26V25H23V26Z" fill="#1B3762"/>
               </svg>
-            </NuxtLink>
+            </NuxtLinkLocale>
 
           </div>
 
@@ -64,7 +64,7 @@
       <section class="home-about-sec" v-if="frontpage[0]?.acf?.sekcziya_3_missiya">
         <div class="container">
 
-          <div class="home-about-sec__title-mob">О компании “Дары Сибири”</div>
+          <div class="home-about-sec__title-mob">{{ $t('home.aboutCompany') }}</div>
           <div class="home-about-sec__slider-wrapper">
             <swiper-container 
             ref="aboutHomeSlider" 
@@ -76,7 +76,7 @@
             >
               <swiper-slide v-for="item in frontpage[0].acf.sekcziya_3_missiya.slajder_izobrazhenij" :key="item">
                   <div class="about-home-slider__element">
-                    <img :src="item.izobrazhenie.url" :alt="item.izobrazhenie.alt" class="about-home-slider__img">
+                    <img v-if="item?.izobrazhenie?.url" :src="item.izobrazhenie.url" :alt="item.izobrazhenie?.alt || ''" class="about-home-slider__img">
                   </div>
               </swiper-slide>
 
@@ -134,14 +134,14 @@
       <section class="last-news-sec" v-if="popularPostList?.length">
         <div class="container">
           <div class="last-news-sec__header">
-            <h2 class="last-news-sec__title">Последние статьи и новости</h2>
+            <h2 class="last-news-sec__title">{{ $t('home.latestArticles') }}</h2>
 
-            <NuxtLink class="last-news-sec__link" to="/blog/">
+            <NuxtLinkLocale class="last-news-sec__link" to="/blog/">
               <svg width="64" height="52" viewBox="0 0 64 52" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0.5" y="0.5" width="63" height="51" rx="12.5" stroke="#1B3762"/>
               <path d="M42.7071 26.7071C43.0976 26.3166 43.0976 25.6834 42.7071 25.2929L36.3431 18.9289C35.9526 18.5384 35.3195 18.5384 34.9289 18.9289C34.5384 19.3195 34.5384 19.9526 34.9289 20.3431L40.5858 26L34.9289 31.6569C34.5384 32.0474 34.5384 32.6805 34.9289 33.0711C35.3195 33.4616 35.9526 33.4616 36.3431 33.0711L42.7071 26.7071ZM23 26V27H42V26V25H23V26Z" fill="#1B3762"/>
               </svg>
-            </NuxtLink>
+            </NuxtLinkLocale>
 
           </div>
 
@@ -169,6 +169,8 @@
           </div>
         </div>
       </section>
+      </template>
+      <ContentNotTranslated v-else-if="!pending" />
 
     </main>
     
@@ -192,8 +194,8 @@ import newsCard from '@/components/component__news-card.vue'
 
 //DATA
 const store = useCounterStore()
-
 const route = useRoute()
+const { locale } = useI18n()
 
 const heroBannerSec = ref(null)
 
@@ -205,58 +207,77 @@ const popularProdList = ref([])
 
 const popularPostList = ref([])
 
-// категории
+// категории товаров
 const { data: all_categories } = await useFetch(
-  `${store.serverUrlDomainRequest}/wp-json/wp/v2/products-section`
+  () => `${store.serverUrlDomainRequest}/wp-json/wp/v2/products-section${locale.value && locale.value !== 'ru' ? `?lang=${locale.value}` : ''}`,
+  { watch: [locale] }
 )
 
-const { data: frontpage } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/pages?slug=home`)
+const { data: frontpage, pending } = await useFetch(
+  () => `${store.serverUrlDomainRequest}/wp-json/wp/v2/pages?slug=home${locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''}`,
+  { watch: [locale] }
+)
 
-// получаем рекомендованные товары
-try {
+// получаем популярные товары
+async function loadPopularProducts() {
   const mainPost = frontpage.value?.[0]
-  const chitatTakzhe = mainPost?.acf['sekcziya_2_-_populyarnye_tovary']
+  const popularTovary = mainPost?.acf?.['sekcziya_2_-_populyarnye_tovary']
+  const langParam = locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''
 
-  if (Array.isArray(chitatTakzhe) && chitatTakzhe.length) {
-    const slugs = chitatTakzhe.map(obj => obj.post_name)
+  if (!Array.isArray(popularTovary) || !popularTovary.length) {
+    popularProdList.value = []
+    return
+  }
 
+  try {
+    const slugs = popularTovary.map(obj => obj.post_name)
     const promises = slugs.map(slug =>
-      fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?slug=${slug}`)
+      fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?slug=${slug}${langParam}`)
         .then(res => res.json())
         .then(data => data?.[0] || null)
     )
-
     popularProdList.value = await Promise.all(promises)
+  } catch (error) {
+    console.error('Ошибка при загрузке популярных товаров:', error)
+    popularProdList.value = []
   }
-} catch (error) {
-  console.error('Ошибка при загрузке рекомендованных постов:', error)
 }
 
-
-// категории
+// категории блога
 const { data: all_categories_post } = await useFetch(
-  `${store.serverUrlDomainRequest}/wp-json/wp/v2/blog-category`
+  () => `${store.serverUrlDomainRequest}/wp-json/wp/v2/blog-category${locale.value && locale.value !== 'ru' ? `?lang=${locale.value}` : ''}`,
+  { watch: [locale] }
 )
 
-// получаем рекомендованные посты
-try {
+// получаем последние посты
+async function loadPopularPosts() {
   const mainPost = frontpage.value?.[0]
-  const chitatTakzhe = mainPost?.acf?.sekcziya_6_novosti
+  const novosti = mainPost?.acf?.sekcziya_6_novosti
+  const langParam = locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''
 
-  if (Array.isArray(chitatTakzhe) && chitatTakzhe.length) {
-    const slugs = chitatTakzhe.map(obj => obj.post_name)
+  if (!Array.isArray(novosti) || !novosti.length) {
+    popularPostList.value = []
+    return
+  }
 
+  try {
+    const slugs = novosti.map(obj => obj.post_name)
     const promises = slugs.map(slug =>
-      fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog?slug=${slug}`)
+      fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog?slug=${slug}${langParam}`)
         .then(res => res.json())
         .then(data => data?.[0] || null)
     )
-
     popularPostList.value = await Promise.all(promises)
+  } catch (error) {
+    console.error('Ошибка при загрузке последних постов:', error)
+    popularPostList.value = []
   }
-} catch (error) {
-  console.error('Ошибка при загрузке рекомендованных постов:', error)
 }
+
+watch([frontpage, locale], () => {
+  loadPopularProducts()
+  loadPopularPosts()
+}, { immediate: true })
 
 // console.log('popularPostList', popularPostList)
 
@@ -294,42 +315,28 @@ const swiperNews = useSwiper(newsHomeSlider, {
 
 
 //SEO
-useHead({
-    title: frontpage.value[0].acf.seo_title || frontpage.value[0].title.rendered,
-    meta: [
-        // Description
-        { name: 'description', content: frontpage.value[0].acf.seo_description || 'Описание по умолчанию' },
-
-        // Keywords (опционально, не влияет сильно на SEO)
-        { name: 'keywords',  content: frontpage.value[0].acf.klyuchevaya_fraza || 'test' },
-
-        // OpenGraph
-        { property: 'og:title', content: frontpage.value[0].acf.seo_title },
-        { property: 'og:description', content: frontpage.value[0].acf.seo_description },
-        { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: `${store.domainUrlCurrent}${route.fullPath}` },
-        { property: 'og:image', content: frontpage.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
-
-        // Twitter Card (если используешь)
-        { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: frontpage.value[0].acf.seo_title },
-        { name: 'twitter:description', content: frontpage.value[0].acf.seo_description },
-        { name: 'twitter:image', content: frontpage.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
-
-        // Индексация / Деиндексация
-        // Например, noindex для черновика:
-        {
-        name: 'robots',
-        content:
-            frontpage.value[0].acf.indeksacziya_v_poiskovyh_sistemah === 'index'
-            ? 'index, follow'
-            : 'noindex, nofollow'
-        }
-    ],
-    link: [
-        // Canonical (вручную или динамически)
-        { rel: 'canonical', href: `${store.domainUrlCurrent}` }
-    ]
+const { t } = useI18n()
+useHead(() => {
+    const page = frontpage.value?.[0]
+    if (!page?.acf) return { title: t('nav.brand.giftsOfSiberia') }
+    return {
+        title: page.acf.seo_title || page.title?.rendered,
+        meta: [
+            { name: 'description', content: page.acf.seo_description || t('common.defaultDescription') },
+            { name: 'keywords', content: page.acf.klyuchevaya_fraza || t('common.defaultKeywords') },
+            { property: 'og:title', content: page.acf.seo_title || page.title?.rendered },
+            { property: 'og:description', content: page.acf.seo_description || t('common.defaultDescription') },
+            { property: 'og:type', content: 'website' },
+            { property: 'og:url', content: `${store.domainUrlCurrent}${route.fullPath}` },
+            { property: 'og:image', content: page.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
+            { name: 'twitter:card', content: 'summary_large_image' },
+            { name: 'twitter:title', content: page.acf.seo_title || page.title?.rendered },
+            { name: 'twitter:description', content: page.acf.seo_description || t('common.defaultDescription') },
+            { name: 'twitter:image', content: page.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
+            { name: 'robots', content: page.acf?.indeksacziya_v_poiskovyh_sistemah === 'index' ? 'index, follow' : 'noindex, nofollow' }
+        ],
+        link: [{ rel: 'canonical', href: `${store.domainUrlCurrent}${route.fullPath === '/' ? '' : route.fullPath}` }]
+    }
 })
 </script>
 

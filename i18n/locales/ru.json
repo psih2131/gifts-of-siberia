@@ -1,4 +1,9 @@
 {
+  "home": {
+    "popularProducts": "Популярные товары",
+    "aboutCompany": "О компании \"Дары Сибири\"",
+    "latestArticles": "Последние статьи и новости"
+  },
   "common": {
     "pageNotTranslated": "Данная страница не переведена на выбранный язык",
     "defaultDescription": "Описание по умолчанию",
