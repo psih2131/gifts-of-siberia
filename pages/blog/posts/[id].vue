@@ -1,7 +1,7 @@
 <template>
     <main class="main">
 
-        <section class="post-sec">
+        <section class="post-sec" v-if="object_data_single?.[0]">
             <div class="container">
 
                 <div class="breadcrumbs">
@@ -17,7 +17,7 @@
 
                         <template v-if="object_data_single[0]['blog-category'] && all_categories?.length">
                             <template v-for="item in object_data_single[0]['blog-category']" :key="item">
-                                <NuxtLink v-if="currentCatSlug(item)" class="post-sec__teg" :to="`/blog/categories/${currentCatSlug(item)}`">#{{ curentCatTitle(item) }}</NuxtLink>
+                                <NuxtLinkLocale v-if="currentCatSlug(item)" class="post-sec__teg" :to="`/blog/categories/${currentCatSlug(item)}`">#{{ curentCatTitle(item) }}</NuxtLinkLocale>
                             </template>
                         </template>
 
@@ -29,8 +29,8 @@
                             <path d="M12.5 2.67712H7.5C7.15833 2.67712 6.875 2.40796 6.875 2.08337C6.875 1.75879 7.15833 1.48962 7.5 1.48962H12.5C12.8417 1.48962 13.125 1.75879 13.125 2.08337C13.125 2.40796 12.8417 2.67712 12.5 2.67712Z" fill="#1B3762"/>
                             </svg>
                             <span>
-                                Время прочтения -
-                                <b>{{object_data_single[0].acf.vremya_prochteniya_v_minutah}}  мин</b>
+                                {{ $t('post.readingTime') }}
+                                <b>{{ object_data_single[0].acf.vremya_prochteniya_v_minutah }} {{ $t('post.min') }}</b>
                             </span>
                         </div>
                         <p class="post-sec__creade-date">{{formatDateToRussian(object_data_single[0].date)}}</p>  
@@ -53,7 +53,7 @@
         <section class="last-news-sec post-page-other-news" v-if="object_data_single && recomendPostsList && recomendPostsList.length > 0">
             <div class="container">
             <div class="last-news-sec__header">
-                <h2 class="last-news-sec__title">читайте также</h2>
+                <h2 class="last-news-sec__title">{{ $t('post.readAlso') }}</h2>
             </div>
 
             <div class="last-news-sec__row">
@@ -63,6 +63,8 @@
             </div>
             </div>
         </section>
+
+        <ContentNotTranslated v-else-if="!object_data_single?.[0] && !pending" />
         
     </main>
     
@@ -84,50 +86,56 @@ import newsCard from '@/components/component__news-card.vue'
 
 //DATA
 const route = useRoute()
-
 const store = useCounterStore()
-
+const { locale } = useI18n()
 const recomendPostsList = ref([])
 
 // основной пост
-const { data: object_data_single } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog?slug=${route.params.id}&lang=en`)
+const { data: object_data_single, pending } = await useFetch(
+  () => `${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog?slug=${route.params.id}${locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''}`,
+  { watch: [locale] }
+)
 
 // категории
 const { data: all_categories } = await useFetch(
-  `${store.serverUrlDomainRequest}/wp-json/wp/v2/blog-category?lang=en`
+  () => `${store.serverUrlDomainRequest}/wp-json/wp/v2/blog-category${locale.value && locale.value !== 'ru' ? `?lang=${locale.value}` : ''}`,
+  { watch: [locale] }
 )
 
-// получаем рекомендованные посты
-try {
+// получаем рекомендованные посты при изменении поста или локали
+async function loadRecommendedPosts() {
   const mainPost = object_data_single.value?.[0]
   const chitatTakzhe = mainPost?.acf?.chitat_takzhe
+  const langParam = locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''
 
-  if (Array.isArray(chitatTakzhe) && chitatTakzhe.length) {
+  if (!Array.isArray(chitatTakzhe) || !chitatTakzhe.length) {
+    recomendPostsList.value = []
+    return
+  }
+
+  try {
     const slugs = chitatTakzhe.map(obj => obj.post_name)
-
     const promises = slugs.map(slug =>
-      fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog?slug=${slug}`)
+      fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog?slug=${slug}${langParam}`)
         .then(res => res.json())
         .then(data => data?.[0] || null)
     )
-
     recomendPostsList.value = await Promise.all(promises)
+  } catch (error) {
+    console.error('Ошибка при загрузке рекомендованных постов:', error)
+    recomendPostsList.value = []
   }
-} catch (error) {
-  console.error('Ошибка при загрузке рекомендованных постов:', error)
 }
 
-console.log('recomendPostsList.value', recomendPostsList)
-console.log('object_data_single', object_data_single)
-console.log('all_categories', all_categories)
+watch([object_data_single, locale], loadRecommendedPosts, { immediate: true })
 
 //METHODS 
 
 //date convertor
 function formatDateToRussian(dateString) {
     const date = new Date(dateString);
-    
-    return date.toLocaleDateString('ru-RU', {
+    const localeKey = locale.value === 'ru' ? 'ru-RU' : 'en-US';
+    return date.toLocaleDateString(localeKey, {
         day: 'numeric',
         month: 'long',
         year: 'numeric',
@@ -176,41 +184,29 @@ onBeforeUnmount(() => {
 
 
 //SEO
-useHead({
-    title: object_data_single.value[0].acf.seo_title || object_data_single.value[0].title.rendered,
-    meta: [
-        // Description
-        { name: 'description', content: object_data_single.value[0].acf.seo_description || 'Описание по умолчанию' },
-
-        // Keywords (опционально, не влияет сильно на SEO)
-        { name: 'keywords',  content: object_data_single.value[0].acf.klyuchevaya_fraza || 'test' },
-
-        // OpenGraph
-        { property: 'og:title', content: object_data_single.value[0].acf.seo_title },
-        { property: 'og:description', content: object_data_single.value[0].acf.seo_description },
-        { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: `${store.domainUrlCurrent}${route.fullPath}` },
-        { property: 'og:image', content: object_data_single.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
-
-        // Twitter Card (если используешь)
-        { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: object_data_single.value[0].acf.seo_title },
-        { name: 'twitter:description', content: object_data_single.value[0].acf.seo_description },
-        { name: 'twitter:image', content: object_data_single.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
-
-        // Индексация / Деиндексация
-        // Например, noindex для черновика:
-        {
-        name: 'robots',
-        content:
-            object_data_single.value[0].acf.indeksacziya_v_poiskovyh_sistemah === 'index'
-            ? 'index, follow'
-            : 'noindex, nofollow'
-        }
-    ],
-    link: [
-        // Canonical (вручную или динамически)
-        { rel: 'canonical', href: `${store.domainUrlCurrent}/blog/posts/${object_data_single.value[0].acf.canonical || route.params.id}` }
-    ]
+const { t } = useI18n()
+useHead(() => {
+    const post = object_data_single.value?.[0]
+    if (!post?.acf) return { title: t('breadcrumbs.blog') }
+    const defaultDesc = t('common.defaultDescription')
+    const defaultKeywords = t('common.defaultKeywords')
+    return {
+        title: post.acf.seo_title || post.title?.rendered,
+        meta: [
+            { name: 'description', content: post.acf.seo_description || defaultDesc },
+            { name: 'keywords', content: post.acf.klyuchevaya_fraza || defaultKeywords },
+            { property: 'og:title', content: post.acf.seo_title || post.title?.rendered },
+            { property: 'og:description', content: post.acf.seo_description || defaultDesc },
+            { property: 'og:type', content: 'website' },
+            { property: 'og:url', content: `${store.domainUrlCurrent}${route.fullPath}` },
+            { property: 'og:image', content: post.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
+            { name: 'twitter:card', content: 'summary_large_image' },
+            { name: 'twitter:title', content: post.acf.seo_title || post.title?.rendered },
+            { name: 'twitter:description', content: post.acf.seo_description || defaultDesc },
+            { name: 'twitter:image', content: post.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
+            { name: 'robots', content: post.acf?.indeksacziya_v_poiskovyh_sistemah === 'index' ? 'index, follow' : 'noindex, nofollow' }
+        ],
+        link: [{ rel: 'canonical', href: `${store.domainUrlCurrent}/blog/posts/${post.acf?.canonical || route.params.id}` }]
+    }
 })
 </script>

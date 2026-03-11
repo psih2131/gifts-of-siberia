@@ -22,7 +22,7 @@
                             <ul class="blog-sec__nav-list">
                                 <li class="blog-sec__nav-list-element">
 
-                                     <NuxtLink to="/blog/" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
+                                     <NuxtLinkLocale to="/blog/" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
                                           <span class="blog-sec__nav-link-icon">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M21 20.25H11C10.59 20.25 10.25 19.91 10.25 19.5C10.25 19.09 10.59 18.75 11 18.75H21C21.41 18.75 21.75 19.09 21.75 19.5C21.75 19.91 21.41 20.25 21 20.25Z" fill="#1B3762"/>
@@ -34,19 +34,19 @@
                                             </svg>
 
                                         </span>
-                                        <span class="blog-sec__nav-link-text">Все статьи</span>
-                                     </NuxtLink>
+                                        <span class="blog-sec__nav-link-text">{{ $t('blog.allArticles') }}</span>
+                                     </NuxtLinkLocale>
 
                                 </li>
 
                                 <template v-if="all_categories">
                                     <li class="blog-sec__nav-list-element" v-for="item in all_categories" :key="item">
-                                        <NuxtLink :to="`/blog/categories/${item.slug}/`" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
+                                        <NuxtLinkLocale :to="`/blog/categories/${item.slug}/`" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
                                             <span class="blog-sec__nav-link-icon">
-                                                <img :src="item.acf.ikonka_kategorii.url" :alt="item.acf.ikonka_kategorii.alt">
+                                                <img v-if="item?.acf?.ikonka_kategorii?.url" :src="item.acf.ikonka_kategorii.url" :alt="item.acf.ikonka_kategorii.alt || ''">
                                             </span>
                                             <span class="blog-sec__nav-link-text">{{item.name}}</span>
-                                        </NuxtLink>
+                                        </NuxtLinkLocale>
                                     </li>
                                 </template>
                                        
@@ -56,7 +56,7 @@
 
                     <div class="blog-sec__body">
                         <div class="blog-sec__body-header">
-                            <h1 class="products-catalog-sec__elements-wrapper-title">блог</h1>
+                            <h1 class="products-catalog-sec__elements-wrapper-title">{{ $t('blog.title') }}</h1>
                             
                             <searchBlog />
                             
@@ -73,8 +73,8 @@
 
                             <template v-else>
                                 <div class="blog-sec__body-no-posts no-posts-box">
-                                    <p class="no-posts-box__title">упс!</p>
-                                    <p class="no-posts-box__subtitle">По запросу ничего не найдено</p>
+                                    <p class="no-posts-box__title">{{ $t('blog.oops') }}</p>
+                                    <p class="no-posts-box__subtitle">{{ $t('blog.nothingFound') }}</p>
                                     <div class="no-posts-box__img-wrapper">
                                         <img src="@/assets/images/img/do-posts.png" alt="">
                                     </div>
@@ -94,22 +94,22 @@
                                     <path d="M15.8332 10H4.1665M4.1665 10L9.99984 15.8333M4.1665 10L9.99984 4.16667" stroke="#1B3762" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
 
-                                    <span>Назад</span>
+                                    <span>{{ $t('blog.back') }}</span>
                                 </a>
 
                                 <ul class="pagination__num-list">
                                     <li class="pagination__nam-li " v-for="(item, index) in totalPages" :key="index" :class="{'pagination__nam-li--activ' : item == currentPage }">
                                  
 
-                                        <NuxtLink :to="`/blog/?page=${item}`" >
+                                        <NuxtLinkLocale :to="`/blog/?page=${item}`" >
                                             {{ item }}
-                                        </NuxtLink>
+                                        </NuxtLinkLocale>
 
                                     </li>
 
                                 </ul>
                                 <a  class="pagination__btn pagination__btn-next" @click="nextPage()" v-if="+currentPage < +totalPages">
-                                    <span>Далее</span>
+                                    <span>{{ $t('blog.next') }}</span>
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M4.1665 10H15.8332M15.8332 10L9.99984 4.16666M15.8332 10L9.99984 15.8333" stroke="#1B3762" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
@@ -118,9 +118,9 @@
                             </div>
 
                             <div class="page-counter">
-                                <div class="page-counter__text">Страница</div>
+                                <div class="page-counter__text">{{ $t('blog.page') }}</div>
                                 <div class="page-counter__counter">{{ currentPage }}</div>
-                                <div class="page-counter__text">из  {{ totalPages }}</div>
+                                <div class="page-counter__text">{{ $t('blog.of') }} {{ totalPages }}</div>
                             </div>
 
                         </div>
@@ -154,10 +154,9 @@ import searchBlog from '@/components/component__search-blog.vue'
 
 //DATA
 const store = useCounterStore()
-
 const route = useRoute()
-
 const router = useRouter()
+const { locale } = useI18n()
 
 const currentPage = ref(route.query.page || 1)
 
@@ -167,33 +166,31 @@ const totalPages = ref(null)
 
 const seoTitle = ref(`Блог ${route.query.page || ''}`)
 
-const { data: pageData } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/pages?slug=stranicza-bloga`)
+const { data: pageData } = await useFetch(
+  () => `${store.serverUrlDomainRequest}/wp-json/wp/v2/pages?slug=stranicza-bloga${locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''}`,
+  { watch: [locale] }
+)
 
-const { data: all_object, error, pending } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog?page=${currentPage.value || 1}&per_page=${perPage.value}`, {
-    onResponse({ response }) {
-      const total = response.headers.get('X-WP-Total')
+const { data: all_object, error, pending } = await useFetch(
+  () => `${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog?page=${currentPage.value || 1}&per_page=${perPage.value}${locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''}`,
+  { watch: [locale], onResponse({ response }) {
       const pages = response.headers.get('X-WP-TotalPages')
-      
       if (pages) totalPages.value = Number(pages)
-      
-      console.log('X-WP-Total', total)
-      console.log('X-WP-TotalPages', pages)
     },
-})
+  }
+)
 
-const { data: all_categories } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/blog-category`)
-
-console.log(all_object)
-
-console.log(all_categories)
-
-
+const { data: all_categories } = await useFetch(
+  () => `${store.serverUrlDomainRequest}/wp-json/wp/v2/blog-category${locale.value && locale.value !== 'ru' ? `?lang=${locale.value}` : ''}`,
+  { watch: [locale] }
+)
 
 //METHODS 
 
 //get posts on client side
 async function fetchClientData() {
-  const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog?page=${currentPage.value || 1}&per_page=${perPage.value}`)
+  const langParam = locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''
+  const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog?page=${currentPage.value || 1}&per_page=${perPage.value}${langParam}`)
   const data = await res.json()
   all_object.value = data
 
@@ -231,23 +228,21 @@ function prevPage(){
 
 //HOOKS
 onMounted(async () => {
-    const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog?page=${currentPage.value || 1}&per_page=${perPage.value}`)
+    const langParam = locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''
+    const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog?page=${currentPage.value || 1}&per_page=${perPage.value}${langParam}`)
     const pages = res.headers.get('X-WP-TotalPages')
     if (pages) totalPages.value = Number(pages)
 
 
-    console.log('route',route.query.page)
     seoTitle.value = `Блог ${route.query.page || ''}`
 })
 
 
 
-watch(() => route.query.page, async (newPage) => {
-    console.log('gg', route.query.page)
+watch([() => route.query.page, locale], () => {
     currentPage.value = route.query.page
     fetchClientData()
     seoTitle.value = `Блог ${route.query.page || ''}`
-    console.log(route.query.page , seoTitle.value)
 })
 
 
@@ -259,42 +254,28 @@ onBeforeUnmount(() => {
 
 
 //SEO
-useHead({
-    title: pageData.value[0].acf.seo_title || pageData.value[0].title.rendered,
-    meta: [
-        // Description
-        { name: 'description', content: pageData.value[0].acf.seo_description || 'Описание по умолчанию' },
-
-        // Keywords (опционально, не влияет сильно на SEO)
-        { name: 'keywords',  content: pageData.value[0].acf.klyuchevaya_fraza || 'test' },
-
-        // OpenGraph
-        { property: 'og:title', content: pageData.value[0].acf.seo_title },
-        { property: 'og:description', content: pageData.value[0].acf.seo_description },
-        { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: `${store.domainUrlCurrent}${route.fullPath}` },
-        { property: 'og:image', content: pageData.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
-
-        // Twitter Card (если используешь)
-        { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: pageData.value[0].acf.seo_title },
-        { name: 'twitter:description', content: pageData.value[0].acf.seo_description },
-        { name: 'twitter:image', content: pageData.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
-
-        // Индексация / Деиндексация
-        // Например, noindex для черновика:
-        {
-        name: 'robots',
-        content:
-            pageData.value[0].acf.indeksacziya_v_poiskovyh_sistemah === 'index'
-            ? 'index, follow'
-            : 'noindex, nofollow'
-        }
-    ],
-    link: [
-        // Canonical (вручную или динамически)
-        { rel: 'canonical', href: `${store.domainUrlCurrent}/${pageData.value[0].acf.canonical || 'blog/'}` }
-    ]
+const { t } = useI18n()
+useHead(() => {
+    const page = pageData.value?.[0]
+    if (!page?.acf) return { title: t('breadcrumbs.blog') }
+    return {
+        title: page.acf.seo_title || page.title?.rendered,
+        meta: [
+            { name: 'description', content: page.acf.seo_description || t('common.defaultDescription') },
+            { name: 'keywords', content: page.acf.klyuchevaya_fraza || t('common.defaultKeywords') },
+            { property: 'og:title', content: page.acf.seo_title || page.title?.rendered },
+            { property: 'og:description', content: page.acf.seo_description || t('common.defaultDescription') },
+            { property: 'og:type', content: 'website' },
+            { property: 'og:url', content: `${store.domainUrlCurrent}${route.fullPath}` },
+            { property: 'og:image', content: page.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
+            { name: 'twitter:card', content: 'summary_large_image' },
+            { name: 'twitter:title', content: page.acf.seo_title || page.title?.rendered },
+            { name: 'twitter:description', content: page.acf.seo_description || t('common.defaultDescription') },
+            { name: 'twitter:image', content: page.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
+            { name: 'robots', content: page.acf?.indeksacziya_v_poiskovyh_sistemah === 'index' ? 'index, follow' : 'noindex, nofollow' }
+        ],
+        link: [{ rel: 'canonical', href: `${store.domainUrlCurrent}/${page.acf?.canonical || 'blog/'}` }]
+    }
 })
 
 

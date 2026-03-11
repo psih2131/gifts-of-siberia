@@ -2,7 +2,7 @@
 
   <div class="search-component" :class="{'search-component--activ': resultList, 'search-component--full': isFocused == true}">
         <div class="search-component__input-wrapepr">
-            <input type="text" placeholder="Поиск" class="search-component__input" v-model="keyWord"
+            <input type="text" :placeholder="$t('blog.searchPlaceholder')" class="search-component__input" v-model="keyWord"
             @focus="isFocused = true"
             @blur="closeSearchMob()">
 
@@ -26,7 +26,7 @@
             <ul class="search-component__result-list" v-if="resultList.length > 0">
                 <li class="search-component__result-list-element search-result-element" v-for="item in resultList" :key="item">
                     <NuxtLink :to="`/blog/posts/${item.slug}`" class="search-result-element__wrapper">
-                        <img :src="item.acf.maloe_izobrazhenie_dlya_kartochki_posta.url" :alt="item.acf.maloe_izobrazhenie_dlya_kartochki_posta.alt" class="search-result-element__img">
+                        <img v-if="item?.acf?.maloe_izobrazhenie_dlya_kartochki_posta?.url" :src="item.acf.maloe_izobrazhenie_dlya_kartochki_posta.url" :alt="item.acf.maloe_izobrazhenie_dlya_kartochki_posta.alt || ''" class="search-result-element__img">
                         <div class="search-result-element__data">
 
                             <span class="search-result-element__title" v-html="item.title.rendered"></span>
@@ -38,7 +38,7 @@
             </ul>
 
             <div v-else class="search-component__error">
-                По ключевому запросу постов не найдено
+                {{ $t('blog.searchNoResults') }}
             </div>
         </div>
 
@@ -61,6 +61,7 @@
     //DATA
 
     const store = useCounterStore()
+    const { locale } = useI18n()
 
     const keyWord = ref(null)
 
@@ -90,8 +91,8 @@
     }
 
     function REST_SEARCH_REQUEST(){
-
-        fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog?search=${keyWord.value}`)
+        const langParam = locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''
+        fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog?search=${keyWord.value}${langParam}`)
         .then(response => {
             if (!response.ok) {
             throw new Error('Ошибка сети: ' + response.status);

@@ -1,6 +1,26 @@
 {
   "common": {
-    "pageNotTranslated": "Данная страница не переведена на выбранный язык"
+    "pageNotTranslated": "Данная страница не переведена на выбранный язык",
+    "defaultDescription": "Описание по умолчанию",
+    "defaultKeywords": "test"
+  },
+  "blog": {
+    "allArticles": "Все статьи",
+    "searchPlaceholder": "Поиск",
+    "searchNoResults": "По ключевому запросу постов не найдено",
+    "title": "блог",
+    "oops": "упс!",
+    "nothingFound": "По запросу ничего не найдено",
+    "back": "Назад",
+    "next": "Далее",
+    "page": "Страница",
+    "of": "из"
+  },
+  "post": {
+    "readingTime": "Время прочтения -",
+    "min": "мин",
+    "readAlso": "читайте также",
+    "readArticle": "Читать статью"
   },
   "breadcrumbs": {
     "home": "Главная",
