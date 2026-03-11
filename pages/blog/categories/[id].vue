@@ -155,6 +155,7 @@ const store = useCounterStore()
 const route = useRoute()
 const router = useRouter()
 const { locale } = useI18n()
+const localePath = useLocalePath()
 
 const currentPage = ref(route.query.page || 1)
 
@@ -214,7 +215,7 @@ function nextPage(){
     }
     else{
         router.push({
-            path: `/blog/categories/${route.params.id}/`,
+            path: localePath(`/blog/categories/${route.params.id}/`),
             query: { page: +currentPage.value + 1 }
         })
     }
@@ -226,7 +227,7 @@ function prevPage(){
     }
     else{
         router.push({
-            path: `/blog/categories/${route.params.id}/`,
+            path: localePath(`/blog/categories/${route.params.id}/`),
             query: { page: +currentPage.value - 1 }
         })
     }

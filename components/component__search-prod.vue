@@ -2,7 +2,7 @@
 
     <div class="search-component" :class="{'search-component--activ': resultList, 'search-component--full': isFocused == true}">
         <div class="search-component__input-wrapepr">
-            <input type="text" placeholder="Поиск" class="search-component__input" v-model="keyWord"
+            <input type="text" :placeholder="$t('products.searchPlaceholder')" class="search-component__input" v-model="keyWord"
             @focus="isFocused = true"
             @blur="closeSearchMob()">
 
@@ -25,8 +25,8 @@
         <div class="search-component__result-wrapper" v-if="resultList">
             <ul class="search-component__result-list" v-if="resultList.length > 0">
                 <li class="search-component__result-list-element search-result-element" v-for="item in resultList" :key="item">
-                    <NuxtLink :to="`/products/product/${item.slug}`" class="search-result-element__wrapper">
-                        <img :src="item.acf.izobrazhenie_kartochki_tovara.url" :alt="item.acf.izobrazhenie_kartochki_tovara.alt" class="search-result-element__img">
+                    <NuxtLinkLocale :to="`/products/product/${item.slug}`" class="search-result-element__wrapper">
+                        <img v-if="item?.acf?.izobrazhenie_kartochki_tovara?.url" :src="item.acf.izobrazhenie_kartochki_tovara.url" :alt="item.acf.izobrazhenie_kartochki_tovara.alt || ''" class="search-result-element__img">
                         <div class="search-result-element__data">
 
                             <span class="search-result-element__title" v-html="item.title.rendered"></span>
@@ -38,7 +38,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </NuxtLink>
+                    </NuxtLinkLocale>
                 </li>
             </ul>
 
@@ -66,6 +66,7 @@
     //DATA
 
     const store = useCounterStore()
+    const { locale } = useI18n()
 
     const keyWord = ref(null)
 
@@ -95,7 +96,7 @@
 
     function REST_SEARCH_REQUEST(){
 
-        fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?search=${keyWord.value}`)
+        fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?search=${keyWord.value}${locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''}`)
         .then(response => {
             if (!response.ok) {
             throw new Error('Ошибка сети: ' + response.status);

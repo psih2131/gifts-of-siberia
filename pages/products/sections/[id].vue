@@ -8,7 +8,7 @@
                     <div class="breadcrumbs">
                         <NuxtLinkLocale class="breadcrumbs__link" to="/">{{ $t('breadcrumbs.home') }} /</NuxtLinkLocale>
                         <NuxtLinkLocale class="breadcrumbs__link" to="/products">{{ $t('breadcrumbs.products') }} /</NuxtLinkLocale>
-                        <span class="breadcrumbs__text" v-if="current_category && current_category[0]">{{current_category[0].name}}</span>
+                        <span class="breadcrumbs__text" v-if="current_category?.[0]">{{ current_category[0].name }}</span>
                     </div>
 
                     <div class="search-mob-wrapper">
@@ -25,7 +25,7 @@
                             <ul class="blog-sec__nav-list">
                                 <li class="blog-sec__nav-list-element">
 
-                                     <NuxtLink to="/products/" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
+                                     <NuxtLinkLocale to="/products/" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
                                           <span class="blog-sec__nav-link-icon">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M21 20.25H11C10.59 20.25 10.25 19.91 10.25 19.5C10.25 19.09 10.59 18.75 11 18.75H21C21.41 18.75 21.75 19.09 21.75 19.5C21.75 19.91 21.41 20.25 21 20.25Z" fill="#1B3762"/>
@@ -37,19 +37,19 @@
                                             </svg>
 
                                         </span>
-                                        <span class="blog-sec__nav-link-text">Все товары</span>
-                                     </NuxtLink>
+                                        <span class="blog-sec__nav-link-text">{{ $t('products.allProducts') }}</span>
+                                     </NuxtLinkLocale>
                                 </li>
 
 
                                 <template v-if="all_categories">
                                     <li class="blog-sec__nav-list-element" v-for="item in all_categories" :key="item">
-                                        <NuxtLink :to="`/products/sections/${item.slug}/`" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
+                                        <NuxtLinkLocale :to="`/products/sections/${item.slug}/`" class="blog-sec__nav-link"  activeClass="blog-sec__nav-link--activ">
                                             <span class="blog-sec__nav-link-icon">
                                                 <img v-if="item?.acf?.ikonka_kategorii?.url" :src="item.acf.ikonka_kategorii.url" :alt="item.acf.ikonka_kategorii.alt">
                                             </span>
                                             <span class="blog-sec__nav-link-text">{{item.name}}</span>
-                                        </NuxtLink>
+                                        </NuxtLinkLocale>
                                     </li>
                                 </template>
 
@@ -70,7 +70,7 @@
                             </ul>
                         </nav>
 
-                        <p class="products-aside__title">Категории товаров</p>
+                        <p class="products-aside__title">{{ $t('products.categoriesTitle') }}</p>
 
                         <template v-if="all_categories_filtr?.length && filtrProdCatList">
 
@@ -129,7 +129,7 @@
 
                     <div class="products-catalog-sec__elements-wrapper">
                         <div class="products-catalog-sec__elements-wrapper-header">
-                            <h1 class="products-catalog-sec__elements-wrapper-title">{{current_category[0].name}}</h1>
+                            <h1 class="products-catalog-sec__elements-wrapper-title">{{ current_category?.[0]?.name }}</h1>
 
                             <searchComponent />
                             
@@ -145,8 +145,8 @@
 
                             <template v-else>
                                 <div class="blog-sec__body-no-posts no-posts-box">
-                                    <p class="no-posts-box__title">упс!</p>
-                                    <p class="no-posts-box__subtitle">По запросу ничего не найдено</p>
+                                    <p class="no-posts-box__title">{{ $t('blog.oops') }}</p>
+                                    <p class="no-posts-box__subtitle">{{ $t('blog.nothingFound') }}</p>
                                     <div class="no-posts-box__img-wrapper">
                                         <img src="@/assets/images/img/do-posts.png" alt="">
                                     </div>
@@ -167,7 +167,7 @@
                                         <path d="M15.8332 10H4.1665M4.1665 10L9.99984 15.8333M4.1665 10L9.99984 4.16667" stroke="#1B3762" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
 
-                                        <span>Назад</span>
+                                        <span>{{ $t('blog.back') }}</span>
                                     </a>
                                 </div>
 
@@ -188,7 +188,7 @@
 
                                 <div class="bnt-pagin-wrapper">
                                     <a  class="pagination__btn pagination__btn-next" @click="nextPage()" v-if="currentPage < totalPages">
-                                        <span>Далее</span>
+                                        <span>{{ $t('blog.next') }}</span>
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M4.1665 10H15.8332M15.8332 10L9.99984 4.16666M15.8332 10L9.99984 15.8333" stroke="#1B3762" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
@@ -197,9 +197,9 @@
                             </div>
 
                             <div class="page-counter">
-                                <div class="page-counter__text">Страница</div>
+                                <div class="page-counter__text">{{ $t('blog.page') }}</div>
                                 <div class="page-counter__counter">{{ currentPage }}</div>
-                                <div class="page-counter__text">из  {{ totalPages }}</div>
+                                <div class="page-counter__text">{{ $t('blog.of') }} {{ totalPages }}</div>
                             </div>
 
                         </div>
@@ -238,10 +238,10 @@ import searchComponent from '@/components/component__search-prod.vue'
 const mobFoltrActiv = ref(false)
 
 const store = useCounterStore()
-
 const route = useRoute()
-
 const router = useRouter()
+const { locale } = useI18n()
+const localePath = useLocalePath()
 
 const currentPage = ref(route.query.page || 1)
 
@@ -251,32 +251,37 @@ const totalPages = ref(null)
 
 const filtrProdCatList = ref([])
 
-const { data: current_category } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products-section?slug=${route.params.id}`)
+const { data: current_category } = await useFetch(
+  () => `${store.serverUrlDomainRequest}/wp-json/wp/v2/products-section?slug=${route.params.id}${locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''}`,
+  { watch: [locale] }
+)
 
 const { data: all_object, error, pending } = await useFetch(
-    `${store.serverUrlDomainRequest}/wp-json/wp/v2/products?products-section=${current_category.value[0].id}&page=${currentPage.value || 1}&per_page=${perPage.value}`, {
+  () => {
+    const cat = current_category.value?.[0]
+    if (!cat) return `${store.serverUrlDomainRequest}/wp-json/wp/v2/products?include=0`
+    const langParam = locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''
+    return `${store.serverUrlDomainRequest}/wp-json/wp/v2/products?products-section=${cat.id}&page=${currentPage.value || 1}&per_page=${perPage.value}${langParam}`
+  },
+  {
+    watch: [locale, current_category, currentPage],
     onResponse({ response }) {
-      const total = response.headers.get('X-WP-Total')
       const pages = response.headers.get('X-WP-TotalPages')
-      
       if (pages) totalPages.value = Number(pages)
-      
-      console.log('X-WP-Total', total)
-      console.log('X-WP-TotalPages', pages)
     },
-})
+  }
+)
 
-const { data: all_categories } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products-section`)
+const { data: all_categories } = await useFetch(
+  () => `${store.serverUrlDomainRequest}/wp-json/wp/v2/products-section${locale.value && locale.value !== 'ru' ? `?lang=${locale.value}` : ''}`,
+  { watch: [locale] }
+)
 
-const { data: all_categories_filtr } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/productsCategory`)
+const { data: all_categories_filtr } = await useFetch(
+  () => `${store.serverUrlDomainRequest}/wp-json/wp/v2/productsCategory${locale.value && locale.value !== 'ru' ? `?lang=${locale.value}` : ''}`,
+  { watch: [locale] }
+)
 
-console.log('all_categories_filtr',all_categories_filtr)
-
-console.log('current_category', current_category)
-
-console.log('all_object',all_object)
-
-console.log('all_categories', all_categories)
 
 // const heroBannerSec = ref(null)
 
@@ -287,7 +292,10 @@ console.log('all_categories', all_categories)
 
 //get posts on client side
 async function fetchClientData() {
-  const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?products-section=${current_category.value[0].id}&page=${currentPage.value || 1}&per_page=${perPage.value}`)
+  const cat = current_category.value?.[0]
+  if (!cat) return
+  const langParam = locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''
+  const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?products-section=${cat.id}&page=${currentPage.value || 1}&per_page=${perPage.value}${langParam}`)
   const data = await res.json()
   all_object.value = data
 
@@ -336,7 +344,7 @@ function nextPage(){
     }
     else{
         router.push({
-            path: `/products/sections/${route.params.id}/`,
+            path: localePath(`/products/sections/${route.params.id}/`),
             query: { 
                 page: +currentPage.value + 1,
                 category: cutListQuery || undefined 
@@ -359,7 +367,7 @@ function prevPage(){
     }
     else{
         router.push({
-            path: `/products/sections/${route.params.id}/`,
+            path: localePath(`/products/sections/${route.params.id}/`),
             query: { 
                 page: +currentPage.value - 1,
                 category: cutListQuery || undefined 
@@ -378,7 +386,7 @@ function goToCurrentPage(item){
 
   
     router.push({
-        path: `/products/sections/${route.params.id}/`,
+        path: localePath(`/products/sections/${route.params.id}/`),
         query: { 
             page: +item,
             category: cutListQuery || undefined 
@@ -484,7 +492,7 @@ async function fetchCatFiltr(changeFiltr) {
 
         currentPage.value = 1
         router.push({
-        path: `/products/sections/${route.params.id}/`,
+        path: localePath(`/products/sections/${route.params.id}/`),
         query: {
         page: 1,
         category: cutListQuery || undefined
@@ -502,7 +510,10 @@ async function fetchCatFiltr(changeFiltr) {
     categoryParam = `&productsCategory=${selectedCategoryIds.join(',')}`
   }
 
-  const url = `${store.serverUrlDomainRequest}/wp-json/wp/v2/products?products-section=${current_category.value[0].id}&page=${currentPage.value || 1}&per_page=${perPage.value}${categoryParam}`
+  const cat = current_category.value?.[0]
+  if (!cat) return
+  const langParam = locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''
+  const url = `${store.serverUrlDomainRequest}/wp-json/wp/v2/products?products-section=${cat.id}&page=${currentPage.value || 1}&per_page=${perPage.value}${categoryParam}${langParam}`
 
   const res = await fetch(url)
   const data = await res.json()
@@ -535,18 +546,19 @@ async function fetchCatFiltr(changeFiltr) {
 //HOOKS
 onMounted(async () => {
     currentPage.value = route.query.page
-    const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?products-section=${current_category.value[0].id}&page=${currentPage.value || 1}&per_page=${perPage.value}`)
+    const cat = current_category.value?.[0]
+    if (!cat) return
+    const langParam = locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''
+    const res = await fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?products-section=${cat.id}&page=${currentPage.value || 1}&per_page=${perPage.value}${langParam}`)
     const pages = res.headers.get('X-WP-TotalPages')
     if (pages) totalPages.value = Number(pages)
 
 
     getCatQueryUrl()
 
-    console.log('route',route.query.page)
 })
 
-watch(() => route.query.page, async (newPage) => {
-    console.log('gg', route.query.page)
+watch([() => route.query.page, locale], () => {
     currentPage.value = route.query.page
     // fetchClientData()
     fetchCatFiltr()
@@ -561,41 +573,27 @@ onBeforeUnmount(() => {
 
 
 //SEO
-useHead({
-    title: current_category.value[0].acf.seo_title,
-    meta: [
-        // Description
-        { name: 'description', content: current_category.value[0].acf.seo_description || 'Описание по умолчанию' },
-
-        // Keywords (опционально, не влияет сильно на SEO)
-        { name: 'keywords',  content: current_category.value[0].acf.klyuchevaya_fraza || 'test' },
-
-        // OpenGraph
-        { property: 'og:title', content: current_category.value[0].acf.seo_title },
-        { property: 'og:description', content: current_category.value[0].acf.seo_description },
-        { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: `${store.domainUrlCurrent}${route.fullPath}` },
-        { property: 'og:image', content: current_category.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
-
-        // Twitter Card (если используешь)
-        { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: current_category.value[0].acf.seo_title },
-        { name: 'twitter:description', content: current_category.value[0].acf.seo_description },
-        { name: 'twitter:image', content: current_category.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
-
-        // Индексация / Деиндексация
-        // Например, noindex для черновика:
-        {
-        name: 'robots',
-        content:
-            current_category.value[0].acf.indeksacziya_v_poiskovyh_sistemah === 'index'
-            ? 'index, follow'
-            : 'noindex, nofollow'
-        }
-    ],
-    link: [
-        // Canonical (вручную или динамически)
-        { rel: 'canonical', href: `${store.domainUrlCurrent}/products/sections/${current_category.value[0].acf.canonical || route.params.id}` }
-    ]
+const { t } = useI18n()
+useHead(() => {
+    const cat = current_category.value?.[0]
+    if (!cat?.acf) return { title: t('breadcrumbs.products') }
+    return {
+        title: cat.acf.seo_title || cat.name,
+        meta: [
+            { name: 'description', content: cat.acf.seo_description || t('common.defaultDescription') },
+            { name: 'keywords', content: cat.acf.klyuchevaya_fraza || t('common.defaultKeywords') },
+            { property: 'og:title', content: cat.acf.seo_title || cat.name },
+            { property: 'og:description', content: cat.acf.seo_description || t('common.defaultDescription') },
+            { property: 'og:type', content: 'website' },
+            { property: 'og:url', content: `${store.domainUrlCurrent}${route.fullPath}` },
+            { property: 'og:image', content: cat.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
+            { name: 'twitter:card', content: 'summary_large_image' },
+            { name: 'twitter:title', content: cat.acf.seo_title || cat.name },
+            { name: 'twitter:description', content: cat.acf.seo_description || t('common.defaultDescription') },
+            { name: 'twitter:image', content: cat.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
+            { name: 'robots', content: cat.acf?.indeksacziya_v_poiskovyh_sistemah === 'index' ? 'index, follow' : 'noindex, nofollow' }
+        ],
+        link: [{ rel: 'canonical', href: `${store.domainUrlCurrent}/products/sections/${cat.acf?.canonical || route.params.id}` }]
+    }
 })
 </script>

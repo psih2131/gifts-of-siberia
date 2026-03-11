@@ -1,12 +1,12 @@
 <template>
     <main class="main">
 
-        <section class="product-hero-sec">
+        <section class="product-hero-sec" v-if="object_data_single?.[0]">
             <div class="container">
                 <div class="breadcrumbs">
                     <NuxtLinkLocale class="breadcrumbs__link" to="/">{{ $t('breadcrumbs.home') }} /</NuxtLinkLocale>
                     <NuxtLinkLocale class="breadcrumbs__link" to="/products">{{ $t('breadcrumbs.products') }} /</NuxtLinkLocale>
-                    <span class="breadcrumbs__text" v-html="object_data_single[0].title.rendered"></span>
+                    <span class="breadcrumbs__text" v-html="object_data_single?.[0]?.title?.rendered"></span>
                 </div>
 
                 <div class="product-hero-sec__wrapper">
@@ -121,7 +121,7 @@
                         </div> -->
 
                         <div class="product-hero-sec__info-advantages" v-if="object_data_single[0]['products-section']?.length"> 
-                            <p class="product-hero-sec__info-advantages-title">Разделы:</p>
+                            <p class="product-hero-sec__info-advantages-title">{{ $t('products.sections') }}</p>
 
                             <div class="product-hero-sec__info-advantages-element" v-for="item in object_data_single[0]['products-section']" :key="item">
                                 <span class="product-hero-sec__info-advantages-element-icon">
@@ -137,11 +137,11 @@
                         <div class="product-hero-sec__small-description" v-if="object_data_single[0]?.acf?.kratkoe_opisanie" v-html="object_data_single[0].acf.kratkoe_opisanie"></div>
 
                         <div class="product-hero-sec__info-buy info-buy">
-                            <p class="info-buy__title">Покупка в один клик!</p>
-                            <p class="info-buy__subtitle">Перейдите на маркетплейс и оформите понравившийся товар в пару шагов.</p>
+                            <p class="info-buy__title">{{ $t('products.buyOneClick') }}</p>
+                            <p class="info-buy__subtitle">{{ $t('products.buySubtitle') }}</p>
                             <div class="info-buy__btn-request">
                                 <button class="btnreq" @click="openFormPopup()">
-                                    <span>Оставить заявку</span>
+                                    <span>{{ $t('products.leaveRequest') }}</span>
                                     <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7.99964 6.99997C7.7263 6.99997 7.49964 6.77331 7.49964 6.49997V3.03997L7.01964 3.51997C6.8263 3.71331 6.5063 3.71331 6.31297 3.51997C6.11964 3.32664 6.11964 3.00664 6.31297 2.81331L7.6463 1.47997C7.7863 1.33997 8.0063 1.29331 8.19297 1.37331C8.37964 1.44664 8.49964 1.63331 8.49964 1.83331V6.49997C8.49964 6.77331 8.27297 6.99997 7.99964 6.99997Z" fill="white"/>
                                     <path d="M9.33167 3.66669C9.205 3.66669 9.07833 3.62002 8.97833 3.52002L7.645 2.18669C7.45167 1.99336 7.45167 1.67336 7.645 1.48002C7.83833 1.28669 8.15833 1.28669 8.35167 1.48002L9.685 2.81336C9.87833 3.00669 9.87833 3.32669 9.685 3.52002C9.585 3.62002 9.45833 3.66669 9.33167 3.66669Z" fill="white"/>
@@ -171,15 +171,15 @@
             </div>
         </section>
 
-        <section class="product-info-sec">
+        <section class="product-info-sec" v-if="object_data_single?.[0]">
             <div class="container">
 
                 <div class="product-info-sec__nav-wrapper">
                     <ul class="product-info-sec__nav">
-                        <li class="product-info-sec__nav-li" :class="{'product-info-sec__nav-li--activ': curentTabCounter == 1}" @click="curentTabCounter = 1">Видео</li>
-                        <li class="product-info-sec__nav-li" :class="{'product-info-sec__nav-li--activ': curentTabCounter == 2}" @click="curentTabCounter = 2">Состав и полезные свойства</li>
-                        <li class="product-info-sec__nav-li" :class="{'product-info-sec__nav-li--activ': curentTabCounter == 3}" @click="curentTabCounter = 3">Условия хранения</li>
-                        <li class="product-info-sec__nav-li" :class="{'product-info-sec__nav-li--activ': curentTabCounter == 4}" @click="curentTabCounter = 4">Способы приготовления</li>
+                        <li class="product-info-sec__nav-li" :class="{'product-info-sec__nav-li--activ': curentTabCounter == 1}" @click="curentTabCounter = 1">{{ $t('products.video') }}</li>
+                        <li class="product-info-sec__nav-li" :class="{'product-info-sec__nav-li--activ': curentTabCounter == 2}" @click="curentTabCounter = 2">{{ $t('products.composition') }}</li>
+                        <li class="product-info-sec__nav-li" :class="{'product-info-sec__nav-li--activ': curentTabCounter == 3}" @click="curentTabCounter = 3">{{ $t('products.storage') }}</li>
+                        <li class="product-info-sec__nav-li" :class="{'product-info-sec__nav-li--activ': curentTabCounter == 4}" @click="curentTabCounter = 4">{{ $t('products.preparation') }}</li>
                     </ul>
                 </div>
                 
@@ -209,7 +209,7 @@
                         </template>
 
                         <template v-else>
-                            <p>Видеообзора для этого товара еще не добавленно</p>
+                            <p>{{ $t('products.noVideo') }}</p>
                         </template>
 
                         
@@ -219,14 +219,14 @@
                     <div class="product-info-sec__body-element" v-if="curentTabCounter == 2">
 
                         <template v-if="object_data_single[0]?.acf?.sostav_i_poleznye_svojstva">
-                            <h3 class="product-info-sec__title">полезные свойства</h3>
+                            <h3 class="product-info-sec__title">{{ $t('products.beneficialProps') }}</h3>
                             <div class="product-info-sec__editor wp-editor-prod" v-html="object_data_single[0].acf.sostav_i_poleznye_svojstva">
                            
                             </div>
                         </template>
 
                         <template v-else>
-                            <p>Нет информации</p>
+                            <p>{{ $t('products.noInfo') }}</p>
                         </template>
                         
                     </div>
@@ -239,20 +239,20 @@
                         </template>
 
                         <template v-else>
-                            <p>Нет информации</p>
+                            <p>{{ $t('products.noInfo') }}</p>
                         </template>
                     </div>
 
                     <div class="product-info-sec__body-element" v-if="curentTabCounter == 4">
                         <template v-if="object_data_single[0]?.acf?.sposoby_prigotovleniya">
-                            <h3 class="product-info-sec__title">Рекомендации по применению</h3>
+                            <h3 class="product-info-sec__title">{{ $t('products.recommendations') }}</h3>
                             <div class="product-info-sec__editor wp-editor-prod" v-html="object_data_single[0].acf.sposoby_prigotovleniya">
                            
                             </div>
                         </template>
 
                         <template v-else>
-                            <p>Нет информации</p>
+                            <p>{{ $t('products.noInfo') }}</p>
                         </template>
                     </div>
 
@@ -260,9 +260,9 @@
             </div>
         </section>
 
-        <section class="product-simmilar-sec" v-if="object_data_single[0]?.acf?.rekomenduemye_tovary?.length && recomendPostsList?.length">
+        <section class="product-simmilar-sec" v-if="object_data_single?.[0]?.acf?.rekomenduemye_tovary?.length && recomendPostsList?.length">
             <div class="container">
-                <h3 class="product-simmilar-sec__title">Может понравиться</h3>
+                <h3 class="product-simmilar-sec__title">{{ $t('products.mayLike') }}</h3>
                 <div class="product-simmilar-sec__row">
 
                     <productCard v-for="item in recomendPostsList" :key="item" :productData="item" :catList="all_categories" />
@@ -294,8 +294,9 @@
             </div>
         </section>
 
+        <ContentNotTranslated v-else-if="!object_data_single?.[0] && !pending" />
 
-        <template v-if="object_data_single[0]?.acf?.video?.video_fajl?.url">
+        <template v-if="object_data_single?.[0]?.acf?.video?.video_fajl?.url">
             <videoPopup v-if="videoPlayStatus == true" :videoUrl="object_data_single[0].acf.video.video_fajl.url" @closePopup="closeVideo" />
         </template>
 
@@ -322,9 +323,7 @@ import productCard from '@/components/component__producr-card.vue'
 import { ref, onMounted, onBeforeUnmount, computed, watch  } from 'vue';
 
 const route = useRoute()
-
-console.log(route.params.id)
-
+const { locale } = useI18n()
 
 //DATA
 const store = useCounterStore()
@@ -343,39 +342,43 @@ const videoPlayStatus = ref(false)
 
 
 // товар
-const { data: object_data_single } = await useFetch(
-  `${store.serverUrlDomainRequest}/wp-json/wp/v2/products?slug=${route.params.id}`,
-  { key: `post-${route.params.id}` }
+const { data: object_data_single, pending } = await useFetch(
+  () => `${store.serverUrlDomainRequest}/wp-json/wp/v2/products?slug=${route.params.id}${locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''}`,
+  { key: `product-${route.params.id}`, watch: [locale] }
 )
 
 // категории
 const { data: all_categories } = await useFetch(
-  `${store.serverUrlDomainRequest}/wp-json/wp/v2/products-section`
+  () => `${store.serverUrlDomainRequest}/wp-json/wp/v2/products-section${locale.value && locale.value !== 'ru' ? `?lang=${locale.value}` : ''}`,
+  { watch: [locale] }
 )
 
+// получаем рекомендованные товары
+async function loadRecommendedProducts() {
+  const mainProduct = object_data_single.value?.[0]
+  const rekomenduemye = mainProduct?.acf?.rekomenduemye_tovary
+  const langParam = locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''
 
-// получаем рекомендованные посты
-try {
-  const mainPost = object_data_single.value?.[0]
-  const chitatTakzhe = mainPost?.acf?.rekomenduemye_tovary
+  if (!Array.isArray(rekomenduemye) || !rekomenduemye.length) {
+    recomendPostsList.value = []
+    return
+  }
 
-  if (Array.isArray(chitatTakzhe) && chitatTakzhe.length) {
-    const slugs = chitatTakzhe.map(obj => obj.post_name)
-
+  try {
+    const slugs = rekomenduemye.map(obj => obj.post_name)
     const promises = slugs.map(slug =>
-      fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?slug=${slug}`)
+      fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/products?slug=${slug}${langParam}`)
         .then(res => res.json())
         .then(data => data?.[0] || null)
     )
-
     recomendPostsList.value = await Promise.all(promises)
+  } catch (error) {
+    console.error('Ошибка при загрузке рекомендованных товаров:', error)
+    recomendPostsList.value = []
   }
-} catch (error) {
-  console.error('Ошибка при загрузке рекомендованных постов:', error)
 }
 
-console.log('recomendPostsList', recomendPostsList)
-console.log('object_data_single', object_data_single)
+watch([object_data_single, locale], loadRecommendedProducts, { immediate: true })
 
 
 //METHODS 
@@ -452,42 +455,28 @@ onBeforeUnmount(() => {
 
 
 //SEO
-useHead({
-    title: object_data_single.value[0].acf.seo_title || object_data_single.value[0].title.rendered,
-    meta: [
-        // Description
-        { name: 'description', content: object_data_single.value[0].acf.seo_description || 'Описание по умолчанию' },
-
-        // Keywords (опционально, не влияет сильно на SEO)
-        { name: 'keywords',  content: object_data_single.value[0].acf.klyuchevaya_fraza || 'товар' },
-
-        // OpenGraph
-        { property: 'og:title', content: object_data_single.value[0].acf.seo_title },
-        { property: 'og:description', content: object_data_single.value[0].acf.seo_description },
-        { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: `${store.domainUrlCurrent}${route.fullPath}` },
-        { property: 'og:image', content: object_data_single.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
-
-        // Twitter Card (если используешь)
-        { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: object_data_single.value[0].acf.seo_title },
-        { name: 'twitter:description', content: object_data_single.value[0].acf.seo_description },
-        { name: 'twitter:image', content: object_data_single.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
-
-        // Индексация / Деиндексация
-        // Например, noindex для черновика:
-        {
-        name: 'robots',
-        content:
-            object_data_single.value[0].acf.indeksacziya_v_poiskovyh_sistemah === 'index'
-            ? 'index, follow'
-            : 'noindex, nofollow'
-        }
-    ],
-    link: [
-        // Canonical (вручную или динамически)
-        { rel: 'canonical', href: `${store.domainUrlCurrent}/products/product/${object_data_single.value[0].acf.canonical || route.params.id}` }
-    ]
+const { t } = useI18n()
+useHead(() => {
+    const product = object_data_single.value?.[0]
+    if (!product?.acf) return { title: t('breadcrumbs.products') }
+    return {
+        title: product.acf.seo_title || product.title?.rendered,
+        meta: [
+            { name: 'description', content: product.acf.seo_description || t('common.defaultDescription') },
+            { name: 'keywords', content: product.acf.klyuchevaya_fraza || t('common.defaultKeywords') },
+            { property: 'og:title', content: product.acf.seo_title || product.title?.rendered },
+            { property: 'og:description', content: product.acf.seo_description || t('common.defaultDescription') },
+            { property: 'og:type', content: 'website' },
+            { property: 'og:url', content: `${store.domainUrlCurrent}${route.fullPath}` },
+            { property: 'og:image', content: product.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
+            { name: 'twitter:card', content: 'summary_large_image' },
+            { name: 'twitter:title', content: product.acf.seo_title || product.title?.rendered },
+            { name: 'twitter:description', content: product.acf.seo_description || t('common.defaultDescription') },
+            { name: 'twitter:image', content: product.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
+            { name: 'robots', content: product.acf?.indeksacziya_v_poiskovyh_sistemah === 'index' ? 'index, follow' : 'noindex, nofollow' }
+        ],
+        link: [{ rel: 'canonical', href: `${store.domainUrlCurrent}/products/product/${product.acf?.canonical || route.params.id}` }]
+    }
 })
 
 </script>

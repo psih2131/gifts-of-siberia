@@ -16,6 +16,28 @@
     "page": "Page",
     "of": "of"
   },
+  "products": {
+    "allProducts": "All products",
+    "categoriesTitle": "Product categories",
+    "title": "Products",
+    "searchPlaceholder": "Search",
+    "searchNoResults": "No products found for your search",
+    "requestOpt": "Wholesale request",
+    "moreInfo": "More details",
+    "sections": "Sections:",
+    "buyOneClick": "One-click purchase!",
+    "buySubtitle": "Go to the marketplace and complete your purchase in a few steps.",
+    "leaveRequest": "Leave a request",
+    "video": "Video",
+    "composition": "Composition and beneficial properties",
+    "storage": "Storage conditions",
+    "preparation": "Preparation methods",
+    "noVideo": "Video review for this product has not been added yet",
+    "beneficialProps": "Beneficial properties",
+    "noInfo": "No information",
+    "recommendations": "Usage recommendations",
+    "mayLike": "You may also like"
+  },
   "post": {
     "readingTime": "Reading time -",
     "min": "min",
