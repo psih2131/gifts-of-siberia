@@ -5,8 +5,8 @@
             <div class="container">
 
                 <div class="breadcrumbs">
-                    <NuxtLink class="breadcrumbs__link" to="/">Главная /</NuxtLink>
-                    <span class="breadcrumbs__text">Экспорт</span>
+                    <NuxtLinkLocale class="breadcrumbs__link" to="/">{{ $t('breadcrumbs.home') }} /</NuxtLinkLocale>
+                    <span class="breadcrumbs__text">{{ $t('breadcrumbs.export') }}</span>
                 </div>
 
                 <div class="info-hero-sec__wrapper info-hero-sec__wrapper--export">

@@ -1,4 +1,17 @@
 {
+  "breadcrumbs": {
+    "home": "Home",
+    "blog": "Blog",
+    "products": "Products",
+    "contacts": "Contacts",
+    "corporateGifts": "Corporate gifts",
+    "legalEntities": "For legal entities",
+    "aboutCompany": "About company",
+    "export": "Export",
+    "chagaExtract": "Chaga extract",
+    "giftSets": "Gift sets",
+    "premiumTeas": "Premium teas"
+  },
   "nav": {
     "brand": {
       "giftsOfSiberia": "Gifts of Siberia",
@@ -20,5 +33,27 @@
     },
     "blog": "Blog",
     "contacts": "Contacts"
+  },
+  "footer": {
+    "brand": {
+      "giftsOfSiberia": "Gifts of Siberia",
+      "home": "Home",
+      "aboutCompany": "About company"
+    },
+    "products": {
+      "premiumTeas": "Premium teas",
+      "chagaExtract": "Chaga extract",
+      "giftSets": "Gift sets",
+      "list": "Products"
+    },
+    "cooperation": {
+      "title": "Cooperation",
+      "export": "Export",
+      "legalEntities": "For legal entities",
+      "corporateGifts": "Corporate gifts"
+    },
+    "blog": "Blog",
+    "contacts": "Contacts",
+    "allRightsReserved": "All rights reserved"
   }
 }

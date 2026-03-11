@@ -4,7 +4,7 @@
         <section class="doc-page-sec">
             <div class="container">
                 <div class="breadcrumbs">
-                    <NuxtLink class="breadcrumbs__link" to="/">Главная /</NuxtLink>
+                    <NuxtLinkLocale class="breadcrumbs__link" to="/">{{ $t('breadcrumbs.home') }} /</NuxtLinkLocale>
                     <span class="breadcrumbs__text">{{ page_data_single[0].title.rendered }}</span>
                 </div>
 
@@ -35,40 +35,25 @@ const route = useRoute()
 
 const store = useCounterStore()
 
+const { locale } = useI18n()
+
 
 // основной пост
 const { data: page_data_single } = await useFetch(
-  `${store.serverUrlDomainRequest}/wp-json/wp/v2/pages?slug=${route.params.id}`,
-  { key: `post-${route.params.id}` }
+  () => `${store.serverUrlDomainRequest}/wp-json/wp/v2/pages?slug=${route.params.id}${locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''}`,
+  { key: `system-page-${route.params.id}`, watch: [locale] }
 )
 
 console.log(page_data_single)
+
 
 //METHODS 
 
 
 
-//HOOKS
-onMounted(() => {
-  // Добавляем обработчик события scroll
-
-  
-});
-
-onBeforeUnmount(() => {
-
-});
 
 
- // props
- const props = defineProps({
-//   mainData: Object,
-      // postAllCategory: Object,
-  })
-
-
-
-  //SEO
+//SEO
 useHead({
     title: page_data_single.value[0].acf.seo_title || page_data_single.value[0].title.rendered,
     meta: [

@@ -5,8 +5,8 @@
             <div class="container">
 
                 <div class="breadcrumbs">
-                    <NuxtLink class="breadcrumbs__link" to="/">Главная /</NuxtLink>
-                    <span class="breadcrumbs__text">Контакты</span>
+                    <NuxtLinkLocale class="breadcrumbs__link" to="/">{{ $t('breadcrumbs.home') }} /</NuxtLinkLocale>
+                    <span class="breadcrumbs__text">{{ $t('breadcrumbs.contacts') }}</span>
                 </div>
 
                 <div class="contacts-sec__wrapper">

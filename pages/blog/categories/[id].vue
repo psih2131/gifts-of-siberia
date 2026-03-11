@@ -6,8 +6,8 @@
                 
                 <div class="breadcrumbs-row-mob">
                     <div class="breadcrumbs">
-                        <NuxtLink class="breadcrumbs__link" to="/">Главная /</NuxtLink>
-                        <NuxtLink class="breadcrumbs__link" to="/blog/">Блог /</NuxtLink>
+                        <NuxtLinkLocale class="breadcrumbs__link" to="/">{{ $t('breadcrumbs.home') }} /</NuxtLinkLocale>
+                        <NuxtLinkLocale class="breadcrumbs__link" to="/blog/">{{ $t('breadcrumbs.blog') }} /</NuxtLinkLocale>
                         <span class="breadcrumbs__text" v-if="current_category && current_category[0]">{{current_category[0].name}}</span>
                     </div>
 

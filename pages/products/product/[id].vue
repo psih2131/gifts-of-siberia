@@ -4,8 +4,8 @@
         <section class="product-hero-sec">
             <div class="container">
                 <div class="breadcrumbs">
-                    <NuxtLink class="breadcrumbs__link" to="/">Главная /</NuxtLink>
-                    <NuxtLink class="breadcrumbs__link" to="/products">Продукция /</NuxtLink>
+                    <NuxtLinkLocale class="breadcrumbs__link" to="/">{{ $t('breadcrumbs.home') }} /</NuxtLinkLocale>
+                    <NuxtLinkLocale class="breadcrumbs__link" to="/products">{{ $t('breadcrumbs.products') }} /</NuxtLinkLocale>
                     <span class="breadcrumbs__text" v-html="object_data_single[0].title.rendered"></span>
                 </div>
 

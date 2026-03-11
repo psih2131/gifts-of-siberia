@@ -43,33 +43,33 @@
                         <div class="footer__top-nav-row">
                             <div class="footer__top-nav-claster">
                                 <p class="footer__top-nav-claster-title">
-                                    <a href="">Дары Сибири</a>
+                                    <NuxtLinkLocale to="/">{{ $t('footer.brand.giftsOfSiberia') }}</NuxtLinkLocale>
                                 </p>
                                 <ul class="footer__top-nav-list">
                                     <li class="footer__top-nav-list-element">
-                                        <NuxtLinkLocale to="/"  class="footer__top-nav-list-link">Главная</NuxtLinkLocale>
+                                        <NuxtLinkLocale to="/"  class="footer__top-nav-list-link">{{ $t('footer.brand.home') }}</NuxtLinkLocale>
                                     </li>
                                     <li class="footer__top-nav-list-element">
-                                        <NuxtLinkLocale to="/about-company"  class="footer__top-nav-list-link">О компании</NuxtLinkLocale>
+                                        <NuxtLinkLocale to="/about-company"  class="footer__top-nav-list-link">{{ $t('footer.brand.aboutCompany') }}</NuxtLinkLocale>
                                     </li>
                                     <!-- <li class="footer__top-nav-list-element">
                                         <a href="" class="footer__top-nav-list-link">Производство</a>
                                     </li> -->
 
                                     <li class="footer__top-nav-list-element">
-                                         <NuxtLinkLocale to="/premium-teas"  class="footer__top-nav-list-link">Премиальные чаи</NuxtLinkLocale>
+                                         <NuxtLinkLocale to="/premium-teas"  class="footer__top-nav-list-link">{{ $t('footer.products.premiumTeas') }}</NuxtLinkLocale>
                                     </li>
 
                                     <li class="footer__top-nav-list-element">
-                                         <NuxtLinkLocale to="/extract-chagi"  class="footer__top-nav-list-link">Экстракт чаги</NuxtLinkLocale>
+                                         <NuxtLinkLocale to="/extract-chagi"  class="footer__top-nav-list-link">{{ $t('footer.products.chagaExtract') }}</NuxtLinkLocale>
                                     </li>
 
                                     <li class="footer__top-nav-list-element">
-                                         <NuxtLinkLocale to="/gift-sets"  class="footer__top-nav-list-link">Подарочные наборы</NuxtLinkLocale>
+                                         <NuxtLinkLocale to="/gift-sets"  class="footer__top-nav-list-link">{{ $t('footer.products.giftSets') }}</NuxtLinkLocale>
                                     </li>
 
                                     <li class="footer__top-nav-list-element">
-                                         <NuxtLinkLocale to="/contacts"  class="footer__top-nav-list-link">Контакты</NuxtLinkLocale>
+                                         <NuxtLinkLocale to="/contacts"  class="footer__top-nav-list-link">{{ $t('footer.contacts') }}</NuxtLinkLocale>
                                     </li>
 
                          
@@ -78,17 +78,17 @@
                             
                             <div class="footer__top-nav-claster">
                                 <p class="footer__top-nav-claster-title">
-                                    <a href="">Сотрудничество</a>
+                                    <span>{{ $t('footer.cooperation.title') }}</span>
                                 </p>
                                 <ul class="footer__top-nav-list">
                                     <li class="footer__top-nav-list-element">
-                                        <NuxtLinkLocale to="/export"  class="footer__top-nav-list-link">Экспорт</NuxtLinkLocale>
+                                        <NuxtLinkLocale to="/export"  class="footer__top-nav-list-link">{{ $t('footer.cooperation.export') }}</NuxtLinkLocale>
                                     </li>
                                     <li class="footer__top-nav-list-element">
-                                        <NuxtLinkLocale to="/yur-litsam"  class="footer__top-nav-list-link">Юридическим лицам</NuxtLinkLocale>
+                                        <NuxtLinkLocale to="/yur-litsam"  class="footer__top-nav-list-link">{{ $t('footer.cooperation.legalEntities') }}</NuxtLinkLocale>
                                     </li>
                                     <li class="footer__top-nav-list-element">
-                                        <a href="https://business.gift-siberia.com/" class="footer__top-nav-list-link">Корпоративные подарки</a>
+                                        <a href="https://business.gift-siberia.com/" class="footer__top-nav-list-link">{{ $t('footer.cooperation.corporateGifts') }}</a>
                                         <!-- <NuxtLink to="/corporation-gifts"  class="footer__top-nav-list-link">Корпоративные подарки</NuxtLink> -->
                                     </li>
                                 </ul>
@@ -99,13 +99,13 @@
                         <div class="footer__top-nav-row">
                             <div class="footer__top-nav-claster">
                                 <p class="footer__top-nav-claster-title">
-                                    <NuxtLinkLocale to="/products/">Продукция</NuxtLinkLocale>
+                                    <NuxtLinkLocale to="/products/">{{ $t('footer.products.list') }}</NuxtLinkLocale>
                                 </p>
                             </div>
 
                             <div class="footer__top-nav-claster">
                                 <p class="footer__top-nav-claster-title">
-                                     <NuxtLinkLocale to="/blog/">Блог</NuxtLinkLocale>
+                                     <NuxtLinkLocale to="/blog/">{{ $t('footer.blog') }}</NuxtLinkLocale>
                                 </p>
                             </div>
 
@@ -114,7 +114,7 @@
 
                     <div class="footer__top-contacts-claster">
                         <p class="footer__top-contacts-claster-title">
-                            <NuxtLinkLocale to="/contacts">Контакты</NuxtLinkLocale>
+                            <NuxtLinkLocale to="/contacts">{{ $t('footer.contacts') }}</NuxtLinkLocale>
                         </p>
                         <ul class="footer__top-contacts-claster-ul">
                             <template v-if="optionsData?.futer_nomera_telefonov?.length > 0">
@@ -209,7 +209,7 @@
 
                 <p class="footer__down-copy" v-if="optionsData?.copy_text">{{ optionsData.copy_text }}</p>
                 <div class="footer__down-right-row">
-                    <p class="footer__down-rules-text">Все права защищены</p>
+                    <p class="footer__down-rules-text">{{ $t('footer.allRightsReserved') }}</p>
                     
                 </div>
             </div>
@@ -227,10 +227,15 @@
 
     //DATA
     const store = useCounterStore()
+    
+    const { locale } = useI18n()
 
     const currentListDocPage = ref([])
 
-    const { data: doc_pages } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/pages?per_page=100`)
+    const { data: doc_pages } = await useFetch(
+        () => `${store.serverUrlDomainRequest}/wp-json/wp/v2/pages?per_page=100${locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''}`,
+        { watch: [locale] }
+    )
 
     const { data: optionsData } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/acf/v3/options`)
 

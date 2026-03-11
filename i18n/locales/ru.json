@@ -1,4 +1,17 @@
 {
+  "breadcrumbs": {
+    "home": "Главная",
+    "blog": "Блог",
+    "products": "Продукция",
+    "contacts": "Контакты",
+    "corporateGifts": "Корпоративные подарки",
+    "legalEntities": "Юридическим лицам",
+    "aboutCompany": "О компании",
+    "export": "Экспорт",
+    "chagaExtract": "Экстракт чаги",
+    "giftSets": "Подарочные наборы",
+    "premiumTeas": "Премиальные чаи"
+  },
   "nav": {
     "brand": {
       "giftsOfSiberia": "Дары Сибири",
@@ -20,5 +33,27 @@
     },
     "blog": "Блог",
     "contacts": "Контакты"
+  },
+  "footer": {
+    "brand": {
+      "giftsOfSiberia": "Дары Сибири",
+      "home": "Главная",
+      "aboutCompany": "О компании"
+    },
+    "products": {
+      "premiumTeas": "Премиальные чаи",
+      "chagaExtract": "Экстракт чаги",
+      "giftSets": "Подарочные наборы",
+      "list": "Продукция"
+    },
+    "cooperation": {
+      "title": "Сотрудничество",
+      "export": "Экспорт",
+      "legalEntities": "Юридическим лицам",
+      "corporateGifts": "Корпоративные подарки"
+    },
+    "blog": "Блог",
+    "contacts": "Контакты",
+    "allRightsReserved": "Все права защищены"
   }
 }
