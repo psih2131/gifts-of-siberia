@@ -15,8 +15,10 @@
                 <div class="post-sec__wrapper">
                     <div class="post-sec__header">
 
-                        <template v-if="object_data_single[0]['blog-category'] && all_categories && all_categories.length > 0">
-                            <NuxtLink v-for="item in object_data_single[0]['blog-category']" :key="item"  class="post-sec__teg" :to="`/blog/categories/${currentCatSlug(item)}`">#{{ curentCatTitle(item) }}</NuxtLink>
+                        <template v-if="object_data_single[0]['blog-category'] && all_categories?.length">
+                            <template v-for="item in object_data_single[0]['blog-category']" :key="item">
+                                <NuxtLink v-if="currentCatSlug(item)" class="post-sec__teg" :to="`/blog/categories/${currentCatSlug(item)}`">#{{ curentCatTitle(item) }}</NuxtLink>
+                            </template>
                         </template>
 
                         <!-- <NuxtLink  class="post-sec__teg" to="/blog/categories/health">#здоровье</NuxtLink> -->
@@ -88,14 +90,11 @@ const store = useCounterStore()
 const recomendPostsList = ref([])
 
 // основной пост
-const { data: object_data_single } = await useFetch(
-  `${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog?slug=${route.params.id}`,
-  { key: `post-${route.params.id}` }
-)
+const { data: object_data_single } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/my-blog?slug=${route.params.id}&lang=en`)
 
 // категории
 const { data: all_categories } = await useFetch(
-  `${store.serverUrlDomainRequest}/wp-json/wp/v2/blog-category`
+  `${store.serverUrlDomainRequest}/wp-json/wp/v2/blog-category?lang=en`
 )
 
 // получаем рекомендованные посты
@@ -138,16 +137,14 @@ function formatDateToRussian(dateString) {
 
 //get current cat title
 function curentCatTitle(itemID){
-    let element = all_categories.value.find(u => u.id === +itemID)
-
-    return element.name
+    let element = all_categories.value?.find(u => u.id === +itemID)
+    return element?.name ?? ''
 }
 
 //get current cat slug
 function currentCatSlug(itemID){
-    let element = all_categories.value.find(u => u.id === +itemID)
-
-    return element.slug
+    let element = all_categories.value?.find(u => u.id === +itemID)
+    return element?.slug ?? ''
 }
 
 

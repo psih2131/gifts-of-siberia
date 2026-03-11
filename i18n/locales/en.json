@@ -1,0 +1,24 @@
+{
+  "nav": {
+    "brand": {
+      "giftsOfSiberia": "Gifts of Siberia",
+      "home": "Home",
+      "aboutCompany": "About company"
+    },
+    "products": {
+      "title": "About products",
+      "premiumTeas": "Premium teas",
+      "chagaExtract": "Chaga extract",
+      "giftSets": "Gift sets",
+      "list": "Products"
+    },
+    "cooperation": {
+      "title": "Cooperation",
+      "export": "Export",
+      "legalEntities": "For legal entities",
+      "corporateGifts": "Corporate gifts"
+    },
+    "blog": "Blog",
+    "contacts": "Contacts"
+  }
+}

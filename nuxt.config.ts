@@ -79,8 +79,22 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/sitemap',
     '@nuxtjs/robots',
+    '@nuxtjs/i18n',
   ],
 
+  i18n: {
+    langDir: 'locales',
+    locales: [
+      { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'ru', name: 'Russian', file: 'ru.json' }
+    ],
+    strategy: 'prefix_except_default',
+    defaultLocale: 'ru',
+    // strategy: 'prefix_except_default',
+    detectBrowserLanguage: {
+      useCookie: true,
+    },
+  },
 
 
 

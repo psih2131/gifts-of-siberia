@@ -3,10 +3,10 @@
         <div class="footer__top">
             <div class="container">
                 <div class="footer__top-left-side">
-                    <a href="" class="footer__top-logo">
+                    <NuxtLinkLocale to="/" class="footer__top-logo">
                         <img v-if="optionsData?.logotip_v_futere_pk" :src="optionsData.logotip_v_futere_pk.url" :alt="optionsData.logotip_v_futere_pk.alt" class="footer__top-logo-img">
                         <img src="@/assets/images/img/logo-footer-mob.png" alt="" class="footer__top-logo-img-footer">
-                    </a>
+                    </NuxtLinkLocale>
 
                     <div class="footer__soc-wrapper">
 
@@ -47,29 +47,29 @@
                                 </p>
                                 <ul class="footer__top-nav-list">
                                     <li class="footer__top-nav-list-element">
-                                        <NuxtLink to="/"  class="footer__top-nav-list-link">Главная</NuxtLink>
+                                        <NuxtLinkLocale to="/"  class="footer__top-nav-list-link">Главная</NuxtLinkLocale>
                                     </li>
                                     <li class="footer__top-nav-list-element">
-                                        <NuxtLink to="/about-company"  class="footer__top-nav-list-link">О компании</NuxtLink>
+                                        <NuxtLinkLocale to="/about-company"  class="footer__top-nav-list-link">О компании</NuxtLinkLocale>
                                     </li>
                                     <!-- <li class="footer__top-nav-list-element">
                                         <a href="" class="footer__top-nav-list-link">Производство</a>
                                     </li> -->
 
                                     <li class="footer__top-nav-list-element">
-                                         <NuxtLink to="/premium-teas"  class="footer__top-nav-list-link">Премиальные чаи</NuxtLink>
+                                         <NuxtLinkLocale to="/premium-teas"  class="footer__top-nav-list-link">Премиальные чаи</NuxtLinkLocale>
                                     </li>
 
                                     <li class="footer__top-nav-list-element">
-                                         <NuxtLink to="/extract-chagi"  class="footer__top-nav-list-link">Экстракт чаги</NuxtLink>
+                                         <NuxtLinkLocale to="/extract-chagi"  class="footer__top-nav-list-link">Экстракт чаги</NuxtLinkLocale>
                                     </li>
 
                                     <li class="footer__top-nav-list-element">
-                                         <NuxtLink to="/gift-sets"  class="footer__top-nav-list-link">Подарочные наборы</NuxtLink>
+                                         <NuxtLinkLocale to="/gift-sets"  class="footer__top-nav-list-link">Подарочные наборы</NuxtLinkLocale>
                                     </li>
 
                                     <li class="footer__top-nav-list-element">
-                                         <NuxtLink to="/contacts"  class="footer__top-nav-list-link">Контакты</NuxtLink>
+                                         <NuxtLinkLocale to="/contacts"  class="footer__top-nav-list-link">Контакты</NuxtLinkLocale>
                                     </li>
 
                          
@@ -82,10 +82,10 @@
                                 </p>
                                 <ul class="footer__top-nav-list">
                                     <li class="footer__top-nav-list-element">
-                                        <NuxtLink to="/export"  class="footer__top-nav-list-link">Экспорт</NuxtLink>
+                                        <NuxtLinkLocale to="/export"  class="footer__top-nav-list-link">Экспорт</NuxtLinkLocale>
                                     </li>
                                     <li class="footer__top-nav-list-element">
-                                        <NuxtLink to="/yur-litsam"  class="footer__top-nav-list-link">Юридическим лицам</NuxtLink>
+                                        <NuxtLinkLocale to="/yur-litsam"  class="footer__top-nav-list-link">Юридическим лицам</NuxtLinkLocale>
                                     </li>
                                     <li class="footer__top-nav-list-element">
                                         <a href="https://business.gift-siberia.com/" class="footer__top-nav-list-link">Корпоративные подарки</a>
@@ -99,13 +99,13 @@
                         <div class="footer__top-nav-row">
                             <div class="footer__top-nav-claster">
                                 <p class="footer__top-nav-claster-title">
-                                    <NuxtLink to="/products/">Продукция</NuxtLink>
+                                    <NuxtLinkLocale to="/products/">Продукция</NuxtLinkLocale>
                                 </p>
                             </div>
 
                             <div class="footer__top-nav-claster">
                                 <p class="footer__top-nav-claster-title">
-                                     <NuxtLink to="/blog/">Блог</NuxtLink>
+                                     <NuxtLinkLocale to="/blog/">Блог</NuxtLinkLocale>
                                 </p>
                             </div>
 
@@ -114,7 +114,7 @@
 
                     <div class="footer__top-contacts-claster">
                         <p class="footer__top-contacts-claster-title">
-                            <NuxtLink to="/contacts">Контакты</NuxtLink>
+                            <NuxtLinkLocale to="/contacts">Контакты</NuxtLinkLocale>
                         </p>
                         <ul class="footer__top-contacts-claster-ul">
                             <template v-if="optionsData?.futer_nomera_telefonov?.length > 0">
@@ -200,7 +200,7 @@
 
                         <template v-for="item in doc_pages" :key="item">
                             <li class="footer__down-li" v-if="item.template == 'pages/doc-page.php'">
-                                <NuxtLink :to="`/system/${item.slug}`"  class="footer__down-link">{{item.acf.kratkoe_nazvanie_dlya_navigaczii || item.title.rendered}}</NuxtLink>
+                                <NuxtLinkLocale :to="`/system/${item.slug}`"  class="footer__down-link">{{item.acf.kratkoe_nazvanie_dlya_navigaczii || item.title.rendered}}</NuxtLinkLocale>
                             </li>
                         </template>
                         
@@ -224,7 +224,6 @@
     import { useCounterStore } from '@/stores/counter'
 
     import { ref, onMounted, onBeforeUnmount, computed, watch  } from 'vue';
-
 
     //DATA
     const store = useCounterStore()

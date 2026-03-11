@@ -6,8 +6,10 @@
 
         <div class="news-card__header">
 
-            <template v-if="postData['blog-category'] && catList && catList.length > 0">
-                <NuxtLink v-for="item in postData['blog-category']" :key="item"  class="news-card__teg" :to="`/blog/categories/${currentCatSlug(item)}`">#{{ curentCatTitle(item) }}</NuxtLink>
+            <template v-if="postData['blog-category'] && catList?.length">
+                <template v-for="item in postData['blog-category']" :key="item">
+                    <NuxtLink v-if="currentCatSlug(item)" class="news-card__teg" :to="`/blog/categories/${currentCatSlug(item)}`">#{{ curentCatTitle(item) }}</NuxtLink>
+                </template>
             </template>
             
             <!-- <p class="news-card__date-post">15 сентября 2024</p> -->
@@ -53,16 +55,14 @@
 
     //get current cat title
     function curentCatTitle(itemID){
-        let element = props.catList.find(u => u.id === +itemID)
-
-        return element.name
+        let element = props.catList?.find(u => u.id === +itemID)
+        return element?.name ?? ''
     }
 
     //get current cat slug
     function currentCatSlug(itemID){
-        let element = props.catList.find(u => u.id === +itemID)
-
-        return element.slug
+        let element = props.catList?.find(u => u.id === +itemID)
+        return element?.slug ?? ''
     }
 
 
