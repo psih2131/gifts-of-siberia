@@ -1,6 +1,6 @@
 <template>
     <main class="main">
-
+      <template v-if="pageData?.[0]">
         <section class="info-hero-sec coorp-hero-sec">
             <div class="container">
 
@@ -16,7 +16,7 @@
 
                         <div class="info-hero-sec__btn-wrapper">
                             <button class="info-hero-sec__btn btn-request" @click="openForm()">
-                                <span>Оставить заявку</span>
+                                <span>{{ $t('form.leaveRequest') }}</span>
                                 <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12.5004 10.25C12.0904 10.25 11.7504 9.90999 11.7504 9.49999V4.30999L11.0304 5.02999C10.7404 5.31999 10.2604 5.31999 9.97043 5.02999C9.68043 4.73999 9.68043 4.25999 9.97043 3.96999L11.9704 1.96999C12.1804 1.75999 12.5104 1.68999 12.7904 1.80999C13.0704 1.91999 13.2504 2.19999 13.2504 2.49999V9.49999C13.2504 9.90999 12.9104 10.25 12.5004 10.25Z" fill="white"/>
                                 <path d="M14.5004 5.24994C14.3104 5.24994 14.1204 5.17994 13.9704 5.02994L11.9704 3.02994C11.6804 2.73994 11.6804 2.25994 11.9704 1.96994C12.2604 1.67994 12.7404 1.67994 13.0304 1.96994L15.0304 3.96994C15.3204 4.25994 15.3204 4.73994 15.0304 5.02994C14.8804 5.17994 14.6904 5.24994 14.5004 5.24994Z" fill="white"/>
@@ -44,7 +44,7 @@
                     <div class="info-advantages-sec__element" v-for="item in pageData[0].acf['sekcziya_-_chto_poluchaete'].spisok" :key="item">
                         <div class="info-advantages-sec__element-wrapper">
                             <div class="info-advantages-sec__element-header">
-                                <img :src="item.ikonka.url" :alt="item.ikonka.url" class="info-advantages-sec__element-icon">
+                                <img v-if="item?.ikonka?.url" :src="item.ikonka.url" :alt="item.ikonka?.alt || ''" class="info-advantages-sec__element-icon">
                                 <p class="info-advantages-sec__element-title" v-html="item.zagolovok"></p>
                             </div>
                             <p class="info-advantages-sec__element-text" v-html="item.opisanie"></p>
@@ -73,7 +73,7 @@
                     >
                     <swiper-slide v-for="item in pageData[0].acf.sekcziya_napravleniya.etapy" :key="item">
                     <div class="info-dirrections-sec__element">
-                        <img :src="item.fon.url" :alt="item.fon.url" class="info-dirrections-sec__element-img">
+                        <img v-if="item?.fon?.url" :src="item.fon.url" :alt="item.fon?.alt || ''" class="info-dirrections-sec__element-img">
                         <div class="info-dirrections-sec__element-wrapper">
                             <div class="info-dirrections-sec__element-text-box">
                                 <p class="info-dirrections-sec__element-title" v-html="item.nazvanie_etapa"> </p>
@@ -108,13 +108,13 @@
         <section class="info-close-sec " v-if="pageData[0].acf.sekcziya_tovarah?.length">
             <div class="container">
 
-                <h2 class="info-sec-title">Продукты для корпоративных подарков</h2>
+                <h2 class="info-sec-title">{{ $t('pages.productsForCorporate') }}</h2>
 
                 <div class="info-close-sec__row">
 
                     <div class="info-close-sec__element info-close-sec__element--anim" v-for="item in pageData[0].acf.sekcziya_tovarah" :key="item">
-                        <img :src="item.fon.url" 
-                        :alt="item.fon.alt" 
+                        <img v-if="item?.fon?.url" :src="item.fon.url" 
+                        :alt="item.fon?.alt || ''" 
                         class="info-close-sec__element-bg">
                         <div class="info-close-sec__element-text-wrapper">
                             <p class="info-close-sec__element-title" v-html="item.zagolovok"></p>
@@ -143,7 +143,7 @@
                 <h2 class="info-sec-title" v-html="pageData[0].acf.sekcziya_forma.zagolovok"></h2>
                 <p class="info-form-sec__subtitle" v-html="pageData[0].acf.sekcziya_forma.tekst"></p>
                 <div class="info-form-sec__wrapper">
-                    <img :src="pageData[0].acf.sekcziya_forma.izobrazhenie.url" :alt="pageData[0].acf.sekcziya_forma.izobrazhenie.alt" class="info-form-sec__img">
+                    <img v-if="pageData[0].acf.sekcziya_forma?.izobrazhenie?.url" :src="pageData[0].acf.sekcziya_forma.izobrazhenie.url" :alt="pageData[0].acf.sekcziya_forma.izobrazhenie?.alt || ''" class="info-form-sec__img">
 
                     <formTypeAbout />
 
@@ -154,6 +154,8 @@
                 </div>
             </div>
         </section>
+      </template>
+      <ContentNotTranslated v-else-if="!pending" />
 
         
     </main>
@@ -173,14 +175,14 @@ import formTypeAbout from '@/components/forms/form-type-about.vue'
 
 //DATA
 const coorpDirrectionsSlider = ref(null)
-
 const store = useCounterStore()
-
 const route = useRoute()
+const { locale } = useI18n()
 
-const { data: pageData } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/pages?slug=corporation-gifts`)
-
-console.log('pageData', pageData)
+const { data: pageData, pending } = await useFetch(
+  () => `${store.serverUrlDomainRequest}/wp-json/wp/v2/pages?slug=corporation-gifts${locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''}`,
+  { watch: [locale] }
+)
 
 //METHODS 
 
@@ -227,41 +229,27 @@ const swiperDirrections = useSwiper(coorpDirrectionsSlider, {
 
 
 //SEO
-useHead({
-    title: pageData.value[0].acf.seo_title || pageData.value[0].title.rendered,
-    meta: [
-        // Description
-        { name: 'description', content: pageData.value[0].acf.seo_description || 'Описание по умолчанию' },
-
-        // Keywords (опционально, не влияет сильно на SEO)
-        { name: 'keywords',  content: pageData.value[0].acf.klyuchevaya_fraza || 'test' },
-
-        // OpenGraph
-        { property: 'og:title', content: pageData.value[0].acf.seo_title },
-        { property: 'og:description', content: pageData.value[0].acf.seo_description },
-        { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: `${store.domainUrlCurrent}${route.fullPath}` },
-        { property: 'og:image', content: pageData.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
-
-        // Twitter Card (если используешь)
-        { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: pageData.value[0].acf.seo_title },
-        { name: 'twitter:description', content: pageData.value[0].acf.seo_description },
-        { name: 'twitter:image', content: pageData.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
-
-        // Индексация / Деиндексация
-        // Например, noindex для черновика:
-        {
-        name: 'robots',
-        content:
-            pageData.value[0].acf.indeksacziya_v_poiskovyh_sistemah === 'index'
-            ? 'index, follow'
-            : 'noindex, nofollow'
-        }
-    ],
-    link: [
-        // Canonical (вручную или динамически)
-        { rel: 'canonical', href: `${store.domainUrlCurrent}/${pageData.value[0].acf.canonical || route.name}` }
-    ]
+const { t } = useI18n()
+useHead(() => {
+    const page = pageData.value?.[0]
+    if (!page?.acf) return { title: t('nav.brand.giftsOfSiberia') }
+    return {
+        title: page.acf.seo_title || page.title?.rendered,
+        meta: [
+            { name: 'description', content: page.acf.seo_description || t('common.defaultDescription') },
+            { name: 'keywords', content: page.acf.klyuchevaya_fraza || t('common.defaultKeywords') },
+            { property: 'og:title', content: page.acf.seo_title || page.title?.rendered },
+            { property: 'og:description', content: page.acf.seo_description || t('common.defaultDescription') },
+            { property: 'og:type', content: 'website' },
+            { property: 'og:url', content: `${store.domainUrlCurrent}${route.fullPath}` },
+            { property: 'og:image', content: page.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
+            { name: 'twitter:card', content: 'summary_large_image' },
+            { name: 'twitter:title', content: page.acf.seo_title || page.title?.rendered },
+            { name: 'twitter:description', content: page.acf.seo_description || t('common.defaultDescription') },
+            { name: 'twitter:image', content: page.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
+            { name: 'robots', content: page.acf?.indeksacziya_v_poiskovyh_sistemah === 'index' ? 'index, follow' : 'noindex, nofollow' }
+        ],
+        link: [{ rel: 'canonical', href: `${store.domainUrlCurrent}${page.acf?.canonical || route.fullPath}` }]
+    }
 })
 </script>

@@ -7,6 +7,8 @@
     "leaveRequest": "Leave a request",
     "fillFormSubtitle": "Fill out the form and our specialists will contact you as soon as possible.",
     "yourName": "Your name",
+    "country": "Country",
+    "requirementsAndWishes": "Your requirements and wishes",
     "email": "Email",
     "phoneNumber": "Phone number",
     "checkDataError": "Please check that the data you entered is correct",
@@ -68,6 +70,13 @@
     "min": "min",
     "readAlso": "read also",
     "readArticle": "Read article"
+  },
+  "pages": {
+    "step": "Step",
+    "clickToLearnMore": "Click to learn more",
+    "extractDifference": "What is the difference from other brand extracts?",
+    "productMeetsNeeds": "Product that meets customer needs",
+    "productsForCorporate": "Products for corporate gifts"
   },
   "breadcrumbs": {
     "home": "Home",
