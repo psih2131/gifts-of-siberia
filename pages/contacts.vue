@@ -1,7 +1,7 @@
 <template>
     <main class="main">
 
-        <section class="contacts-sec" v-if="pageData[0]">
+        <section class="contacts-sec" v-if="pageData?.[0]">
             <div class="container">
 
                 <div class="breadcrumbs">
@@ -96,6 +96,8 @@
 
             </div>
         </section>
+
+        <ContentNotTranslated v-else-if="!pending" />
         
     </main>
     
@@ -114,9 +116,14 @@ import { ref, onMounted, onBeforeUnmount, computed, watch  } from 'vue';
 
 const store = useCounterStore()
 
+const { locale } = useI18n()
+
 const route = useRoute()
 
-const { data: pageData } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/pages?slug=contacts`)
+const { data: pageData, pending } = await useFetch(
+    () => `${store.serverUrlDomainRequest}/wp-json/wp/v2/pages?slug=contacts${locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''}`,
+    { watch: [locale] }
+)
 
 console.log('pageData', pageData)
 
@@ -128,41 +135,31 @@ console.log('pageData', pageData)
 
 
 //SEO
-useHead({
-    title: pageData.value[0].acf.seo_title || pageData.value[0].title.rendered,
-    meta: [
-        // Description
-        { name: 'description', content: pageData.value[0].acf.seo_description || 'Описание по умолчанию' },
-
-        // Keywords (опционально, не влияет сильно на SEO)
-        { name: 'keywords',  content: pageData.value[0].acf.klyuchevaya_fraza || 'test' },
-
-        // OpenGraph
-        { property: 'og:title', content: pageData.value[0].acf.seo_title },
-        { property: 'og:description', content: pageData.value[0].acf.seo_description },
-        { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: `${store.domainUrlCurrent}${route.fullPath}` },
-        { property: 'og:image', content: pageData.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
-
-        // Twitter Card (если используешь)
-        { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: pageData.value[0].acf.seo_title },
-        { name: 'twitter:description', content: pageData.value[0].acf.seo_description },
-        { name: 'twitter:image', content: pageData.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
-
-        // Индексация / Деиндексация
-        // Например, noindex для черновика:
-        {
-        name: 'robots',
-        content:
-            pageData.value[0].acf.indeksacziya_v_poiskovyh_sistemah === 'index'
-            ? 'index, follow'
-            : 'noindex, nofollow'
-        }
-    ],
-    link: [
-        // Canonical (вручную или динамически)
-        { rel: 'canonical', href: `${store.domainUrlCurrent}/${pageData.value[0].acf.canonical || route.name}` }
-    ]
+useHead(() => {
+    const page = pageData.value?.[0]
+    if (!page?.acf) return { title: 'Contacts' }
+    return {
+        title: page.acf.seo_title || page.title?.rendered,
+        meta: [
+            { name: 'description', content: page.acf.seo_description || 'Описание по умолчанию' },
+            { name: 'keywords', content: page.acf.klyuchevaya_fraza || 'test' },
+            { property: 'og:title', content: page.acf.seo_title },
+            { property: 'og:description', content: page.acf.seo_description },
+            { property: 'og:type', content: 'website' },
+            { property: 'og:url', content: `${store.domainUrlCurrent}${route.fullPath}` },
+            { property: 'og:image', content: page.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
+            { name: 'twitter:card', content: 'summary_large_image' },
+            { name: 'twitter:title', content: page.acf.seo_title },
+            { name: 'twitter:description', content: page.acf.seo_description },
+            { name: 'twitter:image', content: page.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
+            {
+                name: 'robots',
+                content: page.acf.indeksacziya_v_poiskovyh_sistemah === 'index' ? 'index, follow' : 'noindex, nofollow'
+            }
+        ],
+        link: [
+            { rel: 'canonical', href: `${store.domainUrlCurrent}/${page.acf.canonical || route.name}` }
+        ]
+    }
 })
 </script>

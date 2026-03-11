@@ -1,4 +1,7 @@
 {
+  "common": {
+    "pageNotTranslated": "This page is not translated into the selected language"
+  },
   "breadcrumbs": {
     "home": "Home",
     "blog": "Blog",

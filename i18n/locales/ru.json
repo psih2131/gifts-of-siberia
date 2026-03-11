@@ -1,4 +1,7 @@
 {
+  "common": {
+    "pageNotTranslated": "Данная страница не переведена на выбранный язык"
+  },
   "breadcrumbs": {
     "home": "Главная",
     "blog": "Блог",
