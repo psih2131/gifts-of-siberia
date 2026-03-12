@@ -16,7 +16,7 @@
             webkit-playsinline
             >
             <source :src="videoUrl" type="video/mp4" />
-            Ваш браузер не поддерживает видео.
+            {{ $t('common.videoNotSupported') }}
             </video>
         </div>
 
@@ -65,4 +65,4 @@
 
   
 
-</script>demo-2
+</script>

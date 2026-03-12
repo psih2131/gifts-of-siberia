@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="modal-content__use" v-if="postData.acf?.varianty_primeneniya?.length">
-                    <p class="modal-content__use-title">Варианты применения:</p>
+                    <p class="modal-content__use-title">{{ $t('modal.useCases') }}</p>
                     <ul class="modal-content__use-wrapper">
                         <li class="modal-content__use-element"  v-for="item in postData.acf.varianty_primeneniya" :key="item">{{ item.tekst_varianta }}</li>
                     </ul>

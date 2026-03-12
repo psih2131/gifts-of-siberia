@@ -29,7 +29,21 @@
   "common": {
     "pageNotTranslated": "This page is not translated into the selected language",
     "defaultDescription": "Default description",
-    "defaultKeywords": "test"
+    "defaultKeywords": "test",
+    "videoNotSupported": "Your browser does not support video.",
+    "formSendError": "An error occurred while submitting the request"
+  },
+  "modal": {
+    "useCases": "Application options:"
+  },
+  "popup": {
+    "formSent": "Request sent",
+    "formSentSubtitle": "Thank you for choosing us! Our specialists will contact you shortly."
+  },
+  "cookie": {
+    "text": "By using our site, you agree to the processing of personal data and the use of cookies. Read more in the",
+    "privacyPolicy": "Privacy Policy",
+    "accept": "I agree"
   },
   "blog": {
     "allArticles": "All articles",

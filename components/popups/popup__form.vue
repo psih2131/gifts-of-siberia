@@ -7,26 +7,26 @@
         </div>
 
         <div class="form-popup__wrapper">
-            <p class="info-form-sec__form-title">Оставьте заявку</p>
-            <p class="info-form-sec__form-subtitle">Заполните форму, и наши специалисты свяжутся с Вами в ближайшее время.</p>
+            <p class="info-form-sec__form-title">{{ $t('form.leaveRequest') }}</p>
+            <p class="info-form-sec__form-subtitle">{{ $t('form.fillFormSubtitle') }}</p>
             <form action="">
                 <div class="info-form-sec__form-inp" :class="{'form-error-field': formNameValidStatus == false}">
-                    <input v-model="formName" type="text" placeholder="Ваше имя">
-                    <p v-if="formNameValidStatus == false" class="form-valid-error">Проверьте правильность введенных данных</p>
+                    <input v-model="formName" type="text" :placeholder="$t('form.yourName')">
+                    <p v-if="formNameValidStatus == false" class="form-valid-error">{{ $t('form.checkDataError') }}</p>
                 </div>
 
                 <div class="info-form-sec__form-inp" :class="{'form-error-field': formEmailValidStatus == false}">
-                    <input v-model="formEmail" type="text" placeholder="Email">
-                    <p v-if="formEmailValidStatus == false" class="form-valid-error">Проверьте правильность введенных данных</p>
+                    <input v-model="formEmail" type="text" :placeholder="$t('form.email')">
+                    <p v-if="formEmailValidStatus == false" class="form-valid-error">{{ $t('form.checkDataError') }}</p>
                 </div>
 
                 <div class="info-form-sec__form-inp" :class="{'form-error-field': formPhoneValidStatus == false}">
-                    <input v-model="formPhone" type="text" placeholder="Номер телефона">
-                    <p v-if="formPhoneValidStatus == false" class="form-valid-error">Проверьте правильность введенных данных</p>
+                    <input v-model="formPhone" type="text" :placeholder="$t('form.phoneNumber')">
+                    <p v-if="formPhoneValidStatus == false" class="form-valid-error">{{ $t('form.checkDataError') }}</p>
                 </div>
 
                 <div class="info-form-sec__form-inp-btn-v2" @click="validationForm()">
-                    Оставить заявку
+                    {{ $t('form.leaveRequest') }}
                     <div class="info-form-sec__form-inp-btn-v2-icon">
                         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12.5004 10.25C12.0904 10.25 11.7504 9.90999 11.7504 9.49999V4.30999L11.0304 5.02999C10.7404 5.31999 10.2604 5.31999 9.97043 5.02999C9.68043 4.73999 9.68043 4.25999 9.97043 3.96999L11.9704 1.96999C12.1804 1.75999 12.5104 1.68999 12.7904 1.80999C13.0704 1.91999 13.2504 2.19999 13.2504 2.49999V9.49999C13.2504 9.90999 12.9104 10.25 12.5004 10.25Z" fill="white"/>
@@ -46,10 +46,9 @@
                         <span class="checkbox-item-custom__box"></span>
                       </label>
 
-                      <p class="checkbox-item-custom__text">Я согласен на <NuxtLink to="/system/soglasie-na-obrabotku-personalnyh-dannyh">обработку персональных данных</NuxtLink> ,
-                         <NuxtLink to="/system/soglashenie">пользовательское соглашение</NuxtLink> и <NuxtLink to="/system/privacy-policy">политику конфиденциальности</NuxtLink> </p> 
+                      <p class="checkbox-item-custom__text">{{ $t('form.consentText') }} <NuxtLinkLocale to="/system/soglasie-na-obrabotku-personalnyh-dannyh">{{ $t('form.personalDataProcessing') }}</NuxtLinkLocale>, <NuxtLinkLocale to="/system/soglashenie">{{ $t('form.userAgreement') }}</NuxtLinkLocale> {{ $t('form.and') }} <NuxtLinkLocale to="/system/privacy-policy">{{ $t('form.privacyPolicy') }}</NuxtLinkLocale></p>
 
-                      <p v-if="formPolitCheckbox == false && sendStatus == false" class="form-valid-error">Подтвердите согласие</p>
+                      <p v-if="formPolitCheckbox == false && sendStatus == false" class="form-valid-error">{{ $t('form.confirmConsent') }}</p>
                   </div>
 
 
@@ -60,14 +59,14 @@
                         <span class="checkbox-item-custom__box"></span>
                       </label>
 
-                      <p class="checkbox-item-custom__text">Я согласен на рекламную рассылку</p>
+                      <p class="checkbox-item-custom__text">{{ $t('form.consentNewsletter') }}</p>
                   </div>
 
                 </div>
 
                 <!-- <p class="info-form-sec__form-down-text">Нажимая на кнопку, вы автоматически соглашаетесь с политикой конфиденциальности и обработкой персональных данных</p> -->
 
-                <p v-if="sendStatus == false" class="form-valid-error-main">Ошибка, проверьте правильность введенных данных</p>
+                <p v-if="sendStatus == false" class="form-valid-error-main">{{ $t('form.mainError') }}</p>
 
                 <!-- <div class="info-form-sec__form-captcha-wrapper">
                     <img src="@/assets/images/img/captcha.png" alt="" class="info-form-sec__form-captcha">
@@ -81,12 +80,14 @@
 
 <script setup>
 import { useCounterStore } from '@/stores/counter'
+import { useI18n } from 'vue-i18n'
 import { ref, onMounted, onBeforeUnmount, computed, watch  } from 'vue';
 // import popupForm from '@/components/popups/popup__form.vue'
 
 
 
 //DATA
+const { t } = useI18n()
 const store = useCounterStore()
 
 const formName = ref(null)
@@ -191,7 +192,7 @@ const sendForm = async () => {
 
   } catch (error) {
     console.error('Ошибка при отправке формы:', error)
-    alert('Произошла ошибка при отправке заявки')
+    alert(t('common.formSendError'))
   }
 }
 
@@ -225,7 +226,7 @@ const sendFormAmmo = async () => {
 
   } catch (error) {
     console.error('Ошибка при отправке формы:', error)
-    alert('Произошла ошибка при отправке заявки')
+    alert(t('common.formSendError'))
   }
 }
 

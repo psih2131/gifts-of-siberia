@@ -1,14 +1,13 @@
 <template>
   <div v-if="!accepted" class="cookie-banner">
     <p>
-      Используя наш сайт, вы соглашаетесь с обработкой персональных данных и использованием cookie. 
-      Подробнее читайте в 
-      <NuxtLink to="/system/privacy-policy" class="cookie-link">
-        Политике конфиденциальности
-      </NuxtLink>.
+      {{ $t('cookie.text') }}
+      <NuxtLinkLocale to="/system/privacy-policy" class="cookie-link">
+        {{ $t('cookie.privacyPolicy') }}
+      </NuxtLinkLocale>.
     </p>
     <button @click="accept" class="cookie-btn">
-      Согласен
+      {{ $t('cookie.accept') }}
     </button>
   </div>
 </template>

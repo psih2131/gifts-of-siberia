@@ -14,8 +14,8 @@
                 </svg>
             </div>
 
-            <p class="form-popup-done__title">Заявка отправлена</p>
-            <p class="form-popup-done__subtitle">Спасибо, что выбрали нас! Наши специалисты свяжутся с Вами в ближайшее время.</p>
+            <p class="form-popup-done__title">{{ $t('popup.formSent') }}</p>
+            <p class="form-popup-done__subtitle">{{ $t('popup.formSentSubtitle') }}</p>
 
         </div>
         
