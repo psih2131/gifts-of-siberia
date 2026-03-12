@@ -6,8 +6,8 @@ export const useCounterStore = defineStore('counter', () => {
     const router = useRouter();
 
     // const serverUrlDomainRequest = ref('http://syberia.gearsdpz.beget.tech')
-    // const serverUrlDomainRequest = ref('https://panel.gift-siberia.com')
-    const serverUrlDomainRequest = ref('http://gift-of-syberia.local')
+    const serverUrlDomainRequest = ref('https://panel.gift-siberia.com')
+    // const serverUrlDomainRequest = ref('http://gift-of-syberia.local')
     
 
     const domainUrlCurrent = ref('https://gift-siberia.com')
