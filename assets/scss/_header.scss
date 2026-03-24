@@ -11,7 +11,6 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        padding-right: 262px;
     }
 }
 
@@ -125,6 +124,7 @@
 .lang-dropdown-leave-active {
     transition: opacity 0.15s, transform 0.15s;
 }
+
 .lang-dropdown-enter-from,
 .lang-dropdown-leave-to {
     opacity: 0;
@@ -303,11 +303,7 @@
     display: none;
 }
 
-@media only screen and (max-width: 1750px) {
-    .header .container {
-        padding-right: 180px;
-    }
-}
+@media only screen and (max-width: 1750px) {}
 
 @media only screen and (max-width: 1520px) {
     .header .container {
@@ -337,7 +333,8 @@
     .header__nav {
         padding-top: 22px;
     }
-    .lang-switcher{
+
+    .lang-switcher {
         padding-top: 15px;
     }
 
