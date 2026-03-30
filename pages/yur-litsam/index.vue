@@ -1,6 +1,8 @@
 <template>
     <main class="main">
 
+      <template v-if="pageData?.[0]">
+
         <section class="info-hero-sec">
             <div class="container">
 
@@ -17,7 +19,7 @@
 
                         <div class="info-hero-sec__btn-wrapper">
                             <button class="info-hero-sec__btn btn-request" @click="openForm()">
-                                <span>Оставить заявку</span>
+                                <span>{{ $t('form.leaveRequest') }}</span>
                                 <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12.5004 10.25C12.0904 10.25 11.7504 9.90999 11.7504 9.49999V4.30999L11.0304 5.02999C10.7404 5.31999 10.2604 5.31999 9.97043 5.02999C9.68043 4.73999 9.68043 4.25999 9.97043 3.96999L11.9704 1.96999C12.1804 1.75999 12.5104 1.68999 12.7904 1.80999C13.0704 1.91999 13.2504 2.19999 13.2504 2.49999V9.49999C13.2504 9.90999 12.9104 10.25 12.5004 10.25Z" fill="white"/>
                                 <path d="M14.5004 5.24994C14.3104 5.24994 14.1204 5.17994 13.9704 5.02994L11.9704 3.02994C11.6804 2.73994 11.6804 2.25994 11.9704 1.96994C12.2604 1.67994 12.7404 1.67994 13.0304 1.96994L15.0304 3.96994C15.3204 4.25994 15.3204 4.73994 15.0304 5.02994C14.8804 5.17994 14.6904 5.24994 14.5004 5.24994Z" fill="white"/>
@@ -84,11 +86,11 @@
                             <div class="info-dirrections-sec__element-text-box">
                                 <!-- <div class="info-dirrections-sec__element-tag">Шаг {{index + 1}}</div> -->
                                 <p class="info-dirrections-sec__element-title" v-html="item.acf.zagolovok_kartochki"></p>
-                                <p class="info-dirrections-sec__element-text">Нажмите, чтобы узнать подробнее</p>
+                                <p class="info-dirrections-sec__element-text">{{ $t('pages.clickToLearnMore') }}</p>
                                 <p class="info-dirrections-sec__element-description" v-html="item.acf.korotkoe_opisanie_kartochki"></p>
                                 <div class="info-dirrections-sec__element-btn-wrapper">
                                     <div @click="openPost(item)" class="info-dirrections-sec__element-btn">
-                                        Подробнее
+                                        {{ $t('common.learnMore') }}
                                         <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M12.74 22.0795C12.44 22.0795 12.14 22.0095 11.89 21.8695C10.02 20.8495 6.73999 19.7695 4.67999 19.4995L4.39001 19.4595C3.08001 19.2995 2 18.0695 2 16.7395V4.6595C2 3.8695 2.31 3.14953 2.88 2.62953C3.45 2.10953 4.18997 1.85952 4.96997 1.92952C7.15997 2.10952 10.48 3.20953 12.36 4.37953L12.6 4.51955C12.67 4.54955 12.82 4.55955 12.88 4.51955L13.04 4.41951C13.71 3.99951 14.55 3.5895 15.47 3.2195C15.7 3.1295 15.96 3.15951 16.17 3.29951C16.38 3.43951 16.5 3.66951 16.5 3.91951V6.5995L17.33 6.04951C17.58 5.87951 17.91 5.87951 18.16 6.04951L18.99 6.5995V2.77956C18.99 2.41956 19.25 2.1095 19.6 2.0395C19.89 1.9895 20.18 1.94952 20.44 1.92952C20.46 1.92952 20.54 1.92952 20.56 1.92952C21.29 1.86952 22.04 2.11954 22.6 2.63954C23.17 3.15954 23.48 3.87951 23.48 4.66951V16.7395C23.48 18.0795 22.4 19.2995 21.08 19.4595L20.75 19.4995C18.69 19.7695 15.39 20.8595 13.56 21.8695C13.34 22.0095 13.04 22.0795 12.74 22.0795ZM4.71997 3.4095C4.39997 3.4095 4.11 3.51951 3.88 3.72951C3.63 3.95951 3.48999 4.2895 3.48999 4.6595V16.7395C3.48999 17.3295 4.00001 17.8995 4.57001 17.9795L4.87 18.0195C7.12 18.3195 10.57 19.4495 12.57 20.5495C12.66 20.5895 12.79 20.5995 12.84 20.5795C14.85 19.4695 18.31 18.3296 20.57 18.0296L20.91 17.9895C21.48 17.9195 21.99 17.3395 21.99 16.7495V4.67952C21.99 4.30952 21.85 3.98953 21.6 3.74953C21.35 3.51953 21 3.40952 20.64 3.42952C20.61 3.42952 20.52 3.42952 20.5 3.42952V7.99953C20.5 8.27953 20.35 8.5295 20.1 8.6595C19.85 8.7895 19.56 8.77952 19.33 8.61952L17.75 7.56953L16.17 8.61952C15.94 8.76952 15.65 8.7895 15.4 8.6595C15.16 8.5295 15 8.27953 15 7.99953V5.06953C14.57 5.27953 14.18 5.48953 13.84 5.68953L13.68 5.7895C13.13 6.1295 12.35 6.12951 11.82 5.79951L11.58 5.64955C9.89002 4.58955 6.80998 3.5695 4.84998 3.4095C4.79998 3.4095 4.75997 3.4095 4.71997 3.4095Z" fill="#1B3762"/>
                                         <path d="M12.7422 21.2402C12.3322 21.2402 11.9922 20.9002 11.9922 20.4902V5.49023C11.9922 5.08023 12.3322 4.74023 12.7422 4.74023C13.1522 4.74023 13.4922 5.08023 13.4922 5.49023V20.4902C13.4922 20.9102 13.1522 21.2402 12.7422 21.2402Z" fill="#1B3762"/>
@@ -130,7 +132,7 @@
         <section class="info-close-sec " v-if="pageData[0].acf.sekcziya_4_o_tovarah">
             <div class="container">
 
-                <h2 class="info-sec-title">Продукт, который закрывает потребности клиентов</h2>
+                <h2 class="info-sec-title">{{ $t('pages.productMeetsNeeds') }}</h2>
 
                 <div class="info-close-sec__row">
 
@@ -279,6 +281,9 @@
         :postData="selectedPost"
         @close="closeModal"
         />
+
+      </template>
+      <ContentNotTranslated v-else-if="!pageDataPending" />
         
     </main>
 
@@ -311,35 +316,41 @@ const route = useRoute()
 
 const router = useRouter()
 
+const { locale } = useI18n()
+
 const curentIndexProcess = ref(null)
 
 const ytpList = ref([])
 
-const { data: pageData } = await useFetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/pages?slug=yur-litsam`)
+const { data: pageData, pending: pageDataPending } = await useFetch(
+  () => `${store.serverUrlDomainRequest}/wp-json/wp/v2/pages?slug=yur-litsam${locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''}`,
+  { watch: [locale] }
+)
 
-// получаем УТП
-try {
+async function loadYtpList() {
   const mainPost = pageData.value?.[0]
   const chitatTakzhe = mainPost?.acf?.sekcziya_napravleniya?.utp
+  const langParam = locale.value && locale.value !== 'ru' ? `&lang=${locale.value}` : ''
 
-  if (Array.isArray(chitatTakzhe) && chitatTakzhe.length) {
+  if (!Array.isArray(chitatTakzhe) || !chitatTakzhe.length) {
+    ytpList.value = []
+    return
+  }
+  try {
     const slugs = chitatTakzhe.map(obj => obj.post_name)
-
     const promises = slugs.map(slug =>
-      fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/offer?slug=${slug}`)
+      fetch(`${store.serverUrlDomainRequest}/wp-json/wp/v2/offer?slug=${slug}${langParam}`)
         .then(res => res.json())
         .then(data => data?.[0] || null)
     )
-
     ytpList.value = await Promise.all(promises)
+  } catch (error) {
+    console.error('Ошибка при загрузке УТП:', error)
+    ytpList.value = []
   }
-} catch (error) {
-  console.error('Ошибка при загрузке рекомендованных постов:', error)
 }
 
-console.log('pageData', pageData)
-
-console.log('ytpList', ytpList)
+watch([pageData, locale], () => loadYtpList(), { immediate: true })
 
 
 const selectedPost = ref(null)
@@ -351,10 +362,12 @@ const showModal = ref(false)
 
 //METHODS 
 
+const localePath = useLocalePath()
+
 function openPost(post) {
   selectedPost.value = post
   showModal.value = true
-  window.history.pushState({}, '', `/yur-litsam/${post.slug}`)
+  window.history.pushState({}, '', localePath(`/yur-litsam/${post.slug}`))
 }
 
 // function openPost(post) {
@@ -412,59 +425,28 @@ const swiperDirrections = useSwiper(coorpDirrectionsSlider, {
 
 
 
-//HOOKS
-onMounted(() => {
-  // Добавляем обработчик события scroll
-
-  
-});
-
-onBeforeUnmount(() => {
-
-});
-
-
-// definePageMeta({
-//   pageTransition: false
-// })
-
-
 //SEO
- useHead({
-    title: pageData.value[0].acf.seo_title || pageData.value[0].title.rendered,
-    meta: [
-        // Description
-        { name: 'description', content: pageData.value[0].acf.seo_description || 'Описание по умолчанию' },
-
-        // Keywords (опционально, не влияет сильно на SEO)
-        { name: 'keywords',  content: pageData.value[0].acf.klyuchevaya_fraza || 'test' },
-
-        // OpenGraph
-        { property: 'og:title', content: pageData.value[0].acf.seo_title },
-        { property: 'og:description', content: pageData.value[0].acf.seo_description },
-        { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: `${store.domainUrlCurrent}${route.fullPath}` },
-        { property: 'og:image', content: pageData.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
-
-        // Twitter Card (если используешь)
-        { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: pageData.value[0].acf.seo_title },
-        { name: 'twitter:description', content: pageData.value[0].acf.seo_description },
-        { name: 'twitter:image', content: pageData.value?.[0]?.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
-
-        // Индексация / Деиндексация
-        // Например, noindex для черновика:
-        {
-        name: 'robots',
-        content:
-            pageData.value[0].acf.indeksacziya_v_poiskovyh_sistemah === 'index'
-            ? 'index, follow'
-            : 'noindex, nofollow'
-        }
-    ],
-    link: [
-        // Canonical (вручную или динамически)
-        { rel: 'canonical', href: `${store.domainUrlCurrent}/${pageData.value[0].acf.canonical || route.name}` }
-    ]
+const { t } = useI18n()
+useHead(() => {
+    const page = pageData.value?.[0]
+    if (!page?.acf) return { title: t('nav.brand.giftsOfSiberia') }
+    return {
+        title: page.acf.seo_title || page.title?.rendered,
+        meta: [
+            { name: 'description', content: page.acf.seo_description || t('common.defaultDescription') },
+            { name: 'keywords', content: page.acf.klyuchevaya_fraza || t('common.defaultKeywords') },
+            { property: 'og:title', content: page.acf.seo_title || page.title?.rendered },
+            { property: 'og:description', content: page.acf.seo_description || t('common.defaultDescription') },
+            { property: 'og:type', content: 'website' },
+            { property: 'og:url', content: `${store.domainUrlCurrent}${route.fullPath}` },
+            { property: 'og:image', content: page.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
+            { name: 'twitter:card', content: 'summary_large_image' },
+            { name: 'twitter:title', content: page.acf.seo_title || page.title?.rendered },
+            { name: 'twitter:description', content: page.acf.seo_description || t('common.defaultDescription') },
+            { name: 'twitter:image', content: page.acf?.og_image?.url || 'http://syberia.gearsdpz.beget.tech/wp-content/uploads/2025/07/87baa9efe5d849e4f8da67fe01f9e029.jpg' },
+            { name: 'robots', content: page.acf?.indeksacziya_v_poiskovyh_sistemah === 'index' ? 'index, follow' : 'noindex, nofollow' }
+        ],
+        link: [{ rel: 'canonical', href: `${store.domainUrlCurrent}${page.acf?.canonical || route.fullPath}` }]
+    }
 })
 </script>

@@ -31,7 +31,8 @@
     "defaultDescription": "Default description",
     "defaultKeywords": "test",
     "videoNotSupported": "Your browser does not support video.",
-    "formSendError": "An error occurred while submitting the request"
+    "formSendError": "An error occurred while submitting the request",
+    "learnMore": "More details"
   },
   "modal": {
     "useCases": "Application options:"

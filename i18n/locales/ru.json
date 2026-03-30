@@ -31,7 +31,8 @@
     "defaultDescription": "Описание по умолчанию",
     "defaultKeywords": "test",
     "videoNotSupported": "Ваш браузер не поддерживает видео.",
-    "formSendError": "Произошла ошибка при отправке заявки"
+    "formSendError": "Произошла ошибка при отправке заявки",
+    "learnMore": "Подробнее"
   },
   "modal": {
     "useCases": "Варианты применения:"
