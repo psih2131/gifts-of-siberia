@@ -343,7 +343,7 @@ async function loadYtpList() {
         .then(res => res.json())
         .then(data => data?.[0] || null)
     )
-    ytpList.value = await Promise.all(promises)
+    ytpList.value = (await Promise.all(promises)).filter(Boolean)
   } catch (error) {
     console.error('Ошибка при загрузке УТП:', error)
     ytpList.value = []
