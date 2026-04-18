@@ -1,0 +1,153 @@
+{
+  "about": {
+    "learnMore": "자세히 알아보기",
+    "viewCertification": "회사 인증 보기"
+  },
+  "form": {
+    "leaveRequest": "문의 남기기",
+    "fillFormSubtitle": "양식을 작성해 주시면, 담당자가 빠르게 연락드리겠습니다.",
+    "yourName": "이름",
+    "country": "국가",
+    "requirementsAndWishes": "요구사항 및 요청사항",
+    "email": "이메일",
+    "phoneNumber": "전화번호",
+    "checkDataError": "입력하신 정보를 확인해주세요",
+    "confirmConsent": "동의 확인",
+    "mainError": "오류가 발생했습니다. 입력 정보를 확인해주세요",
+    "consentText": "나는 다음에 동의합니다",
+    "and": "및",
+    "personalDataProcessing": "개인정보 처리",
+    "userAgreement": "이용약관",
+    "privacyPolicy": "개인정보 처리방침",
+    "consentNewsletter": "광고 및 마케팅 정보 수신에 동의합니다"
+  },
+  "home": {
+    "popularProducts": "인기 상품",
+    "aboutCompany": "회사 소개 \"시베리아의 선물\"",
+    "latestArticles": "최신 기사 및 뉴스"
+  },
+  "common": {
+    "pageNotTranslated": "해당 페이지는 선택한 언어로 번역되지 않았습니다",
+    "defaultDescription": "기본 설명",
+    "defaultKeywords": "test",
+    "videoNotSupported": "브라우저가 비디오를 지원하지 않습니다.",
+    "formSendError": "문의 전송 중 오류가 발생했습니다",
+    "learnMore": "더보기"
+  },
+  "modal": {
+    "useCases": "사용 방법:"
+  },
+  "popup": {
+    "formSent": "문의가 전송되었습니다",
+    "formSentSubtitle": "저희를 선택해 주셔서 감사합니다! 곧 담당자가 연락드리겠습니다."
+  },
+  "cookie": {
+    "text": "당사 웹사이트를 이용함으로써 개인정보 처리 및 쿠키 사용에 동의하게 됩니다. 자세한 내용은 다음에서 확인하세요",
+    "privacyPolicy": "개인정보 처리방침",
+    "accept": "동의"
+  },
+  "blog": {
+    "allArticles": "전체 기사",
+    "searchPlaceholder": "검색",
+    "searchNoResults": "검색 결과가 없습니다",
+    "title": "블로그",
+    "oops": "앗!",
+    "nothingFound": "검색 결과가 없습니다",
+    "back": "뒤로",
+    "next": "다음",
+    "page": "페이지",
+    "of": "/"
+  },
+  "products": {
+    "allProducts": "전체 상품",
+    "categoriesTitle": "상품 카테고리",
+    "title": "상품",
+    "searchPlaceholder": "검색",
+    "searchNoResults": "검색 결과가 없습니다",
+    "requestOpt": "도매 문의",
+    "moreInfo": "자세히 보기",
+    "sections": "섹션:",
+    "buyOneClick": "원클릭 구매!",
+    "buySubtitle": "마켓플레이스로 이동하여 몇 단계만으로 원하는 상품을 구매하세요.",
+    "leaveRequest": "문의 남기기",
+    "video": "영상",
+    "composition": "구성 및 효능",
+    "storage": "보관 방법",
+    "preparation": "섭취 방법",
+    "noVideo": "해당 상품의 영상이 아직 추가되지 않았습니다",
+    "beneficialProps": "효능",
+    "noInfo": "정보 없음",
+    "recommendations": "섭취 권장 사항",
+    "mayLike": "추천 상품"
+  },
+  "post": {
+    "readingTime": "읽는 시간 -",
+    "min": "분",
+    "readAlso": "관련 글",
+    "readArticle": "기사 읽기"
+  },
+  "pages": {
+    "step": "단계",
+    "clickToLearnMore": "자세히 보려면 클릭하세요",
+    "extractDifference": "다른 브랜드의 추출물과 무엇이 다른가요?",
+    "productMeetsNeeds": "고객의 니즈를 충족하는 제품",
+    "productsForCorporate": "기업용 선물 제품"
+  },
+  "breadcrumbs": {
+    "home": "홈",
+    "blog": "블로그",
+    "products": "제품",
+    "contacts": "연락처",
+    "corporateGifts": "기업 선물",
+    "legalEntities": "법인 고객",
+    "aboutCompany": "회사 소개",
+    "export": "수출",
+    "chagaExtract": "차가 추출물",
+    "giftSets": "선물 세트",
+    "premiumTeas": "프리미엄 차"
+  },
+  "nav": {
+    "brand": {
+      "giftsOfSiberia": "시베리아의 선물",
+      "home": "홈",
+      "aboutCompany": "회사 소개"
+    },
+    "products": {
+      "title": "제품 소개",
+      "premiumTeas": "프리미엄 차",
+      "chagaExtract": "차가 추출물",
+      "giftSets": "선물 세트",
+      "list": "상품"
+    },
+    "cooperation": {
+      "title": "협력",
+      "export": "수출",
+      "legalEntities": "법인 고객",
+      "corporateGifts": "기업 선물"
+    },
+    "blog": "블로그",
+    "contacts": "연락처"
+  },
+  "footer": {
+    "brand": {
+      "giftsOfSiberia": "시베리아의 선물",
+      "home": "홈",
+      "aboutCompany": "회사 소개"
+    },
+    "products": {
+      "premiumTeas": "프리미엄 차",
+      "chagaExtract": "차가 추출물",
+      "giftSets": "선물 세트",
+      "list": "제품"
+    },
+    "cooperation": {
+      "title": "협력",
+      "export": "수출",
+      "legalEntities": "법인 고객",
+      "corporateGifts": "기업 선물"
+    },
+    "blog": "블로그",
+    "contacts": "연락처",
+    "allRightsReserved": "모든 권리 보유"
+  }
+}

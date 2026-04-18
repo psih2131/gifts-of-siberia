@@ -1,0 +1,153 @@
+{
+  "about": {
+    "learnMore": "了解更多",
+    "viewCertification": "查看公司认证"
+  },
+  "form": {
+    "leaveRequest": "提交申请",
+    "fillFormSubtitle": "请填写表单，我们的工作人员将尽快与您联系。",
+    "yourName": "您的姓名",
+    "country": "国家",
+    "requirementsAndWishes": "您的需求与 пожелания",
+    "email": "邮箱",
+    "phoneNumber": "电话号码",
+    "checkDataError": "请检查您输入的信息是否正确",
+    "confirmConsent": "确认同意",
+    "mainError": "发生错误，请检查输入信息",
+    "consentText": "我同意",
+    "and": "以及",
+    "personalDataProcessing": "个人数据处理",
+    "userAgreement": "用户协议",
+    "privacyPolicy": "隐私政策",
+    "consentNewsletter": "我同意接收营销信息"
+  },
+  "home": {
+    "popularProducts": "热门产品",
+    "aboutCompany": "关于公司 - 西伯利亚的礼物",
+    "latestArticles": "最新文章和新闻"
+  },
+  "common": {
+    "pageNotTranslated": "该页面尚未翻译为所选语言",
+    "defaultDescription": "默认描述",
+    "defaultKeywords": "test",
+    "videoNotSupported": "您的浏览器不支持视频播放。",
+    "formSendError": "提交申请时发生错误",
+    "learnMore": "更多详情"
+  },
+  "modal": {
+    "useCases": "使用方式："
+  },
+  "popup": {
+    "formSent": "申请已发送",
+    "formSentSubtitle": "感谢您的选择！我们的工作人员将尽快与您联系。"
+  },
+  "cookie": {
+    "text": "使用我们的网站即表示您同意个人数据处理及Cookie的使用。更多信息请参阅",
+    "privacyPolicy": "隐私政策",
+    "accept": "同意"
+  },
+  "blog": {
+    "allArticles": "全部文章",
+    "searchPlaceholder": "搜索",
+    "searchNoResults": "未找到相关文章",
+    "title": "博客",
+    "oops": "哎呀！",
+    "nothingFound": "未找到结果",
+    "back": "返回",
+    "next": "下一页",
+    "page": "第",
+    "of": "页"
+  },
+  "products": {
+    "allProducts": "全部产品",
+    "categoriesTitle": "产品分类",
+    "title": "产品",
+    "searchPlaceholder": "搜索",
+    "searchNoResults": "未找到相关产品",
+    "requestOpt": "批发申请",
+    "moreInfo": "查看详情",
+    "sections": "分类：",
+    "buyOneClick": "一键购买！",
+    "buySubtitle": "前往电商平台，仅需几步即可购买您喜欢的商品。",
+    "leaveRequest": "提交申请",
+    "video": "视频",
+    "composition": "成分与功效",
+    "storage": "储存条件",
+    "preparation": "使用方法",
+    "noVideo": "该产品暂无视频介绍",
+    "beneficialProps": "功效",
+    "noInfo": "暂无信息",
+    "recommendations": "使用建议",
+    "mayLike": "您可能喜欢"
+  },
+  "post": {
+    "readingTime": "阅读时间 -",
+    "min": "分钟",
+    "readAlso": "相关阅读",
+    "readArticle": "阅读文章"
+  },
+  "pages": {
+    "step": "步骤",
+    "clickToLearnMore": "点击了解更多",
+    "extractDifference": "与其他品牌提取物有何不同？",
+    "productMeetsNeeds": "满足客户需求的产品",
+    "productsForCorporate": "企业礼品产品"
+  },
+  "breadcrumbs": {
+    "home": "首页",
+    "blog": "博客",
+    "products": "产品",
+    "contacts": "联系方式",
+    "corporateGifts": "企业礼品",
+    "legalEntities": "企业客户",
+    "aboutCompany": "关于公司",
+    "export": "出口",
+    "chagaExtract": "桦褐孔菌提取物",
+    "giftSets": "礼盒套装",
+    "premiumTeas": "高端茶饮"
+  },
+  "nav": {
+    "brand": {
+      "giftsOfSiberia": "西伯利亚的礼物",
+      "home": "首页",
+      "aboutCompany": "关于公司"
+    },
+    "products": {
+      "title": "产品介绍",
+      "premiumTeas": "高端茶饮",
+      "chagaExtract": "桦褐孔菌提取物",
+      "giftSets": "礼盒套装",
+      "list": "产品"
+    },
+    "cooperation": {
+      "title": "合作",
+      "export": "出口",
+      "legalEntities": "企业客户",
+      "corporateGifts": "企业礼品"
+    },
+    "blog": "博客",
+    "contacts": "联系方式"
+  },
+  "footer": {
+    "brand": {
+      "giftsOfSiberia": "西伯利亚的礼物",
+      "home": "首页",
+      "aboutCompany": "关于公司"
+    },
+    "products": {
+      "premiumTeas": "高端茶饮",
+      "chagaExtract": "桦褐孔菌提取物",
+      "giftSets": "礼盒套装",
+      "list": "产品"
+    },
+    "cooperation": {
+      "title": "合作",
+      "export": "出口",
+      "legalEntities": "企业客户",
+      "corporateGifts": "企业礼品"
+    },
+    "blog": "博客",
+    "contacts": "联系方式",
+    "allRightsReserved": "版权所有"
+  }
+}

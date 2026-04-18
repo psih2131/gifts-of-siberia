@@ -13,7 +13,14 @@
                 <path d="M2 12H22" stroke="currentColor" stroke-width="2"/>
                 <path d="M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z" stroke="currentColor" stroke-width="2"/>
             </svg>
-            <span class="lang-switcher__current">{{ currentLocaleName }}</span>
+            <span class="lang-switcher__current">
+                <template v-if="locale === 'zh-hans'">
+                    ZH
+                </template>
+                <template v-else>
+                    {{ currentLocaleName }}
+                </template>
+            </span>
             <svg class="lang-switcher__caret" width="12" height="8" viewBox="0 0 14 8" xmlns="http://www.w3.org/2000/svg">
                 <path d="M13 1L7 7L1 0.999999" stroke="currentColor" stroke-width="2"/>
             </svg>
@@ -32,7 +39,13 @@
                     <span class="lang-switcher__radio" :class="{ 'lang-switcher__radio--checked': loc.code === locale }">
                         <span v-if="loc.code === locale" class="lang-switcher__radio-dot"></span>
                     </span>
-                    {{ loc.code.toUpperCase() }}
+
+                    <template v-if="loc.code === 'zh-hans'">
+                        ZH
+                    </template>
+                    <template v-else>
+                        {{ loc.code.toUpperCase() }}
+                    </template>
                 </li>
             </ul>
         </Transition>
